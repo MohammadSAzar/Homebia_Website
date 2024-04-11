@@ -1,18 +1,50 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Verification</title>
-</head>
-<body>
+{% extends '_base_auths.html' %}
+
+{% load static %}
+{% load i18n %}
+{% load jalali_tags %}
+{% load number_converter %}
+{% load widget_tweaks %}
+
+{% block title %}Verification{% endblock %}
+
+{% block content %}
+    <div id="contact"></div>
+    <div class="contact-section" style="background-color: #f7f7f7">
+        <div class="container contact-container" style="margin-top: 4em">
+            <div class="col-md-12 col-sm-12">
+                <div class="pricing-title" style="margin-bottom: 2em"><h4 style="color: #003379">تایید شماره تلفن همراه</h4></div>
+
+                <form method="post" action="" class="contact-form">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label style="margin-bottom: 0.9em;">شماره تلفن شما:</label>
+                        <input type="text" class="form-control" name="phone_number" value="{{ phone_number }}" readonly/>
+
+                        <label style="margin-bottom: 0.9em; margin-top: 2.5em">کد تایید پیامک شده را وارد نمایید:</label>
+                        <input type="number" class="form-control" style="margin-bottom: 3em;" name="otp"/>
+
+
+{#                        <p style="margin-top: 0.6em; font-weight: normal;"><span>با ورود به هومبیا، </span><a href="{% url 'home' %}" style="text-decoration: none;">قوانین </a><span>و </span><a href="{% url 'home' %}" style="text-decoration: none;">سیاست حریم خصوصی </a><span>را می پذیرم.</span></p>#}
+                    </div>
+                    <div class="form-group mb-0" style="direction: ltr; !important;">
+                        <input type="submit" class="btn learn-more-btn" value="ورود به حساب کاربری"/>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+
+
+
+
+
     <form action="." method="post">
         {% csrf_token %}
         <input type="text" name="phone_number" value="{{ phone_number }}" readonly/>
         <input type="number" name="otp"/>
         <input type="submit" value="Check OTP"/>
     </form>
-</body>
-</html>
