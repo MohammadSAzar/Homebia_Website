@@ -1,0 +1,119 @@
+{% extends '_base.html' %}
+
+{% load static %}
+{% load i18n %}
+{% load jalali_tags %}
+{% load number_converter %}
+{% include modal_template %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+
+    <div class="wrapper" style="overflow: scroll">
+
+        <!-- Banner Start -->
+        <div class="header">
+            <div class="container header-container">
+                <div class="col-lg-6 header-img-section">
+                    <img src="{% static 'main/images/MyBanner.svg' %}" alt="banner">
+                </div>
+                <div class="col-lg-6 header-title-section">
+                    <h1 class="header-title">شرکت تجارت الکترونیک ویستا در زمینه طراحی سایت</h1>
+                    <p class="header-title-text">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک استلورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است</p>
+                    <div class="learn-more-btn-section">
+{#                        <a class="nav-link learn-more-btn" href="#services"><span class="ti">خدمات ما</span></a>#}
+                        <a class="nav-link learn-more-btn" style="width: 30%; margin-left: 0.3em" href="{% url 'counseling' %}">{% trans 'Counseling' %}</a>
+                        <a class="nav-link learn-more-btn" style="width: 30%; margin-left: 0.3em" href="{% url 'session' %}">{% trans 'Session' %}</a>
+                        <a class="nav-link learn-more-btn" style="width: 30%; margin-left: 0.3em" href="{% url 'visit' %}">{% trans 'Visit' %}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end: Banner -->
+
+        <!-- Services start-->
+{#        <div id="services"></div>#}
+        <div class="services-section" style="padding-top: 1.2em; !important;">
+            <div class="container">
+                <div class="col-lg-12 col-sm-12 about-title-section">
+                    <h2 class="about-title" style="margin-bottom: 1.2em; text-align: center;">خدمات دستیار مسکن هومبیا</h2>
+                    <div class="row service-list">
+
+                        <!-- Files -->
+                        <div class="col-lg-4 col-md-6 col-sm-12">
+                            <a href="{% url 'home' %}" style="text-decoration: none; color: #212529">
+                                <div class="service-box">
+                                    <span class="icon ti-files"></span>
+                                    <h5 class="my-4">فایل‌ها</h5>
+                                    <p>آگهی‌های خرید، فروش و اجاره آپارتمان در بستر هومبیا</p>
+                                </div>
+                            </a>
+                        </div>
+
+                        <!-- Cases -->
+                        <div class="col-lg-4 col-md-6 col-sm-12">
+                            <a href="{% url 'home' %}" style="text-decoration: none; color: #212529">
+                            <div class="service-box">
+                                <span class="icon ti-shopping-cart"></span>
+                                <h5 class="my-4">سرمایه‌گذاری</h5>
+                                <p>سرمایه‌گذاری در پروژه‌های خرید و فروش متری هومبیا</p>
+                            </div>
+                            </a>
+                        </div>
+
+                        <!-- Counseling -->
+                        <div class="col-lg-4 col-md-6 col-sm-12">
+                            <a href="{% url 'home' %}" style="text-decoration: none; color: #212529">
+                                <div class="service-box">
+                                    <span class="icon ti-thought"></span>
+                                    <h5 class="my-4">مشاوره</h5>
+                                    <p>جلسات مشاوره حضوری، تلفنی و چتی برای کمک به شما در معاملات</p>
+                                </div>
+                            </a>
+                        </div>
+
+                        <!-- Session -->
+                        <div class="col-lg-4 col-md-6 col-sm-12">
+                            <a href="{% url 'home' %}" style="text-decoration: none; color: #212529">
+                                <div class="service-box">
+                                    <span class="icon ti-shield"></span>
+                                    <h5 class="my-4">نشست</h5>
+                                    <p>حضور هومبیا در نشست‌های معاملاتی در کنار شما</p>
+                                </div>
+                            </a>
+                        </div>
+
+                        <!-- Visit -->
+                        <div class="col-lg-4 col-md-6 col-sm-12">
+                            <a href="{% url 'home' %}" style="text-decoration: none; color: #212529">
+                                <div class="service-box">
+                                    <span class="icon ti-video-camera"></span>
+                                    <h5 class="my-4">بازدید</h5>
+                                    <p>حضور هومبیا در بازدیدهای شما جهت کارشناسی و مشورت</p>
+                                </div>
+                            </a>
+                        </div>
+
+                        <!-- Course -->
+                        <div class="col-lg-4 col-md-6 col-sm-12">
+                            <a href="{% url 'home' %}" style="text-decoration: none; color: #212529">
+                                <div class="service-box">
+                                    <span class="icon ti-pencil"></span>
+                                    <h5 class="my-4">دوره آموزشی</h5>
+                                    <p>دوره آموزشی رایگان هومبیا برای مشاورین املاک تازه‌کار</p>
+                                </div>
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end: Services -->
+    </div>
+
+s{% endblock %}
+
+
+
