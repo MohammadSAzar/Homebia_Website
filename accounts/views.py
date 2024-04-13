@@ -51,7 +51,7 @@ def verification_view(request):
 			user.is_active = True
 			user.save()
 			login(request, user)
-			return HttpResponseRedirect(reverse('profile'))
+			return HttpResponseRedirect(reverse('profile_info_now'))
 		context = {
 			'phone_number': phone_number,
 		}
@@ -60,8 +60,21 @@ def verification_view(request):
 		return HttpResponseRedirect(reverse('registration'))
 
 
-def profile_view(request):
-	return render(request, 'accounts/profile.html')
+# Profile views
+def profile_info_now(request):
+	return render(request, 'accounts/profile_info_now.html')
+
+def profile_info_auth(request):
+	return render(request, 'accounts/profile_info_auth.html')
+
+def profile_your_services(request):
+	return render(request, 'accounts/profile_your_services.html')
+
+def profile_your_cases(request):
+	return render(request, 'accounts/profile_your_cases.html')
+
+def profile_your_files(request):
+	return render(request, 'accounts/profile_your_files.html')
 
 
 # The original code without bugs 1,2

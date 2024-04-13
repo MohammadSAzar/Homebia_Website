@@ -1,0 +1,24 @@
+{% extends '_base_profile.html' %}
+
+{% load static %}
+{% load i18n %}
+{% load jalali_tags %}
+{% load number_converter %}
+{% load widget_tweaks %}
+
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+
+{% endblock %}
+
+    {% if user.is_authenticated %}
+        <h1>Hello {{ user }}</h1>
+        <form action="{% url 'logout' %}" method="post">
+            {% csrf_token %}
+            <button type="submit">خروج از حساب کاربری</button>
+        </form>
+    {% else %}
+        <h1>User not found!</h1>
+    {% endif %}
+
