@@ -88,12 +88,11 @@ class Counseling(models.Model):
     STATUSES = statuses
     # Fields
     counseling_type = models.CharField(max_length=30, choices=COUNSELING_TYPES, verbose_name=_('Counseling Type'))
-    customer_type = models.CharField(max_length=30, choices=CUSTOMER_TYPES, verbose_name=_('Customer Type'))
     date = models.CharField(max_length=200, choices=DATES, verbose_name=_('Date of Counseling'))
     time = models.CharField(max_length=200, choices=TIMES, verbose_name=_('Time of Counseling'))
     name_and_family = models.CharField(max_length=200, verbose_name=_('Name and Family'))
-    phone_number = models.CharField(max_length=11, verbose_name=_('Phone Number'))
-    status = models.CharField(max_length=30, choices=STATUSES, verbose_name=_('Status'))
+    phone_number = models.CharField(max_length=11, blank=True, null=True, verbose_name=_('Phone Number'))
+    status = models.CharField(max_length=30, choices=STATUSES, default='pen', verbose_name=_('Status'))
     datetime_created = models.DateTimeField(auto_now_add=True, verbose_name=_('Date and Time of Creation'))
 
     @property
@@ -138,8 +137,8 @@ class Session(models.Model):
     date = models.CharField(max_length=200, choices=DATES, verbose_name=_('Date of Session'))
     time = models.CharField(max_length=200, choices=TIMES, verbose_name=_('Time of Session'))
     name_and_family = models.CharField(max_length=200, verbose_name=_('Name and Family'))
-    phone_number = models.CharField(max_length=11, verbose_name=_('Phone Number'))
-    status = models.CharField(max_length=30, choices=STATUSES, verbose_name=_('Status'))
+    phone_number = models.CharField(max_length=11, blank=True, null=True, verbose_name=_('Phone Number'))
+    status = models.CharField(max_length=30, choices=STATUSES, default='pen', verbose_name=_('Status'))
     datetime_created = models.DateTimeField(auto_now_add=True, verbose_name=_('Date and Time of Creation'))
 
     @property
@@ -182,8 +181,8 @@ class Visit(models.Model):
     date = models.CharField(max_length=200, choices=DATES, verbose_name=_('Date of Visit'))
     time = models.CharField(max_length=200, choices=TIMES, verbose_name=_('Time of Visit'))
     name_and_family = models.CharField(max_length=200, verbose_name=_('Name and Family'))
-    phone_number = models.CharField(max_length=11, verbose_name=_('Phone Number'))
-    status = models.CharField(max_length=30, choices=STATUSES, verbose_name=_('Status'))
+    phone_number = models.CharField(max_length=11, blank=True, null=True, verbose_name=_('Phone Number'))
+    status = models.CharField(max_length=30, choices=STATUSES, default='pen', verbose_name=_('Status'))
     datetime_created = models.DateTimeField(auto_now_add=True, verbose_name=_('Date and Time of Creation'))
 
     @property

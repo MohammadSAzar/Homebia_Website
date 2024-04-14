@@ -4,11 +4,8 @@ from .models import Counseling, Session, Visit
 
 @admin.register(Counseling)
 class CounselingAdmin(admin.ModelAdmin):
-    list_display = ('counseling_type', 'customer_type', 'date', 'time', 'name_and_family', 'phone_number', 'datetime_created', 'status')
+    list_display = ('counseling_type', 'date', 'time', 'name_and_family', 'phone_number', 'datetime_created', 'status')
     ordering = ('-datetime_created', )
-    # inlines = [
-    #     ReviewInProductInline,
-    # ]
 
 @admin.register(Session)
 class SessionAdmin(admin.ModelAdmin):

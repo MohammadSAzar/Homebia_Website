@@ -1,0 +1,35 @@
+{% extends '_base_auths.html' %}
+
+{% load static %}
+{% load i18n %}
+{% load jalali_tags %}
+{% load number_converter %}
+{% load widget_tweaks %}
+
+{% block title %}Registration{% endblock %}
+
+{% block content %}
+    <div id="contact"></div>
+    <div class="contact-section" style="background-color: #f7f7f7">
+        <div class="container contact-container" style="margin-top: 4em">
+            <div class="col-md-12 col-sm-12">
+                <div class="pricing-title" style="margin-bottom: 2em"><h4 style="color: #003379">ورود با شماره تلفن همراه</h4></div>
+
+                <form method="post" action="" class="contact-form">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="{{ form.phone_number.id_for_label }}" style="margin-bottom: 0.9em;">شماره تلفن همراه خود را وارد نمایید:</label>
+                        {% render_field form.phone_number  class="form-control" %}
+                        <p style="margin-top: 0.6em; font-weight: normal;"><span>با ورود به هومبیا، </span><a href="{% url 'home' %}" style="text-decoration: none;">قوانین </a><span>و </span><a href="{% url 'home' %}" style="text-decoration: none;">سیاست حریم خصوصی </a><span>را می پذیرم.</span></p>
+                    </div>
+                    <div class="form-group mb-0" style="direction: ltr; !important;">
+                        <button type="submit" class="btn learn-more-btn">دریافت کد تایید</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+
