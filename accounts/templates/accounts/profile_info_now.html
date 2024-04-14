@@ -10,15 +10,168 @@
 
 {% block content %}
 
-{% endblock %}
+    {% if user.is_verified == 'a' %}
 
-    {% if user.is_authenticated %}
-        <h1>Hello {{ user }}</h1>
-        <form action="{% url 'logout' %}" method="post">
-            {% csrf_token %}
-            <button type="submit">خروج از حساب کاربری</button>
-        </form>
-    {% else %}
-        <h1>User not found!</h1>
+        <div class="nk-block">
+            <div class="card card-bordered">
+                <div class="card-aside-wrap">
+
+                    <div class="card-inner card-inner-lg">
+                        <!-- Title -->
+                        <div class="nk-block-head nk-block-head-lg">
+                            <div class="nk-block-between">
+                                <div class="nk-block-head-content">
+                                    <h4 class="nk-block-title">اطلاعات شخصی</h4>
+                                    <div class="nk-block-des">
+                                        <p></p>
+                                    </div>
+                                </div>
+                                <div class="nk-block-head-content align-self-start d-lg-none">
+                                    <a href="#" class="toggle btn btn-icon btn-trigger mt-n1" data-target="userAside"><em class="icon ni ni-menu-alt-r"></em></a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end: Title -->
+
+                        <!-- Items -->
+                        <div class="nk-block">
+                            <div class="nk-data data-list">
+
+                                <div class="data-item" data-bs-toggle="modal" data-bs-target="#profile-edit">
+                                    <div class="data-col">
+                                        <span class="data-label" style="font-size: large">شماره همراه</span>
+                                        <span class="data-value" style="font-size: large">{{ user.phone_number }}</span>
+                                    </div>
+                                </div>
+
+                                <div class="data-item" data-bs-toggle="modal" data-bs-target="#profile-edit">
+                                    <div class="data-col">
+                                        <span class="data-label" style="font-size: large">وضعیت حساب کاربری</span>
+                                        <span class="data-value" style="font-size: large; color: #00a65c">تایید شده</span>
+                                    </div>
+                                </div>
+
+                                <div class="data-item" data-bs-toggle="modal" data-bs-target="#profile-edit" style="direction: ltr; margin-top: 1.5em">
+                                    <a href="{% url 'profile_info_edit' %}" class="btn btn-round btn-xl btn-primary" style="background-color: #00a65c; border: #00A65C; padding-left: 2em; padding-right: 2em;">تغییر اطلاعات کاربری</a>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <!-- end: Items -->
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    {% elif user.is_verified == 'n' %}
+
+        <div class="nk-block">
+            <div class="card card-bordered">
+                <div class="card-aside-wrap">
+
+                    <div class="card-inner card-inner-lg">
+                        <!-- Title -->
+                        <div class="nk-block-head nk-block-head-lg">
+                            <div class="nk-block-between">
+                                <div class="nk-block-head-content">
+                                    <h4 class="nk-block-title">اطلاعات شخصی</h4>
+                                    <div class="nk-block-des">
+                                        <p></p>
+                                    </div>
+                                </div>
+                                <div class="nk-block-head-content align-self-start d-lg-none">
+                                    <a href="#" class="toggle btn btn-icon btn-trigger mt-n1" data-target="userAside"><em class="icon ni ni-menu-alt-r"></em></a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end: Title -->
+
+                        <!-- Items -->
+                        <div class="nk-block">
+                            <div class="nk-data data-list">
+
+                                <div class="data-item" data-bs-toggle="modal" data-bs-target="#profile-edit">
+                                    <div class="data-col">
+                                        <span class="data-label" style="font-size: large">شماره همراه</span>
+                                        <span class="data-value" style="font-size: large">{{ user.phone_number }}</span>
+                                    </div>
+                                </div>
+
+                                <div class="data-item" data-bs-toggle="modal" data-bs-target="#profile-edit">
+                                    <div class="data-col">
+                                        <span class="data-label" style="font-size: large">وضعیت حساب کاربری</span>
+                                        <span class="data-value" style="font-size: large; color: #db4646">تکمیل نشده</span>
+                                    </div>
+                                </div>
+
+                                <div class="data-item" data-bs-toggle="modal" data-bs-target="#profile-edit" style="direction: ltr; margin-top: 1.5em">
+                                    <a href="{% url 'profile_info_auth' %}" class="btn btn-round btn-xl btn-primary" style="background-color: #00a65c; border: #00A65C; padding-left: 2em; padding-right: 2em;">تکمیل اطلاعات کاربری</a>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <!-- end: Items -->
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    {% elif user.is_verified == 'i' %}
+
+        <div class="nk-block">
+            <div class="card card-bordered">
+                <div class="card-aside-wrap">
+
+                    <div class="card-inner card-inner-lg">
+                        <!-- Title -->
+                        <div class="nk-block-head nk-block-head-lg">
+                            <div class="nk-block-between">
+                                <div class="nk-block-head-content">
+                                    <h4 class="nk-block-title">اطلاعات شخصی</h4>
+                                    <div class="nk-block-des">
+                                        <p></p>
+                                    </div>
+                                </div>
+                                <div class="nk-block-head-content align-self-start d-lg-none">
+                                    <a href="#" class="toggle btn btn-icon btn-trigger mt-n1" data-target="userAside"><em class="icon ni ni-menu-alt-r"></em></a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end: Title -->
+
+                        <!-- Items -->
+                        <div class="nk-block">
+                            <div class="nk-data data-list">
+
+                                <div class="data-item" data-bs-toggle="modal" data-bs-target="#profile-edit">
+                                    <div class="data-col">
+                                        <span class="data-label" style="font-size: large">شماره همراه</span>
+                                        <span class="data-value" style="font-size: large">{{ user.phone_number }}</span>
+                                    </div>
+                                </div>
+
+                                <div class="data-item" data-bs-toggle="modal" data-bs-target="#profile-edit">
+                                    <div class="data-col">
+                                        <span class="data-label" style="font-size: large">وضعیت حساب کاربری</span>
+                                        <span class="data-value" style="font-size: large; color: #99a025">در دست بررسی</span>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <!-- end: Items -->
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
     {% endif %}
+
+{% endblock %}
 

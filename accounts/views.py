@@ -3,8 +3,8 @@ from django.contrib.auth import login
 from django.urls import reverse
 from django.http import HttpResponseRedirect
 
-from .models import CustomUserModel
-from .forms import RegistrationForm
+from .models import CustomUserModel, Profile
+from .forms import RegistrationForm, AuthenticationForm, IntoEditForm
 from .helper import send_otp, get_random_otp, otp_time_checker
 
 
@@ -65,7 +65,34 @@ def profile_info_now(request):
 	return render(request, 'accounts/profile_info_now.html')
 
 def profile_info_auth(request):
-	return render(request, 'accounts/profile_info_auth.html')
+	if request.method == 'POST':
+		form = AuthenticationForm(request.POST)
+		user = request.user
+		if form.is_valid():
+			form.save()
+			user.is_verified = 'i'
+			user.save()
+			return HttpResponseRedirect(reverse('profile_info_now'))
+	else:
+		form = AuthenticationForm()
+	context = {
+		'form': form,
+	}
+	return render(request, 'accounts/profile_info_auth.html', context)
+
+def profile_info_edit(request):
+	if request.method == 'POST':
+		form = IntoEditForm(request.POST)
+		user = request.user
+		if form.is_valid():
+			form.save()
+			return HttpResponseRedirect(reverse('profile_info_now'))
+	else:
+		form = IntoEditForm()
+	context = {
+		'form': form,
+	}
+	return render(request, 'accounts/profile_info_edit.html', context)
 
 def profile_your_services(request):
 	return render(request, 'accounts/profile_your_services.html')

@@ -23,7 +23,7 @@
         <script src="{% static 'profile/assets/js/scripts.js' %}"></script>
 
         <!-- Favicon -->
-        <link rel="shortcut icon" href="{% static 'profile/images/favicon.png' %}" />
+        <link rel="icon" type="image/png" href="{% static 'main/images/fav.png' %}">
 
         <!-- Title -->
         <title>{% block title %}{% endblock %}</title>
@@ -63,17 +63,17 @@
                                         <li class="nk-menu-item has-sub">
                                             <a href="#" class="nk-menu-link nk-menu-toggle">
                                                 <span class="nk-menu-icon"><em class="icon ni ni-tile-thumb"></em></span>
-                                                <span class="nk-menu-text">پروژه ها</span>
+                                                <span class="nk-menu-text">اطلاعات کاربری من</span>
                                             </a>
                                             <ul class="nk-menu-sub">
                                                 <li class="nk-menu-item">
-                                                    <a href="html/project-card.html" class="nk-menu-link"><span class="nk-menu-text">کارت های پروژه</span></a>
+                                                    <a href="{% url 'profile_info_now' %}" class="nk-menu-link"><span class="nk-menu-text">اطلاعات شخصی</span></a>
                                                 </li>
                                                 <li class="nk-menu-item">
-                                                    <a href="html/project-list.html" class="nk-menu-link"><span class="nk-menu-text">لیست پروژه ها</span></a>
+                                                    <a href="{% url 'profile_info_edit' %}" class="nk-menu-link"><span class="nk-menu-text">تغییر اطلاعات</span></a>
                                                 </li>
                                                 <li class="nk-menu-item">
-                                                    <a href="html/project-list.html" class="nk-menu-link"><span class="nk-menu-text">لیست پروژه ها</span></a>
+                                                    <a href="{% url 'profile_info_auth' %}" class="nk-menu-link"><span class="nk-menu-text">تایید حساب کاربری</span></a>
                                                 </li>
                                             </ul>
                                         </li>
@@ -83,14 +83,23 @@
                                         <li class="nk-menu-item has-sub">
                                             <a href="#" class="nk-menu-link nk-menu-toggle">
                                                 <span class="nk-menu-icon"><em class="icon ni ni-users"></em></span>
-                                                <span class="nk-menu-text">مدیریت کاربران</span>
+                                                <span class="nk-menu-text">خدمات دریافتی من</span>
                                             </a>
                                             <ul class="nk-menu-sub">
                                                 <li class="nk-menu-item">
-                                                    <a href="html/user-list-regular.html" class="nk-menu-link"><span class="nk-menu-text">لیست کاربران - عادی</span></a>
+                                                    <a href="html/user-list-regular.html" class="nk-menu-link"><span class="nk-menu-text">جلسات مشاوره</span></a>
                                                 </li>
                                                 <li class="nk-menu-item">
-                                                    <a href="html/user-list-compact.html" class="nk-menu-link"><span class="nk-menu-text">لیست کاربران - فشرده</span></a>
+                                                    <a href="html/user-list-compact.html" class="nk-menu-link"><span class="nk-menu-text">حضور در بازدید</span></a>
+                                                </li>
+                                                <li class="nk-menu-item">
+                                                    <a href="html/user-list-compact.html" class="nk-menu-link"><span class="nk-menu-text">حضور در نشست</span></a>
+                                                </li>
+                                                <li class="nk-menu-item">
+                                                    <a href="html/user-list-compact.html" class="nk-menu-link"><span class="nk-menu-text">پروزه‌های سرمایه‌گذاری</span></a>
+                                                </li>
+                                                <li class="nk-menu-item">
+                                                    <a href="html/user-list-compact.html" class="nk-menu-link"><span class="nk-menu-text">معاملات</span></a>
                                                 </li>
                                             </ul>
                                         </li>
@@ -103,6 +112,7 @@
                         </div>
                     </div>
                     <!-- end: Sidebar >>> menu -->
+
                 </div>
 
                 <!-- Header & Content -->
