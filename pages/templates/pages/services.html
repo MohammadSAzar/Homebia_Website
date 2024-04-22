@@ -5,92 +5,101 @@
 {% load jalali_tags %}
 {% load number_converter %}
 
-{% block title %}ُServices{% endblock %}
+{% block title %}Services{% endblock %}
 
 {% block content %}
-    <div class="wrapper" style="margin-top: 2em">
 
-        <!-- Services start-->
-        <div id="services"></div>
-        <div class="services-section" style="margin-top: 10em">
+        <!-- Homebia services -->
+        <section class="banner-area mb--75 mb-md--55" style="margin-top: 10em;">
             <div class="container">
-                <div class="col-lg-12 col-sm-12 about-title-section">
-                    <h2 class="about-title" style="margin-bottom: 1.2em; text-align: center;">خدمات دستیار مسکن هومبیا</h2>
-                    <div class="row service-list">
 
-                        <!-- Files -->
-                        <div class="col-lg-4 col-md-6 col-sm-12">
-                            <a href="{% url 'home' %}" style="text-decoration: none; color: #212529">
-                                <div class="service-box">
-                                    <span class="icon ti-files"></span>
-                                    <h5 class="my-4">فایل‌ها</h5>
-                                    <p>آگهی‌های خرید، فروش و اجاره آپارتمان در بستر هومبیا</p>
-                                </div>
-                            </a>
-                        </div>
-
-                        <!-- Cases -->
-                        <div class="col-lg-4 col-md-6 col-sm-12">
-                            <a href="{% url 'home' %}" style="text-decoration: none; color: #212529">
-                            <div class="service-box">
-                                <span class="icon ti-shopping-cart"></span>
-                                <h5 class="my-4">سرمایه‌گذاری</h5>
-                                <p>سرمایه‌گذاری در پروژه‌های خرید و فروش متری هومبیا</p>
-                            </div>
-                            </a>
-                        </div>
-
-                        <!-- Counseling -->
-                        <div class="col-lg-4 col-md-6 col-sm-12">
-                            <a href="{% url 'home' %}" style="text-decoration: none; color: #212529">
-                                <div class="service-box">
-                                    <span class="icon ti-thought"></span>
-                                    <h5 class="my-4">مشاوره</h5>
-                                    <p>جلسات مشاوره حضوری، تلفنی و چتی برای کمک به شما در معاملات</p>
-                                </div>
-                            </a>
-                        </div>
-
-                        <!-- Session -->
-                        <div class="col-lg-4 col-md-6 col-sm-12">
-                            <a href="{% url 'home' %}" style="text-decoration: none; color: #212529">
-                                <div class="service-box">
-                                    <span class="icon ti-shield"></span>
-                                    <h5 class="my-4">نشست</h5>
-                                    <p>حضور هومبیا در نشست‌های معاملاتی در کنار شما</p>
-                                </div>
-                            </a>
-                        </div>
-
-                        <!-- Visit -->
-                        <div class="col-lg-4 col-md-6 col-sm-12">
-                            <a href="{% url 'home' %}" style="text-decoration: none; color: #212529">
-                                <div class="service-box">
-                                    <span class="icon ti-video-camera"></span>
-                                    <h5 class="my-4">بازدید</h5>
-                                    <p>حضور هومبیا در بازدیدهای شما جهت کارشناسی و مشورت</p>
-                                </div>
-                            </a>
-                        </div>
-
-                        <!-- Course -->
-                        <div class="col-lg-4 col-md-6 col-sm-12">
-                            <a href="{% url 'home' %}" style="text-decoration: none; color: #212529">
-                                <div class="service-box">
-                                    <span class="icon ti-pencil"></span>
-                                    <h5 class="my-4">دوره آموزشی</h5>
-                                    <p>دوره آموزشی رایگان هومبیا برای مشاورین املاک تازه‌کار</p>
-                                </div>
-                            </a>
-                        </div>
-
+                <!-- Title -->
+                <div class="row mb--35 mb-md--23">
+                    <div class="col-12 text-center">
+                        <h2 style="font-size: 40px; color: #003379">خدمات هومبیا</h2>
                     </div>
                 </div>
-            </div>
-        </div>
-        <!-- end: Services -->
 
-    </div>
+                <!-- Services -->
+                <div class="row" style="margin-right: 0">
+
+                    <!-- Files -->
+                    <div class="col-lg-4 offset-lg-12 offse" style="margin-right: 0;!important;">
+                        <div class="banner banner-info-right-center mb--30">
+                            <div class="banner__inner">
+                                <figure class="banner__image">
+                                    <img src="{% static 'new_home/img/cards/shpping_files.png' %}" alt="Banner">
+                                </figure>
+                                <a href="{% url 'home' %}" class="banner__link"></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Cases -->
+                    <div class="col-lg-4 offset-lg-12 offse" style="margin-right: 0;!important;">
+                        <div class="banner banner-info-right-center mb--30">
+                            <div class="banner__inner">
+                                <figure class="banner__image">
+                                    <img src="{% static 'new_home/img/cards/money_cases.png' %}" alt="Banner">
+                                </figure>
+                                <a href="{% url 'home' %}" class="banner__link"></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Counseling -->
+                    <div class="col-lg-4 offset-lg-12 offse" style="margin-right: 0;!important;">
+                        <div class="banner banner-info-right-center mb--30">
+                            <div class="banner__inner">
+                                <figure class="banner__image">
+                                    <img src="{% static 'new_home/img/cards/help-counseling.png' %}" alt="Banner">
+                                </figure>
+                                <a href="{% url 'counseling' %}" class="banner__link"></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Session -->
+                    <div class="col-lg-4 offset-lg-12 offse" style="margin-right: 0;!important;">
+                        <div class="banner banner-info-right-center mb--30">
+                            <div class="banner__inner">
+                                <figure class="banner__image">
+                                    <img src="{% static 'new_home/img/cards/wheelchair-session.png' %}" alt="Banner">
+                                </figure>
+                                <a href="{% url 'session' %}" class="banner__link"></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Visit -->
+                    <div class="col-lg-4 offset-lg-12 offse" style="margin-right: 0;!important;">
+                        <div class="banner banner-info-right-center mb--30">
+                            <div class="banner__inner">
+                                <figure class="banner__image">
+                                    <img src="{% static 'new_home/img/cards/eye_visit.png' %}" alt="Banner">
+                                </figure>
+                                <a href="{% url 'visit' %}" class="banner__link"></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Course -->
+                    <div class="col-lg-4 offset-lg-12 offse" style="margin-right: 0;!important;">
+                        <div class="banner banner-info-right-center mb--30">
+                            <div class="banner__inner">
+                                <figure class="banner__image">
+                                    <img src="{% static 'new_home/img/cards/book_course.png' %}" alt="Banner">
+                                </figure>
+                                <a href="{% url 'home' %}" class="banner__link"></a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <!-- end: Homebia services -->
+
 {% endblock %}
 
 
