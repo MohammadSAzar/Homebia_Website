@@ -6,35 +6,45 @@
 {% load number_converter %}
 {% load widget_tweaks %}
 
-{% block title %}Verification{% endblock %}
+{% block title %}{% trans 'Code verification' %}{% endblock %}
 
 {% block content %}
-    <div id="contact"></div>
-    <div class="contact-section" style="background-color: #f7f7f7">
-        <div class="container contact-container" style="margin-top: 4em">
-            <div class="col-md-12 col-sm-12">
-                <div class="pricing-title" style="margin-bottom: 2em"><h4 style="color: #003379">تایید شماره تلفن همراه</h4></div>
 
-                <form method="post" action="" class="contact-form">
-                    {% csrf_token %}
-                    <div class="form-group">
-                        <label style="margin-bottom: 0.9em;">شماره تلفن شما:</label>
-                        <input type="text" class="form-control" name="phone_number" value="{{ phone_number }}" readonly/>
+    <!-- Login register form -->
+    <div class="main-content-wrapper" style="margin-top: 10em;">
+        <div class="page-content-inner pt--75 pb--80">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="register-box">
+                            <h2 class="heading__tertiary mb--30" style="font-size: 1.8em; margin-bottom: 2em">تایید شماره تلفن همراه</h2>
 
-                        <label style="margin-bottom: 0.9em; margin-top: 2.5em">کد تایید پیامک شده را وارد نمایید:</label>
-                        <input type="number" class="form-control" style="margin-bottom: 3em;" name="otp"/>
+                            <form method="post" action="" class="form form--login">
+                                {% csrf_token %}
+                                <div class="form__group mb--20">
+                                    <label class="form__label" for="email" style="font-family: Estedad; font-size: 1em; margin-bottom: 0.8em;">شماره تلفن شما:<span class="required">*</span></label>
+                                    <input type="text" class="form__input" name="phone_number" value="{{ phone_number }}" readonly/>
 
+                                    <label class="form__label" for="email" style="font-family: Estedad; font-size: 1em; margin-bottom: 0.8em; margin-top: 2.5em;">کد تایید پیامک شده را وارد نمایید:<span class="required">*</span></label>
+                                    <input type="number" class="form__input" name="otp"/>
+                                    <p style="margin-top: 1.2em;!important; font-weight: normal;"><a href="{% url 'home' %}" style="text-decoration: none;">پیامک برای شما ارسال نشد؟</a></p>
+                                </div>
+                                <div class="form__group" style="margin-top: 2em">
+                                    <input type="submit" value="ورود به هومبیا" class="btn btn-size-sm" style="float: left; font-weight: bold; padding-left: 2em; padding-right: 2em">
+                                </div>
+                            </form>
 
-{#                        <p style="margin-top: 0.6em; font-weight: normal;"><span>با ورود به هومبیا، </span><a href="{% url 'home' %}" style="text-decoration: none;">قوانین </a><span>و </span><a href="{% url 'home' %}" style="text-decoration: none;">سیاست حریم خصوصی </a><span>را می پذیرم.</span></p>#}
+                        </div>
                     </div>
-                    <div class="form-group mb-0" style="direction: ltr; !important;">
-                        <input type="submit" class="btn learn-more-btn" value="ورود به حساب کاربری"/>
-                    </div>
-                </form>
-
+                </div>
             </div>
         </div>
     </div>
+    <!-- end: Login register form -->
+
 {% endblock %}
+
+
+
 
 

@@ -1,0 +1,191 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-04-22 15:47+0330\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+#: .\models.py:11
+msgid "Male"
+msgstr "آقا"
+
+#: .\models.py:12
+msgid "Female"
+msgstr "خانم"
+
+#: .\models.py:14
+msgid "First Name"
+msgstr "نام"
+
+#: .\models.py:15
+msgid "Last Name"
+msgstr "نام خانوادگی"
+
+#: .\models.py:16
+msgid "Sex"
+msgstr "جنسیت"
+
+#: .\models.py:17
+msgid "National Code"
+msgstr "کد ملی"
+
+#: .\models.py:18
+msgid "National Card Image"
+msgstr "تصویر کارت ملی"
+
+#: .\models.py:19
+msgid "Bank Card Image"
+msgstr "تصویر کارت بانکی"
+
+#: .\models.py:20
+msgid "Authentication Image"
+msgstr "تصویر احراز هویت"
+
+#: .\models.py:21
+msgid "Country"
+msgstr "کشور"
+
+#: .\models.py:22
+msgid "Province"
+msgstr "استان"
+
+#: .\models.py:23
+msgid "City"
+msgstr "شهر"
+
+#: .\models.py:24
+msgid "Postal Code"
+msgstr "کد پستی"
+
+#: .\models.py:25
+msgid "Address"
+msgstr "نشانی"
+
+#: .\models.py:30
+msgid "Authenticated"
+msgstr "احراز هویت شده"
+
+#: .\models.py:31
+msgid "Not Authenticated"
+msgstr "احراز هویت نشده"
+
+#: .\models.py:32
+msgid "In Progress"
+msgstr "در دستی بررسی"
+
+#: .\models.py:39
+msgid "Authentication Status"
+msgstr "وضعیت احراز هویت"
+
+#: .\templates\accounts\profile_info_auth.html:9
+msgid "Authentication"
+msgstr "احراز هویت"
+
+#: .\templates\accounts\profile_info_auth.html:27
+#: .\templates\accounts\profile_info_edit.html:23
+msgid "Send the information"
+msgstr "ارسال"
+
+#: .\templates\accounts\profile_info_auth.html:33
+#: .\templates\accounts\profile_info_edit.html:29
+#: .\templates\accounts\profile_info_now.html:24
+#: .\templates\accounts\profile_info_now.html:79
+#: .\templates\accounts\profile_info_now.html:134
+msgid "Personal information"
+msgstr "اطلاعات شخصی"
+
+#: .\templates\accounts\profile_info_auth.html:51
+#: .\templates\accounts\profile_info_edit.html:47
+#: .\templates\accounts\profile_info_now.html:42
+#: .\templates\accounts\profile_info_now.html:97
+#: .\templates\accounts\profile_info_now.html:152
+msgid "Phone number"
+msgstr "شماره تلفن همراه"
+
+#: .\templates\accounts\profile_info_auth.html:58
+#: .\templates\accounts\profile_info_edit.html:54
+#: .\templates\accounts\profile_info_now.html:49
+#: .\templates\accounts\profile_info_now.html:104
+#: .\templates\accounts\profile_info_now.html:159
+msgid "Account status"
+msgstr "وضعیت حساب کاربری"
+
+#: .\templates\accounts\profile_info_auth.html:59
+#: .\templates\accounts\profile_info_edit.html:55
+#: .\templates\accounts\profile_info_now.html:105
+msgid "Not completed"
+msgstr "تکمیل نشده"
+
+#: .\templates\accounts\profile_info_auth.html:64
+#: .\templates\accounts\profile_info_edit.html:60
+#: .\templates\accounts\profile_info_now.html:110
+msgid "Complete the information"
+msgstr "تکمیل اطلاعات کاربری"
+
+#: .\templates\accounts\profile_info_edit.html:9
+msgid "Profile update"
+msgstr "بروزرسانی اطلاعات "
+
+#: .\templates\accounts\profile_info_now.html:9
+msgid "Profile"
+msgstr "حساب کاربری"
+
+#: .\templates\accounts\profile_info_now.html:50
+msgid "Verified"
+msgstr "تایید شده"
+
+#: .\templates\accounts\profile_info_now.html:55
+msgid "Personal information update"
+msgstr "تغییر اطلاعات کاربری"
+
+#: .\templates\accounts\profile_info_now.html:160
+msgid "In progress"
+msgstr "در دست بررسی"
+
+#: .\templates\accounts\registration.html:9
+msgid "Registration"
+msgstr "ورود / ثبت‌نام"
+
+#: .\templates\accounts\registration.html:16
+msgid "Register with phone number"
+msgstr "ورود با شماره تلفن همراه"
+
+#: .\templates\accounts\registration.html:21
+msgid "Enter your phone number"
+msgstr "شماره تلفن همراه خود را وارد نمایید:"
+
+#: .\templates\accounts\registration.html:26
+msgid "Send the confirmation code"
+msgstr "دریافت کد تایید"
+
+#: .\templates\accounts\verification.html:9
+msgid "Verification"
+msgstr "تاییدیه ورود"
+
+#: .\templates\accounts\verification.html:16
+msgid "Confirm the phone number"
+msgstr "تایید شماره تلفن همراه"
+
+#: .\templates\accounts\verification.html:21
+msgid "Your phone number: "
+msgstr "شماره تلفن شما:"
+
+#: .\templates\accounts\verification.html:24
+msgid "Enter the sent code: "
+msgstr "کد تایید پیامک شده را وارد نمایید:"
+
+#: .\templates\accounts\verification.html:31
+msgid "Enter your account"
+msgstr "ورود به حساب کاربری"

@@ -6,7 +6,7 @@
 {% load number_converter %}
 {% load widget_tweaks %}
 
-{% block title %}Authentication{% endblock %}
+{% block title %}{% trans 'Authentication' %}{% endblock %}
 
 {% block content %}
 
@@ -24,13 +24,13 @@
                         <form action="" method="post" enctype="multipart/form-data">
                             {% csrf_token %}
                             {{ form.as_p }}
-                            <button type="submit">ارسال</button>
+                            <button type="submit">{% trans 'Send the information' %}</button>
                         </form>
                         <!-- Title -->
                         <div class="nk-block-head nk-block-head-lg">
                             <div class="nk-block-between">
                                 <div class="nk-block-head-content">
-                                    <h4 class="nk-block-title">اطلاعات شخصی</h4>
+                                    <h4 class="nk-block-title">{% trans 'Personal information' %}</h4>
                                     <div class="nk-block-des">
                                         <p></p>
                                     </div>
@@ -48,20 +48,20 @@
 
                                 <div class="data-item" data-bs-toggle="modal" data-bs-target="#profile-edit">
                                     <div class="data-col">
-                                        <span class="data-label" style="font-size: large">شماره همراه</span>
+                                        <span class="data-label" style="font-size: large">{% trans 'Phone number' %}</span>
                                         <span class="data-value" style="font-size: large">{{ user.phone_number }}</span>
                                     </div>
                                 </div>
 
                                 <div class="data-item" data-bs-toggle="modal" data-bs-target="#profile-edit">
                                     <div class="data-col">
-                                        <span class="data-label" style="font-size: large">وضعیت حساب کاربری</span>
-                                        <span class="data-value" style="font-size: large; color: #db4646">تکمیل نشده</span>
+                                        <span class="data-label" style="font-size: large">{% trans 'Account status' %}</span>
+                                        <span class="data-value" style="font-size: large; color: #db4646">{% trans 'Not completed' %}</span>
                                     </div>
                                 </div>
 
                                 <div class="data-item" data-bs-toggle="modal" data-bs-target="#profile-edit" style="direction: ltr; margin-top: 1.5em">
-                                    <a href="{% url 'profile_info_auth' %}" class="btn btn-round btn-xl btn-primary" style="background-color: #00a65c; border: #00A65C; padding-left: 2em; padding-right: 2em;">تکمیل اطلاعات کاربری</a>
+                                    <a href="{% url 'profile_info_auth' %}" class="btn btn-round btn-xl btn-primary" style="background-color: #00a65c; border: #00A65C; padding-left: 2em; padding-right: 2em;">{% trans 'Complete the information' %}</a>
                                 </div>
 
                             </div>

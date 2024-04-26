@@ -6,35 +6,39 @@
 
 <!doctype html>
 <html dir="rtl" lang="fa">
-  <head>
-    <meta charset="UTF-8">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <head>
+        <meta charset="UTF-8">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <!-- CSS styles -->
-    <link href="{% static 'services/css/fonts.css' %}" rel="stylesheet">
-    <link href="{% static 'services/css/dependencies/swiper.min.css' %}" rel="stylesheet">
-    <link href="{% static 'services/css/app.css' %}" rel="stylesheet">
-    <link href="{% static 'services/css/theme.css' %}" rel="stylesheet">
+        <!-- CSS styles -->
+        <link href="{% static 'services/css/fonts.css' %}" rel="stylesheet">
+        <link href="{% static 'services/css/dependencies/swiper.min.css' %}" rel="stylesheet">
+        <link href="{% static 'services/css/app.css' %}" rel="stylesheet">
+        <link href="{% static 'services/css/theme.css' %}" rel="stylesheet">
 
-    <!-- JS scripts -->
-    <script defer src="{% static 'services/scripts/dependencies/flowbite.min.js' %}"></script>
-    <script defer src="{% static 'services/scripts/dependencies/swiper.min.js' %}"></script>
-    <script defer src="{% static 'services/scripts/app.js' %}"></script>
-    <script>
-      document.documentElement.classList.toggle(
-        "dark",
-        localStorage.getItem("theme") === "dark",
-      );
-    </script>
+        <!-- JS scripts -->
+        <script defer src="{% static 'services/scripts/dependencies/flowbite.min.js' %}"></script>
+        <script defer src="{% static 'services/scripts/dependencies/swiper.min.js' %}"></script>
+        <script defer src="{% static 'services/scripts/app.js' %}"></script>
+        <script>
+            document.documentElement.classList.toggle(
+                "dark",
+                localStorage.getItem("theme") === "dark",
+            );
+        </script>
 
-    <title>{% block title %}{% endblock %}</title>
-  </head>
+        <!-- Fav -->
+        <link rel="icon" type="image/png" href="{% static 'main/img/logos/ho-fav.png' %}">
 
-  <body>
-    {% block content %}
+        <!-- Title -->
+        <title>{% block title %}{% endblock %}</title>
+    </head>
 
-    {% endblock %}
-  </body>
+    <body>
+        {% block content %}
+
+        {% endblock %}
+    </body>
 </html>
 
 

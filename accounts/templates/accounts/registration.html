@@ -6,30 +6,39 @@
 {% load number_converter %}
 {% load widget_tweaks %}
 
-{% block title %}Registration{% endblock %}
+{% block title %}{% trans 'Mobile registration' %}{% endblock %}
 
 {% block content %}
-    <div id="contact"></div>
-    <div class="contact-section" style="background-color: #f7f7f7">
-        <div class="container contact-container" style="margin-top: 4em">
-            <div class="col-md-12 col-sm-12">
-                <div class="pricing-title" style="margin-bottom: 2em"><h4 style="color: #003379">ورود با شماره تلفن همراه</h4></div>
 
-                <form method="post" action="" class="contact-form">
-                    {% csrf_token %}
-                    <div class="form-group">
-                        <label for="{{ form.phone_number.id_for_label }}" style="margin-bottom: 0.9em;">شماره تلفن همراه خود را وارد نمایید:</label>
-                        {% render_field form.phone_number  class="form-control" %}
-                        <p style="margin-top: 0.6em; font-weight: normal;"><span>با ورود به هومبیا، </span><a href="{% url 'home' %}" style="text-decoration: none;">قوانین </a><span>و </span><a href="{% url 'home' %}" style="text-decoration: none;">سیاست حریم خصوصی </a><span>را می پذیرم.</span></p>
-                    </div>
-                    <div class="form-group mb-0" style="direction: ltr; !important;">
-                        <button type="submit" class="btn learn-more-btn">دریافت کد تایید</button>
-                    </div>
-                </form>
+    <!-- Login verify form -->
+    <div class="main-content-wrapper" style="margin-top: 10em;">
+        <div class="page-content-inner pt--75 pb--80">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="register-box">
+                            <h2 class="heading__tertiary mb--30" style="font-size: 1.8em; margin-bottom: 2em">ورود با شماره تلفن همراه</h2>
 
+                            <form method="post" action="" class="form form--login">
+                                {% csrf_token %}
+                                <div class="form__group mb--20">
+                                    <label class="form__label" for="email" style="font-family: Estedad; font-size: 1em; margin-bottom: 0.8em;">شماره تلفن همراه خود را وارد نمایید:</label>
+                                    {% render_field form.phone_number  class="form__input" %}
+                                </div>
+                                <p style="font-weight: normal;"><span>با ورود به هومبیا، </span><a href="{% url 'home' %}" style="text-decoration: none;">قوانین </a><span>و </span><a href="{% url 'home' %}" style="text-decoration: none;">سیاست حریم خصوصی </a><span>را می پذیرم.</span></p>
+                                <div class="form__group" style="margin-top: 2em">
+                                    <input type="submit" value="دریافت کد تایید" class="btn btn-size-sm" style="float: left; font-weight: bold; padding-left: 2em; padding-right: 2em">
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+    <!-- end: Login verify form -->
+
 {% endblock %}
 
 
