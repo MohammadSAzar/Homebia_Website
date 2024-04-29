@@ -1,0 +1,88 @@
+{% extends '_base.html' %}
+
+{% load static %}
+{% load i18n %}
+{% load jalali_tags %}
+{% load number_converter %}
+{% load i18n %}
+{% load humanize %}
+{% load widget_tweaks %}
+
+{% block title %}{% trans 'Blog' %}{% endblock %}
+
+{% block content %}
+
+     <!-- Case detail >>> top ribbon -->
+    <section class="page-title-area bg-image ptb--80" data-bg-image="{% static 'img/bg/page_title_bg.jpg' %}">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h1 class="page-title">{% trans 'Blog' %}</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End: Case detail >>> top ribbon -->
+
+     <!-- Blog list -->
+    <main class="main-content-wrapper">
+        <div class="inner-page-content ptb--80 ptb-md--60">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="row">
+
+                            {% for post in blog %}
+                                <div class="col-lg-6 mb--50">
+                                    <article class="blog format-standard">
+                                        <div class="blog__inner">
+                                            <div class="blog__media">
+                                                <figure class="image">
+                                                    <a href="{{ post.get_absolute_url }}"><img src="{{ post.cover.url }}" alt="Blog Image" class="w-100"></a>
+                                                </figure>
+                                            </div>
+                                            <div class="blog__info">
+                                                <h2 class="blog__title" style="color: black; font-size: 1.2em"><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
+                                                <div class="blog__meta">
+                                                    <span class="posted-on">{% trans 'Group' %}: {{ post.blog_category }}</span>
+                                                </div>
+                                                <div class="blog__meta">
+                                                    <span class="posted-on">{{ post.date_time_creation }}</span>
+                                                    <span class="posted-by"><span> | {% trans 'Writer' %}:</span>{{ post.author }}</span>
+                                                </div>
+                                                <div class="blog__desc"></div>
+                                                <a href="{{ post.get_absolute_url }}" class="read-more-btn">{% trans 'More' %}</a>
+                                            </div>
+                                        </div>
+                                    </article>
+                                </div>
+                            {% endfor %}
+
+                        </div>
+
+                        <!-- Pagination -->
+                        <div class="pagination-wrap">
+                            <ul class="pagination" style="direction: rtl">
+                                {% if page_obj.has_previous %}
+                                    <li><a href="?page=1" class="page-number" style="width: 5em; background-color: #ff5151; color: #ffffff; border-radius: 0.5em;">&laquo; {% trans 'The First' %}</a></li>
+                                    <li><a href="?page={{ page_obj.previous_page_number }}" class="page-number" style="width: 5em; background-color: #ff5151; color: #ffffff; border-radius: 0.5em;">{% trans 'Previous' %}</a></li>
+                                {% endif %}
+
+                                <li style="width: 3em; text-align: center; line-height: 2.5em"><span style="color: #373737; border-radius: 0.5em;">{{ page_obj.number }} از {{ page_obj.paginator.num_pages }}</span></li>
+
+                                {% if page_obj.has_next %}
+                                    <li><a href="?page={{ page_obj.next_page_number }}" class="page-number" style="width: 5em; background-color: #ff5151; color: #ffffff; border-radius: 0.5em;">{% trans 'Next' %}</a></li>
+                                    <li><a href="?page={{ page_obj.paginator.num_pages }}" class="page-number" style="width: 5em; background-color: #ff5151; color: #ffffff; border-radius: 0.5em;">{% trans 'The Last' %} &raquo;</a></li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                        <!-- end: Pagination -->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- end: Blog list -->
+
+{% endblock %}
