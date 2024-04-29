@@ -12,21 +12,49 @@
 
 {% block content %}
 
-     <!-- Case detail >>> top ribbon -->
-    <section class="page-title-area bg-image ptb--80" data-bg-image="{% static 'img/bg/page_title_bg.jpg' %}">
-        <div class="container">
-            <div class="row">
-                <div class="col-12 text-center">
-                    <h1 class="page-title">{% trans 'Blog' %}</h1>
+    <!-- Main Content Wrapper Start -->
+    <div class="main-content-wrapper">
+        <div class="page-content-inner ptb--80 ptb-md--60 pb-sm--55">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="user-dashboard-tab flex-column flex-md-row">
+                            <div class="user-dashboard-tab__head nav flex-md-column" role="tablist" aria-orientation="vertical">
+                                <button type="button" class="nav-link active" data-bs-toggle="tab" role="tab" data-bs-target="#dashboard" aria-controls="dashboard" aria-selected="true">داشبورد</button>
+                                <button type="button" class="nav-link" data-bs-toggle="tab" role="tab" data-bs-target="#orders" aria-controls="orders" aria-selected="true">سفارشات</button>
+                                <button type="button" class="nav-link" data-bs-toggle="tab" role="tab" data-bs-target="#downloads" aria-controls="downloads" aria-selected="true">دانلودها</button>
+                                <button type="button" class="nav-link" data-bs-toggle="tab" role="tab" data-bs-target="#addresses" aria-controls="addresses" aria-selected="true">آدرس ها</button>
+                                <button type="button" class="nav-link" data-bs-toggle="tab" role="tab" data-bs-target="#accountdetails" aria-controls="accountdetails" aria-selected="true">جزئیات حساب</button>
+                                <a type="button" class="nav-link" href="login-register.html">خروج</a>
+                            </div>
+
+
+                            <div class="user-dashboard-tab__content tab-content">
+
+                                <div class="tab-pane fade show active" id="dashboard">
+                                    <p>سلام <strong>جلیل سرور</strong> (نه <strong>جلیل سرور</strong>؟ <a href="login-register.html">خروج</a>)</p>
+                                    <p>از داشبورد حساب شما. به راحتی می توانید بررسی کنید &amp; خود را مشاهده کنید <a href="">سفارشات اخیر</a>, خود را مدیریت کنید<a href="">آدرس های حمل و نقل و صورتحساب</a> and <a href="">رمز عبور و جزئیات حساب خود را ویرایش کنید</a>.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </section>
-    <!-- End: Case detail >>> top ribbon -->
+    </div>
+    <!-- Main Content Wrapper Start -->
 
-     <!-- Blog list -->
+
+
+    <!-- Blog list -->
     <main class="main-content-wrapper">
         <div class="inner-page-content ptb--80 ptb-md--60">
+
+            <!-- Category selection -->
+
+            <!-- end: Category selection -->
+
+            <!-- Blogs -->
             <div class="container">
                 <div class="row">
                     <div class="col-12">
