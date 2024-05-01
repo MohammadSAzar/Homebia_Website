@@ -21,7 +21,7 @@ class BlogCategory(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return reverse('category_blogs', args=[self.slug])
+        return reverse('blog_category', args=[self.title])
 
 
 class Blog(models.Model):

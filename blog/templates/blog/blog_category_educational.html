@@ -8,7 +8,7 @@
 {% load humanize %}
 {% load widget_tweaks %}
 
-{% block title %}{% trans 'Blog' %}{% endblock %}
+{% block title %}{% trans 'Blog Educational' %}{% endblock %}
 
 {% block content %}
 
@@ -22,8 +22,8 @@
                         <li style="margin-right: 0;!important;"><a href="{% url 'category_homebia' %}" style="color: rgb(0, 51, 121); margin-right: 20px; margin-left: 20px;">هومبیا</a></li>
                         <li style="margin-right: 0;!important;"><a href="{% url 'category_news' %}" style="color: rgb(0, 51, 121); margin-right: 20px; margin-left: 20px;">اخبار</a></li>
                         <li style="margin-right: 0;!important;"><a href="{% url 'category_analytical' %}" style="color: rgb(0, 51, 121); margin-right: 20px; margin-left: 20px;">تحلیلی</a></li>
-                        <li style="margin-right: 0;!important;"><a href="{% url 'category_educational' %}" style="color: rgb(0, 51, 121); margin-right: 20px; margin-left: 20px;">آموزشی</a></li>
-                        <li style="margin-right: 0;!important;"><a href="{% url 'blog_list' %}" style="color: rgb(0, 51, 121); margin-right: 20px; margin-left: 20px; border-bottom: solid 1px rgb(0, 51, 121);">همه</a></li>
+                        <li style="margin-right: 0;!important;"><a href="{% url 'category_educational' %}" style="color: rgb(0, 51, 121); margin-right: 20px; margin-left: 20px; border-bottom: solid 1px rgb(0, 51, 121);">آموزشی</a></li>
+                        <li style="margin-right: 0;!important;"><a href="{% url 'blog_list' %}" style="color: rgb(0, 51, 121); margin-right: 20px; margin-left: 20px;">همه</a></li>
                     </ul>
                 </div>
             </div>
@@ -55,10 +55,8 @@
                                                 <div class="blog__meta">
                                                     <span class="posted-on">تاریخ انتشار: {{ blog.date_creation|to_jalali }}</span>
                                                 </div>
-                                                <div class="blog__meta">
-                                                    <span class="posted-on">دسته‌بندی: <a href="#">{{ blog.blog_category }}</a> </span>
-                                                </div>
                                                 <a href="{{ blog.get_absolute_url }}" class="btn btn-outline btn-brw-2" data-animation="fadeInUp" data-duration=".3s" data-delay=".6s" style="line-height: 0.6em; font-weight: normal; float: left">مطالعه بیشتر</a>
+{#                                                <a href="{{ blog.get_absolute_url }}" class="read-more-btn">مطالعه بیشتر</a>#}
                                             </div>
                                         </div>
                                     </article>
