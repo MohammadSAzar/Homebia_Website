@@ -37,8 +37,9 @@
             <div class="container">
                 <div class="row">
                     <div class="col-12">
-                        <div class="row" style="margin-bottom: 4em;">
 
+                        <!-- Blog >>> posts -->
+                        <div class="row" style="margin-bottom: 4em;">
                             {% for blog in blogs %}
                                 <div class="col-xl-4 col-lg-6 mb--50">
                                     <article class="blog format-standard" style="margin-bottom: 5em;">
@@ -52,7 +53,7 @@
                                             <div class="blog__info">
                                                 <h2 class="blog__title"><a href="{{ blog.get_absolute_url }}">{{ blog.title|farsi_number }}</a></h2>
                                                 <div class="blog__meta">
-                                                    <span class="posted-on">{{ blog.date_creation }}</span>
+                                                    <span class="posted-on">تاریخ انتشار: {{ blog.date_creation|to_jalali }}</span>
                                                 </div>
                                                 <a href="{{ blog.get_absolute_url }}" class="btn btn-outline btn-brw-2" data-animation="fadeInUp" data-duration=".3s" data-delay=".6s" style="line-height: 0.6em; font-weight: normal; float: left">مطالعه بیشتر</a>
 {#                                                <a href="{{ blog.get_absolute_url }}" class="read-more-btn">مطالعه بیشتر</a>#}
@@ -63,20 +64,43 @@
                             {% endfor %}
 
                         </div>
+                        <!-- end: Blog >>> posts -->
 
-                        <div class="row">
-                            <div class="col-12 text-center">
-                                <ul class="pagination" style="direction: rtl">
-                                    <li><span class="page-number current">1</span></li>
-                                    <li><a href="#" class="page-number">2</a></li>
-                                    <li><span class="dot"></span></li>
-                                    <li><span class="dot"></span></li>
-                                    <li><span class="dot"></span></li>
-                                    <li><a href="#" class="page-number">16</a></li>
-                                </ul>
-                            </div>
+                        <!-- Pagination -->
+                        <div class="my-pagination">
+                            {% if page_obj.has_previous %}
+                                <a href="?page=1">&laquo; ابتدا</a>
+                            {% else %}
+                                <span class="my-disabled">&laquo; ابتدا</span>
+                            {% endif %}
+
+                            {% if page_obj.has_previous %}
+                                <a href="?page={{ page_obj.previous_page_number }}">‹ قبل</a>
+                            {% else %}
+                                <span class="my-disabled">‹ قبل</span>
+                            {% endif %}
+
+                            {% for num in page_obj.paginator.page_range %}
+                                {% if num == page_obj.number %}
+                                    <span class="my-current">{{ num }}</span>
+                                {% else %}
+                                    <a href="?page={{ num }}">{{ num }}</a>
+                                {% endif %}
+                            {% endfor %}
+
+                            {% if page_obj.has_next %}
+                                <a href="?page={{ page_obj.next_page_number }}">بعد ›</a>
+                            {% else %}
+                                <span class="my-disabled">بعد ›</span>
+                            {% endif %}
+
+                            {% if page_obj.has_next %}
+                                <a href="?page={{ page_obj.paginator.num_pages }}">انتها &raquo;</a>
+                            {% else %}
+                                <span class="my-disabled">انتها &raquo;</span>
+                            {% endif %}
                         </div>
-
+                        <!-- end: Pagination -->
 
                     </div>
                 </div>

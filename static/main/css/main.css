@@ -4220,4 +4220,38 @@ right: inherit;
     color: #00a65c;!important;
 }
 
+/*****************************
+XX - Blog Pagination
+*****************************/
+.my-pagination {
+  margin: 20px 0;
+  text-align: center;
+}
+
+.my-pagination a,
+.my-pagination span {
+  display: inline-block;
+  padding: 8px 16px;
+  margin: 0 4px;
+  color: #333;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  text-decoration: none;
+}
+
+.my-pagination a:hover {
+  background-color: #f0f0f0;
+}
+
+.my-pagination .my-current {
+  background-color: #00a65c;
+  color: #fff;
+}
+
+.my-pagination .my-disabled {
+  color: #999;
+  pointer-events: none;
+  cursor: default;
+}
+
 
