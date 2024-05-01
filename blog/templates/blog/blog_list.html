@@ -12,74 +12,50 @@
 
 {% block content %}
 
-    <!-- Main Content Wrapper Start -->
-    <div class="main-content-wrapper">
-        <div class="page-content-inner ptb--80 ptb-md--60 pb-sm--55">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="user-dashboard-tab flex-column flex-md-row">
-                            <div class="user-dashboard-tab__head nav flex-md-column" role="tablist" aria-orientation="vertical">
-                                <button type="button" class="nav-link active" data-bs-toggle="tab" role="tab" data-bs-target="#dashboard" aria-controls="dashboard" aria-selected="true">داشبورد</button>
-                                <button type="button" class="nav-link" data-bs-toggle="tab" role="tab" data-bs-target="#orders" aria-controls="orders" aria-selected="true">سفارشات</button>
-                                <button type="button" class="nav-link" data-bs-toggle="tab" role="tab" data-bs-target="#downloads" aria-controls="downloads" aria-selected="true">دانلودها</button>
-                                <button type="button" class="nav-link" data-bs-toggle="tab" role="tab" data-bs-target="#addresses" aria-controls="addresses" aria-selected="true">آدرس ها</button>
-                                <button type="button" class="nav-link" data-bs-toggle="tab" role="tab" data-bs-target="#accountdetails" aria-controls="accountdetails" aria-selected="true">جزئیات حساب</button>
-                                <a type="button" class="nav-link" href="login-register.html">خروج</a>
-                            </div>
-
-
-                            <div class="user-dashboard-tab__content tab-content">
-
-                                <div class="tab-pane fade show active" id="dashboard">
-                                    <p>سلام <strong>جلیل سرور</strong> (نه <strong>جلیل سرور</strong>؟ <a href="login-register.html">خروج</a>)</p>
-                                    <p>از داشبورد حساب شما. به راحتی می توانید بررسی کنید &amp; خود را مشاهده کنید <a href="">سفارشات اخیر</a>, خود را مدیریت کنید<a href="">آدرس های حمل و نقل و صورتحساب</a> and <a href="">رمز عبور و جزئیات حساب خود را ویرایش کنید</a>.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+    <!-- Blog category choices -->
+    <section class="page-title-area bg-image ptb--80" data-bg-image="{% static 'main/img/bg/page_title_bg.jpg' %}" style="background-color: rgba(219,243,242,0.01)">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h1 class="page-title">بلاگ هومبیا، مجله جامع مسکن</h1>
+                    <ul class="breadcrumb" style="margin-top: 4em;">
+                        <li><a href="{% url 'blog_list' %}" style="margin-right: 20px; margin-left: 20px;">هومبیا</a></li>
+                        <li><a href="{% url 'blog_list' %}" style="margin-right: 20px; margin-left: 20px;">اخبار</a></li>
+                        <li><a href="{% url 'blog_list' %}" style="margin-right: 20px; margin-left: 20px;">تحلیلی</a></li>
+                        <li><a href="{% url 'blog_list' %}" style="margin-right: 20px; margin-left: 20px;">آموزشی</a></li>
+                        <li><a href="{% url 'blog_list' %}" style="margin-right: 20px; margin-left: 20px;">همه</a></li>
+                    </ul>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- Main Content Wrapper Start -->
+    </section>
+    <!-- end: Blog category choices -->
 
-
-
-    <!-- Blog list -->
+    <!-- Blog main -->
     <main class="main-content-wrapper">
         <div class="inner-page-content ptb--80 ptb-md--60">
-
-            <!-- Category selection -->
-
-            <!-- end: Category selection -->
-
-            <!-- Blogs -->
             <div class="container">
                 <div class="row">
                     <div class="col-12">
-                        <div class="row">
+                        <div class="row" style="margin-bottom: 4em;">
 
-                            {% for post in blog %}
-                                <div class="col-lg-6 mb--50">
-                                    <article class="blog format-standard">
+                            {% for blog in blogs %}
+                                <div class="col-xl-4 col-lg-6 mb--50">
+                                    <article class="blog format-standard" style="margin-bottom: 5em;">
                                         <div class="blog__inner">
                                             <div class="blog__media">
                                                 <figure class="image">
-                                                    <a href="{{ post.get_absolute_url }}"><img src="{{ post.cover.url }}" alt="Blog Image" class="w-100"></a>
+                                                    <img src="{{ blog.cover.url }}" alt="Blog Image" class="w-100">
+                                                    <a href="{{ blog.get_absolute_url }}" class="item-overlay"></a>
                                                 </figure>
                                             </div>
                                             <div class="blog__info">
-                                                <h2 class="blog__title" style="color: black; font-size: 1.2em"><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
+                                                <h2 class="blog__title"><a href="{{ blog.get_absolute_url }}">{{ blog.title|farsi_number }}</a></h2>
                                                 <div class="blog__meta">
-                                                    <span class="posted-on">{% trans 'Group' %}: {{ post.blog_category }}</span>
+                                                    <span class="posted-on">{{ blog.date_creation }}</span>
                                                 </div>
-                                                <div class="blog__meta">
-                                                    <span class="posted-on">{{ post.date_time_creation }}</span>
-                                                    <span class="posted-by"><span> | {% trans 'Writer' %}:</span>{{ post.author }}</span>
-                                                </div>
-                                                <div class="blog__desc"></div>
-                                                <a href="{{ post.get_absolute_url }}" class="read-more-btn">{% trans 'More' %}</a>
+                                                <a href="{{ blog.get_absolute_url }}" class="btn btn-outline btn-brw-2" data-animation="fadeInUp" data-duration=".3s" data-delay=".6s" style="line-height: 0.6em; font-weight: normal; float: left">مطالعه بیشتر</a>
+{#                                                <a href="{{ blog.get_absolute_url }}" class="read-more-btn">مطالعه بیشتر</a>#}
                                             </div>
                                         </div>
                                     </article>
@@ -88,29 +64,25 @@
 
                         </div>
 
-                        <!-- Pagination -->
-                        <div class="pagination-wrap">
-                            <ul class="pagination" style="direction: rtl">
-                                {% if page_obj.has_previous %}
-                                    <li><a href="?page=1" class="page-number" style="width: 5em; background-color: #ff5151; color: #ffffff; border-radius: 0.5em;">&laquo; {% trans 'The First' %}</a></li>
-                                    <li><a href="?page={{ page_obj.previous_page_number }}" class="page-number" style="width: 5em; background-color: #ff5151; color: #ffffff; border-radius: 0.5em;">{% trans 'Previous' %}</a></li>
-                                {% endif %}
-
-                                <li style="width: 3em; text-align: center; line-height: 2.5em"><span style="color: #373737; border-radius: 0.5em;">{{ page_obj.number }} از {{ page_obj.paginator.num_pages }}</span></li>
-
-                                {% if page_obj.has_next %}
-                                    <li><a href="?page={{ page_obj.next_page_number }}" class="page-number" style="width: 5em; background-color: #ff5151; color: #ffffff; border-radius: 0.5em;">{% trans 'Next' %}</a></li>
-                                    <li><a href="?page={{ page_obj.paginator.num_pages }}" class="page-number" style="width: 5em; background-color: #ff5151; color: #ffffff; border-radius: 0.5em;">{% trans 'The Last' %} &raquo;</a></li>
-                                {% endif %}
-                            </ul>
+                        <div class="row">
+                            <div class="col-12 text-center">
+                                <ul class="pagination" style="direction: rtl">
+                                    <li><span class="page-number current">1</span></li>
+                                    <li><a href="#" class="page-number">2</a></li>
+                                    <li><span class="dot"></span></li>
+                                    <li><span class="dot"></span></li>
+                                    <li><span class="dot"></span></li>
+                                    <li><a href="#" class="page-number">16</a></li>
+                                </ul>
+                            </div>
                         </div>
-                        <!-- end: Pagination -->
+
 
                     </div>
                 </div>
             </div>
         </div>
     </main>
-    <!-- end: Blog list -->
+    <!-- end: Blog main -->
 
 {% endblock %}

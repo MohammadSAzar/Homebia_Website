@@ -30,8 +30,8 @@ class Blog(models.Model):
     blog_category = models.ForeignKey(BlogCategory, on_delete=models.PROTECT, related_name='posts', verbose_name=_('Blog category'))
     title = models.CharField(max_length=200, verbose_name=_('Blog title'))
     body = HTMLField(verbose_name=_('Blog body'))
-    date_time_creation = models.DateTimeField(auto_now_add=True, verbose_name=_('Datetime of creation'))
-    date_time_modification = models.DateTimeField(auto_now=True, verbose_name=_('Datetime of modification'))
+    date_creation = models.DateField(auto_now_add=True, verbose_name=_('Datetime of creation'))
+    date_modification = models.DateField(auto_now=True, verbose_name=_('Datetime of modification'))
     slug = models.SlugField(max_length=250, null=True, blank=True, unique=True, allow_unicode=True)
     author = models.ForeignKey('accounts.CustomUserModel', on_delete=models.CASCADE, verbose_name=_('Blog author'))
     status = models.CharField(max_length=3, choices=STATUS_CHOICES, verbose_name=_('Blog status'))
@@ -42,7 +42,7 @@ class Blog(models.Model):
         super(Blog, self).save(*args, **kwargs)
 
     class Meta:
-        ordering = ('-date_time_modification',)
+        ordering = ('-date_creation',)
 
     def __str__(self):
         return self.title + '|' + str(self.author)

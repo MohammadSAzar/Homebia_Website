@@ -12,8 +12,8 @@ class BlogCategoryAdmin(admin.ModelAdmin):
 
 @admin.register(Blog)
 class BlogAdmin(admin.ModelAdmin):
-    list_display = ('title', 'author', 'status', 'blog_category', 'date_time_creation', 'date_time_modification')
-    ordering = ('-date_time_creation', )
+    list_display = ('title', 'author', 'status', 'blog_category', 'date_creation', 'date_modification')
+    ordering = ('-date_creation', )
     prepopulated_fields = {'slug': ('title',)}
     # inlines = [
     #     ReviewInProductInline,
