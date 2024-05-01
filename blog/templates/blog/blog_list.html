@@ -13,22 +13,23 @@
 {% block content %}
 
     <!-- Blog category choices -->
-    <section class="page-title-area bg-image ptb--80" data-bg-image="{% static 'main/img/bg/page_title_bg.jpg' %}" style="background-color: rgba(219,243,242,0.01)">
+{#    <section class="page-title-area bg-image ptb--80" data-bg-image="{% static 'main/img/bg/page_title_bg.jpg' %}" style="background-color: rgba(219,243,242,0.01)">#}
+    <div class="ptb--80" style="background-color: #dbf3f2;">
         <div class="container">
             <div class="row">
                 <div class="col-12 text-center">
-                    <h1 class="page-title">بلاگ هومبیا، مجله جامع مسکن</h1>
+                    <h1 class="page-title" style="color: rgb(0, 51, 121)">بلاگ هومبیا، مجله جامع مسکن</h1>
                     <ul class="breadcrumb" style="margin-top: 4em;">
-                        <li><a href="{% url 'blog_list' %}" style="margin-right: 20px; margin-left: 20px;">هومبیا</a></li>
-                        <li><a href="{% url 'blog_list' %}" style="margin-right: 20px; margin-left: 20px;">اخبار</a></li>
-                        <li><a href="{% url 'blog_list' %}" style="margin-right: 20px; margin-left: 20px;">تحلیلی</a></li>
-                        <li><a href="{% url 'blog_list' %}" style="margin-right: 20px; margin-left: 20px;">آموزشی</a></li>
-                        <li><a href="{% url 'blog_list' %}" style="margin-right: 20px; margin-left: 20px;">همه</a></li>
+                        <li><a href="{% url 'blog_list' %}" style="color: rgb(0, 51, 121); margin-right: 20px; margin-left: 20px;">هومبیا</a></li>
+                        <li><a href="{% url 'blog_list' %}" style="color: rgb(0, 51, 121); margin-right: 20px; margin-left: 20px;">اخبار</a></li>
+                        <li><a href="{% url 'blog_list' %}" style="color: rgb(0, 51, 121); margin-right: 20px; margin-left: 20px;">تحلیلی</a></li>
+                        <li><a href="{% url 'blog_list' %}" style="color: rgb(0, 51, 121); margin-right: 20px; margin-left: 20px;">آموزشی</a></li>
+                        <li><a href="{% url 'blog_list' %}" style="color: rgb(0, 51, 121); margin-right: 20px; margin-left: 20px;">همه</a></li>
                     </ul>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
     <!-- end: Blog category choices -->
 
     <!-- Blog main -->
@@ -51,7 +52,7 @@
                                                 </figure>
                                             </div>
                                             <div class="blog__info">
-                                                <h2 class="blog__title"><a href="{{ blog.get_absolute_url }}">{{ blog.title|farsi_number }}</a></h2>
+                                                <h2 class="blog__title" style="font-weight: bold;"><a href="{{ blog.get_absolute_url }}">{{ blog.title|farsi_number }}</a></h2>
                                                 <div class="blog__meta">
                                                     <span class="posted-on">تاریخ انتشار: {{ blog.date_creation|to_jalali }}</span>
                                                 </div>

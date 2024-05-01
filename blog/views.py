@@ -6,7 +6,7 @@ from django.contrib import messages
 from .models import Blog
 
 class BlogListView(ListView):
-    queryset = Blog.objects.select_related('blog_category', 'author').filter(status='pub')
+    queryset = Blog.objects.select_related('blog_category').filter(status='pub')
     paginate_by = 6
     context_object_name = 'blogs'
     template_name = 'blog/blog_list.html'

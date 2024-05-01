@@ -3833,8 +3833,12 @@ right: inherit;
 /*****************************
 63 - Utilities - Color
 *****************************/
-.pagination li .page-number, .tooltip-inner, .scroll-to-top, .scroll-to-top i, .page-title, .breadcrumb li a, .breadcrumb li span, .breadcrumb li:not(:last-child):after, .newsletter-form__btn, .searchform--2 .searchform__submit, .product-badge, .tab-style-2 .nav-link.active, .user-dashboard-tab__head .nav-link.active, .user-dashboard-tab__head .nav-link:hover, .widget-color a {
+.pagination li .page-number, .tooltip-inner, .scroll-to-top, .scroll-to-top i, .page-title, .breadcrumb li a, .breadcrumb li span, .newsletter-form__btn, .searchform--2 .searchform__submit, .product-badge, .tab-style-2 .nav-link.active, .user-dashboard-tab__head .nav-link.active, .user-dashboard-tab__head .nav-link:hover, .widget-color a {
   color: #ffffff; }
+
+.breadcrumb li:not(:last-child):after {
+  color: #373737
+}
 
 .action-btn, .mini-cart, .offcanvas-menu-wrapper .offcanvas-menu-inner, .product-summary .product-navigation a, .variation-form .product-color-variations .product-color-variation-btn:after {
   background-color: #ffffff; }
