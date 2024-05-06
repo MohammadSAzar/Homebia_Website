@@ -14,7 +14,7 @@
 
 body,p,a,ul,li,input,button{
     font-family: Estedad, serif !important;
-    text-align: right!important;
+    text-align: right;
     direction:rtl;
 }
 h1,h2,h3,h4,h5,h6{
@@ -936,7 +936,7 @@ font-family: FontAwesome;
   background-color: rgba(0, 0, 0, 0.7);
   z-index: 1; }
 .page-title-area-2 {
-  height: 60rem; }
+  height: 40rem; }
 .page-title-area * {
   z-index: 4; }
 @media (max-width: 47.94em) {

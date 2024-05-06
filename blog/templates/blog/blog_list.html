@@ -56,7 +56,7 @@
                                                     <span class="posted-on">تاریخ انتشار: {{ blog.date_creation|to_jalali }}</span>
                                                 </div>
                                                 <div class="blog__meta">
-                                                    <span class="posted-on">دسته‌بندی: <a href="#">{{ blog.blog_category }}</a> </span>
+                                                    <span class="posted-on">دسته‌بندی: {{ blog.blog_category }}</span>
                                                 </div>
                                                 <a href="{{ blog.get_absolute_url }}" class="btn btn-outline btn-brw-2" data-animation="fadeInUp" data-duration=".3s" data-delay=".6s" style="line-height: 0.6em; font-weight: normal; float: left">مطالعه بیشتر</a>
                                             </div>
