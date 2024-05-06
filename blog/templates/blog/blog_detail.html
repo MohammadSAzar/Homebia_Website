@@ -18,25 +18,6 @@
 
 {% block content %}
 
-    <!-- Blog category choices -->
-    <div class="ptb--80" style="background-color: #dbf3f2;">
-        <div class="container">
-            <div class="row">
-                <div class="col-12 text-center">
-                    <h1 class="page-title" style="color: rgb(0, 51, 121)">بلاگ هومبیا، مجله جامع مسکن</h1>
-                    <ul class="breadcrumb" style="margin-top: 4em;">
-                        <li style="margin-right: 0;!important;"><a href="{% url 'category_homebia' %}" style="color: rgb(0, 51, 121); margin-right: 20px; margin-left: 20px;">هومبیا</a></li>
-                        <li style="margin-right: 0;!important;"><a href="{% url 'category_news' %}" style="color: rgb(0, 51, 121); margin-right: 20px; margin-left: 20px;">اخبار</a></li>
-                        <li style="margin-right: 0;!important;"><a href="{% url 'category_analytical' %}" style="color: rgb(0, 51, 121); margin-right: 20px; margin-left: 20px;">تحلیلی</a></li>
-                        <li style="margin-right: 0;!important;"><a href="{% url 'category_educational' %}" style="color: rgb(0, 51, 121); margin-right: 20px; margin-left: 20px;">آموزشی</a></li>
-                        <li style="margin-right: 0;!important;"><a href="{% url 'blog_list' %}" style="color: rgb(0, 51, 121); margin-right: 20px; margin-left: 20px; border-bottom: solid 1px rgb(0, 51, 121);">همه</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- end: Blog category choices -->
-
     <!-- Blog detail -->
     <div class="inner-page-content ptb--80 ptb-md--60">
         <div class="container">
@@ -56,17 +37,15 @@
                                     </div>
 
                                     <div class="blog__info" >
-                                        <h1 class="blog__title" style="font-size: 1.6em;">{{ blog.title|farsi_number }}</h1>
+                                        <h1 class="blog__title" style="font-size: 1.6em; margin-bottom: 1em;">{{ blog.title|farsi_number }}</h1>
 
                                         <div class="single-post__header-meta">
                                             <span class="posted-on"><span>تاریخ انتشار: </span>{{ blog.date_creation|to_jalali:'%y/%m/%d' }}</span>
                                             <span class="post-category"><span>دسته‌بندی: </span>{{ blog.blog_category }}</span>
                                         </div>
 
-                                        <div class="blog__desc" style="margin-top: 2em;">
-                                            {% autoescape off %}
-                                                <p style="text-align: justify; line-height: 2.5em;">{{ blog.body|linebreaksbr }}</p>
-                                            {% endautoescape %}
+                                        <div class="blog__desc" style="margin-top: 2em; text-align: justify;!important;">
+                                            {{ blog.body.html|safe|linebreaksbr }}
                                         </div>
                                     </div>
 

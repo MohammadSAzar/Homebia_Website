@@ -1,11 +1,8 @@
 from django.db import models
 from django.shortcuts import reverse
 from django.utils.text import slugify
-from django.utils.translation import gettext_lazy as _
 from django.utils.translation import gettext as _
-from tinymce.models import HTMLField
-# from ckeditor.fields import RichTextField
-# from ckeditor_uploader.fields import RichTextUploadingField
+from django_quill.fields import QuillField
 
 
 class BlogCategory(models.Model):
@@ -29,7 +26,7 @@ class Blog(models.Model):
     cover = models.ImageField(upload_to='blogs/', verbose_name=_('Blog cover'))
     blog_category = models.ForeignKey(BlogCategory, on_delete=models.PROTECT, related_name='blog_category', verbose_name=_('Blog category'))
     title = models.CharField(max_length=200, verbose_name=_('Blog title'))
-    body = HTMLField(verbose_name=_('Blog body'))
+    body = QuillField(verbose_name=_('Blog body'))
     date_creation = models.DateField(auto_now_add=True, verbose_name=_('Datetime of creation'))
     date_modification = models.DateField(auto_now=True, verbose_name=_('Datetime of modification'))
     slug = models.SlugField(max_length=250, null=True, blank=True, unique=True, allow_unicode=True)

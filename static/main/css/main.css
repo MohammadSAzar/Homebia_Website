@@ -4258,4 +4258,12 @@ XX - Blog Pagination
   cursor: default;
 }
 
+.blog__desc > p {
+  text-align: justify;
+}
+.blog__desc > p > img {
+  display: block;!important;
+  margin: 0 auto;!important;
+}
+
 

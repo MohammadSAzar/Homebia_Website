@@ -41,7 +41,7 @@ INSTALLED_APPS = [
 
     'debug_toolbar',
     'jalali_date',
-    'tinymce',
+    'django_quill',
     'widget_tweaks',
 
     'accounts',
