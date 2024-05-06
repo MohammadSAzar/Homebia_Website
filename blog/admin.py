@@ -12,7 +12,7 @@ class BlogCategoryAdmin(admin.ModelAdmin):
 
 @admin.register(Blog)
 class BlogAdmin(admin.ModelAdmin):
-    list_display = ('title', 'author', 'status', 'blog_category', 'date_creation', 'date_modification')
+    list_display = ('title', 'status', 'blog_category', 'date_creation', 'date_modification')
     ordering = ('-date_creation', )
     prepopulated_fields = {'slug': ('title',)}
     # inlines = [

@@ -39,110 +39,89 @@
 
     <!-- Blog detail -->
     <div class="inner-page-content ptb--80 ptb-md--60">
-            <div class="container">
-                <div class="row">
+        <div class="container">
+            <div class="row">
 
-                    <!-- Blog detail >>> main -->
-                    <div class="col-lg-9 order-lg-2 mb-md--50">
-                        <div class="row">
-                            <div class="col-12 mb--45">
-                                <article class="blog format-standard">
-                                    <div class="blog__inner">
+                <!-- Blog detail >>> main -->
+                <div class="col-lg-9 order-lg-2 mb-md--50">
+                    <div class="row">
+                        <div class="col-12 mb--45">
+                            <article class="blog format-standard">
+                                <div class="blog__inner">
 
-                                        <div class="blog__media">
-                                            <figure class="image">
-                                                <img src="{{ blog.cover.url }}" alt="Blog" class="w-100">
-                                            </figure>
-                                        </div>
-
-                                        <div class="blog__info" >
-                                            <h1 class="blog__title" style="font-size: 1.6em;">{{ blog.title|farsi_number }}</h1>
-
-                                            <div class="single-post__header-meta">
-                                                <span class="posted-on"><span>تاریخ انتشار: </span>{{ blog.date_creation|to_jalali:'%y/%m/%d' }}</span>
-                                                <span class="post-category"><span>دسته‌بندی: </span>{{ blog.blog_category }}</span>
-                                            </div>
-
-                                            <div class="blog__desc" style="margin-top: 2em;">
-                                                {% autoescape off %}
-                                                    <p style="text-align: justify; line-height: 2.5em;">{{ blog.body|linebreaksbr }}</p>
-                                                {% endautoescape %}
-                                            </div>
-                                        </div>
-
+                                    <div class="blog__media">
+                                        <figure class="image">
+                                            <img src="{{ blog.cover.url }}" alt="Blog" class="w-100">
+                                        </figure>
                                     </div>
-                                </article>
-                            </div>
+
+                                    <div class="blog__info" >
+                                        <h1 class="blog__title" style="font-size: 1.6em;">{{ blog.title|farsi_number }}</h1>
+
+                                        <div class="single-post__header-meta">
+                                            <span class="posted-on"><span>تاریخ انتشار: </span>{{ blog.date_creation|to_jalali:'%y/%m/%d' }}</span>
+                                            <span class="post-category"><span>دسته‌بندی: </span>{{ blog.blog_category }}</span>
+                                        </div>
+
+                                        <div class="blog__desc" style="margin-top: 2em;">
+                                            {% autoescape off %}
+                                                <p style="text-align: justify; line-height: 2.5em;">{{ blog.body|linebreaksbr }}</p>
+                                            {% endautoescape %}
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </article>
                         </div>
                     </div>
-                    <!-- end: Blog detail >>> main -->
+                </div>
+                <!-- end: Blog detail >>> main -->
 
-                    <!-- Blog detail >>> main -->
-                    <div class="col-lg-3 order-lg-1">
-                        <div class="blog-sidebar pr--15 pr-lg--0">
+                <!-- Blog detail >>> sidebar -->
+                <div class="col-lg-3 order-lg-1">
+                    <div class="blog-sidebar pr--15 pr-lg--0">
 
-                            <div class="bl-widget author">
-                                <div class="inner">
-                                    <div class="info">
-                                        <h4 class="mb--30" style="font-size: 1.1em; font-family: Estedad;!important;">دسته‌بندی مطالب</h4>
-                                        <ul class="social mb--20">
-                                            <li style="margin-bottom: 1.2em; border-bottom: 1px #e9e9e9 solid;"><a href="{% url 'blog_list' %}" style="line-height: 3em">همه مطالب بلاگ</a></li>
-                                            <li style="margin-bottom: 1.2em; border-bottom: 1px #e9e9e9 solid;"><a href="{% url 'category_educational' %}" style="line-height: 3em">مقالات آموزشی</a></li>
-                                            <li style="margin-bottom: 1.2em; border-bottom: 1px #e9e9e9 solid;"><a href="{% url 'category_analytical' %}" style="line-height: 3em">مقالات تحلیلی</a></li>
-                                            <li style="margin-bottom: 1.2em; border-bottom: 1px #e9e9e9 solid;"><a href="{% url 'category_news' %}" style="line-height: 3em">اخبار مسکن</a></li>
-                                            <li style="margin-bottom: 1.2em; border-bottom: 1px #e9e9e9 solid;"><a href="{% url 'category_homebia' %}" style="line-height: 3em">از هومبیا چه خبر؟</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="bl-widget post mt--50">
-                                <div class="inner">
-                                    <h5 class="title">اخبار برتر</h5>
-                                    <ul class="post-list">
-                                        <li>
-                                            <a href="#">به سادگی متن ساختگی صنعت چاپ و حروفچینی است.</a>
-                                            <span><i class="fa fa-clock-o"></i> 1402-08-21</span>
-                                        </li>
-                                        <li>
-                                            <a href="#">انواع مختلفی از معابر لرم خام موجود است، </a>
-                                            <span><i class="fa fa-clock-o"></i> 1402-08-10</span>
-                                        </li>
-                                        <li>
-                                            <a href="#"> به سادگی متن ساختگی چاپ است.</a>
-                                            <span><i class="fa fa-clock-o"></i> 1402-08-18</span>
-                                        </li>
-                                        <li>
-                                            <a href="#">انواع مختلفی از معابر لرم خام موجود است، </a>
-                                            <span><i class="fa fa-clock-o"></i> 1402-08-20</span>
-                                        </li>
-                                        <li>
-                                            <a href="#">به سادگی متن ساختگی صنعت چاپ و حروفچینی است.</a>
-                                            <span><i class="fa fa-clock-o"></i> 1402-08-15</span>
-                                        </li>
+                        <!-- Blog sidebar >>> categories -->
+                        <div class="bl-widget author" style="margin-bottom: 2em;">
+                            <div class="inner">
+                                <div class="info">
+                                    <h4 class="mb--30" style="font-size: 1.1em; font-family: Estedad;!important;">دسته‌بندی مطالب</h4>
+                                    <ul class="social mb--20">
+                                        <li style="margin-bottom: 1.2em; border-bottom: 1px #e9e9e9 solid;"><a href="{% url 'blog_list' %}" style="line-height: 3em">همه مطالب بلاگ</a></li>
+                                        <li style="margin-bottom: 1.2em; border-bottom: 1px #e9e9e9 solid;"><a href="{% url 'category_educational' %}" style="line-height: 3em">مقالات آموزشی</a></li>
+                                        <li style="margin-bottom: 1.2em; border-bottom: 1px #e9e9e9 solid;"><a href="{% url 'category_analytical' %}" style="line-height: 3em">مقالات تحلیلی</a></li>
+                                        <li style="margin-bottom: 1.2em; border-bottom: 1px #e9e9e9 solid;"><a href="{% url 'category_news' %}" style="line-height: 3em">اخبار مسکن</a></li>
+                                        <li style="margin-bottom: 1.2em; border-bottom: 1px #e9e9e9 solid;"><a href="{% url 'category_homebia' %}" style="line-height: 3em">از هومبیا چه خبر؟</a></li>
                                     </ul>
                                 </div>
                             </div>
-                            <div class="bl-widget quote mt--50">
-                                <div class="inner">
-                                    <div class="post-quote">
-                                        <div class="quote-info">
-                                            <i class="fa fa-quote-right"></i>
-                                            <div class="info">
-                                                <h6 class="mb--0">جلیل سرور</h6>
-                                                <span>طراح</span>
-                                            </div>
-                                        </div>
-                                        <p> مبل های کلاسیک در اصل مربوط به کشورهای اروپایی بودند و اول آنها بودند که این مبل ها را تولید کردند. از اصلی ترین تولید کنندگان مبل های کلاسیک ایتالیا می باشد.</p>
-                                    </div>
+                        </div>
+                        <!-- end: Blog sidebar >>> categories -->
+
+                        <!-- Blog sidebar >>> last blogs -->
+                        <div class="bl-widget author">
+                            <div class="inner">
+                                <div class="info">
+                                    <h4 class="mb--30" style="font-size: 1.1em; font-family: Estedad;!important;">جدیدترین مقالات</h4>
+                                    <ul class="social mb--20">
+                                        {% for blog in blogs %}
+                                            <li style="margin-bottom: 1.2em;">
+                                                <a href="{{ blog.get_absolute_url }}" style="font-size: smaller; line-height: 3em">{{ blog.title|farsi_number }}</a>
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
                                 </div>
                             </div>
                         </div>
+                        <!-- end: Blog sidebar >>> last blogs -->
+
                     </div>
-                    <!-- end: Blog detail >>> main -->
                 </div>
+                <!-- end: Blog detail >>> sidebar -->
+
             </div>
         </div>
+    </div>
     <!-- end: Blog detail -->
 
 {% endblock %}

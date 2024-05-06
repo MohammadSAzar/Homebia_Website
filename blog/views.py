@@ -12,16 +12,25 @@ class BlogListView(ListView):
     template_name = 'blog/blog_list.html'
 
 
-# class BlogDetailView(DetailView):
-#     model = Blog
-#     template_name = 'blog/blog_detail.html'
-#     context_object_name = 'blog'
+# def blog_detail(request, slug):
+#     # blog = get_object_or_404(Blog, slug=slug)
+#     blog = Blog.objects.select_related('author').get(slug=slug)
+#     context = {'blog': blog}
+#     return render(request, 'blog/blog_detail.html', context)
 
-def blog_detail(request, slug):
-    # blog = get_object_or_404(Blog, slug=slug)
-    blog = Blog.objects.select_related('author').get(slug=slug)
-    context = {'blog': blog}
-    return render(request, 'blog/blog_detail.html', context)
+class BlogDetailView(DetailView):
+    model = Blog
+    template_name = 'blog/blog_detail.html'
+    context_object_name = 'blog'
+
+    def get_queryset(self):
+        slug = self.kwargs['slug']
+        return Blog.objects.select_related('blog_category').filter(slug=slug)
+
+    def get_context_data(self, **kwargs):
+        context = super(BlogDetailView, self).get_context_data(**kwargs)
+        context['blogs'] = Blog.objects.filter(status='pub').values('title', 'date_creation').order_by('-date_creation')[:5]
+        return context
 
 
 def blog_category_homebia(request):
