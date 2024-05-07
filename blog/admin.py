@@ -1,6 +1,6 @@
 from django.contrib import admin
 # from jalali_date.admin import ModelAdminJalaliMixin
-from .models import Blog, BlogCategory
+from .models import Blog, BlogCategory, BlogComment
 
 @admin.register(BlogCategory)
 class BlogCategoryAdmin(admin.ModelAdmin):
@@ -18,4 +18,9 @@ class BlogAdmin(admin.ModelAdmin):
     # inlines = [
     #     ReviewInProductInline,
     # ]
+
+@admin.register(BlogComment)
+class BlogAdmin(admin.ModelAdmin):
+    list_display = ('blog', 'name', 'body', 'is_active', 'date_time_creation')
+    ordering = ('-date_time_creation',)
 

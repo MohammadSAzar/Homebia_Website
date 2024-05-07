@@ -10,13 +10,32 @@
 
 {% block title %}{{ blog.title }}{% endblock %}
 
-{#{{ blog.title|farsi_number }}#}
-{#{{ blog.cover.url }}#}
-{#{{ blog.date_creation|to_jalali:'%y/%m/%d' }}#}
-{#{{ blog.blog_category }}#}
-{{ blog.body|safe }}
-
 {% block content %}
+
+
+    <div class="comments">
+        <h2>Comments</h2>
+        {% for comment in comments %}
+            <div class="comment">
+                <p>{{ comment.name }}</p>
+                <p>{{ comment.body }}</p>
+            </div>
+        {% empty %}
+            <p>No comments yet.</p>
+        {% endfor %}
+    </div>
+
+    <div class="comment-form">
+        <h2>Add a Comment</h2>
+{#        <form method="post" action="{% url 'blog_detail' %}?next={% url 'blog_detail' blog.slug %}">#}
+        <form method="post" action="{% url 'home' %}">
+            {% csrf_token %}
+            {{ comment_form.as_p }}
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+
 
     <!-- Blog detail -->
     <div class="inner-page-content ptb--80 ptb-md--60">

@@ -1,5 +1,6 @@
 from django.db import models
 from django.shortcuts import reverse
+from django.contrib.auth import get_user_model
 from django.utils.text import slugify
 from django.utils.translation import gettext as _
 from django_quill.fields import QuillField
@@ -37,6 +38,9 @@ class Blog(models.Model):
             self.slug = slugify(self.title, allow_unicode=True)
         super(Blog, self).save(*args, **kwargs)
 
+    def __str__(self):
+        return self.title
+
     class Meta:
         ordering = ('-date_creation',)
 
@@ -44,15 +48,19 @@ class Blog(models.Model):
         return reverse('blog_detail', args=[self.slug])
 
 
-# class BlogComment(models.Model):
-#     text = models.TextField()
-#     date_time_creation = models.DateTimeField(auto_now_add=True)
-#     user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
-#     book = models.ForeignKey(Book, on_delete=models.CASCADE, related_name='comments')
-#     is_active = models.BooleanField(default=True)
-#     recommend = models.BooleanField(default=True)
-#
-#     def __str__(self):
-#         return self.text
+class BlogComment(models.Model):
+    IS_ACTIVE_CHOICES = [
+        ('pr', _('Proved')),
+        ('pd', _('Pending')),
+        ('rj', _('Rejected')),
+    ]
+    body = models.TextField()
+    blog = models.ForeignKey(Blog, on_delete=models.CASCADE, related_name='comments')
+    name = models.CharField(default='خواننده هومبیا', max_length=40)
+    is_active = models.BooleanField(default='pd', choices=IS_ACTIVE_CHOICES)
+    date_time_creation = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f'{self.name}: {self.body}'
 
 

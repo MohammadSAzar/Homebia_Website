@@ -4,6 +4,7 @@ from django.utils.translation import gettext as _
 from django.contrib import messages
 
 from .models import Blog
+from .forms import BlogCommentForm
 
 class BlogListView(ListView):
     queryset = Blog.objects.select_related('blog_category').filter(status='pub')
@@ -27,12 +28,19 @@ class BlogDetailView(DetailView):
         slug = self.kwargs['slug']
         return Blog.objects.select_related('blog_category').filter(slug=slug)
 
+    # def get_context_data(self, **kwargs):
+    #     context = super(BlogDetailView, self).get_context_data(**kwargs)
+    #     context['blogs'] = Blog.objects.filter(status='pub').values('title', 'date_creation').order_by('-date_creation')[:5]
+    #     return context
+
     def get_context_data(self, **kwargs):
-        context = super(BlogDetailView, self).get_context_data(**kwargs)
+        context = super().get_context_data(**kwargs)
         context['blogs'] = Blog.objects.filter(status='pub').values('title', 'date_creation').order_by('-date_creation')[:5]
+        context['comments'] = self.object.comments.all()
+        context['comment_form'] = BlogCommentForm()
         return context
 
-
+# ******************* Blog category views ******************* #
 def blog_category_homebia(request):
     blogs = Blog.objects.select_related('blog_category').filter(status='pub').filter(blog_category__title='هومبیا')
     context = {
@@ -61,16 +69,3 @@ def blog_category_analytical(request):
     }
     return render(request, 'blog/blog_category_analytical.html', context)
 
-# def blog_category(request, category):
-#     blogs = Blog.objects.select_related('blog_category').filter(status='pub').filter(blog_category=category)
-#     context = {
-#         'blogs': blogs,
-#     }
-#     if category == 'هومبیا':
-#         return render(request, 'blog/blog_category_homebia.html', context)
-#     if category == 'آموزشی':
-#         return render(request, 'blog/blog_category_educational.html', context)
-#     if category == 'تحلیلی':
-#         return render(request, 'blog/blog_category_analytical.html', context)
-#     if category == 'اخبار':
-#         return render(request, 'blog/blog_category_news.html', context)
