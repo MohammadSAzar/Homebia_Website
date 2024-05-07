@@ -54,10 +54,10 @@ class BlogComment(models.Model):
         ('pd', _('Pending')),
         ('rj', _('Rejected')),
     ]
+    is_active = models.CharField(max_length=15, default='pd', choices=IS_ACTIVE_CHOICES)
     body = models.TextField()
     blog = models.ForeignKey(Blog, on_delete=models.CASCADE, related_name='comments')
     name = models.CharField(default='خواننده هومبیا', max_length=40)
-    is_active = models.BooleanField(default='pd', choices=IS_ACTIVE_CHOICES)
     date_time_creation = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

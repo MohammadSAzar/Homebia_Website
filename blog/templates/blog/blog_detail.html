@@ -16,10 +16,12 @@
     <div class="comments">
         <h2>Comments</h2>
         {% for comment in comments %}
-            <div class="comment">
-                <p>{{ comment.name }}</p>
-                <p>{{ comment.body }}</p>
-            </div>
+            {% if comment.is_active == 'pr' %}
+                <div class="comment">
+                    <p>{{ comment.name }}</p>
+                    <p>{{ comment.body }}</p>
+                </div>
+            {% endif %}
         {% empty %}
             <p>No comments yet.</p>
         {% endfor %}
@@ -28,7 +30,7 @@
     <div class="comment-form">
         <h2>Add a Comment</h2>
 {#        <form method="post" action="{% url 'blog_detail' %}?next={% url 'blog_detail' blog.slug %}">#}
-        <form method="post" action="{% url 'home' %}">
+        <form method="post" action="">
             {% csrf_token %}
             {{ comment_form.as_p }}
             <button type="submit">Submit</button>
