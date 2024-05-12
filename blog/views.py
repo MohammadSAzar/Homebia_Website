@@ -49,23 +49,7 @@ class BlogDetailView(FormMixin, DetailView):
         return self.object.get_absolute_url()
 
 
-# class BlogDetailView(DetailView):
-#     model = Blog
-#     template_name = 'blog/blog_detail.html'
-#     context_object_name = 'blog'
-#
-#     def get_queryset(self):
-#         slug = self.kwargs['slug']
-#         return Blog.objects.select_related('blog_category').filter(slug=slug)
-#
-#     def get_context_data(self, **kwargs):
-#         context = super().get_context_data(**kwargs)
-#         context['blogs'] = Blog.objects.filter(status='pub').values('title', 'date_creation').order_by('-date_creation')[:5]
-#         context['comments'] = self.object.comments.all()
-#         context['comment_form'] = BlogCommentForm()
-#         return context
-
-# ******************* Blog category views ******************* #
+# ************************************** Blog category views ************************************** #
 def blog_category_homebia(request):
     blogs = Blog.objects.select_related('blog_category').filter(status='pub').filter(blog_category__title='هومبیا')
     context = {

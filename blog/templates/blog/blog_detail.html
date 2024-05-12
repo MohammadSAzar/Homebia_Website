@@ -29,7 +29,6 @@
 
     <div class="comment-form">
         <h2>Add a Comment</h2>
-{#        <form method="post" action="{% url 'blog_detail' %}?next={% url 'blog_detail' blog.slug %}">#}
         <form method="post" action="">
             {% csrf_token %}
             {{ comment_form.as_p }}
