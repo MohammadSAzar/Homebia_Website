@@ -19,41 +19,40 @@ class BlogDetailView(DetailView):
     template_name = 'blog/blog_detail.html'
     model = Blog
 
+    def get_queryset(self):
+        slug = self.kwargs['slug']
+        return Blog.objects.select_related('blog_category').filter(slug=slug)
+
     def get_context_data(self, **kwargs):
-        data = super().get_context_data(**kwargs)
-        comments = Comment.objects.filter(blog=self.get_object())
-        replies = Reply.objects.filter(blog=self.get_object())
-        number_of_comments_and_replies = comments.count() + replies.count()
-        data['comments'] = comments
-        data['replies'] = replies
-        data['number_of_comments_and_replies'] = number_of_comments_and_replies
-        data['comment_form'] = CommentForm()
-        data['reply_form'] = ReplyForm()
-        return data
+        context = super().get_context_data(**kwargs)
+        context['blogs'] = Blog.objects.filter(status='pub').values('title', 'date_creation').order_by('-date_creation')[:5]
+
+        context['comments'] = self.object.comments.all()
+        context['replies'] = self.object.blog_replies.all()
+
+        context['comment_form'] = CommentForm()
+        context['reply_form'] = ReplyForm()
+        return context
 
     def post(self, request, *args, **kwargs):
         if self.request.method == 'POST':
             if 'reply_name' in self.request.POST:
                 reply_form = ReplyForm(self.request.POST)
-                print('PUSSSSSSSSSSSSSSSSSS')
                 if reply_form.is_valid():
                     reply_name = reply_form.cleaned_data['reply_name']
                     body = reply_form.cleaned_data['body']
 
                     if reply_form.cleaned_data['parent_comment'] is not None:
                         parent_comment = reply_form.cleaned_data['parent_comment']
-                        print('GOH')
                         parent_reply = None
                     else:
                         parent_comment = None
-                        print('AN')
                         parent_reply = reply_form.cleaned_data['parent_reply']
 
                     new_reply = Reply(reply_name=reply_name, body=body, blog=self.get_object(), parent_comment=parent_comment, parent_reply=parent_reply)
                     new_reply.save()
             else:
                 comment_form = CommentForm(self.request.POST)
-                print('ASSSSSSSSSSSSSSSS')
                 if comment_form.is_valid():
                     name = comment_form.cleaned_data['name']
                     body = comment_form.cleaned_data['body']
