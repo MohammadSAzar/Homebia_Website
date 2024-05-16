@@ -1,8 +1,17 @@
 from django import forms
-from .models import BlogComment
+from .models import Comment, Reply
+from django.utils.translation import gettext_lazy as _
 
-class BlogCommentForm(forms.ModelForm):
+
+class CommentForm(forms.ModelForm):
     class Meta:
-        model = BlogComment
-        fields = ('name', 'body',)
+        model = Comment
+        fields = ['name', 'body']
+        widgets = {'body': forms.TextInput()}
+
+class ReplyForm(forms.ModelForm):
+    class Meta:
+        model = Reply
+        fields = ['reply_name', 'body', 'parent_comment', 'parent_reply']
+        widgets = {'body': forms.TextInput()}
 

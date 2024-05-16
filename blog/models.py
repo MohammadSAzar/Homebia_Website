@@ -1,6 +1,5 @@
 from django.db import models
 from django.shortcuts import reverse
-from django.contrib.auth import get_user_model
 from django.utils.text import slugify
 from django.utils.translation import gettext as _
 from django_quill.fields import QuillField
@@ -48,19 +47,30 @@ class Blog(models.Model):
         return reverse('blog_detail', args=[self.slug])
 
 
-class BlogComment(models.Model):
-    IS_ACTIVE_CHOICES = [
-        ('pr', _('Proved')),
-        ('pd', _('Pending')),
-        ('rj', _('Rejected')),
-    ]
-    is_active = models.CharField(max_length=15, default='pd', choices=IS_ACTIVE_CHOICES)
-    body = models.TextField()
+class Comment(models.Model):
+    name = models.CharField(max_length=40, verbose_name=_('Comment Name'))
     blog = models.ForeignKey(Blog, on_delete=models.CASCADE, related_name='comments')
-    name = models.CharField(default='خواننده هومبیا', max_length=40)
-    date_time_creation = models.DateTimeField(auto_now_add=True)
+    body = models.CharField(max_length=500, verbose_name=_('Comment Text'))
+    date_creation = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f'{self.name}: {self.body}'
+        return f'{self.name} : {self.body[:30]}'
 
+    class Meta:
+        ordering = ['-date_creation']
+
+
+class Reply(models.Model):
+    reply_name = models.CharField(max_length=40, verbose_name=_('Reply Name'))
+    blog = models.ForeignKey(Blog, on_delete=models.CASCADE, related_name='blog_replies', blank=True, null=True)
+    parent_comment = models.ForeignKey(Comment, on_delete=models.CASCADE, related_name="replies", null=True, blank=True)
+    parent_reply = models.ForeignKey('Reply', on_delete=models.CASCADE, related_name="replies", null=True, blank=True)
+    body = models.CharField(max_length=500, verbose_name=_('Reply Text'))
+    date_creation = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f'{self.reply_name} : {self.body[:30]}'
+
+    class Meta:
+        ordering = ['date_creation']
 
