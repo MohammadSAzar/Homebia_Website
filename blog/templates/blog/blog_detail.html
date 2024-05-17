@@ -100,6 +100,7 @@
 
                         {% for comment in comments %}
                             <li>
+                                <!-- Comment >>> detail -->
                                 <div class="single-comment">
                                     <div class="comment-info">
                                         <div class="comment-meta">
@@ -114,7 +115,7 @@
                                         </div>
                                     </div>
                                 </div>
-
+                                <!-- Comment >>> next form -->
                                 <form action="" method="POST" class="form comment-form">
                                     {% csrf_token %}
 
@@ -148,13 +149,13 @@
                                             </div>
                                         </div>
                                     </div>
-
                                 </form>
 
 
                                 <ul class="children">
                                     {% for reply in comment.replies.all %}
                                         <li>
+                                            <!-- Reply 222222 >>> detail -->
                                             <div class="single-comment">
                                                 <div class="comment-info">
                                                     <div class="comment-meta">
@@ -169,7 +170,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-
+                                            <!-- Reply 222222 >>> next form -->
                                             <form action="" method="POST" class="form comment-form">
                                                 {% csrf_token %}
 
@@ -203,13 +204,300 @@
                                                         </div>
                                                     </div>
                                                 </div>
-
                                             </form>
 
+                                            <ul class="children">
+                                                {% for reply in reply.replies.all %}
+                                                    <li>
+                                                        <!-- Reply 333333 >>> detail -->
+                                                        <div class="single-comment">
+                                                            <div class="comment-info">
+                                                                <div class="comment-meta">
+                                                                    <h4>{{ reply.reply_name }} 333333</h4>
+                                                                    <div class="metadata">
+                                                                        <span class="comment-date">{{ reply.date_creation }}</span>
+            {#                                                            <a href="#" class="comment-reply-link">پاسخ</a>#}
+                                                                    </div>
+                                                                </div>
+                                                                <div class="comment-content">
+                                                                    <p>{{ reply.body }}</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <!-- Reply 333333 >>> next form -->
+                                                        <form action="" method="POST" class="form comment-form">
+                                                            {% csrf_token %}
+
+                                                            <!-- Reply name -->
+                                                            <div class="form__group mb--25 mb-sm--20">
+                                                                <div class="row">
+                                                                    <div class="col-md-12 mb-sm--20">
+                        {#                                                <label for="{{ reply_form.reply_name.id_for_label }}">Name:</label>#}
+                                                                        {% render_field reply_form.reply_name type="text" name="reply_name" id="reply_name" class="form__input" placeholder="نام*" %}
+                        {#                                                <input type="text" name="reply_name" id="reply_name" class="form__input" placeholder="نام*">#}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <!-- Reply body -->
+                                                            <div class="form__group mb--25 mb-sm--20">
+                                                                <div class="row">
+                                                                    <div class="col-12">
+                                                                        {% render_field reply_form.body name="reply_body" id="reply_body" class="form__input form__input--textarea" placeholder="پیام*" %}
+                        {#                                                <textarea name="reply_body" id="reply_body" class="form__input form__input--textarea" placeholder="پیام*"></textarea>#}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <input type="hidden" value="{{ reply.pk }}" name="parent_reply">
+
+                                                            <!-- Reply button -->
+                                                            <div class="form__group">
+                                                                <div class="row">
+                                                                    <div class="col-12">
+                                                                        <button type="submit" class="btn btn-size-sm">ارسال</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+
+                                                        <ul class="children">
+                                                            {% for reply in reply.replies.all %}
+                                                                <li>
+                                                                    <!-- Reply 444444 >>> detail -->
+                                                                    <div class="single-comment">
+                                                                        <div class="comment-info">
+                                                                            <div class="comment-meta">
+                                                                                <h4>{{ reply.reply_name }} 444444</h4>
+                                                                                <div class="metadata">
+                                                                                    <span class="comment-date">{{ reply.date_creation }}</span>
+                        {#                                                            <a href="#" class="comment-reply-link">پاسخ</a>#}
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="comment-content">
+                                                                                <p>{{ reply.body }}</p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <!-- Reply 444444 >>> next form -->
+                                                                    <form action="" method="POST" class="form comment-form">
+                                                                        {% csrf_token %}
+
+                                                                        <!-- Reply name -->
+                                                                        <div class="form__group mb--25 mb-sm--20">
+                                                                            <div class="row">
+                                                                                <div class="col-md-12 mb-sm--20">
+                                    {#                                                <label for="{{ reply_form.reply_name.id_for_label }}">Name:</label>#}
+                                                                                    {% render_field reply_form.reply_name type="text" name="reply_name" id="reply_name" class="form__input" placeholder="نام*" %}
+                                    {#                                                <input type="text" name="reply_name" id="reply_name" class="form__input" placeholder="نام*">#}
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <!-- Reply body -->
+                                                                        <div class="form__group mb--25 mb-sm--20">
+                                                                            <div class="row">
+                                                                                <div class="col-12">
+                                                                                    {% render_field reply_form.body name="reply_body" id="reply_body" class="form__input form__input--textarea" placeholder="پیام*" %}
+                                    {#                                                <textarea name="reply_body" id="reply_body" class="form__input form__input--textarea" placeholder="پیام*"></textarea>#}
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <input type="hidden" value="{{ reply.pk }}" name="parent_reply">
+
+                                                                        <!-- Reply button -->
+                                                                        <div class="form__group">
+                                                                            <div class="row">
+                                                                                <div class="col-12">
+                                                                                    <button type="submit" class="btn btn-size-sm">ارسال</button>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </form>
+
+                                                                    <ul class="children">
+                                                                        {% for reply in reply.replies.all %}
+                                                                            <li>
+                                                                                <!-- Reply 555555 >>> detail -->
+                                                                                <div class="single-comment">
+                                                                                    <div class="comment-info">
+                                                                                        <div class="comment-meta">
+                                                                                            <h4>{{ reply.reply_name }} 555555</h4>
+                                                                                            <div class="metadata">
+                                                                                                <span class="comment-date">{{ reply.date_creation }}</span>
+                                    {#                                                            <a href="#" class="comment-reply-link">پاسخ</a>#}
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="comment-content">
+                                                                                            <p>{{ reply.body }}</p>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <!-- Reply 555555 >>> next form -->
+                                                                                <form action="" method="POST" class="form comment-form">
+                                                                                    {% csrf_token %}
+
+                                                                                    <!-- Reply name -->
+                                                                                    <div class="form__group mb--25 mb-sm--20">
+                                                                                        <div class="row">
+                                                                                            <div class="col-md-12 mb-sm--20">
+                                                {#                                                <label for="{{ reply_form.reply_name.id_for_label }}">Name:</label>#}
+                                                                                                {% render_field reply_form.reply_name type="text" name="reply_name" id="reply_name" class="form__input" placeholder="نام*" %}
+                                                {#                                                <input type="text" name="reply_name" id="reply_name" class="form__input" placeholder="نام*">#}
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+
+                                                                                    <!-- Reply body -->
+                                                                                    <div class="form__group mb--25 mb-sm--20">
+                                                                                        <div class="row">
+                                                                                            <div class="col-12">
+                                                                                                {% render_field reply_form.body name="reply_body" id="reply_body" class="form__input form__input--textarea" placeholder="پیام*" %}
+                                                {#                                                <textarea name="reply_body" id="reply_body" class="form__input form__input--textarea" placeholder="پیام*"></textarea>#}
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <input type="hidden" value="{{ reply.pk }}" name="parent_reply">
+
+                                                                                    <!-- Reply button -->
+                                                                                    <div class="form__group">
+                                                                                        <div class="row">
+                                                                                            <div class="col-12">
+                                                                                                <button type="submit" class="btn btn-size-sm">ارسال</button>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </form>
+
+                                                                                <ul class="children">
+                                                                                {% for reply in reply.replies.all %}
+                                                                                    <li>
+                                                                                        <!-- Reply 66666 >>> detail -->
+                                                                                        <div class="single-comment">
+                                                                                            <div class="comment-info">
+                                                                                                <div class="comment-meta">
+                                                                                                    <h4>{{ reply.reply_name }} 66666</h4>
+                                                                                                    <div class="metadata">
+                                                                                                        <span class="comment-date">{{ reply.date_creation }}</span>
+                                            {#                                                            <a href="#" class="comment-reply-link">پاسخ</a>#}
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="comment-content">
+                                                                                                    <p>{{ reply.body }}</p>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <!-- Reply 66666 >>> next form -->
+                                                                                        <form action="" method="POST" class="form comment-form">
+                                                                                            {% csrf_token %}
+
+                                                                                            <!-- Reply name -->
+                                                                                            <div class="form__group mb--25 mb-sm--20">
+                                                                                                <div class="row">
+                                                                                                    <div class="col-md-12 mb-sm--20">
+                                                        {#                                                <label for="{{ reply_form.reply_name.id_for_label }}">Name:</label>#}
+                                                                                                        {% render_field reply_form.reply_name type="text" name="reply_name" id="reply_name" class="form__input" placeholder="نام*" %}
+                                                        {#                                                <input type="text" name="reply_name" id="reply_name" class="form__input" placeholder="نام*">#}
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+
+                                                                                            <!-- Reply body -->
+                                                                                            <div class="form__group mb--25 mb-sm--20">
+                                                                                                <div class="row">
+                                                                                                    <div class="col-12">
+                                                                                                        {% render_field reply_form.body name="reply_body" id="reply_body" class="form__input form__input--textarea" placeholder="پیام*" %}
+                                                        {#                                                <textarea name="reply_body" id="reply_body" class="form__input form__input--textarea" placeholder="پیام*"></textarea>#}
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <input type="hidden" value="{{ reply.pk }}" name="parent_reply">
+
+                                                                                            <!-- Reply button -->
+                                                                                            <div class="form__group">
+                                                                                                <div class="row">
+                                                                                                    <div class="col-12">
+                                                                                                        <button type="submit" class="btn btn-size-sm">ارسال</button>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </form>
+
+                                                                                        <ul class="children">
+                                                                                        {% for reply in reply.replies.all %}
+                                                                                            <li>
+                                                                                                <!-- Reply 77777 >>> detail -->
+                                                                                                <div class="single-comment">
+                                                                                                    <div class="comment-info">
+                                                                                                        <div class="comment-meta">
+                                                                                                            <h4>{{ reply.reply_name }} 77777</h4>
+                                                                                                            <div class="metadata">
+                                                                                                                <span class="comment-date">{{ reply.date_creation }}</span>
+                                                    {#                                                            <a href="#" class="comment-reply-link">پاسخ</a>#}
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                        <div class="comment-content">
+                                                                                                            <p>{{ reply.body }}</p>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <!-- Reply 77777 >>> next form -->
+                                                                                                <form action="" method="POST" class="form comment-form">
+                                                                                                    {% csrf_token %}
+
+                                                                                                    <!-- Reply name -->
+                                                                                                    <div class="form__group mb--25 mb-sm--20">
+                                                                                                        <div class="row">
+                                                                                                            <div class="col-md-12 mb-sm--20">
+                                                                {#                                                <label for="{{ reply_form.reply_name.id_for_label }}">Name:</label>#}
+                                                                                                                {% render_field reply_form.reply_name type="text" name="reply_name" id="reply_name" class="form__input" placeholder="نام*" %}
+                                                                {#                                                <input type="text" name="reply_name" id="reply_name" class="form__input" placeholder="نام*">#}
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+
+                                                                                                    <!-- Reply body -->
+                                                                                                    <div class="form__group mb--25 mb-sm--20">
+                                                                                                        <div class="row">
+                                                                                                            <div class="col-12">
+                                                                                                                {% render_field reply_form.body name="reply_body" id="reply_body" class="form__input form__input--textarea" placeholder="پیام*" %}
+                                                                {#                                                <textarea name="reply_body" id="reply_body" class="form__input form__input--textarea" placeholder="پیام*"></textarea>#}
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                    <input type="hidden" value="{{ reply.pk }}" name="parent_reply">
+
+                                                                                                    <!-- Reply button -->
+                                                                                                    <div class="form__group">
+                                                                                                        <div class="row">
+                                                                                                            <div class="col-12">
+                                                                                                                <button type="submit" class="btn btn-size-sm">ارسال</button>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </form>
+
+                                                                                            </li>
+                                                                                        {% endfor %}
+                                                                                    </ul>
+
+                                                                                    </li>
+                                                                                {% endfor %}
+                                                                            </ul>
+
+                                                                            </li>
+                                                                        {% endfor %}
+                                                                    </ul>
+
+                                                                </li>
+                                                            {% endfor %}
+                                                        </ul>
+
+                                                    </li>
+                                                {% endfor %}
+                                            </ul>
 
                                         </li>
                                     {% endfor %}
-
 
                                 </ul>
                             </li>
