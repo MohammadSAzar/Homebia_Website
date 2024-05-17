@@ -64,7 +64,7 @@ class Reply(models.Model):
     reply_name = models.CharField(max_length=40, verbose_name=_('Reply Name'))
     blog = models.ForeignKey(Blog, on_delete=models.CASCADE, related_name='blog_replies', blank=True, null=True)
     parent_comment = models.ForeignKey(Comment, on_delete=models.CASCADE, related_name="replies", null=True, blank=True)
-    parent_reply = models.ForeignKey('Reply', on_delete=models.CASCADE, related_name="replies", null=True, blank=True)
+    parent_reply = models.ForeignKey('Reply', on_delete=models.CASCADE, related_name="replies_pr", null=True, blank=True)
     body = models.CharField(max_length=500, verbose_name=_('Reply Text'))
     date_creation = models.DateTimeField(auto_now_add=True)
 

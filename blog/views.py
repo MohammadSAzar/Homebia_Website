@@ -26,7 +26,7 @@ class BlogDetailView(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['blogs'] = Blog.objects.filter(status='pub').values('title', 'date_creation').order_by('-date_creation')[:5]
-        context['comments'] = Comment.objects.prefetch_related('replies__replies').filter(blog=self.object).all()
+        context['comments'] = Comment.objects.prefetch_related('replies__replies_pr__replies_pr__replies_pr__replies_pr__replies_pr__replies_pr__replies_pr__replies_pr__replies_pr__replies_pr').filter(blog=self.object).all()
         context['replies'] = Reply.objects.filter(blog=self.object).all()
         context['number_of_comments'] = context['comments'].count() + context['replies'].count()
         context['comment_form'] = CommentForm()
