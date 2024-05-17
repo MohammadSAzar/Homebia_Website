@@ -104,10 +104,10 @@
                                 <div class="single-comment">
                                     <div class="comment-info">
                                         <div class="comment-meta">
-                                            <h4>{{ comment.name }} 1111111 </h4>
+                                            <h4>{{ comment.name }}</h4>
                                             <div class="metadata">
-                                                <span class="comment-date">{{ comment.date_creation }}</span>
-                                                <button class="comment-reply-link" data-reply-form="reply-form-{{ comment.id }}">پاسخ</button>
+                                                <span class="comment-date">{{ comment.date_creation|to_jalali }}</span>
+                                                <button class="comment-reply-link" data-reply-form="reply-form-{{ comment.id }}" style="border: none; background-color: transparent;"><img src="{% static 'main/img/icons/reply.png' %}" style="width: 20px; height: 20px;"></button>
                                             </div>
                                         </div>
                                         <div class="comment-content">
@@ -159,10 +159,10 @@
                                             <div class="single-comment" style="background-color: #fefefe">
                                                 <div class="comment-info">
                                                     <div class="comment-meta">
-                                                        <h4>{{ reply.reply_name }} 222222</h4>
+                                                        <h4>{{ reply.reply_name }}</h4>
                                                         <div class="metadata">
-                                                            <span class="comment-date">{{ reply.date_creation }}</span>
-                                                            <button class="comment-reply-link" data-reply-form="reply-form-{{ reply.id }}">پاسخ</button>
+                                                            <span class="comment-date">{{ reply.date_creation|to_jalali }}</span>
+                                                            <button class="comment-reply-link" data-reply-form="reply-form-{{ reply.id }}" style="border: none; background-color: transparent;"><img src="{% static 'main/img/icons/reply.png' %}" style="width: 20px; height: 20px;"></button>
                                                         </div>
                                                     </div>
                                                     <div class="comment-content">
@@ -199,7 +199,7 @@
                                                 <div class="form__group">
                                                     <div class="row">
                                                         <div class="col-12">
-                                                            <button type="submit" class="btn btn-size-sm">ارسال</button>
+                                                            <button type="submit" class="btn btn-size-sm" style="margin-bottom: 20px;">ارسال</button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -213,10 +213,10 @@
                                                         <div class="single-comment" style="background-color: #fdfdfd">
                                                             <div class="comment-info">
                                                                 <div class="comment-meta">
-                                                                    <h4>{{ reply.reply_name }} 333333</h4>
+                                                                    <h4>{{ reply.reply_name }}</h4>
                                                                     <div class="metadata">
-                                                                        <span class="comment-date">{{ reply.date_creation }}</span>
-                                                                        <button class="comment-reply-link" data-reply-form="reply-form-{{ reply.id }}">پاسخ</button>
+                                                                        <span class="comment-date">{{ reply.date_creation|to_jalali }}</span>
+                                                                        <button class="comment-reply-link" data-reply-form="reply-form-{{ reply.id }}" style="border: none; background-color: transparent;"><img src="{% static 'main/img/icons/reply.png' %}" style="width: 20px; height: 20px;"></button>
                                                                     </div>
                                                                 </div>
                                                                 <div class="comment-content">
@@ -253,7 +253,7 @@
                                                             <div class="form__group">
                                                                 <div class="row">
                                                                     <div class="col-12">
-                                                                        <button type="submit" class="btn btn-size-sm">ارسال</button>
+                                                                        <button type="submit" class="btn btn-size-sm" style="margin-bottom: 20px;">ارسال</button>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -267,10 +267,10 @@
                                                                     <div class="single-comment" style="background-color: #fcfcfc">
                                                                         <div class="comment-info">
                                                                             <div class="comment-meta">
-                                                                                <h4>{{ reply.reply_name }} 444444</h4>
+                                                                                <h4>{{ reply.reply_name }}</h4>
                                                                                 <div class="metadata">
-                                                                                    <span class="comment-date">{{ reply.date_creation }}</span>
-                                                                                    <button class="comment-reply-link" data-reply-form="reply-form-{{ reply.id }}">پاسخ</button>
+                                                                                    <span class="comment-date">{{ reply.date_creation|to_jalali }}</span>
+                                                                                    <button class="comment-reply-link" data-reply-form="reply-form-{{ reply.id }}" style="border: none; background-color: transparent;"><img src="{% static 'main/img/icons/reply.png' %}" style="width: 20px; height: 20px;"></button>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="comment-content">
@@ -307,7 +307,7 @@
                                                                         <div class="form__group">
                                                                             <div class="row">
                                                                                 <div class="col-12">
-                                                                                    <button type="submit" class="btn btn-size-sm">ارسال</button>
+                                                                                    <button type="submit" class="btn btn-size-sm" style="margin-bottom: 20px;">ارسال</button>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -321,10 +321,10 @@
                                                                                 <div class="single-comment" style="background-color: #fbfbfb">
                                                                                     <div class="comment-info">
                                                                                         <div class="comment-meta">
-                                                                                            <h4>{{ reply.reply_name }} 555555</h4>
+                                                                                            <h4>{{ reply.reply_name }}</h4>
                                                                                             <div class="metadata">
-                                                                                                <span class="comment-date">{{ reply.date_creation }}</span>
-                                                                                                <button class="comment-reply-link" data-reply-form="reply-form-{{ reply.id }}">پاسخ</button>
+                                                                                                <span class="comment-date">{{ reply.date_creation|to_jalali }}</span>
+                                                                                                <button class="comment-reply-link" data-reply-form="reply-form-{{ reply.id }}" style="border: none; background-color: transparent;"><img src="{% static 'main/img/icons/reply.png' %}" style="width: 20px; height: 20px;"></button>
                                                                                             </div>
                                                                                         </div>
                                                                                         <div class="comment-content">
@@ -361,7 +361,7 @@
                                                                                     <div class="form__group">
                                                                                         <div class="row">
                                                                                             <div class="col-12">
-                                                                                                <button type="submit" class="btn btn-size-sm">ارسال</button>
+                                                                                                <button type="submit" class="btn btn-size-sm" style="margin-bottom: 20px;">ارسال</button>
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
@@ -375,10 +375,10 @@
                                                                                             <div class="single-comment" style="background-color: #fafafa">
                                                                                                 <div class="comment-info">
                                                                                                     <div class="comment-meta">
-                                                                                                        <h4>{{ reply.reply_name }} 66666</h4>
+                                                                                                        <h4>{{ reply.reply_name }}</h4>
                                                                                                         <div class="metadata">
-                                                                                                            <span class="comment-date">{{ reply.date_creation }}</span>
-                                                                                                            <button class="comment-reply-link" data-reply-form="reply-form-{{ reply.id }}">پاسخ</button>
+                                                                                                            <span class="comment-date">{{ reply.date_creation|to_jalali }}</span>
+                                                                                                            <button class="comment-reply-link" data-reply-form="reply-form-{{ reply.id }}" style="border: none; background-color: transparent;"><img src="{% static 'main/img/icons/reply.png' %}" style="width: 20px; height: 20px;"></button>
                                                                                                         </div>
                                                                                                     </div>
                                                                                                     <div class="comment-content">
@@ -415,7 +415,7 @@
                                                                                                 <div class="form__group">
                                                                                                     <div class="row">
                                                                                                         <div class="col-12">
-                                                                                                            <button type="submit" class="btn btn-size-sm">ارسال</button>
+                                                                                                            <button type="submit" class="btn btn-size-sm" style="margin-bottom: 20px;">ارسال</button>
                                                                                                         </div>
                                                                                                     </div>
                                                                                                 </div>
@@ -429,9 +429,9 @@
                                                                                                         <div class="single-comment" style="background-color: #fafafa">
                                                                                                             <div class="comment-info">
                                                                                                                 <div class="comment-meta">
-                                                                                                                    <h4>{{ reply.reply_name }} 77777</h4>
+                                                                                                                    <h4>{{ reply.reply_name }}</h4>
                                                                                                                     <div class="metadata">
-                                                                                                                        <span class="comment-date">{{ reply.date_creation }}</span>
+                                                                                                                        <span class="comment-date">{{ reply.date_creation|to_jalali }}</span>
                                                                                                                     </div>
                                                                                                                 </div>
                                                                                                                 <div class="comment-content">
@@ -497,7 +497,7 @@
                             <div class="form__group">
                                 <div class="row">
                                     <div class="col-12">
-                                        <button type="submit" class="btn btn-size-sm">ارسال</button>
+                                        <button type="submit" class="btn btn-size-sm" style="margin-bottom: 20px;">ارسال</button>
                                     </div>
                                 </div>
                             </div>

@@ -1900,10 +1900,10 @@ font-family: FontAwesome;
   margin-bottom: 27px; }
 
 .comment-list > li:last-child > .single-comment:only-child {
-  margin-bottom: 0; }
+  margin-bottom: 20px; }
 
 .comment-list > li:last-child .children > li:last-child .single-comment {
-  margin-bottom: 0; }
+  margin-bottom: 20px; }
 
 .comment .single-comment {
   margin-bottom: 20px; }
