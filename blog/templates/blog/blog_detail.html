@@ -12,210 +12,10 @@
 
 {% block content %}
 
-    <!-- Blog >>> comments & replies -->
-
-
-
-    <h2> Comments </h2>
-
-    <form action="" method="POST" id="main_form" class="comment_form">
-        {% csrf_token %}
-        <div>
-            <label for="comment">Type Comment here</label>
-            {{ comment_form.as_p }}
-            <input type="submit" value="Post">
-        </div>
-    </form>
-
-
-    {% for comment in comments %}
-
-        <h3><b>{{ comment.name }} 1111111 : </b> {{ comment.body }}</h3>
-        <form action="" method="POST" id="main_form" class="comment_form">
-            {% csrf_token %}
-            <div>
-                <label for="{{ reply_form.reply_name.id_for_label }}">Name:</label>
-                {% render_field reply_form.reply_name %}
-                <label for="{{ reply_form.body.id_for_label }}">Reply1:</label>
-                {% render_field reply_form.body %}
-
-                <input type="hidden" value="{{ comment.pk }}" name="parent_comment">
-    {#            <input type="hidden" value="{{ comment.pk }}" name="parent_reply">#}
-
-                <input type="submit" value="Post">
-            </div>
-        </form>
-
-        {% for reply in comment.replies.all %}
-            <h3><b>{{ reply.reply_name }} 222222 : </b> {{ reply.body }}</h3>
-            <p>parent_comment: {{ reply.parent_comment }}</p>
-            <p>parent_reply: {{ reply.parent_reply }}</p>
-
-            <form action="" method="POST" id="main_form" class="comment_form">
-                {% csrf_token %}
-                <div>
-                    <label for="{{ reply_form.reply_name.id_for_label }}">Name:</label>
-                    {% render_field reply_form.reply_name %}
-                    <label for="{{ reply_form.body.id_for_label }}">Reply2:</label>
-                    {% render_field reply_form.body %}
-
-    {#              <input type="hidden" value="{{ comment.pk }}" name="parent_comment">#}
-                    <input type="hidden" value="{{ reply.pk }}" name="parent_reply">
-
-                    <input type="submit" value="Post">
-                </div>
-            </form>
-
-            {% for reply in reply.replies.all %}
-                <h3><b>{{ reply.reply_name }} 333333 : </b> {{ reply.body }}</h3>
-                <p>parent_comment: {{ reply.parent_comment }}</p>
-                <p>parent_reply: {{ reply.parent_reply }}</p>
-
-                <form action="" method="POST" id="main_form" class="comment_form">
-                    {% csrf_token %}
-                    <div>
-                        <label for="{{ reply_form.reply_name.id_for_label }}">Name:</label>
-                        {% render_field reply_form.reply_name %}
-                        <label for="{{ reply_form.body.id_for_label }}">Reply3:</label>
-                        {% render_field reply_form.body %}
-
-        {#              <input type="hidden" value="{{ comment.pk }}" name="parent_comment">#}
-                        <input type="hidden" value="{{ reply.pk }}" name="parent_reply">
-
-                        <input type="submit" value="Post">
-                    </div>
-                </form>
-
-                {% for reply in reply.replies.all %}
-                    <h3><b>{{ reply.reply_name }} 444444 : </b> {{ reply.body }}</h3>
-                    <p>parent_comment: {{ reply.parent_comment }}</p>
-                    <p>parent_reply: {{ reply.parent_reply }}</p>
-
-                    <form action="" method="POST" id="main_form" class="comment_form">
-                        {% csrf_token %}
-                        <div>
-                            <label for="{{ reply_form.reply_name.id_for_label }}">Name:</label>
-                            {% render_field reply_form.reply_name %}
-                            <label for="{{ reply_form.body.id_for_label }}">Reply4:</label>
-                            {% render_field reply_form.body %}
-
-            {#              <input type="hidden" value="{{ comment.pk }}" name="parent_comment">#}
-                            <input type="hidden" value="{{ reply.pk }}" name="parent_reply">
-
-                            <input type="submit" value="Post">
-                        </div>
-                    </form>
-
-                    {% for reply in reply.replies.all %}
-                        <h3><b>{{ reply.reply_name }} 555555 : </b> {{ reply.body }}</h3>
-                        <p>parent_comment: {{ reply.parent_comment }}</p>
-                        <p>parent_reply: {{ reply.parent_reply }}</p>
-
-                        <form action="" method="POST" id="main_form" class="comment_form">
-                            {% csrf_token %}
-                            <div>
-                                <label for="{{ reply_form.reply_name.id_for_label }}">Name:</label>
-                                {% render_field reply_form.reply_name %}
-                                <label for="{{ reply_form.body.id_for_label }}">Reply5:</label>
-                                {% render_field reply_form.body %}
-
-                {#              <input type="hidden" value="{{ comment.pk }}" name="parent_comment">#}
-                                <input type="hidden" value="{{ reply.pk }}" name="parent_reply">
-
-                                <input type="submit" value="Post">
-                            </div>
-                        </form>
-
-                        {% for reply in reply.replies.all %}
-                            <h3><b>{{ reply.reply_name }} 666666 : </b> {{ reply.body }}</h3>
-                            <p>parent_comment: {{ reply.parent_comment }}</p>
-                            <p>parent_reply: {{ reply.parent_reply }}</p>
-                            ********************************
-
-                        {% endfor %}
-                        ********************************
-
-                    {% endfor %}
-                    ********************************
-
-                {% endfor %}
-                ********************************
-
-            {% endfor %}
-            ********************************
-
-        {% endfor %}
-        ---------------------------------------------------------------
-    {% endfor %}
-    -------------------------------------------------------------------------------------------------------
-
-
-
-
-
-
-    <div class="comments">
-        <h2>Comments</h2>
-        {% for comment in comments %}
-            {% if comment.is_active == 'pr' %}
-                <div class="comment">
-                    <p>{{ comment.name }}</p>
-                    <p>{{ comment.body }}</p>
-                </div>
-            {% endif %}
-        {% empty %}
-            <p>No comments yet.</p>
-        {% endfor %}
-    </div>
-
-    <div class="comment-form">
-        <h2>Add a Comment</h2>
-        <form method="post" action="">
-            {% csrf_token %}
-            {{ comment_form.as_p }}
-            <button type="submit">Submit</button>
-        </form>
-    </div>
-
-
-
     <!-- Blog detail -->
     <div class="inner-page-content ptb--80 ptb-md--60">
         <div class="container">
             <div class="row">
-
-                <!-- Blog detail >>> main -->
-                <div class="col-lg-9 order-lg-2 mb-md--50">
-                    <div class="row">
-                        <div class="col-12 mb--45">
-                            <article class="blog format-standard">
-                                <div class="blog__inner">
-
-                                    <div class="blog__media">
-                                        <figure class="image">
-                                            <img src="{{ blog.cover.url }}" alt="Blog" class="w-100">
-                                        </figure>
-                                    </div>
-
-                                    <div class="blog__info" >
-                                        <h1 class="blog__title" style="font-size: 1.6em; margin-bottom: 1em;">{{ blog.title|farsi_number }}</h1>
-
-                                        <div class="single-post__header-meta">
-                                            <span class="posted-on"><span>تاریخ انتشار: </span>{{ blog.date_creation|to_jalali:'%y/%m/%d' }}</span>
-                                            <span class="post-category"><span>دسته‌بندی: </span>{{ blog.blog_category }}</span>
-                                        </div>
-
-                                        <div class="blog__desc" style="margin-top: 2em; text-align: justify;!important;">
-                                            {{ blog.body.html|safe|linebreaksbr }}
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </article>
-                        </div>
-                    </div>
-                </div>
-                <!-- end: Blog detail >>> main -->
 
                 <!-- Blog detail >>> sidebar -->
                 <div class="col-lg-3 order-lg-1">
@@ -259,9 +59,344 @@
                 </div>
                 <!-- end: Blog detail >>> sidebar -->
 
+                <!-- Blog detail >>> main -->
+                <div class="col-lg-9 order-lg-2 mb-md--50">
+                    <div class="row">
+                        <div class="col-12 mb--45">
+                            <article class="blog format-standard">
+                                <div class="blog__inner">
+
+                                    <div class="blog__media">
+                                        <figure class="image">
+                                            <img src="{{ blog.cover.url }}" alt="Blog" class="w-100">
+                                        </figure>
+                                    </div>
+
+                                    <div class="blog__info" >
+                                        <h1 class="blog__title" style="font-size: 1.6em; margin-bottom: 1em;">{{ blog.title|farsi_number }}</h1>
+
+                                        <div class="single-post__header-meta">
+                                            <span class="posted-on"><span>تاریخ انتشار: </span>{{ blog.date_creation|to_jalali:'%y/%m/%d' }}</span>
+                                            <span class="post-category"><span>دسته‌بندی: </span>{{ blog.blog_category }}</span>
+                                        </div>
+
+                                        <div class="blog__desc" style="margin-top: 2em; text-align: justify;!important;">
+                                            {{ blog.body.html|safe|linebreaksbr }}
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+                <!-- end: Blog detail >>> main -->
+
+                <!-- Comment Area Start -->
+                <section class="comment col-lg-12 order-lg-3">
+                    <p class="comment-title"><span style="margin: 0 10px; color: black;">"{{ number_of_comments }}"</span> نظر ثبت شده است</p>
+
+                    <ul class="comment-list mb--45">
+
+                        {% for comment in comments %}
+                            <li>
+                                <div class="single-comment">
+                                    <div class="comment-info">
+                                        <div class="comment-meta">
+                                            <h4>{{ comment.name }} 1111111 </h4>
+                                            <div class="metadata">
+                                                <span class="comment-date">{{ comment.date_creation }}</span>
+{#                                                <a href="#" class="comment-reply-link">پاسخ</a>#}
+                                            </div>
+                                        </div>
+                                        <div class="comment-content">
+                                            <p>{{ comment.body }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <form action="" method="POST" class="form comment-form">
+                                    {% csrf_token %}
+
+                                    <!-- Comment name -->
+                                    <div class="form__group mb--25 mb-sm--20">
+                                        <div class="row">
+                                            <div class="col-md-12 mb-sm--20">
+{#                                                <label for="{{ reply_form.reply_name.id_for_label }}">Name:</label>#}
+                                                {% render_field reply_form.reply_name type="text" name="reply_name" id="reply_name" class="form__input" placeholder="نام*" %}
+{#                                                <input type="text" name="reply_name" id="reply_name" class="form__input" placeholder="نام*">#}
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Comment body -->
+                                    <div class="form__group mb--25 mb-sm--20">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                {% render_field reply_form.body name="reply_body" id="reply_body" class="form__input form__input--textarea" placeholder="پیام*" %}
+{#                                                <textarea name="reply_body" id="reply_body" class="form__input form__input--textarea" placeholder="پیام*"></textarea>#}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <input type="hidden" value="{{ comment.pk }}" name="parent_comment">
+
+                                    <!-- Comment button -->
+                                    <div class="form__group">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <button type="submit" class="btn btn-size-sm">ارسال</button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </form>
+
+
+                                <ul class="children">
+                                    {% for reply in comment.replies.all %}
+                                        <li>
+                                            <div class="single-comment">
+                                                <div class="comment-info">
+                                                    <div class="comment-meta">
+                                                        <h4>{{ reply.reply_name }} 222222</h4>
+                                                        <div class="metadata">
+                                                            <span class="comment-date">{{ reply.date_creation }}</span>
+{#                                                            <a href="#" class="comment-reply-link">پاسخ</a>#}
+                                                        </div>
+                                                    </div>
+                                                    <div class="comment-content">
+                                                        <p>{{ reply.body }}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <form action="" method="POST" class="form comment-form">
+                                                {% csrf_token %}
+
+                                                <!-- Reply name -->
+                                                <div class="form__group mb--25 mb-sm--20">
+                                                    <div class="row">
+                                                        <div class="col-md-12 mb-sm--20">
+            {#                                                <label for="{{ reply_form.reply_name.id_for_label }}">Name:</label>#}
+                                                            {% render_field reply_form.reply_name type="text" name="reply_name" id="reply_name" class="form__input" placeholder="نام*" %}
+            {#                                                <input type="text" name="reply_name" id="reply_name" class="form__input" placeholder="نام*">#}
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Reply body -->
+                                                <div class="form__group mb--25 mb-sm--20">
+                                                    <div class="row">
+                                                        <div class="col-12">
+                                                            {% render_field reply_form.body name="reply_body" id="reply_body" class="form__input form__input--textarea" placeholder="پیام*" %}
+            {#                                                <textarea name="reply_body" id="reply_body" class="form__input form__input--textarea" placeholder="پیام*"></textarea>#}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <input type="hidden" value="{{ reply.pk }}" name="parent_reply">
+
+                                                <!-- Reply button -->
+                                                <div class="form__group">
+                                                    <div class="row">
+                                                        <div class="col-12">
+                                                            <button type="submit" class="btn btn-size-sm">ارسال</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </form>
+
+
+                                        </li>
+                                    {% endfor %}
+
+
+                                </ul>
+                            </li>
+                        {% endfor %}
+
+
+                    </ul>
+
+                    <!-- Comment form -->
+                    <div class="comment-respond">
+                        <h3 class="comment-reply-title">یک نظر بنویسید</h3>
+                        <form action="" method="POST" class="form comment-form">
+                            {% csrf_token %}
+
+                            <!-- Comment name -->
+                            <div class="form__group mb--25 mb-sm--20">
+                                <div class="row">
+                                    <div class="col-md-12 mb-sm--20">
+                                        <input type="text" name="name" id="name" class="form__input" placeholder="نام*">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Comment body -->
+                            <div class="form__group mb--25 mb-sm--20">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <textarea name="body" id="body" class="form__input form__input--textarea" placeholder="پیام*"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Comment button -->
+                            <div class="form__group">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <button type="submit" class="btn btn-size-sm">ارسال</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                    <!-- end: Comment form -->
+
+                </section>
+                <!-- Comment Area End -->
+
             </div>
         </div>
     </div>
     <!-- end: Blog detail -->
+
+
+
+
+
+
+
+    <!-- Blog detail >>> comments -->
+    <h2> Comments </h2>
+
+    <form action="" method="POST" id="main_form" class="comment_form">
+        {% csrf_token %}
+        <div>
+            <label for="comment">Type Comment here</label>
+            {{ comment_form.as_p }}
+            <input type="submit" value="Post">
+        </div>
+    </form>
+
+
+    {% for comment in comments %}
+
+        <h3><b>{{ comment.name }} 1111111 : </b> {{ comment.body }}</h3>
+        <form action="" method="POST" id="main_form" class="comment_form">
+            {% csrf_token %}
+            <div>
+                <label for="{{ reply_form.reply_name.id_for_label }}">Name:</label>
+                {% render_field reply_form.reply_name %}
+                <label for="{{ reply_form.body.id_for_label }}">Reply1:</label>
+                {% render_field reply_form.body %}
+
+                <input type="hidden" value="{{ comment.pk }}" name="parent_comment">
+
+                <input type="submit" value="Post">
+            </div>
+        </form>
+
+        {% for reply in comment.replies.all %}
+            <h3><b>{{ reply.reply_name }} 222222 : </b> {{ reply.body }}</h3>
+            <p>parent_comment: {{ reply.parent_comment }}</p>
+            <p>parent_reply: {{ reply.parent_reply }}</p>
+
+            <form action="" method="POST" id="main_form" class="comment_form">
+                {% csrf_token %}
+                <div>
+                    <label for="{{ reply_form.reply_name.id_for_label }}">Name:</label>
+                    {% render_field reply_form.reply_name %}
+                    <label for="{{ reply_form.body.id_for_label }}">Reply2:</label>
+                    {% render_field reply_form.body %}
+
+                    <input type="hidden" value="{{ reply.pk }}" name="parent_reply">
+
+                    <input type="submit" value="Post">
+                </div>
+            </form>
+
+            {% for reply in reply.replies.all %}
+                <h3><b>{{ reply.reply_name }} 333333 : </b> {{ reply.body }}</h3>
+                <p>parent_comment: {{ reply.parent_comment }}</p>
+                <p>parent_reply: {{ reply.parent_reply }}</p>
+
+                <form action="" method="POST" id="main_form" class="comment_form">
+                    {% csrf_token %}
+                    <div>
+                        <label for="{{ reply_form.reply_name.id_for_label }}">Name:</label>
+                        {% render_field reply_form.reply_name %}
+                        <label for="{{ reply_form.body.id_for_label }}">Reply3:</label>
+                        {% render_field reply_form.body %}
+
+                        <input type="hidden" value="{{ reply.pk }}" name="parent_reply">
+
+                        <input type="submit" value="Post">
+                    </div>
+                </form>
+
+                {% for reply in reply.replies.all %}
+                    <h3><b>{{ reply.reply_name }} 444444 : </b> {{ reply.body }}</h3>
+                    <p>parent_comment: {{ reply.parent_comment }}</p>
+                    <p>parent_reply: {{ reply.parent_reply }}</p>
+
+                    <form action="" method="POST" id="main_form" class="comment_form">
+                        {% csrf_token %}
+                        <div>
+                            <label for="{{ reply_form.reply_name.id_for_label }}">Name:</label>
+                            {% render_field reply_form.reply_name %}
+                            <label for="{{ reply_form.body.id_for_label }}">Reply4:</label>
+                            {% render_field reply_form.body %}
+
+                            <input type="hidden" value="{{ reply.pk }}" name="parent_reply">
+
+                            <input type="submit" value="Post">
+                        </div>
+                    </form>
+
+                    {% for reply in reply.replies.all %}
+                        <h3><b>{{ reply.reply_name }} 555555 : </b> {{ reply.body }}</h3>
+                        <p>parent_comment: {{ reply.parent_comment }}</p>
+                        <p>parent_reply: {{ reply.parent_reply }}</p>
+
+                        <form action="" method="POST" id="main_form" class="comment_form">
+                            {% csrf_token %}
+                            <div>
+                                <label for="{{ reply_form.reply_name.id_for_label }}">Name:</label>
+                                {% render_field reply_form.reply_name %}
+                                <label for="{{ reply_form.body.id_for_label }}">Reply5:</label>
+                                {% render_field reply_form.body %}
+
+                                <input type="hidden" value="{{ reply.pk }}" name="parent_reply">
+
+                                <input type="submit" value="Post">
+                            </div>
+                        </form>
+
+                        {% for reply in reply.replies.all %}
+                            <h3><b>{{ reply.reply_name }} 666666 : </b> {{ reply.body }}</h3>
+                            <p>parent_comment: {{ reply.parent_comment }}</p>
+                            <p>parent_reply: {{ reply.parent_reply }}</p>
+                            ********************************
+
+                        {% endfor %}
+                        ********************************
+
+                    {% endfor %}
+                    ********************************
+
+                {% endfor %}
+                ********************************
+
+            {% endfor %}
+            ********************************
+
+        {% endfor %}
+        ---------------------------------------------------------------
+    {% endfor %}
+    -------------------------------------------------------------------------------------------------------
+    <!-- end: Blog detail >>> comments -->
 
 {% endblock %}

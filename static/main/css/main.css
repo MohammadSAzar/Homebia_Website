@@ -1914,7 +1914,7 @@ font-family: FontAwesome;
     margin-bottom: 10px; } }
 
 .comment-info {
-  margin-right: 120px;
+  /*margin-right: 120px;*/
   padding: 20px 30px; }
 @media (max-width: 35.94em) {
   .comment-info {
