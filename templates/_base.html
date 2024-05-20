@@ -166,10 +166,107 @@
 
             {% endblock %}
 
-            <!-- Footer will be here! -->
-
         </main>
         <!-- end: Main content -->
+
+        <!-- Footer -->
+        <footer class="footer bg-color" data-bg-color="#f4f8fa">
+
+            <!-- Footer >>> top -->
+            <div class="footer-top">
+                <div class="container-fluid">
+                    <div class="row border-bottom pt--70 pb--70">
+
+                        <!-- Logo + Text -->
+                        <div class="col-lg-3 col-sm-6 offset-md-1 offset-lg-0 mb-md--45">
+                            <div class="footer-widget">
+                                <div class="textwidget">
+                                    <figure class="footer-logo mb--30">
+                                        <img src="{% static 'main/img/logos/ho-logo-2.png' %}" alt="Logo">
+                                    </figure>
+                                    <p style="text-align: justify; color: black; margin-left: 2em;">جنگل آشفته نیاز به نگهبان دارد. هومبیا نگهبانی است که در جنگل آشفته بازار املاک در کنار شما و مشغول حفاظت خواهد بود.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Links1 -->
+                        <div class="col-lg-2 col-sm-3 offset-lg-1 offset-sm-2 mb-md--45 offse ">
+                            <div class="footer-widget">
+                                <h3 class="widget-title mb--35 mb-sm--20" style="font-size: 1.1em;">هومبیا</h3>
+                                <div class="footer-widget">
+                                    <ul class="footer-menu">
+                                        <li><a href="{% url 'home' %}" style="font-size: 0.9em;">درباره ما</a></li>
+                                        <li><a href="{% url 'home' %}" style="font-size: 0.9em;">تماس با ما</a></li>
+                                        <li><a href="{% url 'home' %}" style="font-size: 0.9em;">بلاگ</a></li>
+                                        <li><a href="{% url 'home' %}" style="font-size: 0.9em;">قوانین هومبیا</a></li>
+                                        <li><a href="{% url 'home' %}" style="font-size: 0.9em;">سوالات متداول</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Links2 -->
+                        <div class="col-lg-2 col-sm-4 offset-md-1 offset-lg-0 mb-xs--45">
+                            <div class="footer-widget">
+                                <h3 class="widget-title mb--35 mb-sm--20" style="font-size: 1.1em;">محصولات</h3>
+                                <div class="footer-widget">
+                                    <ul class="footer-menu">
+                                        <li><a href="{% url 'home' %}" style="font-size: 0.9em;">دوره آموزشی</a></li>
+                                        <li><a href="{% url 'home' %}" style="font-size: 0.9em;">خدمات</a></li>
+                                        <li><a href="{% url 'home' %}" style="font-size: 0.9em;">فایل‌ها</a></li>
+                                        <li><a href="{% url 'home' %}" style="font-size: 0.9em;">سرمایه‌گذاری</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Links3 -->
+                        <div class="col-lg-2 col-md-3 col-sm-4">
+                            <div class="footer-widget">
+                                <h3 class="widget-title mb--35 mb-sm--20" style="font-size: 1.1em;">در شبکه‌های اجتماعی</h3>
+                                <div class="footer-widget">
+                                    <ul class="footer-menu">
+                                        <li><a href="{% url 'home' %}" style="font-size: 0.9em;">اینستاگرام</a></li>
+                                        <li><a href="{% url 'home' %}" style="font-size: 0.9em;">لینکدین</a></li>
+                                        <li><a href="{% url 'home' %}" style="font-size: 0.9em;">یوتیوب</a></li>
+                                        <li><a href="{% url 'home' %}" style="font-size: 0.9em;">آپارات</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Links4 -->
+                        <div class="col-lg-2 col-md-3 col-sm-4">
+                            <div class="footer-widget">
+                                <h3 class="widget-title mb--35 mb-sm--20" style="font-size: 1.1em;">پیوندهای مهم</h3>
+                                <div class="footer-widget">
+                                    <ul class="footer-menu">
+                                        <li><a href="{% url 'home' %}" style="font-size: 0.9em; border-bottom: 1px solid #00a65c; color: #00a65c; font-weight: bolder">ثبت نام مشاور</a></li>
+                                        <li><a href="{% url 'home' %}" style="font-size: 0.9em; border-bottom: 1px solid #00a65c; color: #00a65c; font-weight: bolder">ثبت آگهی</a></li>
+                                        <li><a href="{% url 'home' %}" style="font-size: 0.9em; border-bottom: 1px solid #00a65c; color: #00a65c; font-weight: bolder">ثبت آگهی</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Footer >>> DESIGNER -->
+            <div class="footer-bottom">
+                <div class="container-fluid">
+                    <div class="row border-top ptb--20">
+                        <div class="col-12 text-center">
+                            <p class="copyright-text">تمامی حقوق متعلق به هومبیا است - طراحی شده توسط هومساز</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </footer>
+        <!-- end: Footer -->
 
 
         <!-- Hamburger menu -->
@@ -235,7 +332,6 @@
             </div>
         </div>
         <!-- end: Hamburger menu -->
-
 
     </div>
     <!-- end: Main -->
