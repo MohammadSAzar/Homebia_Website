@@ -69,38 +69,38 @@
 
                                                 <li class="mainmenu__item menu-item-has-children" style="padding-left: 40px;">
                                                     <a href="{% url 'home' %}" class="mainmenu__link">
-                                                        <span class="mm-text" style="font-weight: bold;">خانه</span>
+                                                        <span class="mm-text" style="font-weight: bold;">{% trans 'Homepage' %}</span>
                                                     </a>
                                                 </li>
 
                                                 <li class="mainmenu__item menu-item-has-children">
-                                                    <a href="{% url 'services' %}" class="mainmenu__link"><span class="mm-text" style="font-weight: bold;">خدمات</span></a>
+                                                    <a href="{% url 'services' %}" class="mainmenu__link"><span class="mm-text" style="font-weight: bold;">{% trans 'Services' %}</span></a>
                                                     <ul class="sub-menu">
-                                                        <li class="menu-item-has-children" style="margin-bottom: 1em;"><a href="{% url 'counseling' %}"><span class="mm-text" style="font-weight: bold;">مشاوره</span></a></li>
-                                                        <li class="menu-item-has-children" style="margin-bottom: 1em;"><a href="{% url 'session' %}"><span class="mm-text" style="font-weight: bold;">حضور در نشست</span></a></li>
-                                                        <li class="menu-item-has-children"><a href="{% url 'visit' %}"><span class="mm-text" style="font-weight: bold;">حضور در بازدید</span></a></li>
+                                                        <li class="menu-item-has-children" style="margin-bottom: 1em;"><a href="{% url 'counseling' %}"><span class="mm-text" style="font-weight: bold;">{% trans 'Counseling' %}</span></a></li>
+                                                        <li class="menu-item-has-children" style="margin-bottom: 1em;"><a href="{% url 'session' %}"><span class="mm-text" style="font-weight: bold;">{% trans 'Participation in Session' %}</span></a></li>
+                                                        <li class="menu-item-has-children"><a href="{% url 'visit' %}"><span class="mm-text" style="font-weight: bold;">{% trans 'Participation in Visit' %}د</span></a></li>
                                                     </ul>
                                                 </li>
 
                                                 <li class="mainmenu__item menu-item-has-children">
                                                     <a href="{% url 'home' %}" class="mainmenu__link">
-                                                        <span class="mm-text" style="font-weight: bold;">فایل‌ها</span>
+                                                        <span class="mm-text" style="font-weight: bold;">{% trans 'Files' %}</span>
                                                     </a>
                                                 </li>
 
                                                 <li class="mainmenu__item menu-item-has-children">
                                                     <a href="{% url 'home' %}" class="mainmenu__link">
-                                                        <span class="mm-text" style="font-weight: bold;">سرمایه‌گذاری</span>
+                                                        <span class="mm-text" style="font-weight: bold;">{% trans 'Investment Opportunities' %}</span>
                                                     </a>
                                                 </li>
 
                                                 <li class="mainmenu__item menu-item-has-children">
-                                                    <a href="http://127.0.0.1:8000/admin" class="mainmenu__link"><span class="mm-text" style="font-weight: bold;">خدمات</span></a>
+                                                    <a href="http://127.0.0.1:8000/admin" class="mainmenu__link"><span class="mm-text" style="font-weight: bold;">{% trans 'Admin Panel' %}</span></a>
                                                     <ul class="sub-menu">
-                                                        <li class="menu-item-has-children" style="margin-bottom: 1em;"><a href="{% url 'blog_list' %}"><span class="mm-text" style="font-weight: bold;">بلاگ هومبیا</span></a></li>
-                                                        <li class="menu-item-has-children" style="margin-bottom: 1em;"><a href="{% url 'home' %}"><span class="mm-text" style="font-weight: bold;">تماس با ما</span></a></li>
-                                                        <li class="menu-item-has-children" style="margin-bottom: 1em;"><a href="{% url 'home' %}"><span class="mm-text" style="font-weight: bold;">درباره ما</span></a></li>
-                                                        <li class="menu-item-has-children"><a href="{% url 'home' %}"><span class="mm-text" style="font-weight: bold;">شبکه‌های اجتماعی ما</span></a></li>
+                                                        <li class="menu-item-has-children" style="margin-bottom: 1em;"><a href="{% url 'blog_list' %}"><span class="mm-text" style="font-weight: bold;">{% trans 'Homebia Blog' %}</span></a></li>
+                                                        <li class="menu-item-has-children" style="margin-bottom: 1em;"><a href="{% url 'home' %}"><span class="mm-text" style="font-weight: bold;">{% trans 'Contact Us' %}</span></a></li>
+                                                        <li class="menu-item-has-children" style="margin-bottom: 1em;"><a href="{% url 'home' %}"><span class="mm-text" style="font-weight: bold;">{% trans 'About Us' %}</span></a></li>
+                                                        <li class="menu-item-has-children"><a href="{% url 'home' %}"><span class="mm-text" style="font-weight: bold;">{% trans 'Homebia Socials' %}</span></a></li>
                                                     </ul>
                                                 </li>
 
@@ -115,7 +115,7 @@
                                             <div class="header-toolbar">
 
                                                 {% if user.is_authenticated %}
-                                                    <a href="{% url 'profile_info_now' %}" class="btn btn-outline btn-size-md btn-color-primary btn-shape-round btn-hover-2" style="margin-left: 0.5em;">پروفایل کاربری</a>
+                                                    <a href="{% url 'profile_info_now' %}" class="btn btn-outline btn-size-md btn-color-primary btn-shape-round btn-hover-2" style="margin-left: 0.5em;">{% trans 'User Dashboard' %}</a>
                                                     <div class="header-toolbar__item d-block d-lg-none">
                                                         <a href="#offcanvasMenu" class="header-toolbar__btn toolbar-btn menu-btn">
                                                             <div class="hamburger-icon">
@@ -129,7 +129,7 @@
                                                         </a>
                                                     </div>
                                                 {% else %}
-                                                    <a href="{% url 'registration' %}" class="btn btn-outline btn-size-md btn-color-primary btn-shape-round btn-hover-2" style="margin-left: 0.5em;">ورود / ثبت نام</a>
+                                                    <a href="{% url 'registration' %}" class="btn btn-outline btn-size-md btn-color-primary btn-shape-round btn-hover-2" style="margin-left: 0.5em;">{% trans 'Login / Signup' %}</a>
                                                     <div class="header-toolbar__item d-block d-lg-none">
                                                         <a href="#offcanvasMenu" class="header-toolbar__btn toolbar-btn menu-btn">
                                                             <div class="hamburger-icon">
@@ -192,14 +192,14 @@
                         <!-- Links1 -->
                         <div class="col-lg-2 col-sm-3 offset-lg-1 offset-sm-2 mb-md--45 offse ">
                             <div class="footer-widget">
-                                <h3 class="widget-title mb--35 mb-sm--20" style="font-size: 1.1em;">هومبیا</h3>
+                                <h3 class="widget-title mb--35 mb-sm--20" style="font-size: 1.1em;">{% trans 'Homebia' %}</h3>
                                 <div class="footer-widget">
                                     <ul class="footer-menu">
-                                        <li><a href="{% url 'home' %}" style="font-size: 0.9em;">درباره ما</a></li>
-                                        <li><a href="{% url 'home' %}" style="font-size: 0.9em;">تماس با ما</a></li>
-                                        <li><a href="{% url 'home' %}" style="font-size: 0.9em;">بلاگ</a></li>
-                                        <li><a href="{% url 'home' %}" style="font-size: 0.9em;">قوانین هومبیا</a></li>
-                                        <li><a href="{% url 'home' %}" style="font-size: 0.9em;">سوالات متداول</a></li>
+                                        <li><a href="{% url 'home' %}" style="font-size: 0.9em;">{% trans 'Contact Us' %}</a></li>
+                                        <li><a href="{% url 'home' %}" style="font-size: 0.9em;">{% trans 'About Us' %}</a></li>
+                                        <li><a href="{% url 'home' %}" style="font-size: 0.9em;">{% trans 'Homebia Blog' %}</a></li>
+                                        <li><a href="{% url 'home' %}" style="font-size: 0.9em;">{% trans 'Homebia Rules' %}</a></li>
+                                        <li><a href="{% url 'home' %}" style="font-size: 0.9em;">{% trans 'FAQ' %}</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -208,13 +208,13 @@
                         <!-- Links2 -->
                         <div class="col-lg-2 col-sm-4 offset-md-1 offset-lg-0 mb-xs--45">
                             <div class="footer-widget">
-                                <h3 class="widget-title mb--35 mb-sm--20" style="font-size: 1.1em;">محصولات</h3>
+                                <h3 class="widget-title mb--35 mb-sm--20" style="font-size: 1.1em;">{% trans 'Products' %}</h3>
                                 <div class="footer-widget">
                                     <ul class="footer-menu">
-                                        <li><a href="{% url 'home' %}" style="font-size: 0.9em;">دوره آموزشی</a></li>
-                                        <li><a href="{% url 'home' %}" style="font-size: 0.9em;">خدمات</a></li>
-                                        <li><a href="{% url 'home' %}" style="font-size: 0.9em;">فایل‌ها</a></li>
-                                        <li><a href="{% url 'home' %}" style="font-size: 0.9em;">سرمایه‌گذاری</a></li>
+                                        <li><a href="{% url 'home' %}" style="font-size: 0.9em;">{% trans 'Course' %}</a></li>
+                                        <li><a href="{% url 'home' %}" style="font-size: 0.9em;">{% trans 'Services' %}</a></li>
+                                        <li><a href="{% url 'home' %}" style="font-size: 0.9em;">{% trans 'Files' %}</a></li>
+                                        <li><a href="{% url 'home' %}" style="font-size: 0.9em;">{% trans 'Investment Opportunities' %}</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -223,13 +223,13 @@
                         <!-- Links3 -->
                         <div class="col-lg-2 col-md-3 col-sm-4">
                             <div class="footer-widget">
-                                <h3 class="widget-title mb--35 mb-sm--20" style="font-size: 1.1em;">در شبکه‌های اجتماعی</h3>
+                                <h3 class="widget-title mb--35 mb-sm--20" style="font-size: 1.1em;">{% trans 'Homebia Socials' %}</h3>
                                 <div class="footer-widget">
                                     <ul class="footer-menu">
-                                        <li><a href="{% url 'home' %}" style="font-size: 0.9em;">اینستاگرام</a></li>
-                                        <li><a href="{% url 'home' %}" style="font-size: 0.9em;">لینکدین</a></li>
-                                        <li><a href="{% url 'home' %}" style="font-size: 0.9em;">یوتیوب</a></li>
-                                        <li><a href="{% url 'home' %}" style="font-size: 0.9em;">آپارات</a></li>
+                                        <li><a href="{% url 'home' %}" style="font-size: 0.9em;">{% trans 'Instagram' %}</a></li>
+                                        <li><a href="{% url 'home' %}" style="font-size: 0.9em;">{% trans 'LinkedIn' %}</a></li>
+                                        <li><a href="{% url 'home' %}" style="font-size: 0.9em;">{% trans 'Youtube' %}</a></li>
+                                        <li><a href="{% url 'home' %}" style="font-size: 0.9em;">{% trans 'Aparat' %}</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -238,12 +238,12 @@
                         <!-- Links4 -->
                         <div class="col-lg-2 col-md-3 col-sm-4">
                             <div class="footer-widget">
-                                <h3 class="widget-title mb--35 mb-sm--20" style="font-size: 1.1em;">پیوندهای مهم</h3>
+                                <h3 class="widget-title mb--35 mb-sm--20" style="font-size: 1.1em;">{% trans 'Important Links' %}</h3>
                                 <div class="footer-widget">
                                     <ul class="footer-menu">
-                                        <li><a href="{% url 'home' %}" style="font-size: 0.9em; border-bottom: 1px solid #00a65c; color: #00a65c; font-weight: bolder">ثبت نام مشاور</a></li>
-                                        <li><a href="{% url 'home' %}" style="font-size: 0.9em; border-bottom: 1px solid #00a65c; color: #00a65c; font-weight: bolder">ثبت آگهی</a></li>
-                                        <li><a href="{% url 'home' %}" style="font-size: 0.9em; border-bottom: 1px solid #00a65c; color: #00a65c; font-weight: bolder">ثبت آگهی</a></li>
+                                        <li><a href="{% url 'home' %}" style="font-size: 0.9em; border-bottom: 1px solid #00a65c; color: #00a65c; font-weight: bolder">{% trans 'Register as Consultant' %}</a></li>
+                                        <li><a href="{% url 'home' %}" style="font-size: 0.9em; border-bottom: 1px solid #00a65c; color: #00a65c; font-weight: bolder">{% trans 'Register a File' %}</a></li>
+                                        <li><a href="{% url 'home' %}" style="font-size: 0.9em; border-bottom: 1px solid #00a65c; color: #00a65c; font-weight: bolder">{% trans 'Register a File' %}</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -278,50 +278,50 @@
                     <ul class="offcanvas-menu">
 
                         <li class="menu-item-has-children active">
-                            <a href="{% url 'home' %}">خانه</a>
+                            <a href="{% url 'home' %}">{% trans 'Homepage' %}</a>
                         </li>
 
                         <li class="menu-item-has-children">
-                            <a href="{% url 'services' %}">خدمات</a>
+                            <a href="{% url 'services' %}">{% trans 'Services' %}</a>
                             <ul class="sub-menu">
                                 <li class="menu-item-has-children">
                                     <a href="{% url 'counseling' %}">
-                                        <span class="mm-text">مشاوره</span>
+                                        <span class="mm-text">{% trans 'Counseling' %}</span>
                                     </a>
                                 </li>
                                 <li class="menu-item-has-children">
-                                    <a href="{% url 'session' %}">حضور در نشست</a>
+                                    <a href="{% url 'session' %}">{% trans 'Participation in Session' %}</a>
                                 </li>
                                 <li class="menu-item-has-children">
-                                    <a href="{% url 'visit' %}">حضور در بازدید</a>
+                                    <a href="{% url 'visit' %}">{% trans 'Participation in Visit' %}</a>
                                 </li>
                             </ul>
                         </li>
 
                         <li class="menu-item-has-children">
-                            <a href="{% url 'home' %}">فایل‌ها</a>
+                            <a href="{% url 'home' %}">{% trans 'Files' %}</a>
                         </li>
 
                         <li class="menu-item-has-children">
-                            <a href="#">سرمایه‌گذاری</a>
+                            <a href="#">{% trans 'Investment Opportunities' %}</a>
                         </li>
 
                         <li class="menu-item-has-children">
-                            <a href="http://127.0.0.1:8000/admin">پنل مدیریت</a>
+                            <a href="http://127.0.0.1:8000/admin">{% trans 'Admin Panel' %}</a>
                             <ul class="sub-menu">
                                 <li class="menu-item-has-children">
                                     <a href="{% url 'home' %}">
-                                        <span class="mm-text">بلاگ</span>
+                                        <span class="mm-text">{% trans 'Homebia Blog' %}</span>
                                     </a>
                                 </li>
                                 <li class="menu-item-has-children">
-                                    <a href="{% url 'home' %}">تماس با ما</a>
+                                    <a href="{% url 'home' %}">{% trans 'Contact Us' %}</a>
                                 </li>
                                 <li class="menu-item-has-children">
-                                    <a href="{% url 'home' %}">درباره ما</a>
+                                    <a href="{% url 'home' %}">{% trans 'About Us' %}</a>
                                 </li>
                                 <li class="menu-item-has-children">
-                                    <a href="{% url 'home' %}">شبکه‌های اجتماعی ما</a>
+                                    <a href="{% url 'home' %}">{% trans 'Homebia Socials' %}</a>
                                 </li>
                             </ul>
                         </li>
