@@ -17,13 +17,13 @@
         <div class="container">
             <div class="row">
                 <div class="col-12 text-center">
-                    <h1 class="page-title" style="color: rgb(0, 51, 121)">بلاگ هومبیا، مجله جامع مسکن</h1>
+                    <h1 class="page-title" style="color: rgb(0, 51, 121)">{% trans 'Homebia Blog: Real Estate Magazine' %}</h1>
                     <ul class="breadcrumb" style="margin-top: 4em;">
-                        <li style="margin-right: 0;!important;"><a href="{% url 'category_homebia' %}" style="color: rgb(0, 51, 121); margin-right: 20px; margin-left: 20px;">هومبیا</a></li>
-                        <li style="margin-right: 0;!important;"><a href="{% url 'category_news' %}" style="color: rgb(0, 51, 121); margin-right: 20px; margin-left: 20px;">اخبار</a></li>
-                        <li style="margin-right: 0;!important;"><a href="{% url 'category_analytical' %}" style="color: rgb(0, 51, 121); margin-right: 20px; margin-left: 20px;">تحلیلی</a></li>
-                        <li style="margin-right: 0;!important;"><a href="{% url 'category_educational' %}" style="color: rgb(0, 51, 121); margin-right: 20px; margin-left: 20px;">آموزشی</a></li>
-                        <li style="margin-right: 0;!important;"><a href="{% url 'blog_list' %}" style="color: rgb(0, 51, 121); margin-right: 20px; margin-left: 20px; border-bottom: solid 1px rgb(0, 51, 121);">همه</a></li>
+                        <li style="margin-right: 0;!important;"><a href="{% url 'category_homebia' %}" style="color: rgb(0, 51, 121); margin-right: 20px; margin-left: 20px;">{% trans 'Homebia Blogs' %}</a></li>
+                        <li style="margin-right: 0;!important;"><a href="{% url 'category_news' %}" style="color: rgb(0, 51, 121); margin-right: 20px; margin-left: 20px;">{% trans 'News Blogs' %}</a></li>
+                        <li style="margin-right: 0;!important;"><a href="{% url 'category_analytical' %}" style="color: rgb(0, 51, 121); margin-right: 20px; margin-left: 20px;">{% trans 'Analytical Blogs' %}</a></li>
+                        <li style="margin-right: 0;!important;"><a href="{% url 'category_educational' %}" style="color: rgb(0, 51, 121); margin-right: 20px; margin-left: 20px;">{% trans 'Educational Blogs' %}</a></li>
+                        <li style="margin-right: 0;!important;"><a href="{% url 'blog_list' %}" style="color: rgb(0, 51, 121); margin-right: 20px; margin-left: 20px; border-bottom: solid 1px rgb(0, 51, 121);">{% trans 'All Blogs' %}</a></li>
                     </ul>
                 </div>
             </div>
@@ -53,12 +53,12 @@
                                             <div class="blog__info">
                                                 <h2 class="blog__title" style="font-weight: bold;"><a href="{{ blog.get_absolute_url }}">{{ blog.title|farsi_number }}</a></h2>
                                                 <div class="blog__meta">
-                                                    <span class="posted-on">تاریخ انتشار: {{ blog.date_creation|to_jalali }}</span>
+                                                    <span class="posted-on">{% trans 'Publication Date' %}: {{ blog.date_creation|to_jalali }}</span>
                                                 </div>
                                                 <div class="blog__meta">
-                                                    <span class="posted-on">دسته‌بندی: {{ blog.blog_category }}</span>
+                                                    <span class="posted-on">{% trans 'Category' %}: {{ blog.blog_category }}</span>
                                                 </div>
-                                                <a href="{{ blog.get_absolute_url }}" class="btn btn-outline btn-brw-2" data-animation="fadeInUp" data-duration=".3s" data-delay=".6s" style="line-height: 0.6em; font-weight: normal; float: left">مطالعه بیشتر</a>
+                                                <a href="{{ blog.get_absolute_url }}" class="btn btn-outline btn-brw-2" data-animation="fadeInUp" data-duration=".3s" data-delay=".6s" style="line-height: 0.6em; font-weight: normal; float: left">{% trans 'Read More' %}</a>
                                             </div>
                                         </div>
                                     </article>
@@ -71,15 +71,15 @@
                         <!-- Pagination -->
                         <div class="my-pagination">
                             {% if page_obj.has_previous %}
-                                <a href="?page=1">&laquo; ابتدا</a>
+                                <a href="?page=1">&laquo; {% trans 'First' %}</a>
                             {% else %}
-                                <span class="my-disabled">&laquo; ابتدا</span>
+                                <span class="my-disabled">&laquo; {% trans 'First' %}</span>
                             {% endif %}
 
                             {% if page_obj.has_previous %}
-                                <a href="?page={{ page_obj.previous_page_number }}">‹ قبل</a>
+                                <a href="?page={{ page_obj.previous_page_number }}">‹ {% trans 'Previous' %}</a>
                             {% else %}
-                                <span class="my-disabled">‹ قبل</span>
+                                <span class="my-disabled">‹ {% trans 'Previous' %}</span>
                             {% endif %}
 
                             {% for num in page_obj.paginator.page_range %}
@@ -91,15 +91,15 @@
                             {% endfor %}
 
                             {% if page_obj.has_next %}
-                                <a href="?page={{ page_obj.next_page_number }}">بعد ›</a>
+                                <a href="?page={{ page_obj.next_page_number }}">{% trans 'Next' %} ›</a>
                             {% else %}
-                                <span class="my-disabled">بعد ›</span>
+                                <span class="my-disabled">{% trans 'Next' %} ›</span>
                             {% endif %}
 
                             {% if page_obj.has_next %}
-                                <a href="?page={{ page_obj.paginator.num_pages }}">انتها &raquo;</a>
+                                <a href="?page={{ page_obj.paginator.num_pages }}">{% trans 'Last Page' %} &raquo;</a>
                             {% else %}
-                                <span class="my-disabled">انتها &raquo;</span>
+                                <span class="my-disabled">{% trans 'Last Page' %} &raquo;</span>
                             {% endif %}
                         </div>
                         <!-- end: Pagination -->
