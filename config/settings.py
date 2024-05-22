@@ -128,7 +128,7 @@ TIME_ZONE = 'Asia/Tehran'
 # TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_L18N = True
-USE_TZ = True
+USE_TZ = False
 
 
 # Default primary key field type

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-22 15:55+0330\n"
+"POT-Creation-Date: 2024-05-22 17:35+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -42,9 +42,9 @@ msgstr "حضور در بازدید"
 msgid "Files"
 msgstr "آگهی‌ها"
 
-#: .\_base.html:93 .\_base.html:217 .\_base.html:306
-msgid "Investment Opportunities"
-msgstr "فرصت‌های سرمایه‌گذاری"
+#: .\_base.html:93
+msgid "Cases"
+msgstr "سرمایه‌گذاری"
 
 #: .\_base.html:98 .\_base.html:310
 msgid "Admin Panel"
@@ -93,6 +93,10 @@ msgstr "محصولات"
 #: .\_base.html:214
 msgid "Course"
 msgstr "دوره آموزشی"
+
+#: .\_base.html:217 .\_base.html:306
+msgid "Investment Opportunities"
+msgstr "فرصت‌های سرمایه‌گذاری"
 
 #: .\_base.html:229
 msgid "Instagram"
