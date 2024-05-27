@@ -19,10 +19,10 @@
                 <div class="col-span-12 rounded-lg bg-primary-light dark:bg-secondary-dark">
                     <ol class="grid grid-cols-2 overflow-hidden rounded-lg">
                         <li class="flex flex-col items-center justify-center gap-2 bg-tertiary-500/10 p-4 text-xs text-tertiary-500 dark:bg-tertiary-400/10 dark:text-tertiary-400 sm:text-sm md:text-base" style="background-color: #00A65C;">
-                            <p class="leading-none" style="font-size: 1.2em; color: #fefeff; font-weight: bold">ثبت درخواست حضور در بازدید</p>
+                            <p class="leading-none" style="font-size: 1.2em; color: #fefeff; font-weight: bold">{% trans 'Submit a visit request' %}</p>
                         </li>
                         <li class="flex flex-col items-center justify-center gap-2 p-4 text-xs text-tertiary-500 opacity-50 dark:text-tertiary-400 sm:text-sm md:text-base" style="background-color: #fefeff">
-                            <p class="leading-none" style="font-size: 1.3em; color: #00a65c; font-weight: bold">جزئیات درخواست حضور در بازدید</p>
+                            <p class="leading-none" style="font-size: 1.3em; color: #00a65c; font-weight: bold">{% trans 'Detail of visit request' %}</p>
                         </li>
                   </ol>
                 </div>
@@ -41,7 +41,7 @@
                                     <div class="col-span-2 md:col-span-1 mt-2">
                                         <label for="{{ form.city.id_for_label }}" class="relative block rounded-lg border border-secondary-light shadow-base dark:border-primary-light/5 mb-12">
                                             <span class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-primary-light px-2 py-0.5 text-sm text-quaternary-600 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-focus:top-0 peer-focus:text-sm dark:bg-secondary-dark dark:text-quaternary-300 mr-4">
-                                              انتخاب شهر
+                                              {% trans 'Choose the city' %}
                                             </span>
                                             {% render_field form.city type="text" id="name" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" %}
                                         </label>
@@ -51,7 +51,7 @@
                                     <div class="col-span-2 md:col-span-1">
                                         <label for="{{ form.date.id_for_label }}" class="relative block rounded-lg border border-secondary-light shadow-base dark:border-primary-light/5 mb-12">
                                             <span class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-primary-light px-2 py-0.5 text-sm text-quaternary-600 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-focus:top-0 peer-focus:text-sm dark:bg-secondary-dark dark:text-quaternary-300 mr-4">
-                                                تعیین تاریخ بازدید
+                                                {% trans 'Choose the visit date' %}
                                             </span>
                                             {% render_field form.date type="text" id="number" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" %}
                                         </label>
@@ -61,7 +61,7 @@
                                     <div class="col-span-2 md:col-span-1">
                                         <label for="{{ form.time.id_for_label }}" class="relative block rounded-lg border border-secondary-light shadow-base dark:border-primary-light/5 mb-12">
                                             <span class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-primary-light px-2 py-0.5 text-sm text-quaternary-600 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-focus:top-0 peer-focus:text-sm dark:bg-secondary-dark dark:text-quaternary-300 mr-4">
-                                                تعیین زمان بازدید
+                                                {% trans 'Choose the visit time' %}
                                             </span>
                                             {% render_field form.time  class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" %}
                                         </label>
@@ -71,7 +71,7 @@
                                     <div class="col-span-2 md:col-span-1">
                                         <label for="{{ form.name_and_family.id_for_label }}" class="relative block rounded-lg border border-secondary-light shadow-base dark:border-primary-light/5 mb-12">
                                             <span class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-primary-light px-2 py-0.5 text-sm text-quaternary-600 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-focus:top-0 peer-focus:text-sm dark:bg-secondary-dark dark:text-quaternary-300 mr-4">
-                                                نام و نام خانوادگی
+                                                {% trans 'First and last name' %}
                                             </span>
                                             {% render_field form.name_and_family type="text" id="number" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" %}
                                         </label>
@@ -79,7 +79,7 @@
 
                                     <!-- Submit -->
                                     <div class="col-span-2 flex justify-end">
-                                        <button style="padding: 1em 2.5em;!important;" type="submit" class="btn-primary w-full px-4 py-2 md:w-auto">ثبت درخواست حضور در بازدید</button>
+                                        <button style="padding: 1em 2.5em;!important;" type="submit" class="btn-primary w-full px-4 py-2 md:w-auto">{% trans 'Submit the visit request' %}</button>
                                     </div>
 
                                 </form>

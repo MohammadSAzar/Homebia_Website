@@ -1,0 +1,399 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-05-27 16:19+0330\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+#: .\models.py:13 .\models.py:135 .\models.py:180
+msgid "Tehran"
+msgstr "تهران"
+
+#: .\models.py:14
+msgid "Karaj"
+msgstr "کرج"
+
+#: .\models.py:19
+msgid "Owner / Lessor"
+msgstr "مالک / موجر"
+
+#: .\models.py:20
+msgid "Buyer / Tenant"
+msgstr "خریدار / مستاجر"
+
+#: .\models.py:25
+msgid "Morning"
+msgstr "صبح"
+
+#: .\models.py:26
+msgid "Noon"
+msgstr "ظهر"
+
+#: .\models.py:27
+msgid "Evening"
+msgstr "عصر"
+
+#: .\models.py:28
+msgid "Night"
+msgstr "شب"
+
+#: .\models.py:33
+msgid "Accepted"
+msgstr "تایید شده"
+
+#: .\models.py:34
+msgid "Canceled"
+msgstr "رد شده"
+
+#: .\models.py:35
+msgid "Pending"
+msgstr "در حال بررسی"
+
+#: .\models.py:36
+msgid "Done"
+msgstr "اتمام یافته"
+
+#: .\models.py:81
+msgid "In Person"
+msgstr "حضوری"
+
+#: .\models.py:82
+msgid "On Phone"
+msgstr "تلفنی"
+
+#: .\models.py:83
+msgid "On Chat"
+msgstr "چتی"
+
+#: .\models.py:90
+msgid "Counseling Type"
+msgstr "نوع مشاوره"
+
+#: .\models.py:91
+msgid "Date of Counseling"
+msgstr "تاریخ مشاوره"
+
+#: .\models.py:92
+msgid "Time of Counseling"
+msgstr "زمان مشاوره"
+
+#: .\models.py:93 .\models.py:139 .\models.py:183
+msgid "Name and Family"
+msgstr "نام و نام خانوادگی"
+
+#: .\models.py:94 .\models.py:140 .\models.py:184
+msgid "Phone Number"
+msgstr "شماره تلفن همراه"
+
+#: .\models.py:95 .\models.py:141 .\models.py:185
+msgid "Status"
+msgstr "وضعیت درخواست"
+
+#: .\models.py:96 .\models.py:142 .\models.py:186
+msgid "Date and Time of Creation"
+msgstr "زمان ایجاد"
+
+#: .\models.py:135 .\models.py:180
+msgid "City"
+msgstr "شهر"
+
+#: .\models.py:136
+msgid "Customer Type"
+msgstr "نوع مشتری"
+
+#: .\models.py:137
+msgid "Date of Session"
+msgstr "تاریخ نشست"
+
+#: .\models.py:138
+msgid "Time of Session"
+msgstr "زمان نشست"
+
+#: .\models.py:181
+msgid "Date of Visit"
+msgstr "تاریخ بازدید"
+
+#: .\models.py:182
+msgid "Time of Visit"
+msgstr "زمان بازدید"
+
+#: .\templates\services\counseling.html:10
+msgid "Counseling"
+msgstr "مشاوره"
+
+#: .\templates\services\counseling.html:22
+#: .\templates\services\counseling_detail.html:23
+msgid "Submit a counseling request"
+msgstr "ثبت درخواست مشاوره"
+
+#: .\templates\services\counseling.html:25
+#: .\templates\services\counseling_detail.html:26
+msgid "Detail of counseling request"
+msgstr "جزئیات درخواست مشاوره"
+
+#: .\templates\services\counseling.html:44
+msgid "Choose the counseling type"
+msgstr "انتخاب نوع مشاوره"
+
+#: .\templates\services\counseling.html:54
+msgid "Choose the counseling date"
+msgstr "انتخاب تاریخ مشاوره"
+
+#: .\templates\services\counseling.html:64 .\templates\services\session.html:74
+msgid "Choose the counseling time"
+msgstr "انتخاب زمان مشاوره"
+
+#: .\templates\services\counseling.html:74 .\templates\services\session.html:84
+#: .\templates\services\visit.html:74
+msgid "First and last name"
+msgstr "نام و نام خانوادگی"
+
+#: .\templates\services\counseling.html:82
+msgid "Submit the counseling request"
+msgstr "ثبت درخواست مشاوره"
+
+#: .\templates\services\counseling_detail.html:11
+msgid "Counseling detail"
+msgstr "جزئیات درخواست مشاوره"
+
+#: .\templates\services\counseling_detail.html:41
+msgid "Counseling type"
+msgstr "نوع مشاوره"
+
+#: .\templates\services\counseling_detail.html:48
+msgid "Customer type"
+msgstr "نوع مشتری"
+
+#: .\templates\services\counseling_detail.html:55
+msgid "Counseling date"
+msgstr "تاریخ مشاوره"
+
+#: .\templates\services\counseling_detail.html:62
+msgid "Counseling time"
+msgstr "زمان مشاوره"
+
+#: .\templates\services\counseling_detail.html:69
+#: .\templates\services\session_detail.html:73
+#: .\templates\services\visit_detail.html:65
+msgid "Name & Family"
+msgstr "نام و نام خانوادگی"
+
+#: .\templates\services\counseling_detail.html:93
+#: .\templates\services\counseling_detail.html:132
+msgid "Cost of counseling"
+msgstr "هزینه مشاوره"
+
+#: .\templates\services\counseling_detail.html:96
+#: .\templates\services\counseling_detail.html:106
+#: .\templates\services\counseling_detail.html:116
+#: .\templates\services\counseling_detail.html:133
+#: .\templates\services\counseling_detail.html:140
+#: .\templates\services\counseling_detail.html:147
+#: .\templates\services\session_detail.html:100
+#: .\templates\services\session_detail.html:110
+#: .\templates\services\session_detail.html:120
+#: .\templates\services\session_detail.html:137
+#: .\templates\services\session_detail.html:144
+#: .\templates\services\session_detail.html:151
+#: .\templates\services\visit_detail.html:92
+#: .\templates\services\visit_detail.html:102
+#: .\templates\services\visit_detail.html:112
+#: .\templates\services\visit_detail.html:129
+#: .\templates\services\visit_detail.html:136
+#: .\templates\services\visit_detail.html:143
+msgid "Tooman"
+msgstr "تومان"
+
+#: .\templates\services\counseling_detail.html:103
+#: .\templates\services\counseling_detail.html:139
+#: .\templates\services\session_detail.html:107
+#: .\templates\services\session_detail.html:143
+#: .\templates\services\visit_detail.html:99
+#: .\templates\services\visit_detail.html:135
+msgid "Tax"
+msgstr "مالیات"
+
+#: .\templates\services\counseling_detail.html:113
+#: .\templates\services\counseling_detail.html:146
+#: .\templates\services\session_detail.html:117
+#: .\templates\services\session_detail.html:150
+#: .\templates\services\visit_detail.html:109
+#: .\templates\services\visit_detail.html:142
+msgid "Total price"
+msgstr "هزینه نهایی"
+
+#: .\templates\services\counseling_detail.html:123
+#: .\templates\services\counseling_detail.html:152
+#: .\templates\services\session_detail.html:127
+#: .\templates\services\session_detail.html:156
+#: .\templates\services\visit_detail.html:119
+#: .\templates\services\visit_detail.html:148
+msgid "Go to payment page"
+msgstr "رفتن به صفحه پرداخت"
+
+#: .\templates\services\counseling_registration.html:10
+#: .\templates\services\session_registration.html:10
+#: .\templates\services\visit_registration.html:10
+msgid "Mobile registration"
+msgstr "ورود با تلفن همراه"
+
+#: .\templates\services\counseling_registration.html:22
+#: .\templates\services\session_registration.html:22
+#: .\templates\services\visit_registration.html:22
+msgid "Phone Number Registration"
+msgstr "ورود به سایت با شماره تلفن همراه"
+
+#: .\templates\services\counseling_registration.html:41
+#: .\templates\services\session_registration.html:41
+#: .\templates\services\visit_registration.html:41
+msgid "Enter Your Phone Number: "
+msgstr "شماره تلفن همراه خود را وارد کنید: "
+
+#: .\templates\services\counseling_registration.html:50
+#: .\templates\services\session_registration.html:50
+#: .\templates\services\visit_registration.html:50
+msgid "Get Approval Code"
+msgstr "دریافت کد تایید"
+
+#: .\templates\services\counseling_verification.html:10
+#: .\templates\services\session_verification.html:10
+#: .\templates\services\visit_verification.html:10
+msgid "Mobile verification"
+msgstr "تایید ورود"
+
+#: .\templates\services\counseling_verification.html:22
+#: .\templates\services\session_verification.html:22
+#: .\templates\services\visit_verification.html:22
+msgid "Phone Number Verification"
+msgstr "تایید شماره تلفن همراه"
+
+#: .\templates\services\counseling_verification.html:42
+#: .\templates\services\session_verification.html:42
+#: .\templates\services\visit_verification.html:42
+msgid "Your Phone Number: "
+msgstr "شماره تلفن همراه شما: "
+
+#: .\templates\services\counseling_verification.html:49
+#: .\templates\services\session_verification.html:49
+#: .\templates\services\visit_verification.html:49
+msgid "Enter The Sent Approval Code"
+msgstr "کد پیامک شده را وارد نمایید: "
+
+#: .\templates\services\counseling_verification.html:54
+#: .\templates\services\session_verification.html:54
+#: .\templates\services\visit_verification.html:54
+msgid "Did not get the code?"
+msgstr "کد را دریافت نکردید؟"
+
+#: .\templates\services\counseling_verification.html:59
+#: .\templates\services\session_verification.html:59
+#: .\templates\services\visit_verification.html:59
+msgid "Register in Homebia"
+msgstr "ورود به هومبیا"
+
+#: .\templates\services\session.html:10
+msgid "Session"
+msgstr "نشست"
+
+#: .\templates\services\session.html:22
+#: .\templates\services\session_detail.html:23
+msgid "Submit a session request"
+msgstr "ثبت درخواست حضور در نشست"
+
+#: .\templates\services\session.html:25
+#: .\templates\services\session_detail.html:26
+msgid "Detail of session request"
+msgstr "جزئیات درخواست حضور در نشست"
+
+#: .\templates\services\session.html:44 .\templates\services\visit.html:44
+msgid "Choose the city"
+msgstr "انتخاب شهر"
+
+#: .\templates\services\session.html:54
+msgid "Choose the user type"
+msgstr "انتخاب نوع مشتری"
+
+#: .\templates\services\session.html:64
+msgid "Choose the session date"
+msgstr "انتخاب تاریخ نشست"
+
+#: .\templates\services\session.html:92
+msgid "Submit the session request"
+msgstr "ثبت درخواست نشست"
+
+#: .\templates\services\session_detail.html:11
+msgid "Session detail"
+msgstr "جزئیات نشست"
+
+#: .\templates\services\session_detail.html:41
+#: .\templates\services\session_detail.html:49
+msgid "Session type"
+msgstr "نوع نشست"
+
+#: .\templates\services\session_detail.html:57
+msgid "Session date"
+msgstr "تاریخ نشست"
+
+#: .\templates\services\session_detail.html:65
+msgid "Session time"
+msgstr "زمان نشست"
+
+#: .\templates\services\session_detail.html:97
+#: .\templates\services\session_detail.html:136
+msgid "Cost of session"
+msgstr "هزینه حضور در نشست"
+
+#: .\templates\services\visit.html:22 .\templates\services\visit_detail.html:23
+msgid "Submit a visit request"
+msgstr "ثبت درخواست بازدید"
+
+#: .\templates\services\visit.html:25 .\templates\services\visit_detail.html:26
+msgid "Detail of visit request"
+msgstr "جزئیات درخواست حضور در بازدید"
+
+#: .\templates\services\visit.html:54
+msgid "Choose the visit date"
+msgstr "انتخاب تاریخ بازدید"
+
+#: .\templates\services\visit.html:64
+msgid "Choose the visit time"
+msgstr "انتخاب زمان بازدید"
+
+#: .\templates\services\visit.html:82
+msgid "Submit the visit request"
+msgstr "ثبت درخواست بازدید"
+
+#: .\templates\services\visit_detail.html:11
+msgid "Visit detail"
+msgstr "جزئیات بازدید"
+
+#: .\templates\services\visit_detail.html:41
+msgid "Visit type"
+msgstr "نوع بازدید"
+
+#: .\templates\services\visit_detail.html:49
+msgid "Visit date"
+msgstr "تاریخ بازدید"
+
+#: .\templates\services\visit_detail.html:57
+msgid "Visit time"
+msgstr "زمان بازدید"
+
+#: .\templates\services\visit_detail.html:89
+#: .\templates\services\visit_detail.html:128
+msgid "Cost of visit"
+msgstr "هزینه بازدید"
+
+
