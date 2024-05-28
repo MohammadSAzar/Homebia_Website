@@ -47,10 +47,18 @@ class Blog(models.Model):
         return reverse('blog_detail', args=[self.slug])
 
 
+comment_statuses = [
+    ('acc', _('Accepted')),
+    ('rej', _('Rejected')),
+    ('wit', _('Waiting')),
+]
+
 class Comment(models.Model):
+    COMMENT_STATUSES = comment_statuses
     name = models.CharField(max_length=40, verbose_name=_('Comment Name'))
     blog = models.ForeignKey(Blog, on_delete=models.CASCADE, related_name='comments')
     body = models.CharField(max_length=500, verbose_name=_('Comment Text'))
+    status = models.CharField(max_length=30, choices=COMMENT_STATUSES, default='wit', verbose_name=_('Status'), blank=True, null=True)
     date_creation = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
@@ -61,11 +69,13 @@ class Comment(models.Model):
 
 
 class Reply(models.Model):
+    COMMENT_STATUSES = comment_statuses
     reply_name = models.CharField(max_length=40, verbose_name=_('Reply Name'))
     blog = models.ForeignKey(Blog, on_delete=models.CASCADE, related_name='blog_replies', blank=True, null=True)
     parent_comment = models.ForeignKey(Comment, on_delete=models.CASCADE, related_name="replies", null=True, blank=True)
     parent_reply = models.ForeignKey('Reply', on_delete=models.CASCADE, related_name="replies_pr", null=True, blank=True)
     body = models.CharField(max_length=500, verbose_name=_('Reply Text'))
+    status = models.CharField(max_length=30, choices=COMMENT_STATUSES, default='wit', verbose_name=_('Status'), blank=True, null=True)
     date_creation = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
