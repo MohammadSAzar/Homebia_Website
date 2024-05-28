@@ -52,6 +52,7 @@ class BlogDetailView(DetailView):
 
                 new_reply = Reply(reply_name=reply_name, body=body, blog=self.object, parent_comment=parent_comment, parent_reply=parent_reply)
                 new_reply.save()
+                messages.success(self.request, 'نظر شما ثبت شد و پس از تایید منتشر خواهد شد.')
         else:
             comment_form = CommentForm(self.request.POST)
             if comment_form.is_valid():
@@ -59,6 +60,7 @@ class BlogDetailView(DetailView):
                 body = comment_form.cleaned_data['body']
                 new_comment = Comment(name=name, body=body, blog=self.object)
                 new_comment.save()
+                messages.success(self.request, 'نظر شما ثبت شد و پس از تایید منتشر خواهد شد.')
 
         return HttpResponseRedirect(reverse('blog_detail', args=[self.kwargs['slug']]))
 

@@ -4,13 +4,31 @@
 {% load i18n %}
 {% load jalali_tags %}
 {% load number_converter %}
-{% load i18n %}
 {% load humanize %}
 {% load widget_tweaks %}
+
 
 {% block title %}{{ blog.title }}{% endblock %}
 
 {% block content %}
+
+    <!-- Messages -->
+    {% if messages %}
+        <div class="modal fade" id="messageModal" tabindex="-1" role="dialog" aria-labelledby="messageModalLabel" aria-hidden="true" style="margin-top: 7em;">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-body" style="margin: 5px 0;!important;">
+                        {% for message in messages %}
+                            <div class="alert alert-{{ message.tags }}" style="margin-bottom: 0;!important; text-align: center;!important;">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+    <!-- end: Messages -->
 
     <!-- Blog detail -->
     <div class="inner-page-content ptb--80 ptb-md--60">
@@ -96,6 +114,7 @@
                 <section class="comment col-lg-12 order-lg-3">
                     <p class="comment-title"><span style="margin: 0 10px; color: black;">"{{ number_of_comments }}"</span> نظر ثبت شده است</p>
 
+                    <!-- Comment & Replies -->
                     <ul class="comment-list mb--45">
                         {% for comment in comments %}
 
@@ -155,7 +174,7 @@
                                 <ul class="children">
                                     {% for reply in comment.replies.all %}
                                         <li>
-                                            <!-- Reply 222222 >>> detail -->
+                                            <!-- Reply 111111 >>> detail -->
                                             <div class="single-comment" style="background-color: #fefefe">
                                                 <div class="comment-info">
                                                     <div class="comment-meta">
@@ -468,6 +487,7 @@
 
 
                     </ul>
+                    <!-- end: Comment & Replies -->
 
                     <!-- Comment form -->
                     <div class="comment-respond">

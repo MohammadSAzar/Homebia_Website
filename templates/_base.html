@@ -341,6 +341,15 @@
     <script src="{% static 'main/js/vendor-1.js' %}"></script>
     <script src="{% static 'main/js/main-1.js' %}"></script>
     <script src="{% static 'main/js/reply-buttons.js' %}"></script>
+    <script src="{% static 'main/js/jquery-3.1.1.min.js' %}"></script>
+    <script src="{% static 'main/js/popper.min.js' %}"></script>
+    <script src="{% static 'main/js/bootstrap.min.js' %}"></script>
+    <!-- for Messages -->
+    <script>
+        $(document).ready(function() {
+            $('#messageModal').modal('show');
+        });
+    </script>
 
 </body>
 
