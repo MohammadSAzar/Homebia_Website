@@ -85,12 +85,15 @@
                                                 <li class="mainmenu__item menu-item-has-children">
                                                     <a href="{% url 'home' %}" class="mainmenu__link">
                                                         <span class="mm-text" style="font-weight: bold;">{% trans 'Files' %}</span>
-                                                    </a>
-                                                </li>
-
-                                                <li class="mainmenu__item menu-item-has-children">
-                                                    <a href="{% url 'home' %}" class="mainmenu__link">
-                                                        <span class="mm-text" style="font-weight: bold;">{% trans 'Cases' %}</span>
+                                                        <ul class="sub-menu">
+                                                        {% if user.is_authenticated %}
+                                                            <li class="menu-item-has-children" style="margin-bottom: 1em;"><a href="{% url 'file_create' %}"><span class="mm-text" style="font-weight: bold;">{% trans 'File Submit' %}</span></a></li>
+                                                        {% else %}
+                                                            <li class="menu-item-has-children" style="margin-bottom: 1em;"><a href="{% url 'registration' %}"><span class="mm-text" style="font-weight: bold;">{% trans 'File Submit' %}</span></a></li>
+                                                        {% endif %}
+                                                        <li class="menu-item-has-children" style="margin-bottom: 1em;"><a href="{% url 'home' %}"><span class="mm-text" style="font-weight: bold;">{% trans 'Files' %}</span></a></li>
+                                                        <li class="menu-item-has-children" style="margin-bottom: 1em;"><a href="{% url 'home' %}"><span class="mm-text" style="font-weight: bold;">{% trans 'Rents' %}</span></a></li>
+                                                    </ul>
                                                     </a>
                                                 </li>
 
@@ -104,50 +107,99 @@
                                                     </ul>
                                                 </li>
 
+                                                <li class="mainmenu__item menu-item-has-children">
+                                                    {% if user.is_authenticated %}
+                                                        <a href="{% url 'profile_info_now' %}" class="mainmenu__link">
+                                                            <span class="mm-text" style="font-weight: bold;">{% trans 'User Dashboard' %}</span>
+                                                        </a>
+                                                    {% else %}
+                                                        <a href="{% url 'registration' %}" class="mainmenu__link">
+                                                            <span class="mm-text" style="font-weight: bold;">{% trans 'Login / Signup' %}</span>
+                                                        </a>
+                                                    {% endif %}
+                                                </li>
+
                                             </ul>
                                         </nav>
                                     </div>
                                     <!-- end: Menu -->
 
-                                    <!-- Registration -->
+                                    <!-- File Submit -->
                                     <div class="header__main-right">
                                         <div class="header-toolbar-wrap">
-                                            <div class="header-toolbar">
 
-                                                {% if user.is_authenticated %}
-                                                    <a href="{% url 'profile_info_now' %}" class="btn btn-outline btn-size-md btn-color-primary btn-shape-round btn-hover-2" style="margin-left: 0.5em;">{% trans 'User Dashboard' %}</a>
-                                                    <div class="header-toolbar__item d-block d-lg-none">
-                                                        <a href="#offcanvasMenu" class="header-toolbar__btn toolbar-btn menu-btn">
-                                                            <div class="hamburger-icon">
-                                                                <span></span>
-                                                                <span></span>
-                                                                <span></span>
-                                                                <span></span>
-                                                                <span></span>
-                                                                <span></span>
+                                            <ul>
+                                                <li style="margin-bottom: 3px;">
+                                                    <div class="header-toolbar">
+                                                        {% if user.is_authenticated %}
+                                                            <a href="{% url 'file_create' %}" class="btn btn-outline btn-size-md btn-color-primary btn-shape-round btn-hover-2" style="width: 167px; margin-left: 0.5em;">{% trans 'ثبت آگهی فروش' %}</a>
+                                                            <div class="header-toolbar__item d-block d-lg-none">
+                                                                <a href="#offcanvasMenu" class="header-toolbar__btn toolbar-btn menu-btn">
+                                                                    <div class="hamburger-icon">
+                                                                        <span></span>
+                                                                        <span></span>
+                                                                        <span></span>
+                                                                        <span></span>
+                                                                        <span></span>
+                                                                        <span></span>
+                                                                    </div>
+                                                                </a>
                                                             </div>
-                                                        </a>
-                                                    </div>
-                                                {% else %}
-                                                    <a href="{% url 'registration' %}" class="btn btn-outline btn-size-md btn-color-primary btn-shape-round btn-hover-2" style="margin-left: 0.5em;">{% trans 'Login / Signup' %}</a>
-                                                    <div class="header-toolbar__item d-block d-lg-none">
-                                                        <a href="#offcanvasMenu" class="header-toolbar__btn toolbar-btn menu-btn">
-                                                            <div class="hamburger-icon">
-                                                                <span></span>
-                                                                <span></span>
-                                                                <span></span>
-                                                                <span></span>
-                                                                <span></span>
-                                                                <span></span>
+                                                        {% else %}
+                                                            <a href="{% url 'registration' %}" class="btn btn-outline btn-size-md btn-color-primary btn-shape-round btn-hover-2" style="width: 167px; margin-left: 0.5em;">{% trans 'ثبت آگهی فروش' %}</a>
+                                                            <div class="header-toolbar__item d-block d-lg-none">
+                                                                <a href="#offcanvasMenu" class="header-toolbar__btn toolbar-btn menu-btn">
+                                                                    <div class="hamburger-icon">
+                                                                        <span></span>
+                                                                        <span></span>
+                                                                        <span></span>
+                                                                        <span></span>
+                                                                        <span></span>
+                                                                        <span></span>
+                                                                    </div>
+                                                                </a>
                                                             </div>
-                                                        </a>
+                                                        {% endif %}
                                                     </div>
-                                                {% endif %}
+                                                </li>
 
-                                            </div>
+                                                <li style="margin-top: 3px;">
+                                                    <div class="header-toolbar">
+                                                        {% if user.is_authenticated %}
+                                                            <a href="{% url 'file_create' %}" class="btn btn-outline btn-size-md btn-color-primary btn-shape-round btn-hover-2" style="width: 167px; margin-left: 0.5em;">{% trans 'ثبت آگهی اجاره' %}</a>
+                                                            <div class="header-toolbar__item d-block d-lg-none">
+                                                                <div class="header-toolbar__btn toolbar-btn menu-btn">
+{#                                                                    <div class="hamburger-icon">#}
+{#                                                                        <span></span>#}
+{#                                                                        <span></span>#}
+{#                                                                        <span></span>#}
+{#                                                                        <span></span>#}
+{#                                                                        <span></span>#}
+{#                                                                        <span></span>#}
+{#                                                                    </div>#}
+                                                                </div>
+                                                            </div>
+                                                        {% else %}
+                                                            <a href="{% url 'registration' %}" class="btn btn-outline btn-size-md btn-color-primary btn-shape-round btn-hover-2" style="width: 167px; margin-left: 0.5em;">{% trans 'ثبت آگهی اجاره' %}</a>
+                                                            <div class="header-toolbar__item d-block d-lg-none">
+                                                                <div class="header-toolbar__btn toolbar-btn menu-btn">
+{#                                                                    <div class="hamburger-icon">#}
+{#                                                                        <span></span>#}
+{#                                                                        <span></span>#}
+{#                                                                        <span></span>#}
+{#                                                                        <span></span>#}
+{#                                                                        <span></span>#}
+{#                                                                        <span></span>#}
+{#                                                                    </div>#}
+                                                                </div>
+                                                            </div>
+                                                        {% endif %}
+                                                    </div>
+                                                </li>
+                                            </ul>
                                         </div>
                                     </div>
-                                    <!-- end: Registration -->
+                                    <!-- end: File Submit -->
 
                                 </div>
                             </div>
@@ -300,10 +352,25 @@
 
                         <li class="menu-item-has-children">
                             <a href="{% url 'home' %}">{% trans 'Files' %}</a>
-                        </li>
-
-                        <li class="menu-item-has-children">
-                            <a href="#">{% trans 'Investment Opportunities' %}</a>
+                            <ul class="sub-menu">
+                                <li class="menu-item-has-children">
+                                    {% if user.is_authenticated %}
+                                        <a href="{% url 'file_create' %}">
+                                            <span class="mm-text">{% trans 'File Submit' %}</span>
+                                        </a>
+                                    {% else %}
+                                        <a href="{% url 'registration' %}">
+                                            <span class="mm-text">{% trans 'File Submit' %}</span>
+                                        </a>
+                                    {% endif %}
+                                </li>
+                                <li class="menu-item-has-children">
+                                    <a href="{% url 'home' %}">{% trans 'Files' %}</a>
+                                </li>
+                                <li class="menu-item-has-children">
+                                    <a href="{% url 'home' %}">{% trans 'Rents' %}</a>
+                                </li>
+                            </ul>
                         </li>
 
                         <li class="menu-item-has-children">
@@ -325,6 +392,16 @@
                                 </li>
                             </ul>
                         </li>
+
+                        <li class="menu-item-has-children">
+                            {% if user.is_authenticated %}
+                                <a href="{% url 'profile_info_now' %}">{% trans 'User Dashboard' %}</a>
+                            {% else %}
+                                <a href="{% url 'registration' %}">{% trans 'Login / Signup' %}</a>
+                            {% endif %}
+                        </li>
+
+
 
                     </ul>
                 </nav>
