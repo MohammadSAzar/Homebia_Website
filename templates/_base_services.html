@@ -17,6 +17,7 @@
         <link href="{% static 'services/css/theme.css' %}" rel="stylesheet">
 
         <!-- JS scripts -->
+        <script src="{% static 'services/scripts/jquery-3.7.1.min.js' %}"></script>
         <script defer src="{% static 'services/scripts/dependencies/flowbite.min.js' %}"></script>
         <script defer src="{% static 'services/scripts/dependencies/swiper.min.js' %}"></script>
         <script defer src="{% static 'services/scripts/app.js' %}"></script>
@@ -26,6 +27,7 @@
                 localStorage.getItem("theme") === "dark",
             );
         </script>
+        <!-- end: JS scripts -->
 
         <!-- Fav -->
         <link rel="icon" type="image/png" href="{% static 'main/img/logos/ho-fav.png' %}">

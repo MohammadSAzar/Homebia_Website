@@ -45,7 +45,7 @@ class File(models.Model):
 	room = models.CharField(max_length=15, choices=status.rooms, verbose_name=_('Number of Rooms'))
 	area = models.PositiveIntegerField(verbose_name=_('Area'))
 	year = models.CharField(max_length=15, choices=status.years, verbose_name=_('Year of Construction'))
-	document = models.CharField(max_length=100, verbose_name=_('Document'))
+	document = models.CharField(max_length=15, choices=status.booleans, verbose_name=_('Document'))
 	level = models.CharField(max_length=15, choices=status.levels, verbose_name=_('Level'))
 	parking = models.CharField(max_length=15, choices=status.booleans, verbose_name=_('Parking'))
 	elevator = models.CharField(max_length=15, choices=status.booleans, verbose_name=_('Elevator'))

@@ -28,71 +28,72 @@
                 </div>
                 <!-- end: top ribbon -->
 
-                <!-- main counseling form  -->
+                <!-- main create file  -->
                 <div class="col-span-12 md:col-span-12">
                     <div class="rounded-lg bg-primary-light p-4 dark:bg-secondary-dark">
 
                         <div class="col-span-5 md:col-span-3">
                             <div class="grid grid-cols-1 items-center gap-6 mt-2">
 
+                                <!-- Create file -->
+                                <form method="post">
+                                    {% csrf_token %}
+                                    {{ form.as_p }}
+                                    <input type="submit" value="Submit">
+                                </form>
 
-{#                                <form method="post">#}
-{#                                    {% csrf_token %}#}
-{##}
-{#                                    <!-- Counseling type -->#}
-{#                                    <div class="col-span-2 md:col-span-1 mt-2">#}
-{#                                        <label for="{{ form.counseling_type.id_for_label }}" class="relative block rounded-lg border border-secondary-light shadow-base dark:border-primary-light/5 mb-12">#}
-{#                                            <span class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-primary-light px-2 py-0.5 text-sm text-quaternary-600 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-focus:top-0 peer-focus:text-sm dark:bg-secondary-dark dark:text-quaternary-300 mr-4">#}
-{#                                              {% trans 'Choose the counseling type' %}#}
-{#                                            </span>#}
-{#                                            {% render_field form.counseling_type type="text" id="name" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" %}#}
-{#                                        </label>#}
-{#                                    </div>#}
-{##}
-{#                                    <!-- Date -->#}
-{#                                    <div class="col-span-2 md:col-span-1">#}
-{#                                        <label for="{{ form.date.id_for_label }}" class="relative block rounded-lg border border-secondary-light shadow-base dark:border-primary-light/5 mb-12">#}
-{#                                            <span class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-primary-light px-2 py-0.5 text-sm text-quaternary-600 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-focus:top-0 peer-focus:text-sm dark:bg-secondary-dark dark:text-quaternary-300 mr-4">#}
-{#                                                {% trans 'Choose the counseling date' %}#}
-{#                                            </span>#}
-{#                                            {% render_field form.date type="text" id="number" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" %}#}
-{#                                        </label>#}
-{#                                    </div>#}
-{##}
-{#                                    <!-- Time -->#}
-{#                                    <div class="col-span-2 md:col-span-1">#}
-{#                                        <label for="{{ form.time.id_for_label }}" class="relative block rounded-lg border border-secondary-light shadow-base dark:border-primary-light/5 mb-12">#}
-{#                                            <span class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-primary-light px-2 py-0.5 text-sm text-quaternary-600 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-focus:top-0 peer-focus:text-sm dark:bg-secondary-dark dark:text-quaternary-300 mr-4">#}
-{#                                                {% trans 'Choose the counseling time' %}#}
-{#                                            </span>#}
-{#                                            {% render_field form.time class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" %}#}
-{#                                        </label>#}
-{#                                    </div>#}
-{##}
-{#                                    <!-- Name -->#}
-{#                                    <div class="col-span-2 md:col-span-1">#}
-{#                                        <label for="{{ form.name_and_family.id_for_label }}" class="relative block rounded-lg border border-secondary-light shadow-base dark:border-primary-light/5 mb-12">#}
-{#                                            <span class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-primary-light px-2 py-0.5 text-sm text-quaternary-600 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-focus:top-0 peer-focus:text-sm dark:bg-secondary-dark dark:text-quaternary-300 mr-4">#}
-{#                                                {% trans 'First and last name' %}#}
-{#                                            </span>#}
-{#                                            {% render_field form.name_and_family type="text" id="number" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" %}#}
-{#                                        </label>#}
-{#                                    </div>#}
-{##}
-{#                                    <!-- Submit -->#}
-{#                                    <div class="col-span-2 flex justify-end">#}
-{#                                        <button style="padding: 1em 2.5em;!important;" type="submit" class="btn-primary w-full px-4 py-2 md:w-auto">{% trans 'Submit the counseling request' %}</button>#}
-{#                                    </div>#}
-{##}
-{#                                </form>#}
+                                <script>
+                                $(document).ready(function() {
+                                    $('#district').hide(); // Hide district field initially
 
+                                    $('#province').change(function() {
+                                        var provinceId = $(this).val();
+                                        $.ajax({
+                                            url: '/load_cities/',
+                                            data: {
+                                                'province': provinceId
+                                            },
+                                            success: function(data) {
+                                                $('#city').html('');
+                                                $('#district').hide(); // Hide district field when changing province
+                                                $.each(data.cities, function(index, city) {
+                                                    $('#city').append(`<option value="${city[0]}">${city[1]}</option>`);
+                                                });
+                                                $('#city').trigger('change'); // Trigger change event on city select
+                                            }
+                                        });
+                                    });
+
+                                    $('#city').change(function() {
+                                        var cityId = $(this).val();
+                                        $.ajax({
+                                            url: '/load_districts/',
+                                            data: {
+                                                'city': cityId
+                                            },
+                                            success: function(data) {
+                                                $('#district').html('');
+                                                if (data.districts.length > 0) {
+                                                    $('#district').show(); // Show district field only if there are districts
+                                                    $.each(data.districts, function(index, district) {
+                                                        $('#district').append(`<option value="${district[0]}">${district[1]}</option>`);
+                                                    });
+                                                } else {
+                                                    $('#district').hide(); // Hide district field if there are no districts
+                                                }
+                                            }
+                                        });
+                                    });
+                                });
+                                </script>
+                                <!-- end: Create file --> -->
 
                             </div>
                         </div>
 
                     </div>
                 </div>
-                <!-- end: main counseling form  -->
+                <!-- end: main create file  -->
 
             </div>
         </div>
