@@ -1,0 +1,9 @@
+{% for file in files %}
+    {{ file.title }}
+    {{ file.description }}
+    {{ file.province }}
+    {{ file.city }}
+    {{ file.district }}
+    {{ file.price }}
+    <button><a href="{{ file.get_absolute_url }}" style="text-decoration: none">مشاهده</a></button>
+{% endfor %}

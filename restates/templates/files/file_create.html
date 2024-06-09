@@ -11,6 +11,37 @@
 
 {% block content %}
 
+    <!-- Messages -->
+    {% if messages %}
+        {% for message in messages %}
+            {{ message }}
+        {% endfor %}
+    {% endif %}
+{#    {% if messages %}#}
+{#        <div class="modal fade" id="messageModal" tabindex="-1" role="dialog" aria-labelledby="messageModalLabel" aria-hidden="true" style="margin-top: 7em;">#}
+{#            <div class="modal-dialog" role="document">#}
+{#                <div class="modal-content">#}
+{#                    <div class="modal-body" style="margin: 5px 0;!important;">#}
+{#                        {% for message in messages %}#}
+{#                            <div class="alert alert-{{ message.tags }}" style="margin-bottom: 0;!important; text-align: center;!important;">#}
+{#                                {{ message }}#}
+{#                            </div>#}
+{#                        {% endfor %}#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{#    {% endif %}#}
+    <!-- end: Messages -->
+
+    <!-- for Messages -->
+{#    <script>#}
+{#        $(document).ready(function() {#}
+{#            $('#messageModal').modal('show');#}
+{#        });#}
+{#    </script>#}
+    <!-- end: Messages -->
+
     <main class="flex-grow bg-secondary-light pb-14 pt-36 dark:bg-primary-dark xs:pt-36" style="background-color: transparent">
         <div class="container pb-14">
             <div class="grid grid-cols-12 gap-2 lg:gap-6">
@@ -36,7 +67,7 @@
                             <div class="grid grid-cols-1 items-center gap-6 mt-2">
 
                                 <!-- Create file -->
-                                <form method="post">
+                                <form method="post" action="#" enctype="multipart/form-data">
                                     {% csrf_token %}
                                     {{ form.as_p }}
                                     <input type="submit" value="Submit">

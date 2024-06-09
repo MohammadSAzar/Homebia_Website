@@ -5,7 +5,7 @@ from django.http import HttpResponseRedirect
 
 from .models import CustomUserModel, Profile
 from .forms import RegistrationForm, AuthenticationForm, IntoEditForm
-from .helper import send_otp, get_random_otp, otp_time_checker
+from .checkers import send_otp, get_random_otp, otp_time_checker
 
 
 def registration_view(request):

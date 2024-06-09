@@ -7,7 +7,7 @@ from django.http import HttpResponseRedirect
 
 from accounts.models import CustomUserModel
 from accounts.forms import RegistrationForm
-from accounts.helper import send_otp, get_random_otp, otp_time_checker
+from accounts.checkers import send_otp, get_random_otp, otp_time_checker
 
 from .models import Counseling, Session, Visit
 from .forms import CounselingForm, SessionForm, VisitForm

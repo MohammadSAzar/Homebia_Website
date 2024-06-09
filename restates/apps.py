@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class FilesConfig(AppConfig):
+class RestatesConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'files'
+    name = 'restates'

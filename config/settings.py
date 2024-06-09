@@ -47,7 +47,7 @@ INSTALLED_APPS = [
 
     'accounts',
     'blog',
-    'files',
+    'restates',
     'jalali',
     'pages',
     'services',
