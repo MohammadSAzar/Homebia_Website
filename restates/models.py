@@ -82,7 +82,7 @@ class SaleFile(models.Model):
     phone_number_for_contact = models.CharField(max_length=11, blank=True, null=True, verbose_name=_('Provider Phone Number'))
     provider_national_code = models.CharField(max_length=10, blank=True, null=True, verbose_name=_('Provider National Code'))
     owner_national_code = models.CharField(max_length=10, blank=True, null=True, verbose_name=_('Owner National Code'))
-    file_postal_code = models.CharField(max_length=10, blank=True, null=True, verbose_name=_('File National Code'))
+    file_postal_code = models.CharField(max_length=10, blank=True, null=True, verbose_name=_('File Postal Code'))
 
     # @property
     # def tracking_code(self):
@@ -101,14 +101,11 @@ class SaleFile(models.Model):
         else:
             if self.status == 'acc':
                 self.datetime_expired = timezone.now() + timezone.timedelta(days=60)
-
         if not self.unique_url_id:
             self.unique_url_id = generate_unique_id()
-
         if not self.slug:
-            self.slug = slugify(self.title)
-
-        super().save(*args, **kwargs)
+            self.slug = slugify(self.title, allow_unicode=True)
+        super(SaleFile, self).save(*args, **kwargs)
 
     def __str__(self):
         return f'{self.title} / {self.unique_url_id}'

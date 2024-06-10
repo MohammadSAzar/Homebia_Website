@@ -20,19 +20,4 @@ class SaleFileCreateForm(forms.ModelForm):
             'district': forms.Select(attrs={'id': 'district'})
         }
 
-    def save(self, commit=True):
-        instance = super(SaleFileCreateForm, self).save(commit=False)
-
-        if instance.pk is not None:
-            old_status = SaleFile.objects.get(pk=instance.pk).status
-            if old_status == 'pen' and instance.status == 'acc':
-                instance.datetime_expired = timezone.now() + timezone.timedelta(days=60)
-
-        if not instance.slug:
-            instance.slug = slugify(instance.title)
-
-        if commit:
-            instance.save()
-
-        return instance
 

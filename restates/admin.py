@@ -12,7 +12,7 @@ class SaleFileAdmin(admin.ModelAdmin):
 	ordering = ('-datetime_created',)
 	prepopulated_fields = {'slug': ('title',)}
 	list_filter = ('status', 'province', 'city')
-	readonly_fields = ('unique_url_id', 'datetime_created', 'datetime_expired')
+	readonly_fields = ('unique_url_id', 'datetime_created', 'datetime_expired',)
 
 
 @admin.register(Province)

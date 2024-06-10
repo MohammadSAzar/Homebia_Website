@@ -67,7 +67,7 @@
                             <div class="grid grid-cols-1 items-center gap-6 mt-2">
 
                                 <!-- Create file -->
-                                <form method="post" action="#" enctype="multipart/form-data">
+                                <form method="post" enctype="multipart/form-data">
                                     {% csrf_token %}
                                     {{ form.as_p }}
                                     <input type="submit" value="Submit">

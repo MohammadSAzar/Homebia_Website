@@ -1,9 +1,10 @@
 {% for file in files %}
-    {{ file.title }}
-    {{ file.description }}
-    {{ file.province }}
-    {{ file.city }}
-    {{ file.district }}
-    {{ file.price }}
-    <button><a href="{{ file.get_absolute_url }}" style="text-decoration: none">مشاهده</a></button>
+    {{ file.title }}<br><br>
+    {{ file.description }}<br><br>
+    {{ file.province }}<br><br>
+    {{ file.city }}<br><br>
+    {{ file.district }}<br><br>
+    {{ file.price }}<br><br>
+    <button><a href="{{ file.get_absolute_url }}" style="text-decoration: none">مشاهده</a></button><br><br>
+    -------------------------------------------------------------------------------------------------------<br><br>
 {% endfor %}
