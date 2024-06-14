@@ -13,34 +13,13 @@
 
     <!-- Messages -->
     {% if messages %}
-        {% for message in messages %}
-            {{ message }}
-        {% endfor %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
     {% endif %}
-{#    {% if messages %}#}
-{#        <div class="modal fade" id="messageModal" tabindex="-1" role="dialog" aria-labelledby="messageModalLabel" aria-hidden="true" style="margin-top: 7em;">#}
-{#            <div class="modal-dialog" role="document">#}
-{#                <div class="modal-content">#}
-{#                    <div class="modal-body" style="margin: 5px 0;!important;">#}
-{#                        {% for message in messages %}#}
-{#                            <div class="alert alert-{{ message.tags }}" style="margin-bottom: 0;!important; text-align: center;!important;">#}
-{#                                {{ message }}#}
-{#                            </div>#}
-{#                        {% endfor %}#}
-{#                    </div>#}
-{#                </div>#}
-{#            </div>#}
-{#        </div>#}
-{#    {% endif %}#}
-    <!-- end: Messages -->
 
-    <!-- for Messages -->
-{#    <script>#}
-{#        $(document).ready(function() {#}
-{#            $('#messageModal').modal('show');#}
-{#        });#}
-{#    </script>#}
-    <!-- end: Messages -->
 
     <main class="flex-grow bg-secondary-light pb-14 pt-36 dark:bg-primary-dark xs:pt-36" style="background-color: transparent">
         <div class="container pb-14">
@@ -48,12 +27,9 @@
 
                 <!-- top ribbon  -->
                 <div class="col-span-12 rounded-lg bg-primary-light dark:bg-secondary-dark">
-                    <ol class="grid grid-cols-2 overflow-hidden rounded-lg">
+                    <ol class="grid grid-cols-1 overflow-hidden rounded-lg">
                         <li class="flex flex-col items-center justify-center gap-2 bg-tertiary-500/10 p-4 text-xs text-tertiary-500 dark:bg-tertiary-400/10 dark:text-tertiary-400 sm:text-sm md:text-base" style="background-color: #00A65C;">
-                            <p class="leading-none" style="font-size: 1.3em; color: #fefeff; font-weight: bold">{% trans 'ثبت آگهی' %}</p>
-                        </li>
-                        <li class="flex flex-col items-center justify-center gap-2 p-4 text-xs text-tertiary-500 opacity-50 dark:text-tertiary-400 sm:text-sm md:text-base" style="background-color: #fefeff">
-                            <p class="leading-none" style="font-size: 1.3em; color: #00a65c; font-weight: bold">{% trans 'جزئیات آگهی' %}</p>
+                            <p class="leading-none" style="font-size: 1.3em; color: #fefeff; font-weight: bold">{% trans 'ثبت آگهی فروش' %}</p>
                         </li>
                   </ol>
                 </div>
@@ -62,66 +38,453 @@
                 <!-- main create file  -->
                 <div class="col-span-12 md:col-span-12">
                     <div class="rounded-lg bg-primary-light p-4 dark:bg-secondary-dark">
-
                         <div class="col-span-5 md:col-span-3">
-                            <div class="grid grid-cols-1 items-center gap-6 mt-2">
 
                                 <!-- Create file -->
                                 <form method="post" enctype="multipart/form-data">
                                     {% csrf_token %}
-                                    {{ form.as_p }}
-                                    <input type="submit" value="Submit">
+                                    <div class="grid grid-cols-2 items-center gap-6 mt-2">
+                                        <!-- Province -->
+                                        <div class="col-span-2 md:col-span-2" style="margin-top: 1em; margin-bottom: 1em;">
+                                            <label style="margin-bottom: 1em;!important;" for="{{ form.province.id_for_label }}" class="relative block rounded-lg border border-secondary-light shadow-base dark:border-primary-light/5 mb-12">
+                                                <span style="font-size: large;" class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-primary-light px-2 py-0.5 text-sm text-quaternary-600 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-focus:top-0 peer-focus:text-sm dark:bg-secondary-dark dark:text-quaternary-300 mr-4">
+                                                    {% trans 'Province: ' %}
+                                                </span>
+                                                {% render_field form.province type="text" id="province" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" %}
+                                            </label>
+                                            <p style="font-weight: normal; font-size: small;">حتما قبل از موارد دیگر، ابتدا استان خود را انتخاب نمایید.</p>
+                                        </div>
+
+                                        <!-- City -->
+                                        <div class="col-span-2 md:col-span-1" style="margin-top: 1em; margin-bottom: 1em;">
+                                            <label style="margin-bottom: 1em;!important;" for="{{ form.city.id_for_label }}" class="relative block rounded-lg border border-secondary-light shadow-base dark:border-primary-light/5 mb-12">
+                                                <span style="font-size: large;" class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-primary-light px-2 py-0.5 text-sm text-quaternary-600 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-focus:top-0 peer-focus:text-sm dark:bg-secondary-dark dark:text-quaternary-300 mr-4">
+                                                    {% trans 'City: ' %}
+                                                </span>
+                                                {% render_field form.city type="text" id="city" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" %}
+                                            </label>
+                                            <p style="font-weight: normal; font-size: small;">اطمینان کنید که شهر با استان انتخابی مطابقت داشته باشد.</p>
+                                        </div>
+
+                                        <!-- District -->
+                                        <div class="col-span-2 md:col-span-1" style="margin-top: 1em; margin-bottom: 1em;">
+                                            <label style="margin-bottom: 1em;!important;" for="{{ form.district.id_for_label }}" class="relative block rounded-lg border border-secondary-light shadow-base dark:border-primary-light/5 mb-12">
+                                                <span style="font-size: large;" class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-primary-light px-2 py-0.5 text-sm text-quaternary-600 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-focus:top-0 peer-focus:text-sm dark:bg-secondary-dark dark:text-quaternary-300 mr-4">
+                                                    {% trans 'District: ' %}
+                                                </span>
+                                                {% render_field form.district type="text" id="district" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" %}
+                                            </label>
+                                            <p style="font-weight: normal; font-size: small;">ممکن است برای شهر شما محله‌ای تعریف نشده باشد، در این صورت مشکلی نیست و ادامه دهید</p>
+                                        </div>
+
+                                        <!-- Price -->
+                                        <div class="col-span-2 md:col-span-1" style="margin-top: 1em; margin-bottom: 1em;">
+                                            <label style="margin-bottom: 1em;!important;" for="{{ form.price.id_for_label }}" class="relative block rounded-lg border border-secondary-light shadow-base dark:border-primary-light/5 mb-12">
+                                                <span style="font-size: large;" class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-primary-light px-2 py-0.5 text-sm text-quaternary-600 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-focus:top-0 peer-focus:text-sm dark:bg-secondary-dark dark:text-quaternary-300 mr-4">
+                                                    {% trans 'Price: ' %}
+                                                </span>
+                                                {% render_field form.price type="number" id="price" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" %}
+                                            </label>
+                                            {% if form.price.errors %}
+                                                <span style="font-weight: normal; font-size: small; color: red;">{{ form.price.errors }}</span>
+                                            {% else %}
+                                                <p style="font-weight: normal; font-size: small;">قیمت را به صورت عددی و به تومان وارد نمایید.</p>
+                                            {% endif %}
+                                        </div>
+
+                                        <!-- Area -->
+                                        <div class="col-span-2 md:col-span-1" style="margin-top: 1em; margin-bottom: 1em;">
+                                            <label style="margin-bottom: 1em;!important;" for="{{ form.area.id_for_label }}" class="relative block rounded-lg border border-secondary-light shadow-base dark:border-primary-light/5 mb-12">
+                                                <span style="font-size: large;" class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-primary-light px-2 py-0.5 text-sm text-quaternary-600 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-focus:top-0 peer-focus:text-sm dark:bg-secondary-dark dark:text-quaternary-300 mr-4">
+                                                    {% trans 'Area: ' %}
+                                                </span>
+                                                {% render_field form.area type="number" id="area" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" %}
+                                            </label>
+                                            {% if form.area.errors %}
+                                                <span style="font-weight: normal; font-size: small; color: red;">{{ form.area.errors }}</span>
+                                            {% else %}
+                                                <p style="font-weight: normal; font-size: small;">متراژ را به صورت عددی و به متر وارد نمایید.</p>
+                                            {% endif %}
+                                        </div>
+
+                                        <!-- Rooms -->
+                                        <div class="col-span-2 md:col-span-1" style="margin-top: 1em; margin-bottom: 1em;">
+                                            <label style="margin-bottom: 1em;!important;" for="{{ form.room.id_for_label }}" class="relative block rounded-lg border border-secondary-light shadow-base dark:border-primary-light/5 mb-12">
+                                                <span style="font-size: large;" class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-primary-light px-2 py-0.5 text-sm text-quaternary-600 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-focus:top-0 peer-focus:text-sm dark:bg-secondary-dark dark:text-quaternary-300 mr-4">
+                                                    {% trans 'Number of Rooms: ' %}
+                                                </span>
+                                                {% render_field form.room type="number" id="room" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" %}
+                                            </label>
+                                        </div>
+
+                                        <!-- Year -->
+                                        <div class="col-span-2 md:col-span-1" style="margin-top: 1em; margin-bottom: 1em;">
+                                            <label style="margin-bottom: 1em;!important;" for="{{ form.year.id_for_label }}" class="relative block rounded-lg border border-secondary-light shadow-base dark:border-primary-light/5 mb-12">
+                                                <span style="font-size: large;" class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-primary-light px-2 py-0.5 text-sm text-quaternary-600 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-focus:top-0 peer-focus:text-sm dark:bg-secondary-dark dark:text-quaternary-300 mr-4">
+                                                    {% trans 'Year of Construction: ' %}
+                                                </span>
+                                                {% render_field form.year type="number" id="year" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" %}
+                                            </label>
+                                        </div>
+
+                                        <!-- Document -->
+                                        <div class="col-span-2 md:col-span-2" style="margin-top: 1em; margin-bottom: 1em;">
+                                            <label style="margin-bottom: 1em;!important;" for="{{ form.document.id_for_label }}" class="relative block rounded-lg border border-secondary-light shadow-base dark:border-primary-light/5 mb-12">
+                                                <span style="font-size: large;" class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-primary-light px-2 py-0.5 text-sm text-quaternary-600 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-focus:top-0 peer-focus:text-sm dark:bg-secondary-dark dark:text-quaternary-300 mr-4">
+                                                    {% trans 'Document Status: ' %}
+                                                </span>
+                                                {% render_field form.document type="number" id="document" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" %}
+                                            </label>
+                                            <p style="font-weight: normal; font-size: small;">وضعیت سند آپارتمان خود را به درستی وارد نمایید.</p>
+                                        </div>
+
+                                        <!-- Level -->
+                                        <div class="col-span-2 md:col-span-1" style="margin-top: 1em; margin-bottom: 1em;">
+                                            <label style="margin-bottom: 1em;!important;" for="{{ form.level.id_for_label }}" class="relative block rounded-lg border border-secondary-light shadow-base dark:border-primary-light/5 mb-12">
+                                                <span style="font-size: large;" class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-primary-light px-2 py-0.5 text-sm text-quaternary-600 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-focus:top-0 peer-focus:text-sm dark:bg-secondary-dark dark:text-quaternary-300 mr-4">
+                                                    {% trans 'Level: ' %}
+                                                </span>
+                                                {% render_field form.level type="number" id="level" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" %}
+                                            </label>
+                                        </div>
+
+                                        <!-- Parking -->
+                                        <div class="col-span-2 md:col-span-1" style="margin-top: 1em; margin-bottom: 1em;">
+                                            <label style="margin-bottom: 1em;!important;" for="{{ form.parking.id_for_label }}" class="relative block rounded-lg border border-secondary-light shadow-base dark:border-primary-light/5 mb-12">
+                                                <span style="font-size: large;" class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-primary-light px-2 py-0.5 text-sm text-quaternary-600 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-focus:top-0 peer-focus:text-sm dark:bg-secondary-dark dark:text-quaternary-300 mr-4">
+                                                    {% trans 'Parking Status: ' %}
+                                                </span>
+                                                {% render_field form.parking type="number" id="parking" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" %}
+                                            </label>
+                                        </div>
+
+                                        <!-- Elevator -->
+                                        <div class="col-span-2 md:col-span-1" style="margin-top: 1em; margin-bottom: 1em;">
+                                            <label style="margin-bottom: 1em;!important;" for="{{ form.elevator.id_for_label }}" class="relative block rounded-lg border border-secondary-light shadow-base dark:border-primary-light/5 mb-12">
+                                                <span style="font-size: large;" class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-primary-light px-2 py-0.5 text-sm text-quaternary-600 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-focus:top-0 peer-focus:text-sm dark:bg-secondary-dark dark:text-quaternary-300 mr-4">
+                                                    {% trans 'Elevator: ' %}
+                                                </span>
+                                                {% render_field form.elevator type="number" id="elevator" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" %}
+                                            </label>
+                                        </div>
+
+                                        <!-- Warehouse -->
+                                        <div class="col-span-2 md:col-span-1" style="margin-top: 1em; margin-bottom: 1em;">
+                                            <label style="margin-bottom: 1em;!important;" for="{{ form.warehouse.id_for_label }}" class="relative block rounded-lg border border-secondary-light shadow-base dark:border-primary-light/5 mb-12">
+                                                <span style="font-size: large;" class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-primary-light px-2 py-0.5 text-sm text-quaternary-600 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-focus:top-0 peer-focus:text-sm dark:bg-secondary-dark dark:text-quaternary-300 mr-4">
+                                                    {% trans 'Warehouse: ' %}
+                                                </span>
+                                                {% render_field form.warehouse type="number" id="warehouse" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" %}
+                                            </label>
+                                        </div>
+
+                                        <!-- Title -->
+                                        <div class="col-span-2 md:col-span-2" style="margin-top: 1em; margin-bottom: 1em;">
+                                            <label style="margin-bottom: 1em;!important;" for="{{ form.title.id_for_label }}" class="relative block rounded-lg border border-secondary-light shadow-base dark:border-primary-light/5 mb-12">
+                                                <span style="font-size: large;" class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-primary-light px-2 py-0.5 text-sm text-quaternary-600 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-focus:top-0 peer-focus:text-sm dark:bg-secondary-dark dark:text-quaternary-300 mr-4">
+                                                    {% trans 'Title: ' %}
+                                                </span>
+                                                {% render_field form.title type="text" id="title" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" %}
+                                            </label>
+                                            <p style="font-weight: normal; font-size: small;">عنوانی مرتبط با آپارتمان خود وارد نمایید (این کار در سرچ فایل شما تاثیر زیادی دارد).</p>
+                                        </div>
+
+                                        <!-- Description -->
+                                        <div class="col-span-2 md:col-span-2" style="margin-top: 1em; margin-bottom: 1em;">
+                                            <label style="margin-bottom: 1em;!important;" for="{{ form.description.id_for_label }}" class="relative block rounded-lg border border-secondary-light shadow-base dark:border-primary-light/5 mb-12">
+                                                <span style="font-size: large;" class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-primary-light px-2 py-0.5 text-sm text-quaternary-600 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-focus:top-0 peer-focus:text-sm dark:bg-secondary-dark dark:text-quaternary-300 mr-4">
+                                                    {% trans 'Description: ' %}
+                                                </span>
+                                                {% render_field form.description type="number" id="description" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" %}
+                                            </label>
+                                            <p style="font-weight: normal; font-size: small;">توضیحات تکمیلی مرتبط با آپارتمان خود را وارد نمایید.</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="grid grid-cols-4 items-center gap-6 mt-2">
+                                        <!-- Cover -->
+                                        <div class="col-span-2 md:col-span-2" style="margin-top: 1em; margin-bottom: 1em;">
+                                            <label style="margin-bottom: 1em;!important;" for="{{ form.cover.id_for_label }}" class="relative block rounded-lg border border-secondary-light shadow-base dark:border-primary-light/5 mb-12">
+                                                <span style="font-size: large;" class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-primary-light px-2 py-0.5 text-sm text-quaternary-600 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-focus:top-0 peer-focus:text-sm dark:bg-secondary-dark dark:text-quaternary-300 mr-4">
+                                                    {% trans 'Cover: ' %}
+                                                </span>
+                                                {% render_field form.cover type="file" id="cover" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" %}
+                                            </label>
+                                            <p style="font-weight: normal; font-size: small;">حداقل یک عکس الزامی است.</p>
+                                        </div>
+
+                                        <!-- Cover2 -->
+                                        <div class="col-span-2 md:col-span-2" style="margin-top: 1em; margin-bottom: 1em;">
+                                            <label style="margin-bottom: 1em;!important;" for="{{ form.cover2.id_for_label }}" class="relative block rounded-lg border border-secondary-light shadow-base dark:border-primary-light/5 mb-12">
+                                                <span style="font-size: large;" class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-primary-light px-2 py-0.5 text-sm text-quaternary-600 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-focus:top-0 peer-focus:text-sm dark:bg-secondary-dark dark:text-quaternary-300 mr-4">
+                                                    {% trans 'Cover2: ' %}
+                                                </span>
+                                                {% render_field form.cover2 type="file" id="cover2" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" %}
+                                            </label>
+                                            <p style="font-weight: normal; font-size: small;">تصاویر بیشتر بهتر است.</p>
+                                        </div>
+
+                                        <!-- Cover3 -->
+                                        <div class="col-span-2 md:col-span-2" style="margin-top: 1em; margin-bottom: 1em;">
+                                            <label style="margin-bottom: 1em;!important;" for="{{ form.cover3.id_for_label }}" class="relative block rounded-lg border border-secondary-light shadow-base dark:border-primary-light/5 mb-12">
+                                                <span style="font-size: large;" class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-primary-light px-2 py-0.5 text-sm text-quaternary-600 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-focus:top-0 peer-focus:text-sm dark:bg-secondary-dark dark:text-quaternary-300 mr-4">
+                                                    {% trans 'Cover3: ' %}
+                                                </span>
+                                                {% render_field form.cover3 type="file" id="cover3" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" %}
+                                            </label>
+                                            <p style="font-weight: normal; font-size: small;">تصاویر بیشتر بهتر است.</p>
+                                        </div>
+
+                                        <!-- Cover4 -->
+                                        <div class="col-span-2 md:col-span-2" style="margin-top: 1em; margin-bottom: 1em;">
+                                            <label style="margin-bottom: 1em;!important;" for="{{ form.cover4.id_for_label }}" class="relative block rounded-lg border border-secondary-light shadow-base dark:border-primary-light/5 mb-12">
+                                                <span style="font-size: large;" class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-primary-light px-2 py-0.5 text-sm text-quaternary-600 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-focus:top-0 peer-focus:text-sm dark:bg-secondary-dark dark:text-quaternary-300 mr-4">
+                                                    {% trans 'Cover4: ' %}
+                                                </span>
+                                                {% render_field form.cover4 type="file" id="cover4" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" %}
+                                            </label>
+                                            <p style="font-weight: normal; font-size: small;">تصاویر بیشتر بهتر است.</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="grid grid-cols-4 items-center gap-6 mt-2">
+                                        <!-- File Direction -->
+                                        <div class="col-span-2 md:col-span-2" style="margin-top: 1em; margin-bottom: 1em;">
+                                            <label style="margin-bottom: 1em;!important;" for="{{ form.direction.id_for_label }}" class="relative block rounded-lg border border-secondary-light shadow-base dark:border-primary-light/5 mb-12">
+                                                <span style="font-size: large;" class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-primary-light px-2 py-0.5 text-sm text-quaternary-600 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-focus:top-0 peer-focus:text-sm dark:bg-secondary-dark dark:text-quaternary-300 mr-4">
+                                                    {% trans 'File Direction: ' %}
+                                                </span>
+                                                {% render_field form.direction type="text" id="direction" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" %}
+                                            </label>
+                                        </div>
+
+                                        <!-- File Levels Number -->
+                                        <div class="col-span-2 md:col-span-2" style="margin-top: 1em; margin-bottom: 1em;">
+                                            <label style="margin-bottom: 1em;!important;" for="{{ form.file_levels.id_for_label }}" class="relative block rounded-lg border border-secondary-light shadow-base dark:border-primary-light/5 mb-12">
+                                                <span style="font-size: large;" class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-primary-light px-2 py-0.5 text-sm text-quaternary-600 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-focus:top-0 peer-focus:text-sm dark:bg-secondary-dark dark:text-quaternary-300 mr-4">
+                                                    {% trans 'File Levels Number: ' %}
+                                                </span>
+                                                {% render_field form.file_levels type="text" id="file_levels" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" %}
+                                            </label>
+                                        </div>
+
+                                        <!-- Apartments per Level -->
+                                        <div class="col-span-2 md:col-span-2" style="margin-top: 1em; margin-bottom: 1em;">
+                                            <label style="margin-bottom: 1em;!important;" for="{{ form.aparts_per_level.id_for_label }}" class="relative block rounded-lg border border-secondary-light shadow-base dark:border-primary-light/5 mb-12">
+                                                <span style="font-size: large;" class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-primary-light px-2 py-0.5 text-sm text-quaternary-600 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-focus:top-0 peer-focus:text-sm dark:bg-secondary-dark dark:text-quaternary-300 mr-4">
+                                                    {% trans 'Apartments per Level: ' %}
+                                                </span>
+                                                {% render_field form.aparts_per_level type="text" id="aparts_per_level" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" %}
+                                            </label>
+                                        </div>
+
+                                        <!-- Balcony -->
+                                        <div class="col-span-2 md:col-span-2" style="margin-top: 1em; margin-bottom: 1em;">
+                                            <label style="margin-bottom: 1em;!important;" for="{{ form.balcony.id_for_label }}" class="relative block rounded-lg border border-secondary-light shadow-base dark:border-primary-light/5 mb-12">
+                                                <span style="font-size: large;" class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-primary-light px-2 py-0.5 text-sm text-quaternary-600 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-focus:top-0 peer-focus:text-sm dark:bg-secondary-dark dark:text-quaternary-300 mr-4">
+                                                    {% trans 'Balcony: ' %}
+                                                </span>
+                                                {% render_field form.balcony type="text" id="balcony" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" %}
+                                            </label>
+                                        </div>
+
+                                        <!-- Bench Stove -->
+                                        <div class="col-span-2 md:col-span-2" style="margin-top: 1em; margin-bottom: 1em;">
+                                            <label style="margin-bottom: 1em;!important;" for="{{ form.bench_stove.id_for_label }}" class="relative block rounded-lg border border-secondary-light shadow-base dark:border-primary-light/5 mb-12">
+                                                <span style="font-size: large;" class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-primary-light px-2 py-0.5 text-sm text-quaternary-600 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-focus:top-0 peer-focus:text-sm dark:bg-secondary-dark dark:text-quaternary-300 mr-4">
+                                                    {% trans 'Bench Stove: ' %}
+                                                </span>
+                                                {% render_field form.bench_stove type="text" id="bench_stove" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" %}
+                                            </label>
+                                        </div>
+
+                                        <!-- Restoration -->
+                                        <div class="col-span-2 md:col-span-2" style="margin-top: 1em; margin-bottom: 1em;">
+                                            <label style="margin-bottom: 1em;!important;" for="{{ form.restoration.id_for_label }}" class="relative block rounded-lg border border-secondary-light shadow-base dark:border-primary-light/5 mb-12">
+                                                <span style="font-size: large;" class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-primary-light px-2 py-0.5 text-sm text-quaternary-600 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-focus:top-0 peer-focus:text-sm dark:bg-secondary-dark dark:text-quaternary-300 mr-4">
+                                                    {% trans 'Restoration: ' %}
+                                                </span>
+                                                {% render_field form.restoration type="text" id="restoration" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" %}
+                                            </label>
+                                        </div>
+
+                                        <!-- Toilet -->
+                                        <div class="col-span-2 md:col-span-2" style="margin-top: 1em; margin-bottom: 1em;">
+                                            <label style="margin-bottom: 1em;!important;" for="{{ form.toilet.id_for_label }}" class="relative block rounded-lg border border-secondary-light shadow-base dark:border-primary-light/5 mb-12">
+                                                <span style="font-size: large;" class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-primary-light px-2 py-0.5 text-sm text-quaternary-600 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-focus:top-0 peer-focus:text-sm dark:bg-secondary-dark dark:text-quaternary-300 mr-4">
+                                                    {% trans 'Toilet: ' %}
+                                                </span>
+                                                {% render_field form.toilet type="text" id="toilet" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" %}
+                                            </label>
+                                        </div>
+
+                                        <!-- Hot Water System -->
+                                        <div class="col-span-2 md:col-span-2" style="margin-top: 1em; margin-bottom: 1em;">
+                                            <label style="margin-bottom: 1em;!important;" for="{{ form.hot_water.id_for_label }}" class="relative block rounded-lg border border-secondary-light shadow-base dark:border-primary-light/5 mb-12">
+                                                <span style="font-size: large;" class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-primary-light px-2 py-0.5 text-sm text-quaternary-600 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-focus:top-0 peer-focus:text-sm dark:bg-secondary-dark dark:text-quaternary-300 mr-4">
+                                                    {% trans 'Hot Water System: ' %}
+                                                </span>
+                                                {% render_field form.hot_water type="text" id="hot_water" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" %}
+                                            </label>
+                                        </div>
+
+                                        <!-- Cooling System -->
+                                        <div class="col-span-2 md:col-span-2" style="margin-top: 1em; margin-bottom: 1em;">
+                                            <label style="margin-bottom: 1em;!important;" for="{{ form.cooling.id_for_label }}" class="relative block rounded-lg border border-secondary-light shadow-base dark:border-primary-light/5 mb-12">
+                                                <span style="font-size: large;" class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-primary-light px-2 py-0.5 text-sm text-quaternary-600 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-focus:top-0 peer-focus:text-sm dark:bg-secondary-dark dark:text-quaternary-300 mr-4">
+                                                    {% trans 'Cooling System: ' %}
+                                                </span>
+                                                {% render_field form.cooling type="text" id="cooling" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" %}
+                                            </label>
+                                        </div>
+
+                                        <!-- Heating System -->
+                                        <div class="col-span-2 md:col-span-2" style="margin-top: 1em; margin-bottom: 1em;">
+                                            <label style="margin-bottom: 1em;!important;" for="{{ form.heating.id_for_label }}" class="relative block rounded-lg border border-secondary-light shadow-base dark:border-primary-light/5 mb-12">
+                                                <span style="font-size: large;" class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-primary-light px-2 py-0.5 text-sm text-quaternary-600 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-focus:top-0 peer-focus:text-sm dark:bg-secondary-dark dark:text-quaternary-300 mr-4">
+                                                    {% trans 'Heating System: ' %}
+                                                </span>
+                                                {% render_field form.heating type="text" id="heating" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" %}
+                                            </label>
+                                        </div>
+
+                                        <!-- Floor Type -->
+                                        <div class="col-span-2 md:col-span-2" style="margin-top: 1em; margin-bottom: 1em;">
+                                            <label style="margin-bottom: 1em;!important;" for="{{ form.floor.id_for_label }}" class="relative block rounded-lg border border-secondary-light shadow-base dark:border-primary-light/5 mb-12">
+                                                <span style="font-size: large;" class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-primary-light px-2 py-0.5 text-sm text-quaternary-600 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-focus:top-0 peer-focus:text-sm dark:bg-secondary-dark dark:text-quaternary-300 mr-4">
+                                                    {% trans 'Floor Type: ' %}
+                                                </span>
+                                                {% render_field form.floor type="text" id="floor" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" %}
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <div class="grid grid-cols-2 items-center gap-6 mt-2">
+                                        <!-- Provider Name -->
+                                        <div class="col-span-2 md:col-span-2" style="margin-top: 1em; margin-bottom: 1em;">
+                                            <label style="margin-bottom: 1em;!important;" for="{{ form.provider_name.id_for_label }}" class="relative block rounded-lg border border-secondary-light shadow-base dark:border-primary-light/5 mb-12">
+                                                <span style="font-size: large;" class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-primary-light px-2 py-0.5 text-sm text-quaternary-600 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-focus:top-0 peer-focus:text-sm dark:bg-secondary-dark dark:text-quaternary-300 mr-4">
+                                                    {% trans 'Provider Name: ' %}
+                                                </span>
+                                                {% render_field form.provider_name type="text" id="provider_name" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" %}
+                                            </label>
+                                            <p style="font-weight: normal; font-size: small;">این نام به عنوان ثبت‌کننده آگهی در سایت نمایش داده خواهد شد.</p>
+                                        </div>
+
+                                        <!-- Provider Phone Number -->
+                                        <div class="col-span-2 md:col-span-1" style="margin-top: 1em; margin-bottom: 1em;">
+                                            <label style="margin-bottom: 1em;!important;" for="{{ form.phone_number_for_contact.id_for_label }}" class="relative block rounded-lg border border-secondary-light shadow-base dark:border-primary-light/5 mb-12">
+                                                <span style="font-size: large;" class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-primary-light px-2 py-0.5 text-sm text-quaternary-600 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-focus:top-0 peer-focus:text-sm dark:bg-secondary-dark dark:text-quaternary-300 mr-4">
+                                                    {% trans 'Provider Phone Number: ' %}
+                                                </span>
+                                                {% render_field form.phone_number_for_contact type="text" id="phone_number_for_contact" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" %}
+                                            </label>
+                                            {% if form.phone_number_for_contact.errors %}
+                                                <span style="font-weight: normal; font-size: small; color: red;">{{ form.phone_number_for_contact.errors }}</span>
+                                            {% else %}
+                                                <p style="font-weight: normal; font-size: small;">برای تماس با شما جهت بازدید لازم است، لطفا شماره در دسترس وارد نمایید.</p>
+                                            {% endif %}
+                                        </div>
+
+                                        <!-- Provider National Code -->
+                                        <div class="col-span-2 md:col-span-1" style="margin-top: 1em; margin-bottom: 1em;">
+                                            <label style="margin-bottom: 1em;!important;" for="{{ form.provider_national_code.id_for_label }}" class="relative block rounded-lg border border-secondary-light shadow-base dark:border-primary-light/5 mb-12">
+                                                <span style="font-size: large;" class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-primary-light px-2 py-0.5 text-sm text-quaternary-600 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-focus:top-0 peer-focus:text-sm dark:bg-secondary-dark dark:text-quaternary-300 mr-4">
+                                                    {% trans 'Provider National Code: ' %}
+                                                </span>
+                                                {% render_field form.provider_national_code type="text" id="provider_national_code" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" %}
+                                            </label>
+                                            {% if form.provider_national_code.errors %}
+                                                <span style="font-weight: normal; font-size: small; color: red;">{{ form.provider_national_code.errors }}</span>
+                                            {% else %}
+                                                <p style="font-weight: normal; font-size: small;">کد ملی شما تحت هیچ شرایطی در سایت نمایش داده نخواهد شد.</p>
+                                            {% endif %}
+                                        </div>
+
+                                        <!-- Owner National Code -->
+                                        <div class="col-span-2 md:col-span-1" style="margin-top: 1em; margin-bottom: 1em;">
+                                            <label style="margin-bottom: 1em;!important;" for="{{ form.owner_national_code.id_for_label }}" class="relative block rounded-lg border border-secondary-light shadow-base dark:border-primary-light/5 mb-12">
+                                                <span style="font-size: large;" class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-primary-light px-2 py-0.5 text-sm text-quaternary-600 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-focus:top-0 peer-focus:text-sm dark:bg-secondary-dark dark:text-quaternary-300 mr-4">
+                                                    {% trans 'Owner National Code: ' %}
+                                                </span>
+                                                {% render_field form.owner_national_code type="text" id="owner_national_code" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" %}
+                                            </label>
+                                            {% if form.owner_national_code.errors %}
+                                                <span style="font-weight: normal; font-size: small; color: red;">{{ form.owner_national_code.errors }}</span>
+                                            {% else %}
+                                                <p style="font-weight: normal; font-size: small;">کد ملی مالک تحت هیچ شرایطی در سایت نمایش داده نخواهد شد.</p>
+                                            {% endif %}
+                                        </div>
+
+                                        <!-- File Postal Code -->
+                                        <div class="col-span-2 md:col-span-1" style="margin-top: 1em; margin-bottom: 1em;">
+                                            <label style="margin-bottom: 1em;!important;" for="{{ form.file_postal_code.id_for_label }}" class="relative block rounded-lg border border-secondary-light shadow-base dark:border-primary-light/5 mb-12">
+                                                <span style="font-size: large;" class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-primary-light px-2 py-0.5 text-sm text-quaternary-600 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-focus:top-0 peer-focus:text-sm dark:bg-secondary-dark dark:text-quaternary-300 mr-4">
+                                                    {% trans 'File Postal Code: ' %}
+                                                </span>
+                                                {% render_field form.file_postal_code type="text" id="file_postal_code" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" %}
+                                            </label>
+                                            {% if form.file_postal_code.errors %}
+                                                <span style="font-weight: normal; font-size: small; color: red;">{{ form.file_postal_code.errors }}</span>
+                                            {% else %}
+                                                <p style="font-weight: normal; font-size: small;">کد پستی آپارتمان شما تحت هیچ شرایطی در سایت نمایش داده نخواهد شد.</p>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+
+                                    <!-- Submit -->
+                                    <div class="col-span-2 flex justify-end" style="margin-top: 3em;">
+                                        <button style="padding: 1em 2.5em;!important;" type="submit" class="btn-primary w-full px-4 py-2 md:w-auto">{% trans 'Submit File' %}</button>
+                                    </div>
                                 </form>
 
                                 <script>
-                                $(document).ready(function() {
-                                    $('#district').hide(); // Hide district field initially
+                                    $(document).ready(function() {
+                                        $('#district').hide(); // Hide district field initially
 
-                                    $('#province').change(function() {
-                                        var provinceId = $(this).val();
-                                        $.ajax({
-                                            url: '/load_cities/',
-                                            data: {
-                                                'province': provinceId
-                                            },
-                                            success: function(data) {
-                                                $('#city').html('');
-                                                $('#district').hide(); // Hide district field when changing province
-                                                $.each(data.cities, function(index, city) {
-                                                    $('#city').append(`<option value="${city[0]}">${city[1]}</option>`);
-                                                });
-                                                $('#city').trigger('change'); // Trigger change event on city select
-                                            }
-                                        });
-                                    });
-
-                                    $('#city').change(function() {
-                                        var cityId = $(this).val();
-                                        $.ajax({
-                                            url: '/load_districts/',
-                                            data: {
-                                                'city': cityId
-                                            },
-                                            success: function(data) {
-                                                $('#district').html('');
-                                                if (data.districts.length > 0) {
-                                                    $('#district').show(); // Show district field only if there are districts
-                                                    $.each(data.districts, function(index, district) {
-                                                        $('#district').append(`<option value="${district[0]}">${district[1]}</option>`);
+                                        $('#province').change(function() {
+                                            var provinceId = $(this).val();
+                                            $.ajax({
+                                                url: '/load_cities/',
+                                                data: {
+                                                    'province': provinceId
+                                                },
+                                                success: function(data) {
+                                                    $('#city').html('');
+                                                    $('#district').hide(); // Hide district field when changing province
+                                                    $.each(data.cities, function(index, city) {
+                                                        $('#city').append(`<option value="${city[0]}">${city[1]}</option>`);
                                                     });
-                                                } else {
-                                                    $('#district').hide(); // Hide district field if there are no districts
+                                                    $('#city').trigger('change'); // Trigger change event on city select
                                                 }
-                                            }
+                                            });
+                                        });
+
+                                        $('#city').change(function() {
+                                            var cityId = $(this).val();
+                                            $.ajax({
+                                                url: '/load_districts/',
+                                                data: {
+                                                    'city': cityId
+                                                },
+                                                success: function(data) {
+                                                    $('#district').html('');
+                                                    if (data.districts.length > 0) {
+                                                        $('#district').show(); // Show district field only if there are districts
+                                                        $.each(data.districts, function(index, district) {
+                                                            $('#district').append(`<option value="${district[0]}">${district[1]}</option>`);
+                                                        });
+                                                    } else {
+                                                        $('#district').hide(); // Hide district field if there are no districts
+                                                    }
+                                                }
+                                            });
                                         });
                                     });
-                                });
                                 </script>
-                                <!-- end: Create file --> -->
+                                <!-- end: Create file -->
 
-                            </div>
                         </div>
-
                     </div>
                 </div>
                 <!-- end: main create file  -->
