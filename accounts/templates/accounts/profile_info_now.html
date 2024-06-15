@@ -10,30 +10,59 @@
 
 {% block content %}
 
-    {% if user.is_verified == 'a' %}
+    <div class="nk-block">
+        <div class="card card-bordered">
+            <div class="card-aside-wrap">
 
-        <div class="nk-block">
-            <div class="card card-bordered">
-                <div class="card-aside-wrap">
 
-                    <div class="card-inner card-inner-lg">
-                        <!-- Title -->
-                        <div class="nk-block-head nk-block-head-lg">
-                            <div class="nk-block-between">
-                                <div class="nk-block-head-content">
-                                    <h4 class="nk-block-title">{% trans 'Personal Information' %}</h4>
-                                    <div class="nk-block-des">
-                                        <p></p>
-                                    </div>
-                                </div>
-                                <div class="nk-block-head-content align-self-start d-lg-none">
-                                    <a href="#" class="toggle btn btn-icon btn-trigger mt-n1" data-target="userAside"><em class="icon ni ni-menu-alt-r"></em></a>
+
+                <!-- File create message -->
+                <div id="successModal" class="modal" style="display: none;">
+                    <div class="modal-content">
+                        <h4>Success</h4>
+                        <p id="modal-message"></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="modal-close btn waves-effect waves-light" style="padding: 1em 2.5em;">Close</button>
+                    </div>
+                </div>
+
+                <script>
+                    $(document).ready(function() {
+                        var messages = "{% for message in messages %}{{ message }}{% if not forloop.last %}\\n{% endif %}{% endfor %}";
+                        if (messages) {
+                            $('#modal-message').text(messages);
+                            $('#successModal').show();
+                        }
+                        $('.modal-close').on('click', function() {
+                            $('#successModal').hide();
+                        });
+                    });
+                </script>
+                <!-- end: File create message -->
+
+
+
+
+                <div class="card-inner card-inner-lg">
+                    <!-- Title -->
+                    <div class="nk-block-head nk-block-head-lg">
+                        <div class="nk-block-between">
+                            <div class="nk-block-head-content">
+                                <h4 class="nk-block-title">{% trans 'Personal Information' %}</h4>
+                                <div class="nk-block-des">
+                                    <p></p>
                                 </div>
                             </div>
+                            <div class="nk-block-head-content align-self-start d-lg-none">
+                                <a href="#" class="toggle btn btn-icon btn-trigger mt-n1" data-target="userAside"><em class="icon ni ni-menu-alt-r"></em></a>
+                            </div>
                         </div>
-                        <!-- end: Title -->
+                    </div>
+                    <!-- end: Title -->
 
-                        <!-- Items -->
+                    <!-- Items -->
+                    {% if user.is_verified == 'a' %}
                         <div class="nk-block">
                             <div class="nk-data data-list">
 
@@ -58,37 +87,7 @@
                             </div>
 
                         </div>
-                        <!-- end: Items -->
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
-    {% elif user.is_verified == 'n' %}
-
-        <div class="nk-block">
-            <div class="card card-bordered">
-                <div class="card-aside-wrap">
-
-                    <div class="card-inner card-inner-lg">
-                        <!-- Title -->
-                        <div class="nk-block-head nk-block-head-lg">
-                            <div class="nk-block-between">
-                                <div class="nk-block-head-content">
-                                    <h4 class="nk-block-title">{% trans 'Personal Information' %}</h4>
-                                    <div class="nk-block-des">
-                                        <p></p>
-                                    </div>
-                                </div>
-                                <div class="nk-block-head-content align-self-start d-lg-none">
-                                    <a href="#" class="toggle btn btn-icon btn-trigger mt-n1" data-target="userAside"><em class="icon ni ni-menu-alt-r"></em></a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- end: Title -->
-
-                        <!-- Items -->
+                    {% elif user.is_verified == 'n' %}
                         <div class="nk-block">
                             <div class="nk-data data-list">
 
@@ -113,37 +112,7 @@
                             </div>
 
                         </div>
-                        <!-- end: Items -->
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
-    {% elif user.is_verified == 'i' %}
-
-        <div class="nk-block">
-            <div class="card card-bordered">
-                <div class="card-aside-wrap">
-
-                    <div class="card-inner card-inner-lg">
-                        <!-- Title -->
-                        <div class="nk-block-head nk-block-head-lg">
-                            <div class="nk-block-between">
-                                <div class="nk-block-head-content">
-                                    <h4 class="nk-block-title">{% trans 'Personal Information' %}</h4>
-                                    <div class="nk-block-des">
-                                        <p></p>
-                                    </div>
-                                </div>
-                                <div class="nk-block-head-content align-self-start d-lg-none">
-                                    <a href="#" class="toggle btn btn-icon btn-trigger mt-n1" data-target="userAside"><em class="icon ni ni-menu-alt-r"></em></a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- end: Title -->
-
-                        <!-- Items -->
+                    {% elif user.is_verified == 'i' %}
                         <div class="nk-block">
                             <div class="nk-data data-list">
 
@@ -164,14 +133,178 @@
                             </div>
 
                         </div>
-                        <!-- end: Items -->
-                    </div>
-
+                    {% endif %}
+                    <!-- end: Items -->
                 </div>
+
             </div>
         </div>
-
-    {% endif %}
+    </div>
 
 {% endblock %}
 
+
+
+
+{#{% if user.is_verified == 'a' %}#}
+{##}
+{#    <div class="nk-block">#}
+{#        <div class="card card-bordered">#}
+{#            <div class="card-aside-wrap">#}
+{##}
+{#                <div class="card-inner card-inner-lg">#}
+{#                    <!-- Title -->#}
+{#                    <div class="nk-block-head nk-block-head-lg">#}
+{#                        <div class="nk-block-between">#}
+{#                            <div class="nk-block-head-content">#}
+{#                                <h4 class="nk-block-title">{% trans 'Personal Information' %}</h4>#}
+{#                                <div class="nk-block-des">#}
+{#                                    <p></p>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                            <div class="nk-block-head-content align-self-start d-lg-none">#}
+{#                                <a href="#" class="toggle btn btn-icon btn-trigger mt-n1" data-target="userAside"><em class="icon ni ni-menu-alt-r"></em></a>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                    <!-- end: Title -->#}
+{##}
+{#                    <!-- Items -->#}
+{#                    <div class="nk-block">#}
+{#                        <div class="nk-data data-list">#}
+{##}
+{#                            <div class="data-item" data-bs-toggle="modal" data-bs-target="#profile-edit">#}
+{#                                <div class="data-col">#}
+{#                                    <span class="data-label" style="font-size: large">{% trans 'Phone Number' %}</span>#}
+{#                                    <span class="data-value" style="font-size: large">{{ user.phone_number }}</span>#}
+{#                                </div>#}
+{#                            </div>#}
+{##}
+{#                            <div class="data-item" data-bs-toggle="modal" data-bs-target="#profile-edit">#}
+{#                                <div class="data-col">#}
+{#                                    <span class="data-label" style="font-size: large">{% trans 'Account Status' %}</span>#}
+{#                                    <span class="data-value" style="font-size: large; color: #00a65c">{% trans 'Verified' %}</span>#}
+{#                                </div>#}
+{#                            </div>#}
+{##}
+{#                            <div class="data-item" data-bs-toggle="modal" data-bs-target="#profile-edit" style="direction: ltr; margin-top: 1.5em">#}
+{#                                <a href="{% url 'profile_info_edit' %}" class="btn btn-round btn-xl btn-primary" style="background-color: #00a65c; border: #00A65C; padding-left: 2em; padding-right: 2em;">{% trans 'Personal Information Update' %}</a>#}
+{#                            </div>#}
+{##}
+{#                        </div>#}
+{##}
+{#                    </div>#}
+{#                    <!-- end: Items -->#}
+{#                </div>#}
+{##}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
+{##}
+{#{% elif user.is_verified == 'n' %}#}
+{##}
+{#    <div class="nk-block">#}
+{#        <div class="card card-bordered">#}
+{#            <div class="card-aside-wrap">#}
+{##}
+{#                <div class="card-inner card-inner-lg">#}
+{#                    <!-- Title -->#}
+{#                    <div class="nk-block-head nk-block-head-lg">#}
+{#                        <div class="nk-block-between">#}
+{#                            <div class="nk-block-head-content">#}
+{#                                <h4 class="nk-block-title">{% trans 'Personal Information' %}</h4>#}
+{#                                <div class="nk-block-des">#}
+{#                                    <p></p>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                            <div class="nk-block-head-content align-self-start d-lg-none">#}
+{#                                <a href="#" class="toggle btn btn-icon btn-trigger mt-n1" data-target="userAside"><em class="icon ni ni-menu-alt-r"></em></a>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                    <!-- end: Title -->#}
+{##}
+{#                    <!-- Items -->#}
+{#                    <div class="nk-block">#}
+{#                        <div class="nk-data data-list">#}
+{##}
+{#                            <div class="data-item" data-bs-toggle="modal" data-bs-target="#profile-edit">#}
+{#                                <div class="data-col">#}
+{#                                    <span class="data-label" style="font-size: large">{% trans 'Phone Number' %}</span>#}
+{#                                    <span class="data-value" style="font-size: large">{{ user.phone_number }}</span>#}
+{#                                </div>#}
+{#                            </div>#}
+{##}
+{#                            <div class="data-item" data-bs-toggle="modal" data-bs-target="#profile-edit">#}
+{#                                <div class="data-col">#}
+{#                                    <span class="data-label" style="font-size: large">{% trans 'Account Status' %}</span>#}
+{#                                    <span class="data-value" style="font-size: large; color: #db4646">{% trans 'Not Completed' %}</span>#}
+{#                                </div>#}
+{#                            </div>#}
+{##}
+{#                            <div class="data-item" data-bs-toggle="modal" data-bs-target="#profile-edit" style="direction: ltr; margin-top: 1.5em">#}
+{#                                <a href="{% url 'profile_info_auth' %}" class="btn btn-round btn-xl btn-primary" style="background-color: #00a65c; border: #00A65C; padding-left: 2em; padding-right: 2em;">{% trans 'Complete The Information' %}</a>#}
+{#                            </div>#}
+{##}
+{#                        </div>#}
+{##}
+{#                    </div>#}
+{#                    <!-- end: Items -->#}
+{#                </div>#}
+{##}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
+{##}
+{#{% elif user.is_verified == 'i' %}#}
+{##}
+{#    <div class="nk-block">#}
+{#        <div class="card card-bordered">#}
+{#            <div class="card-aside-wrap">#}
+{##}
+{#                <div class="card-inner card-inner-lg">#}
+{#                    <!-- Title -->#}
+{#                    <div class="nk-block-head nk-block-head-lg">#}
+{#                        <div class="nk-block-between">#}
+{#                            <div class="nk-block-head-content">#}
+{#                                <h4 class="nk-block-title">{% trans 'Personal Information' %}</h4>#}
+{#                                <div class="nk-block-des">#}
+{#                                    <p></p>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                            <div class="nk-block-head-content align-self-start d-lg-none">#}
+{#                                <a href="#" class="toggle btn btn-icon btn-trigger mt-n1" data-target="userAside"><em class="icon ni ni-menu-alt-r"></em></a>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                    <!-- end: Title -->#}
+{##}
+{#                    <!-- Items -->#}
+{#                    <div class="nk-block">#}
+{#                        <div class="nk-data data-list">#}
+{##}
+{#                            <div class="data-item" data-bs-toggle="modal" data-bs-target="#profile-edit">#}
+{#                                <div class="data-col">#}
+{#                                    <span class="data-label" style="font-size: large">{% trans 'Phone Number' %}</span>#}
+{#                                    <span class="data-value" style="font-size: large">{{ user.phone_number }}</span>#}
+{#                                </div>#}
+{#                            </div>#}
+{##}
+{#                            <div class="data-item" data-bs-toggle="modal" data-bs-target="#profile-edit">#}
+{#                                <div class="data-col">#}
+{#                                    <span class="data-label" style="font-size: large">{% trans 'Account Status' %}</span>#}
+{#                                    <span class="data-value" style="font-size: large; color: #99a025">{% trans 'In Progress' %}</span>#}
+{#                                </div>#}
+{#                            </div>#}
+{##}
+{#                        </div>#}
+{##}
+{#                    </div>#}
+{#                    <!-- end: Items -->#}
+{#                </div>#}
+{##}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
+{##}
+{#{% endif %}#}

@@ -133,6 +133,7 @@ USE_L18N = True
 USE_TZ = False
 
 # Messages
+MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 MESSAGE_TAGS = {
     messages.DEBUG: 'debug',
     messages.INFO: 'info',

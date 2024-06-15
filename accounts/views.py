@@ -62,7 +62,13 @@ def verification_view(request):
 
 # Profile views
 def profile_info_now(request):
+	# show_modal = request.GET.get('show_modal', False)
+	# if show_modal:
+	# 	message = "آگهی شما پس از تایید ادمین در سایت منتشر خواهد شد."
+	# 	return render(request, 'accounts/profile_info_now.html', {'show_modal': True, 'message': message})
+	# return render(request, 'accounts/profile_info_now.html', {'show_modal': False})
 	return render(request, 'accounts/profile_info_now.html')
+
 
 def profile_info_auth(request):
 	if request.method == 'POST':
@@ -80,6 +86,7 @@ def profile_info_auth(request):
 	}
 	return render(request, 'accounts/profile_info_auth.html', context)
 
+
 def profile_info_edit(request):
 	if request.method == 'POST':
 		form = IntoEditForm(request.POST)
@@ -94,44 +101,17 @@ def profile_info_edit(request):
 	}
 	return render(request, 'accounts/profile_info_edit.html', context)
 
+
 def profile_your_services(request):
 	return render(request, 'accounts/profile_your_services.html')
+
 
 def profile_your_cases(request):
 	return render(request, 'accounts/profile_your_cases.html')
 
+
 def profile_your_files(request):
 	return render(request, 'accounts/profile_your_files.html')
 
-
-# The original code without bugs 1,2
-# def registration_view(request):
-# 	form = RegistrationForm
-# 	if request.method == 'POST':
-# 		try:
-# 			if 'phone_number' in request.POST:
-# 				phone_number = request.POST.get('phone_number')
-# 				user = CustomUserModel.objects.get(phone_number=phone_number)
-# 				otp = get_random_otp()
-# 				send_otp(phone_number, otp)
-# 				user.otp_code = otp
-# 				user.save()
-# 				request.session['user_phone_number'] = user.phone_number
-# 				return HttpResponseRedirect(reverse('verification'))
-# 		except CustomUserModel.DoesNotExist:
-# 			form = RegistrationForm(request.POST)
-# 			if form.is_valid():
-# 				user = form.save(commit=False)
-# 				otp = get_random_otp()
-# 				send_otp(phone_number, otp)
-# 				user.otp_code = otp
-# 				user.is_active = False
-# 				user.save()
-# 				request.session['user_phone_number'] = user.phone_number
-# 				return HttpResponseRedirect(reverse('verification'))
-# 	context = {
-# 		'form': form,
-# 	}
-# 	return render(request, 'accounts/registration.html', context)
 
 

@@ -21,6 +21,7 @@
         <!-- JS -->
         <script src="{% static 'profile/assets/js/bundle.js' %}"></script>
         <script src="{% static 'profile/assets/js/scripts.js' %}"></script>
+        <script src="{% static 'profile/assets/js/jquery-3.7.1.min.js' %}"></script>
 
         <!-- Favicon -->
         <link rel="icon" type="image/png" href="{% static 'main/img/logos/ho-fav.png' %}">
@@ -198,6 +199,36 @@
                                 </div>
                             </div>
                             <!-- end: File & Rent buttons -->
+
+
+
+                             <!-- File create message -->
+{#                            <div id="successModal" class="modal" style="display: none;">#}
+{#                                <div class="modal-content">#}
+{#                                    <h4>Success</h4>#}
+{#                                    <p id="modal-message"></p>#}
+{#                                </div>#}
+{#                                <div class="modal-footer">#}
+{#                                    <button class="modal-close btn waves-effect waves-light" style="padding: 1em 2.5em;">Close</button>#}
+{#                                </div>#}
+{#                            </div>#}
+{##}
+{#                            <script>#}
+{#                                $(document).ready(function() {#}
+{#                                    var messages = "{% for message in messages %}{{ message }}{% if not forloop.last %}\\n{% endif %}{% endfor %}";#}
+{#                                    if (messages) {#}
+{#                                        $('#modal-message').text(messages);#}
+{#                                        $('#successModal').show();#}
+{#                                    }#}
+{#                                    $('.modal-close').on('click', function() {#}
+{#                                        $('#successModal').hide();#}
+{#                                    });#}
+{#                                });#}
+{#                            </script>#}
+                            <!-- end: File create message -->
+
+
+
 
                             <!-- Main content -->
                             <div class="nk-content-body">

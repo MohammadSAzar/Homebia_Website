@@ -25,12 +25,17 @@ class SaleFileCreateView(CreateView):
         messages.success(self.request, "آگهی شما پس از تایید ادمین در سایت منتشر خواهد شد.")
         return super().form_valid(form)
 
+    # def form_valid(self, form):
+    #     self.object = form.save(commit=False)
+    #     self.object.save()
+    #     return HttpResponseRedirect(reverse('profile_info_now') + '?show_modal=True')
+
     def form_invalid(self, form):
         self.object = None
         return self.render_to_response(self.get_context_data(form=form))
 
     def get_success_url(self):
-        return reverse('file_list')
+        return reverse('profile_info_now')
 
 
 def load_cities(request):
@@ -59,38 +64,5 @@ class SaleFileListView(ListView):
     context_object_name = 'files'
     template_name = 'files/file_list.html'
 
-
-# def sale_file_create_view(request):
-#     if request.method == 'POST':
-#         form = SaleFileCreateForm(request.POST)
-#         if form.is_valid():
-#             form.save()
-#             return redirect('home')
-#     else:
-#         form = SaleFileCreateForm()
-#     return render(request, 'files/file_create.html', {'form': form})
-
-
-# def sale_file_create_view(request):
-#     if request.method == 'POST':
-#         form = SaleFileCreateForm(request.POST)
-#
-#         # checks = []
-#         # for (item, function, alert) in checks_list:
-#         #     if not function(request.session[item]):
-#         #         checks.append(False)
-#         #         messages.error(request, alert)
-#         #     else:
-#         #         checks.append(True)
-#         # if form.is_valid() and False not in checks:
-#         #     form.save()
-#         #     return redirect('home')
-#
-#         if form.is_valid():
-#             form.save()
-#             return redirect('home')
-#     else:
-#         form = SaleFileCreateForm()
-#     return render(request, 'files/file_create.html', {'form': form})
 
 
