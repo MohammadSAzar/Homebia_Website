@@ -10,39 +10,34 @@
 
 {% block content %}
 
+    <!-- File create message -->
+    <div id="successModal" class="custom-modal" style="display: none;">
+        <div class="custom-modal-content">
+            <h4 class="custom-modal-title">موفقیت در ثبت آگهی</h4>
+            <p id="modal-message"></p>
+        </div>
+        <div class="custom-modal-footer">
+            <button class="custom-modal-close">بستن</button>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            var messages = "{% for message in messages %}{{ message }}{% if not forloop.last %}\\n{% endif %}{% endfor %}";
+            if (messages) {
+                $('#modal-message').text(messages);
+                $('#successModal').show();
+            }
+            $('.custom-modal-close').on('click', function() {
+                $('#successModal').hide();
+            });
+        });
+    </script>
+    <!-- end: File create message -->
+
     <div class="nk-block">
         <div class="card card-bordered">
             <div class="card-aside-wrap">
-
-
-
-                <!-- File create message -->
-                <div id="successModal" class="modal" style="display: none;">
-                    <div class="modal-content">
-                        <h4>Success</h4>
-                        <p id="modal-message"></p>
-                    </div>
-                    <div class="modal-footer">
-                        <button class="modal-close btn waves-effect waves-light" style="padding: 1em 2.5em;">Close</button>
-                    </div>
-                </div>
-
-                <script>
-                    $(document).ready(function() {
-                        var messages = "{% for message in messages %}{{ message }}{% if not forloop.last %}\\n{% endif %}{% endfor %}";
-                        if (messages) {
-                            $('#modal-message').text(messages);
-                            $('#successModal').show();
-                        }
-                        $('.modal-close').on('click', function() {
-                            $('#successModal').hide();
-                        });
-                    });
-                </script>
-                <!-- end: File create message -->
-
-
-
 
                 <div class="card-inner card-inner-lg">
                     <!-- Title -->

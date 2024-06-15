@@ -62,11 +62,6 @@ def verification_view(request):
 
 # Profile views
 def profile_info_now(request):
-	# show_modal = request.GET.get('show_modal', False)
-	# if show_modal:
-	# 	message = "آگهی شما پس از تایید ادمین در سایت منتشر خواهد شد."
-	# 	return render(request, 'accounts/profile_info_now.html', {'show_modal': True, 'message': message})
-	# return render(request, 'accounts/profile_info_now.html', {'show_modal': False})
 	return render(request, 'accounts/profile_info_now.html')
 
 
