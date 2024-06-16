@@ -52571,75 +52571,56 @@ em.icon.ni.ni-comments {
 
 
 /* Modal styles >>> for message creation success */
-.custom-main-content {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+#successModal {
+    display: none;
     background-color: transparent;
-    padding-top: 36px;
-    padding-bottom: 14px;
+    width: 100%;
+    /*padding: 20px;*/
+    /*border-radius: 5px;*/
+    /*box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);*/
 }
 
-.custom-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
+#successModal div {
+    text-align: right;
 }
 
-.custom-modal {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    width: 90%;
-    max-width: 500px;
-    z-index: 1000;
-    display: none; /* Initially hidden */
-}
-
-.custom-modal-content {
-    padding: 20px;
-}
-
-.custom-modal-title {
-    margin: 0 0 10px;
-    font-size: 24px;
-    color: #00a65c;
-    text-align: center;
+#successModal h4 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #333;
 }
 
 #modal-message {
-    font-size: 16px;
-    color: #333;
-    text-align: center;
+    margin-bottom: 20px;
+    color: #666;
 }
 
-.custom-modal-footer {
-    padding: 10px;
-    text-align: center;
-}
-
-.custom-modal-close {
-    background: #00a65c;
+.modal-my-button {
+    background-color: #00a65c;
     color: white;
     border: none;
     padding: 10px 20px;
-    font-size: 16px;
     border-radius: 5px;
     cursor: pointer;
-    transition: background 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /*background-color: #00a65c;*/
+    /*color: white;*/
+    /*border: none;*/
+    /*padding: 10px 20px;*/
+    /*border-radius: 5px;*/
+    /*cursor: pointer;*/
+    /*text-align: center;*/
+    /*justify-content: center;*/
 }
 
-.custom-modal-close:hover {
-    background: #008a4d;
+/*.modal-my-button:hover {*/
+/*    background-color: white;*/
+/*    color: #0056b3;*/
 }
 
-#message-container {
-    display: none;
-}
 /* END: Modal styles >>> for message creation success */
 
 

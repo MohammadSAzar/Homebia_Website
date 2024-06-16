@@ -120,6 +120,29 @@
                 <!-- Header & Content -->
                 <div class="nk-wrap">
 
+                    <!-- File create message -->
+                    <div id="successModal" class="modal">
+                        <div class="modal-content">
+                            <h4 class="modal-title" style="padding: 20px 20px 10px 0;!important;">موفقیت در ثبت آگهی</h4>
+                            <p id="modal-message" style="padding: 20px 20px 0 0;!important; color: black;!important;"></p>
+                            <button class="modal-my-button">بستن پیام و ادامه سفر در هومبیا</button>
+                        </div>
+                    </div>
+
+                    <script>
+                        $(document).ready(function() {
+                            var messages = "{% for message in messages %}{{ message }}{% if not forloop.last %}\\n{% endif %}{% endfor %}";
+                            if (messages) {
+                                $('#modal-message').text(messages);
+                                $('#successModal').show();
+                            }
+                            $('.modal-my-button').on('click', function() {
+                                $('#successModal').hide();
+                            });
+                        });
+                    </script>
+                    <!-- end: File create message -->
+
                     <!-- Header -->
                     <div class="nk-header nk-header-fixed is-light">
                         <div class="container-fluid">
