@@ -23,7 +23,7 @@ class BlogCategory(models.Model):
 
 class Blog(models.Model):
     STATUS_CHOICES = (('pub', 'Published'), ('drf', 'Draft'))
-    cover = models.ImageField(upload_to='blogs/', verbose_name=_('Blog cover'))
+    cover = models.ImageField(upload_to='blogs/covers/', verbose_name=_('Blog cover'))
     blog_category = models.ForeignKey(BlogCategory, on_delete=models.PROTECT, related_name='blog_category', verbose_name=_('Blog category'))
     title = models.CharField(max_length=200, verbose_name=_('Blog title'))
     body = QuillField(verbose_name=_('Blog body'))

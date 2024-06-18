@@ -1,4 +1,8 @@
+{% load static %}
+
 {% for file in files %}
+    <img src="{{ file.cover.url }}" alt="image-field">
+    {{ file.direction.url }}
     {{ file.title }}<br><br>
     {{ file.description }}<br><br>
     {{ file.province }}<br><br>

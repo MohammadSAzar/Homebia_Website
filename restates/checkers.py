@@ -1,7 +1,3 @@
-from random import randint
-import datetime
-import time
-
 min_file_price = 1000000000  # TOOMAN
 max_file_price = 1000000000000  # TOOMAN
 min_area = 20  # m2

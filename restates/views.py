@@ -11,7 +11,7 @@ from .forms import SaleFileCreateForm
 class SaleFileCreateView(CreateView):
     model = SaleFile
     form_class = SaleFileCreateForm
-    template_name = 'files/file_create.html'
+    template_name = 'restates/file_create.html'
 
     def post(self, request, *args, **kwargs):
         # form = SaleFileCreateForm(self.request.POST)
@@ -55,14 +55,14 @@ def load_districts(request):
 class SaleFileDetailView(DetailView):
     model = SaleFile
     context_object_name = 'sale_file'
-    template_name = 'files/file_detail.html'
+    template_name = 'restates/file_detail.html'
 
 
 class SaleFileListView(ListView):
     model = SaleFile
     paginate_by = 6
     context_object_name = 'files'
-    template_name = 'files/file_list.html'
+    template_name = 'restates/file_list.html'
 
 
 
