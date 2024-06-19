@@ -1,4 +1,307 @@
+{% extends '_base.html' %}
+
 {% load static %}
+{% load i18n %}
+{% load jalali_tags %}
+{% load number_converter %}
+{% load humanize %}
+{% load widget_tweaks %}
+
+{% block title %}{% trans 'Sale Files' %}{% endblock %}
+
+
+{% block content %}
+
+    <div class="shop-page-wrapper ptb--80">
+        <div class="container">
+            <div class="row">
+
+                <!-- File >>> main content -->
+                <div class="col-xl-9 col-lg-8 order-lg-2 mb-md--50">
+
+                    <!-- File >>> upper toolbar -->
+                    <div class="shop-toolbar mb--50">
+                        <div class="row align-items-center">
+
+                            <div class="col-md-5 mb-sm--30 mb-xs--10">
+                                <div class="shop-toolbar__left">
+                                    <div class="product-ordering">
+                                        <select class="product-ordering__select nice-select">
+                                            <option value="0">مرتب سازی پیش فرض</option>
+                                            <option value="1">ارتباط</option>
+                                            <option value="2">نام الف تا ج</option>
+                                            <option value="3">نام ج تا ی</option>
+                                            <option value="4">قیمت، کم به بالا</option>
+                                            <option value="5">قیمت، بالا به پایین</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+{#                                <div class="col-md-7">#}
+{#                                    <div class="shop-toolbar__right d-flex justify-content-md-end justify-content-start flex-sm-row flex-column">#}
+{#                                        <p class="product-pages">نمایش نتیجه 08 در میان 72</p>#}
+{#                                        <div class="product-view-mode ml--50 ml-xs--0">#}
+{#                                            <a class="active" href="#" data-target="grid">#}
+{#                                                <img src="files/img/icons/grid.png" alt="Grid">#}
+{#                                            </a>#}
+{#                                            <a href="#" data-target="list">#}
+{#                                                <img src="files/img/icons/list.png" alt="Grid">#}
+{#                                            </a>#}
+{#                                        </div>#}
+{#                                    </div>#}
+{#                                </div>#}
+
+                        </div>
+                    </div>
+                    <!-- end: File >>> upper toolbar -->
+
+                    <!-- Files >>> main -->
+                    <div class="shop-products">
+                        <div class="row">
+
+                            {% for file in files %}
+                                <div class="col-xl-4 col-sm-6 mb--80">
+                                    <div class="ft-product" style="border: #e8e8e8 solid 1px; padding: 8px; border-radius: 4px;">
+                                        <div class="product-inner">
+
+                                            <!-- file cover -->
+                                            <div class="product-image">
+                                                <figure class="product-image--holder">
+                                                    <img src="{{ file.cover.url }}" alt="Product">
+                                                </figure>
+                                                <a href="{{ file.get_absolute_url }}" class="product-overlay"></a>
+
+                                                <!-- actions on file -->
+{#                                                    <div class="product-action">#}
+{#                                                        <a data-bs-toggle="modal" data-bs-target="#productModal" class="action-btn"><i class="la la-eye"></i></a>#}
+{#                                                        <a href="wishlist.html" class="action-btn"><i class="la la-heart-o"></i></a>#}
+{#                                                        <a href="wishlist.html" class="action-btn"><i class="la la-repeat"></i></a>#}
+{#                                                    </div>#}
+                                                <!-- end: actions on file -->
+
+                                            </div>
+                                            <!-- end: file cover -->
+
+                                            <!-- file information -->
+                                            <div class="product-info">
+
+                                                <div class="product-category" style="margin-bottom: 1.5em;!important;">                                                    <h4 class="file-title">{{ file.title|linebreaksbr|farsi_number }}</h4>
+                                                    {% if file.district is not None %}
+                                                        <h5 style="color: black;!important;">{{ file.province }} - {{ file.city }} - {{ file.district }}</h5>
+                                                    {% else %}
+                                                        <h5 style="color: black;!important;">{{ file.province }} - {{ file.city }}</h5>
+                                                    {% endif %}
+                                                </div>
+
+
+                                                <div class="product-info-bottom">
+                                                    <div class="product-price-wrapper">
+                                                        <span class="money" style="font-size: 0.85em; font-weight: normal;">{{ file.price|intcomma:False|farsi_number }} تومان</span>
+                                                    </div>
+                                                    <a href="{{ file.get_absolute_url }}" class="btn btn-outline btn-brw-2" data-animation="fadeInUp" data-duration=".3s" data-delay=".6s" style="line-height: 0.1em; font-weight: normal; float: left;">{% trans 'Read More' %}</a>
+                                                </div>
+                                            </div>
+                                            <!-- end: file information -->
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+
+                        </div>
+                    </div>
+                    <!-- end: Files >>> main -->
+
+                    <!-- Files >>> pagination -->
+                    <div class="my-pagination">
+                        {% if page_obj.has_previous %}
+                            <a href="?page=1">&laquo; {% trans 'First' %}</a>
+                        {% else %}
+                            <span class="my-disabled">&laquo; {% trans 'First' %}</span>
+                        {% endif %}
+
+                        {% if page_obj.has_previous %}
+                            <a href="?page={{ page_obj.previous_page_number }}">‹ {% trans 'Previous' %}</a>
+                        {% else %}
+                            <span class="my-disabled">‹ {% trans 'Previous' %}</span>
+                        {% endif %}
+
+                        {% for num in page_obj.paginator.page_range %}
+                            {% if num == page_obj.number %}
+                                <span class="my-current">{{ num }}</span>
+                            {% else %}
+                                <a href="?page={{ num }}">{{ num }}</a>
+                            {% endif %}
+                        {% endfor %}
+
+                        {% if page_obj.has_next %}
+                            <a href="?page={{ page_obj.next_page_number }}">{% trans 'Next' %} ›</a>
+                        {% else %}
+                            <span class="my-disabled">{% trans 'Next' %} ›</span>
+                        {% endif %}
+
+                        {% if page_obj.has_next %}
+                            <a href="?page={{ page_obj.paginator.num_pages }}">{% trans 'Last Page' %} &raquo;</a>
+                        {% else %}
+                            <span class="my-disabled">{% trans 'Last Page' %} &raquo;</span>
+                        {% endif %}
+                    </div>
+{#                        <nav class="pagination-wrap">#}
+{#                            <ul class="pagination" style="direction: rtl">#}
+{#                                <li><span class="page-number current">1</span></li>#}
+{#                                <li><a href="#" class="page-number">2</a></li>#}
+{#                                <li><span class="dot"></span></li>#}
+{#                                <li><span class="dot"></span></li>#}
+{#                                <li><span class="dot"></span></li>#}
+{#                                <li><a href="#" class="page-number">16</a></li>#}
+{#                            </ul>#}
+{#                        </nav>#}
+                    <!-- end: Files >>> pagination -->
+                </div>
+                <!-- end: File >>> main content -->
+
+                <!-- File >>> sidebar -->
+                <div class="col-xl-3 col-lg-4 order-lg-1">
+                    <aside class="shop-sidebar">
+                        <div class="shop-widget mb--40">
+                            <h3 class="widget-title mb--25">دسته بندی</h3>
+                            <ul class="widget-list category-list">
+                                <li>
+                                    <a href="shop.html">
+                                        <span class="category-title">مجموعه زمستانی</span>
+                                        <i class="fa fa-angle-double-right"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="shop.html">
+                                        <span class="category-title">لباسهای زنانه</span>
+                                        <i class="fa fa-angle-double-right"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="shop.html">
+                                        <span class="category-title">لباس مردانه</span>
+                                        <i class="fa fa-angle-double-right"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="shop.html">
+                                        <span class="category-title">لباس بچه</span>
+                                        <i class="fa fa-angle-double-right"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="shop.html">
+                                        <span class="category-title">دستهبندی نشده</span>
+                                        <i class="fa fa-angle-double-right"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="shop.html">
+                                        <span class="category-title">تجهیزات جانبی</span>
+                                        <i class="fa fa-angle-double-right"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="shop.html">
+                                        <span class="category-title">ورود جدید</span>
+                                        <i class="fa fa-angle-double-right"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="shop-widget mb--40">
+                            <h3 class="widget-title mb--30">رنگ</h3>
+                            <div class="widget-color">
+                                <a href="shop.html" class="red">قرمز</a>
+                                <a href="shop.html" class="pink">صورتی</a>
+                                <a href="shop.html" class="black">سیاه</a>
+                                <a href="shop.html" class="brown"> قهوه ای</a>
+                                <a href="shop.html" class="blue">آبی</a>
+                                <a href="shop.html" class="cholate">شکلات</a>
+                                <a href="shop.html" class="copper">فلز مس</a>
+                                <a href="shop.html" class="gray">خاکستری</a>
+                            </div>
+                        </div>
+                        <div class="shop-widget mb--40">
+                            <h3 class="widget-title mb--25">قیمت</h3>
+                            <ul class="widget-list price-list">
+                                <li>
+                                    <a href="shop.html">
+                                        <span>کم - متوسط</span>
+                                        <strong class="font-weight-medium">10.00 تومان - 80.00 تومان</strong>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="shop.html">
+                                        <span>متوسط - زیاد</span>
+                                        <strong class="font-weight-medium">10.00 تومان - 45.00 تومان</strong>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="shop.html">
+                                        <span>زیاد -  بالا</span>
+                                        <strong class="font-weight-medium">10.00 تومان - 55.00 تومان</strong>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="shop-widget mb--40">
+                            <h3 class="widget-title mb--25">برندها</h3>
+                            <ul class="widget-list brand-list">
+                                <li>
+                                    <a href="shop.html">
+                                        <span>والمارت</span>
+                                        <strong class="color--red font-weight-medium">10</strong>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="shop.html">
+                                        <span>زرد</span>
+                                        <strong class="color--red font-weight-medium">50</strong>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="shop.html">
+                                        <span>H &amp; M</span>
+                                        <strong class="color--red font-weight-medium">46</strong>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="shop.html">
+                                        <span>سیاه &amp; سفید</span>
+                                        <strong class="color--red font-weight-medium">46</strong>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="shop-widget">
+                            <h3 class="widget-title mb--25">برچسب</h3>
+                            <div class="tagcloud">
+                                <a href="shop.html">پارچه</a>
+                                <a href="shop.html">بلیزر</a>
+                                <a href="shop.html">ژاکت</a>
+                                <a href="shop.html">پلیور</a>
+                                <a href="shop.html">تی شرت</a>
+                                <a href="shop.html">شورت</a>
+                                <a href="shop.html">شلوار</a>
+                                <a href="shop.html">لباس مهمانی</a>
+                                <a href="shop.html">لباس کوکتل</a>
+                                <a href="shop.html">ژاکت</a>
+                                <a href="shop.html">شلوار جین</a>
+                            </div>
+                        </div>
+                    </aside>
+                </div>
+                <!-- end: File >>> sidebar -->
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+
 
 {% for file in files %}
     <img src="{{ file.cover.url }}" alt="image-field">

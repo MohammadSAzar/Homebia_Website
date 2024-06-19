@@ -12,12 +12,12 @@
     src: url('../fonts/Estedad-VF-FD.woff2') format('woff2-variations');
 }
 
-body,p,a,ul,li,input,button{
+body,p,a,h3,h4,h5,h6,ul,li,input,button{
     font-family: Estedad, serif !important;
     text-align: right;
     direction:rtl;
 }
-h1,h2,h3,h4,h5,h6{
+h1,h2{
     font-family: Pinar, serif !important;
 }
 p{
@@ -4264,6 +4264,21 @@ XX - Blog Pagination
 .blog__desc > p > img {
   display: block;!important;
   margin: 0 auto;!important;
+}
+
+
+.file-title {
+    font-size: 0.9em;
+    font-weight: bold;
+    color: #333;
+    margin: 10px 0 30px 0;
+    line-height: 30px;
+    height: 4.5em; /* Set fixed height (2 lines of text) */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* Limit to 2 lines */
+    -webkit-box-orient: vertical;
 }
 
 
