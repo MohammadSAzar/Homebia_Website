@@ -14,7 +14,6 @@ class SaleFileCreateView(CreateView):
     template_name = 'restates/file_create.html'
 
     def post(self, request, *args, **kwargs):
-        # form = SaleFileCreateForm(self.request.POST)
         form = self.get_form()
         if form.is_valid():
             return self.form_valid(form)
@@ -60,7 +59,7 @@ class SaleFileListView(ListView):
     paginate_by = 6
 
     def get_queryset(self):
-        queryset_default = SaleFile.objects.select_related('province').select_related('city').select_related('district')
+        queryset_default = SaleFile.objects.select_related('province', 'city', 'district')
         form = SaleFileFilterForm(self.request.GET)
 
         if form.is_valid():
@@ -76,8 +75,28 @@ class SaleFileListView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['filter_form'] = SaleFileFilterForm(self.request.GET)
+        form = SaleFileFilterForm(self.request.GET)
+
+        if self.request.GET.get('province'):
+            form.fields['city'].queryset = City.objects.filter(province_id=self.request.GET.get('province'))
+        if self.request.GET.get('city'):
+            form.fields['district'].queryset = District.objects.filter(city_id=self.request.GET.get('city'))
+
+        context['filter_form'] = form
         return context
+
+
+def load_cities_list(request):
+    province_id = request.GET.get('province_id')
+    cities = City.objects.filter(province_id=province_id).values('id', 'name')
+    return JsonResponse({'cities': list(cities)})
+
+def load_districts_list(request):
+    city_id = request.GET.get('city_id')
+    districts = District.objects.filter(city_id=city_id).values('id', 'name')
+    return JsonResponse({'districts': list(districts)})
+
+
 
 
 

@@ -57,10 +57,11 @@ class SaleFileFilterForm(forms.Form):
     province = forms.ModelChoiceField(queryset=Province.objects.all(), required=False, label='Province')
     city = forms.ModelChoiceField(queryset=City.objects.all(), required=False, label='City')
     district = forms.ModelChoiceField(queryset=District.objects.all(), required=False, label='District')
-    min_price = forms.IntegerField(required=False, label='Min Price')
-    max_price = forms.IntegerField(required=False, label='Max Price')
-    min_area = forms.IntegerField(required=False, label='Min Area')
-    max_area = forms.IntegerField(required=False, label='Max Area')
-    rooms = forms.ChoiceField(choices=statuses.rooms, required=False, label='Number of Rooms')
+    # min_price = forms.IntegerField(required=False, label='Min Price')
+    # max_price = forms.IntegerField(required=False, label='Max Price')
+    # min_area = forms.IntegerField(required=False, label='Min Area')
+    # max_area = forms.IntegerField(required=False, label='Max Area')
+    # rooms = forms.ChoiceField(choices=statuses.rooms, required=False, label='Number of Rooms')
+
 
 
