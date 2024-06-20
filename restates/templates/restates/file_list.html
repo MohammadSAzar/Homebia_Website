@@ -73,11 +73,11 @@
                                                 <a href="{{ file.get_absolute_url }}" class="product-overlay"></a>
 
                                                 <!-- actions on file -->
-{#                                                    <div class="product-action">#}
-{#                                                        <a data-bs-toggle="modal" data-bs-target="#productModal" class="action-btn"><i class="la la-eye"></i></a>#}
-{#                                                        <a href="wishlist.html" class="action-btn"><i class="la la-heart-o"></i></a>#}
-{#                                                        <a href="wishlist.html" class="action-btn"><i class="la la-repeat"></i></a>#}
-{#                                                    </div>#}
+                                                <div class="product-action">
+                                                    <a data-bs-toggle="modal" data-bs-target="#productModal" class="action-btn"><i class="la la-eye"></i></a>
+                                                    <a href="wishlist.html" class="action-btn"><i class="la la-heart-o"></i></a>
+                                                    <a href="wishlist.html" class="action-btn"><i class="la la-repeat"></i></a>
+                                                </div>
                                                 <!-- end: actions on file -->
 
                                             </div>
@@ -85,15 +85,13 @@
 
                                             <!-- file information -->
                                             <div class="product-info">
-
-                                                <div class="product-category" style="margin-bottom: 1.5em;!important;">                                                    <h4 class="file-title">{{ file.title|linebreaksbr|farsi_number }}</h4>
+                                                <div class="product-category" style="margin-bottom: 1.5em;!important;"><h4 class="file-title">{{ file.title|linebreaksbr|farsi_number }}</h4>
                                                     {% if file.district is not None %}
                                                         <h5 style="color: black;!important;">{{ file.province }} - {{ file.city }} - {{ file.district }}</h5>
                                                     {% else %}
                                                         <h5 style="color: black;!important;">{{ file.province }} - {{ file.city }}</h5>
                                                     {% endif %}
                                                 </div>
-
 
                                                 <div class="product-info-bottom">
                                                     <div class="product-price-wrapper">
@@ -146,23 +144,29 @@
                             <span class="my-disabled">{% trans 'Last Page' %} &raquo;</span>
                         {% endif %}
                     </div>
-{#                        <nav class="pagination-wrap">#}
-{#                            <ul class="pagination" style="direction: rtl">#}
-{#                                <li><span class="page-number current">1</span></li>#}
-{#                                <li><a href="#" class="page-number">2</a></li>#}
-{#                                <li><span class="dot"></span></li>#}
-{#                                <li><span class="dot"></span></li>#}
-{#                                <li><span class="dot"></span></li>#}
-{#                                <li><a href="#" class="page-number">16</a></li>#}
-{#                            </ul>#}
-{#                        </nav>#}
                     <!-- end: Files >>> pagination -->
+
                 </div>
                 <!-- end: File >>> main content -->
 
                 <!-- File >>> sidebar -->
                 <div class="col-xl-3 col-lg-4 order-lg-1">
                     <aside class="shop-sidebar">
+
+                        <form id="filter-form" method="get" action="{% url 'file_list' %}">
+                            {% csrf_token %}
+                            {{ filter_form.as_p }}
+                            <button type="submit" onclick="submitFormAndRefresh()">Filter</button>
+                        </form>
+                        <script>
+                            function submitFormAndRefresh() {
+                                // Submit the form
+                                document.getElementById('filter-form').submit();
+                                // Refresh the page
+                                location.reload();
+                            }
+                        </script>
+
                         <div class="shop-widget mb--40">
                             <h3 class="widget-title mb--25">دسته بندی</h3>
                             <ul class="widget-list category-list">
@@ -303,15 +307,3 @@
 
 
 
-{% for file in files %}
-    <img src="{{ file.cover.url }}" alt="image-field">
-    {{ file.direction.url }}
-    {{ file.title }}<br><br>
-    {{ file.description }}<br><br>
-    {{ file.province }}<br><br>
-    {{ file.city }}<br><br>
-    {{ file.district }}<br><br>
-    {{ file.price }}<br><br>
-    <button><a href="{{ file.get_absolute_url }}" style="text-decoration: none">مشاهده</a></button><br><br>
-    -------------------------------------------------------------------------------------------------------<br><br>
-{% endfor %}
