@@ -7,7 +7,7 @@ from django.utils.text import slugify
 from django.utils import timezone
 from django.utils.translation import gettext as _
 
-from . import statuses
+from . import choices
 
 
 # --------------------------------- Locations ---------------------------------
@@ -45,27 +45,27 @@ class SaleFile(models.Model):
     district = models.ForeignKey(District, on_delete=models.SET_NULL, null=True, blank=True, related_name='files', verbose_name=_('District'))
     # general characteristics
     price = models.PositiveBigIntegerField(verbose_name=_('Price'))
-    room = models.CharField(max_length=15, choices=statuses.rooms, verbose_name=_('Number of Rooms'))
+    room = models.CharField(max_length=15, choices=choices.rooms, verbose_name=_('Number of Rooms'))
     area = models.PositiveIntegerField(verbose_name=_('Area'))
-    year = models.CharField(max_length=15, choices=statuses.years, verbose_name=_('Year of Construction'))
-    document = models.CharField(max_length=15, choices=statuses.booleans, verbose_name=_('Document'))
-    level = models.CharField(max_length=15, choices=statuses.levels, verbose_name=_('Level'))
-    parking = models.CharField(max_length=15, choices=statuses.booleans, verbose_name=_('Parking'))
-    elevator = models.CharField(max_length=15, choices=statuses.booleans, verbose_name=_('Elevator'))
-    warehouse = models.CharField(max_length=15, choices=statuses.booleans, verbose_name=_('Warehouse'))
+    age = models.CharField(max_length=15, choices=choices.ages, default='1', verbose_name=_('Age of Apartment'))
+    document = models.CharField(max_length=15, choices=choices.booleans, verbose_name=_('Document'))
+    level = models.CharField(max_length=15, choices=choices.levels, verbose_name=_('Level'))
+    parking = models.CharField(max_length=15, choices=choices.booleans, verbose_name=_('Parking'))
+    elevator = models.CharField(max_length=15, choices=choices.booleans, verbose_name=_('Elevator'))
+    warehouse = models.CharField(max_length=15, choices=choices.booleans, verbose_name=_('Warehouse'))
     cover = models.ImageField(upload_to='files/covers/', blank=True, verbose_name=_('File cover'))
     cover2 = models.ImageField(upload_to='files/covers/', null=True, blank=True, verbose_name=_('File cover 2'))
     cover3 = models.ImageField(upload_to='files/covers/', null=True, blank=True, verbose_name=_('File cover 3'))
     cover4 = models.ImageField(upload_to='files/covers/', null=True, blank=True, verbose_name=_('File cover 4'))
     # optional
-    direction = models.CharField(max_length=15, choices=statuses.directions, null=True, blank=True, verbose_name=_('File Direction'))
-    file_levels = models.CharField(max_length=15, choices=statuses.levels, null=True, blank=True, verbose_name=_('File Levels Number'))
-    aparts_per_level = models.CharField(max_length=15, choices=statuses.aparts_per_level, null=True, blank=True, verbose_name=_('Apartments per Level'))
-    restoration = models.CharField(max_length=15, choices=statuses.restorations, null=True, blank=True, verbose_name=_('Restoration'))
-    bench_stove = models.CharField(max_length=15, choices=statuses.booleans, null=True, blank=True, verbose_name=_('Bench Stove'))
-    balcony = models.CharField(max_length=15, choices=statuses.booleans, null=True, blank=True, verbose_name=_('Balcony'))
-    toilet = models.CharField(max_length=15, choices=statuses.toilets, null=True, blank=True, verbose_name=_('Toilet'))
-    hot_water = models.CharField(max_length=15, choices=statuses.hot_water, null=True, blank=True, verbose_name=_('Hot Water System'))
+    direction = models.CharField(max_length=15, choices=choices.directions, null=True, blank=True, verbose_name=_('File Direction'))
+    file_levels = models.CharField(max_length=15, choices=choices.levels, null=True, blank=True, verbose_name=_('File Levels Number'))
+    aparts_per_level = models.CharField(max_length=15, choices=choices.aparts_per_level, null=True, blank=True, verbose_name=_('Apartments per Level'))
+    restoration = models.CharField(max_length=15, choices=choices.restorations, null=True, blank=True, verbose_name=_('Restoration'))
+    bench_stove = models.CharField(max_length=15, choices=choices.booleans, null=True, blank=True, verbose_name=_('Bench Stove'))
+    balcony = models.CharField(max_length=15, choices=choices.booleans, null=True, blank=True, verbose_name=_('Balcony'))
+    toilet = models.CharField(max_length=15, choices=choices.toilets, null=True, blank=True, verbose_name=_('Toilet'))
+    hot_water = models.CharField(max_length=15, choices=choices.hot_water, null=True, blank=True, verbose_name=_('Hot Water System'))
     cooling = models.CharField(max_length=15, null=True, blank=True, verbose_name=_('Cooling System'))
     heating = models.CharField(max_length=15, null=True, blank=True, verbose_name=_('Heating System'))
     floor = models.CharField(max_length=15, null=True, blank=True, verbose_name=_('Floor Type'))
@@ -74,7 +74,7 @@ class SaleFile(models.Model):
     description = models.TextField(max_length=1000, blank=True, null=True)
     slug = models.SlugField(max_length=255, null=True, blank=True, unique=True, allow_unicode=True)
     unique_url_id = models.CharField(max_length=20, null=True, unique=True, blank=True)
-    status = models.CharField(max_length=10, choices=statuses.statuses, default='pen')
+    status = models.CharField(max_length=10, choices=choices.statuses, default='pen')
     datetime_created = models.DateTimeField(auto_now_add=True)
     datetime_expired = models.DateTimeField(blank=True, null=True)
     # personal information

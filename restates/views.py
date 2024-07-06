@@ -70,6 +70,27 @@ class SaleFileListView(ListView):
                 queryset_filtered = queryset_filtered.filter(city=form.cleaned_data['city'])
             if form.cleaned_data['district']:
                 queryset_filtered = queryset_filtered.filter(district=form.cleaned_data['district'])
+            # queryset_final = queryset_filtered
+            if form.cleaned_data['min_price']:
+                queryset_filtered = queryset_filtered.filter(price__gte=form.cleaned_data['min_price'])
+            if form.cleaned_data['max_price']:
+                queryset_filtered = queryset_filtered.filter(price__lte=form.cleaned_data['max_price'])
+            if form.cleaned_data['min_area']:
+                queryset_filtered = queryset_filtered.filter(area__gte=form.cleaned_data['min_area'])
+            if form.cleaned_data['max_area']:
+                queryset_filtered = queryset_filtered.filter(area__lte=form.cleaned_data['max_area'])
+            if form.cleaned_data['min_room']:
+                queryset_filtered = queryset_filtered.filter(room__gte=int(form.cleaned_data['min_room']))
+            if form.cleaned_data['max_room']:
+                queryset_filtered = queryset_filtered.filter(room__lte=int(form.cleaned_data['max_room']))
+            if form.cleaned_data['min_age']:
+                queryset_filtered = queryset_filtered.filter(age__gte=int(form.cleaned_data['min_age']))
+            if form.cleaned_data['max_age']:
+                queryset_filtered = queryset_filtered.filter(age__lte=int(form.cleaned_data['max_age']))
+            if form.cleaned_data['min_age']:
+                queryset_filtered = queryset_filtered.filter(age__gte=int(form.cleaned_data['min_age']))
+            if form.cleaned_data['max_age']:
+                queryset_filtered = queryset_filtered.filter(age__lte=int(form.cleaned_data['max_age']))
             return queryset_filtered
         return queryset_default
 

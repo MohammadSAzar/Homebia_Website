@@ -1,13 +1,11 @@
 from django import forms
-from django.utils import timezone
-from django.utils.text import slugify
+from django.utils.translation import gettext as _
 
 from .models import SaleFile, Province, City, District
-from . import checkers
-from . import statuses
+from . import checkers, choices
 
 
-create_file_fields = ['province', 'city', 'district', 'price', 'room', 'area', 'year', 'document', 'level', 'parking', 'elevator',
+create_file_fields = ['province', 'city', 'district', 'price', 'room', 'area', 'age', 'document', 'level', 'parking', 'elevator',
                       'warehouse', 'title', 'description', 'cover', 'cover2', 'cover3', 'cover4',
                       'direction', 'file_levels', 'aparts_per_level', 'balcony', 'bench_stove', 'restoration', 'toilet',
                       'hot_water', 'cooling', 'heating', 'floor', 'provider_name', 'phone_number_for_contact',
@@ -36,7 +34,7 @@ class SaleFileCreateForm(forms.ModelForm):
             self.add_error('price', 'قیمت فایل باید بین 1 تا 1000 میلیارد تومان باشد')
 
         if area and not checkers.area_checker(area):
-            self.add_error('area', 'متراژ فایل باید بین 1 تا 10000 متر باشد.')
+            self.add_error('area', 'متراژ فایل باید بین 20 تا 10000 متر باشد.')
 
         if phone_number_for_contact and not checkers.phone_checker(phone_number_for_contact):
             self.add_error('phone_number_for_contact', 'شماره تلفن همراه وارد شده معتبر نیست.')
@@ -54,14 +52,44 @@ class SaleFileCreateForm(forms.ModelForm):
 
 
 class SaleFileFilterForm(forms.Form):
-    province = forms.ModelChoiceField(queryset=Province.objects.all(), required=False, label='Province')
-    city = forms.ModelChoiceField(queryset=City.objects.all(), required=False, label='City')
-    district = forms.ModelChoiceField(queryset=District.objects.all(), required=False, label='District')
-    # min_price = forms.IntegerField(required=False, label='Min Price')
-    # max_price = forms.IntegerField(required=False, label='Max Price')
-    # min_area = forms.IntegerField(required=False, label='Min Area')
-    # max_area = forms.IntegerField(required=False, label='Max Area')
-    # rooms = forms.ChoiceField(choices=statuses.rooms, required=False, label='Number of Rooms')
+    province = forms.ModelChoiceField(queryset=Province.objects.all(), required=False, label=_('Province'))
+    city = forms.ModelChoiceField(queryset=City.objects.all(), required=False, label=_('City'))
+    district = forms.ModelChoiceField(queryset=District.objects.all(), required=False, label=_('District'))
+    min_price = forms.IntegerField(required=False, label=_('Min Price'))
+    max_price = forms.IntegerField(required=False, label=_('Max Price'))
+    min_area = forms.IntegerField(required=False, label=_('Min Area'))
+    max_area = forms.IntegerField(required=False, label=_('Max Area'))
+    min_room = forms.ChoiceField(choices=[('', '---------')] + choices.rooms, required=False, label=_('Min Room'))
+    max_room = forms.ChoiceField(choices=[('', '---------')] + choices.rooms, required=False, label=_('Max Room'))
+    min_age = forms.ChoiceField(choices=[('', '---------')] + choices.ages, required=False, label=_('Min Age'))
+    max_age = forms.ChoiceField(choices=[('', '---------')] + choices.ages, required=False, label=_('Max Age'))
+    min_level = forms.ChoiceField(choices=[('', '---------')] + choices.levels, required=False, label=_('Min Level'))
+    max_level = forms.ChoiceField(choices=[('', '---------')] + choices.levels, required=False, label=_('Max Level'))
+    document = forms.ChoiceField(choices=[('', '---------')] + choices.booleans, required=False, label=_('Document'))
+    parking = forms.ChoiceField(choices=[('', '---------')] + choices.booleans, required=False, label=_('Parking'))
+    elevator = forms.ChoiceField(choices=[('', '---------')] + choices.booleans, required=False, label=_('Elevator'))
+    warehouse = forms.ChoiceField(choices=[('', '---------')] + choices.booleans, required=False, label=_('Warehouse'))
+
+    def clean(self):
+        cleaned_data = super().clean()
+        min_price = cleaned_data.get('min_price')
+        max_price = cleaned_data.get('max_price')
+        min_area = cleaned_data.get('min_area')
+        max_area = cleaned_data.get('max_area')
+
+        if min_price and not checkers.file_price_checker(min_price):
+            self.add_error('min_price', 'قیمت فایل باید بین 1 تا 1000 میلیارد تومان باشد')
+
+        if max_price and not checkers.file_price_checker(max_price):
+            self.add_error('max_price', 'قیمت فایل باید بین 1 تا 1000 میلیارد تومان باشد')
+
+        if min_area and not checkers.area_checker(min_area):
+            self.add_error('min_area', 'متراژ فایل باید بین 20 تا 10000 متر باشد.')
+
+        if max_area and not checkers.area_checker(max_area):
+            self.add_error('max_area', 'متراژ فایل باید بین 20 تا 10000 متر باشد.')
+
+        return cleaned_data
 
 
 
