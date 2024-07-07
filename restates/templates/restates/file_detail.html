@@ -16,7 +16,7 @@
         <div class="container">
 
              <!-- Main -->
-            <div class="row g-0 mb--80 mb-md--57">
+            <div class="row g-0 mb--50 mb-md--57">
 
                 <!-- Covers -->
                 <div class="col-lg-7 product-main-image">
@@ -28,7 +28,7 @@
                                          data-slick-options='{
                                             "slidesToShow": 1,
                                             "slidesToScroll": 1,
-                                            "infinite": true,
+{#                                            "infinite": true,#}
                                             "arrows": false,
                                             "asNavFor": ".nav-slider"
                                         }'>
@@ -36,9 +36,12 @@
                                         <!-- file cover -->
                                         <figure class="product-gallery__image zoom">
                                             <img src="{{ sale_file.cover.url }}" alt="Product">
-{#                                            <span class="product-badge sale">فروش</span>#}
                                             <div class="product-gallery__actions">
-                                                <button class="action-btn btn-zoom-popup"><i class="la la-eye"></i></button>
+                                                <button class="action-btn btn-zoom-popup">
+                                                    <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M12 5C7.8 5 3.8 7.58 2 12C3.8 16.42 7.8 19 12 19C16.2 19 20.2 16.42 22 12C20.2 7.58 16.2 5 12 5ZM12 17C9.24 17 7 14.76 7 12C7 9.24 9.24 7 12 7C14.76 7 17 9.24 17 12C17 14.76 14.76 17 12 17ZM12 9C10.34 9 9 10.34 9 12C9 13.66 10.34 15 12 15C13.66 15 15 13.66 15 12C15 10.34 13.66 9 12 9Z" fill="currentColor"/>
+                                                    </svg>
+                                                </button>
                                             </div>
                                         </figure>
 
@@ -46,9 +49,12 @@
                                         {% if sale_file.cover2 %}
                                             <figure class="product-gallery__image zoom">
                                                 <img src="{{ sale_file.cover2.url }}" alt="Product">
-                                                <span class="product-badge sale">فروش</span>
                                                 <div class="product-gallery__actions">
-                                                    <button class="action-btn btn-zoom-popup"><i class="la la-eye"></i></button>
+                                                    <button class="action-btn btn-zoom-popup">
+                                                    <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M12 5C7.8 5 3.8 7.58 2 12C3.8 16.42 7.8 19 12 19C16.2 19 20.2 16.42 22 12C20.2 7.58 16.2 5 12 5ZM12 17C9.24 17 7 14.76 7 12C7 9.24 9.24 7 12 7C14.76 7 17 9.24 17 12C17 14.76 14.76 17 12 17ZM12 9C10.34 9 9 10.34 9 12C9 13.66 10.34 15 12 15C13.66 15 15 13.66 15 12C15 10.34 13.66 9 12 9Z" fill="currentColor"/>
+                                                    </svg>
+                                                    </button>
                                                 </div>
                                             </figure>
                                         {% endif %}
@@ -57,9 +63,12 @@
                                         {% if sale_file.cover3 %}
                                             <figure class="product-gallery__image zoom">
                                                 <img src="{{ sale_file.cover3.url }}" alt="Product">
-                                                <span class="product-badge sale">فروش</span>
                                                 <div class="product-gallery__actions">
-                                                    <button class="action-btn btn-zoom-popup"><i class="la la-eye"></i></button>
+                                                    <button class="action-btn btn-zoom-popup">
+                                                        <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M12 5C7.8 5 3.8 7.58 2 12C3.8 16.42 7.8 19 12 19C16.2 19 20.2 16.42 22 12C20.2 7.58 16.2 5 12 5ZM12 17C9.24 17 7 14.76 7 12C7 9.24 9.24 7 12 7C14.76 7 17 9.24 17 12C17 14.76 14.76 17 12 17ZM12 9C10.34 9 9 10.34 9 12C9 13.66 10.34 15 12 15C13.66 15 15 13.66 15 12C15 10.34 13.66 9 12 9Z" fill="currentColor"/>
+                                                        </svg>
+                                                    </button>
                                                 </div>
                                             </figure>
                                         {% endif %}
@@ -68,15 +77,20 @@
                                         {% if sale_file.cover4 %}
                                             <figure class="product-gallery__image zoom">
                                                 <img src="{{ sale_file.cover4.url }}" alt="Product">
-                                                <span class="product-badge sale">فروش</span>
                                                 <div class="product-gallery__actions">
-                                                    <button class="action-btn btn-zoom-popup"><i class="la la-eye"></i></button>
+                                                    <button class="action-btn btn-zoom-popup">
+                                                        <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M12 5C7.8 5 3.8 7.58 2 12C3.8 16.42 7.8 19 12 19C16.2 19 20.2 16.42 22 12C20.2 7.58 16.2 5 12 5ZM12 17C9.24 17 7 14.76 7 12C7 9.24 9.24 7 12 7C14.76 7 17 9.24 17 12C17 14.76 14.76 17 12 17ZM12 9C10.34 9 9 10.34 9 12C9 13.66 10.34 15 12 15C13.66 15 15 13.66 15 12C15 10.34 13.66 9 12 9Z" fill="currentColor"/>
+                                                        </svg>
+                                                    </button>
                                                 </div>
                                             </figure>
                                         {% endif %}
                                     </div>
                                 </div>
                             </div>
+
+
                             <div class="product-gallery__nav-image" style="direction: ltr">
                                 <div class="element-carousel nav-slider product-slide-nav slick-center-bottom"
                                      data-slick-options='{
@@ -90,8 +104,8 @@
                                         "focusOnSelect": true,
                                         "asNavFor": ".main-slider",
                                         "arrows": true,
-                                        "prevArrow": {"buttonClass": "slick-btn slick-prev", "iconClass": "la la-angle-up" },
-                                        "nextArrow": {"buttonClass": "slick-btn slick-next", "iconClass": "la la-angle-down" }
+                                        "prevArrow": {"buttonClass": "slick-btn slick-prev", "iconClass": "&#8593;" },
+                                        "nextArrow": {"buttonClass": "slick-btn slick-next", "iconClass": "&#8593;" }
                                     }'
                                      data-slick-responsive='[
                                         {
@@ -140,6 +154,9 @@
                                     {% endif %}
                                 </div>
                             </div>
+
+
+
                         </div>
                     </div>
                 </div>
@@ -273,15 +290,30 @@
 
                         <!-- contact -->
                         <div class="product-action">
-                            <a href="#" class="btn btn-size-sm btn-shape-square" style="width: 100%;">مشاهده اطلاعات تماس</a>
+                            <button id="contactButton" class="btn btn-size-sm btn-shape-square" style="width: 100%;">مشاهده اطلاعات تماس</button>
                         </div>
+                        <div id="contactDIV" class="variation-form mt--20" style="display: none;">
+                            <div class="product-size-variations d-flex align-items-center mb--15" style="justify-content: center;">
+                                <a href="tel:{{ sale_file.phone_number_for_contact }}" class="font-weight-medium" style="font-size: medium; font-weight: bolder; color: black;">{{ sale_file.phone_number_for_contact }}</a>
+                            </div>
+                        </div>
+                        <script>
+                            document.getElementById('contactButton').addEventListener('click', function() {
+                                var contactDIV = document.getElementById('contactDIV');
+                                if (contactDIV.style.display === 'none') {
+                                    contactDIV.style.display = 'block';
+                                } else {
+                                    contactDIV.style.display = 'none';
+                                }
+                            });
+                        </script>
 
                     </div>
                 </div>
             </div>
 
-            <!-- Side -->
-            <div class="row justify-content-center mb--77 mb-md--57">
+            <!-- Additional -->
+            <div class="row justify-content-center mb--77 mb-md--57" >
                 <div class="col-12">
                     <div class="tab-style-2">
 
