@@ -19,43 +19,6 @@
                 <!-- File >>> main content -->
                 <div class="col-xl-9 col-lg-8 order-lg-2 mb-md--50">
 
-                    <!-- File >>> upper toolbar -->
-                    <div class="shop-toolbar mb--50">
-                        <div class="row align-items-center">
-
-                            <div class="col-md-5 mb-sm--30 mb-xs--10">
-                                <div class="shop-toolbar__left">
-                                    <div class="product-ordering">
-                                        <select class="product-ordering__select nice-select">
-                                            <option value="0">مرتب سازی پیش فرض</option>
-                                            <option value="1">ارتباط</option>
-                                            <option value="2">نام الف تا ج</option>
-                                            <option value="3">نام ج تا ی</option>
-                                            <option value="4">قیمت، کم به بالا</option>
-                                            <option value="5">قیمت، بالا به پایین</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-
-{#                                <div class="col-md-7">#}
-{#                                    <div class="shop-toolbar__right d-flex justify-content-md-end justify-content-start flex-sm-row flex-column">#}
-{#                                        <p class="product-pages">نمایش نتیجه 08 در میان 72</p>#}
-{#                                        <div class="product-view-mode ml--50 ml-xs--0">#}
-{#                                            <a class="active" href="#" data-target="grid">#}
-{#                                                <img src="files/img/icons/grid.png" alt="Grid">#}
-{#                                            </a>#}
-{#                                            <a href="#" data-target="list">#}
-{#                                                <img src="files/img/icons/list.png" alt="Grid">#}
-{#                                            </a>#}
-{#                                        </div>#}
-{#                                    </div>#}
-{#                                </div>#}
-
-                        </div>
-                    </div>
-                    <!-- end: File >>> upper toolbar -->
-
                     <!-- Files >>> main -->
                     <div class="shop-products">
                         <div class="row">
@@ -152,423 +115,220 @@
                 <!-- File >>> sidebar -->
                 <div class="col-xl-3 col-lg-4 order-lg-1">
                     <aside class="shop-sidebar">
+                        <div class="col-lg-12">
+                            <div class="checkout-form">
 
-{#                        <form id="filter-form" method="get" action="{% url 'file_list' %}" enctype="multipart/form-data">#}
-{#                            {% csrf_token %}#}
-{#                            <div class="grid grid-cols-2 items-center gap-6 mt-2">#}
-{#                                <!-- Province -->#}
-{#                                <div class="col-span-2 md:col-span-2" style="margin-top: 1em; margin-bottom: 1em;">#}
-{#                                    <label style="margin-bottom: 1em;!important;" for="{{ filter_form.province.id_for_label }}" class="relative block rounded-lg border border-secondary-light shadow-base dark:border-primary-light/5 mb-12">#}
-{#                                        <span style="font-size: large;" class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-primary-light px-2 py-0.5 text-sm text-quaternary-600 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-focus:top-0 peer-focus:text-sm dark:bg-secondary-dark dark:text-quaternary-300 mr-4">#}
-{#                                            {% trans 'Province: ' %}#}
-{#                                        </span>#}
-{#                                        {% render_field filter_form.province type="text" id="province" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" %}#}
-{#                                    </label>#}
-{#                                </div>#}
-{##}
-{#                                <!-- City -->#}
-{#                                <div class="col-span-2 md:col-span-1" style="margin-top: 1em; margin-bottom: 1em;">#}
-{#                                    <label style="margin-bottom: 1em;!important;" for="{{ filter_form.city.id_for_label }}" class="relative block rounded-lg border border-secondary-light shadow-base dark:border-primary-light/5 mb-12">#}
-{#                                        <span style="font-size: large;" class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-primary-light px-2 py-0.5 text-sm text-quaternary-600 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-focus:top-0 peer-focus:text-sm dark:bg-secondary-dark dark:text-quaternary-300 mr-4">#}
-{#                                            {% trans 'City: ' %}#}
-{#                                        </span>#}
-{#                                        {% render_field filter_form.city type="text" id="city" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" %}#}
-{#                                    </label>#}
-{#                                </div>#}
-{##}
-{#                                <!-- District -->#}
-{#                                <div class="col-span-2 md:col-span-1" style="margin-top: 1em; margin-bottom: 1em;">#}
-{#                                    <label style="margin-bottom: 1em;!important;" for="{{ filter_form.district.id_for_label }}" class="relative block rounded-lg border border-secondary-light shadow-base dark:border-primary-light/5 mb-12">#}
-{#                                        <span style="font-size: large;" class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-primary-light px-2 py-0.5 text-sm text-quaternary-600 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-focus:top-0 peer-focus:text-sm dark:bg-secondary-dark dark:text-quaternary-300 mr-4">#}
-{#                                            {% trans 'District: ' %}#}
-{#                                        </span>#}
-{#                                        {% render_field filter_form.district type="text" id="district" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" %}#}
-{#                                    </label>#}
-{#                                </div>#}
-{##}
-{#                            <!-- Submit -->#}
-{#                            <div class="col-span-2 flex justify-end" style="margin-top: 3em;">#}
-{#                                <button style="padding: 1em 2.5em;!important; background-color: #00a65c;!important;" onclick="submitFormAndRefresh()" type="submit" class="btn-primary w-full px-4 py-2 md:w-auto">{% trans 'Submit File' %}</button>#}
-{#                            </div>#}
-{#                        </form>#}
+                                <form id="filter-form" method="get" action="{% url 'file_list' %}" enctype="multipart/form-data" class="form form--checkout">
+                                    {% csrf_token %}
 
+                                    <!-- Province -->
+                                    <div class="row mb--10">
+                                        <div class="form__group col-12">
+                                            <label for="{{ filter_form.province.id_for_label }}" class="form__label">{% trans 'Province: ' %}</label>
+                                            {% render_field filter_form.province type="text" id="province" class="form__input" onchange="updateCities(this.value)" %}
+                                        </div>
+                                    </div>
 
-                        <!-- Filter Form -->
-                        <form id="filter-form" method="get" action="{% url 'file_list' %}" enctype="multipart/form-data">
-                            {% csrf_token %}
-                            <div class="grid grid-cols-2 items-center gap-6 mt-2">
-                                <!-- Province -->
-                                <div class="col-span-2 md:col-span-2" style="margin-top: 1em; margin-bottom: 1em;">
-                                    <label for="{{ filter_form.province.id_for_label }}" class="relative block rounded-lg border border-secondary-light shadow-base dark:border-primary-light/5 mb-12">
-                                        <span style="font-size: large;" class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-primary-light px-2 py-0.5 text-sm text-quaternary-600 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-focus:top-0 peer-focus:text-sm dark:bg-secondary-dark dark:text-quaternary-300 mr-4">
-                                            {% trans 'Province: ' %}
-                                        </span>
-                                        {% render_field filter_form.province type="text" id="province" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" onchange="updateCities(this.value)" %}
-                                    </label>
-                                </div>
+                                    <!-- City -->
+                                    <div class="row mb--10">
+                                        <div class="form__group col-12">
+                                            <label for="{{ filter_form.city.id_for_label }}" class="form__label">{% trans 'City: ' %}</label>
+                                            {% render_field filter_form.city type="text" id="city" class="form__input" onchange="updateDistricts(this.value)" %}
+                                        </div>
+                                    </div>
 
-                                <!-- City -->
-                                <div class="col-span-2 md:col-span-1" style="margin-top: 1em; margin-bottom: 1em;">
-                                    <label for="{{ filter_form.city.id_for_label }}" class="relative block rounded-lg border border-secondary-light shadow-base dark:border-primary-light/5 mb-12">
-                                        <span style="font-size: large;" class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-primary-light px-2 py-0.5 text-sm text-quaternary-600 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-focus:top-0 peer-focus:text-sm dark:bg-secondary-dark dark:text-quaternary-300 mr-4">
-                                            {% trans 'City: ' %}
-                                        </span>
-                                        {% render_field filter_form.city type="text" id="city" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" onchange="updateDistricts(this.value)" %}
-                                    </label>
-                                </div>
+                                    <!-- District -->
+                                    <div class="row mb--10">
+                                        <div class="form__group col-12">
+                                            <label for="{{ filter_form.district.id_for_label }}" class="form__label">{% trans 'District: ' %}</label>
+                                            {% render_field filter_form.district type="text" id="district" class="form__input" %}
+                                        </div>
+                                    </div>
 
-                                <!-- District -->
-                                <div class="col-span-2 md:col-span-1" style="margin-top: 1em; margin-bottom: 1em;">
-                                    <label for="{{ filter_form.district.id_for_label }}" class="relative block rounded-lg border border-secondary-light shadow-base dark:border-primary-light/5 mb-12">
-                                        <span style="font-size: large;" class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-primary-light px-2 py-0.5 text-sm text-quaternary-600 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-focus:top-0 peer-focus:text-sm dark:bg-secondary-dark dark:text-quaternary-300 mr-4">
-                                            {% trans 'District: ' %}
-                                        </span>
-                                        {% render_field filter_form.district type="text" id="district" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" %}
-                                    </label>
-                                </div>
+                                    <!-- Min_Price -->
+                                    <div class="row mb--10">
+                                        <div class="form__group col-12">
+                                            <label for="{{ filter_form.min_price.id_for_label }}" class="form__label">{% trans 'Min_Price: ' %}</label>
+                                            {% render_field filter_form.min_price type="number" id="min_price" class="form__input" %}
+                                        </div>
+                                    </div>
 
-                                <!-- Min_Price -->
-                                <div class="col-span-2 md:col-span-2" style="margin-top: 1em; margin-bottom: 1em;">
-                                    <label for="{{ filter_form.min_price.id_for_label }}" class="relative block rounded-lg border border-secondary-light shadow-base dark:border-primary-light/5 mb-12">
-                                        <span style="font-size: large;" class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-primary-light px-2 py-0.5 text-sm text-quaternary-600 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-focus:top-0 peer-focus:text-sm dark:bg-secondary-dark dark:text-quaternary-300 mr-4">
-                                            {% trans 'Min Price: ' %}
-                                        </span>
-                                        {% render_field filter_form.min_price type="number" id="min_price" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" onchange="updateCities(this.value)" %}
-                                    </label>
-                                </div>
+                                    <!-- Max_Price -->
+                                    <div class="row mb--10">
+                                        <div class="form__group col-12">
+                                            <label for="{{ filter_form.max_price.id_for_label }}" class="form__label">{% trans 'Max_Price: ' %}</label>
+                                            {% render_field filter_form.max_price type="number" id="max_price" class="form__input" %}
+                                        </div>
+                                    </div>
 
-                                <!-- Max_Price -->
-                                <div class="col-span-2 md:col-span-2" style="margin-top: 1em; margin-bottom: 1em;">
-                                    <label for="{{ filter_form.max_price.id_for_label }}" class="relative block rounded-lg border border-secondary-light shadow-base dark:border-primary-light/5 mb-12">
-                                        <span style="font-size: large;" class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-primary-light px-2 py-0.5 text-sm text-quaternary-600 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-focus:top-0 peer-focus:text-sm dark:bg-secondary-dark dark:text-quaternary-300 mr-4">
-                                            {% trans 'Max Price: ' %}
-                                        </span>
-                                        {% render_field filter_form.max_price type="number" id="max_price" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" onchange="updateCities(this.value)" %}
-                                    </label>
-                                </div>
+                                    <!-- Min_Area -->
+                                    <div class="row mb--10">
+                                        <div class="form__group col-12">
+                                            <label for="{{ filter_form.min_area.id_for_label }}" class="form__label">{% trans 'Min_Area: ' %}</label>
+                                            {% render_field filter_form.min_area type="number" id="min_area" class="form__input" %}
+                                        </div>
+                                    </div>
 
-                                <!-- Min_Area -->
-                                <div class="col-span-2 md:col-span-2" style="margin-top: 1em; margin-bottom: 1em;">
-                                    <label for="{{ filter_form.min_area.id_for_label }}" class="relative block rounded-lg border border-secondary-light shadow-base dark:border-primary-light/5 mb-12">
-                                        <span style="font-size: large;" class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-primary-light px-2 py-0.5 text-sm text-quaternary-600 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-focus:top-0 peer-focus:text-sm dark:bg-secondary-dark dark:text-quaternary-300 mr-4">
-                                            {% trans 'Min Area: ' %}
-                                        </span>
-                                        {% render_field filter_form.min_area type="number" id="min_area" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" onchange="updateCities(this.value)" %}
-                                    </label>
-                                </div>
+                                    <!-- Max_Area -->
+                                    <div class="row mb--10">
+                                        <div class="form__group col-12">
+                                            <label for="{{ filter_form.max_area.id_for_label }}" class="form__label">{% trans 'Max_Area: ' %}</label>
+                                            {% render_field filter_form.max_area type="number" id="max_area" class="form__input" %}
+                                        </div>
+                                    </div>
 
-                                <!-- Max_Area -->
-                                <div class="col-span-2 md:col-span-2" style="margin-top: 1em; margin-bottom: 1em;">
-                                    <label for="{{ filter_form.max_area.id_for_label }}" class="relative block rounded-lg border border-secondary-light shadow-base dark:border-primary-light/5 mb-12">
-                                        <span style="font-size: large;" class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-primary-light px-2 py-0.5 text-sm text-quaternary-600 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-focus:top-0 peer-focus:text-sm dark:bg-secondary-dark dark:text-quaternary-300 mr-4">
-                                            {% trans 'Max Area: ' %}
-                                        </span>
-                                        {% render_field filter_form.max_area type="number" id="max_area" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" onchange="updateCities(this.value)" %}
-                                    </label>
-                                </div>
+                                    <!-- Min_Room -->
+                                    <div class="row mb--10">
+                                        <div class="form__group col-12">
+                                            <label for="{{ filter_form.min_room.id_for_label }}" class="form__label">{% trans 'Min_Room: ' %}</label>
+                                            {% render_field filter_form.min_room type="text" id="min_room" class="form__input" %}
+                                        </div>
+                                    </div>
 
-                                 <!-- Min_Room -->
-                                <div class="col-span-2 md:col-span-2" style="margin-top: 1em; margin-bottom: 1em;">
-                                    <label for="{{ filter_form.min_room.id_for_label }}" class="relative block rounded-lg border border-secondary-light shadow-base dark:border-primary-light/5 mb-12">
-                                        <span style="font-size: large;" class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-primary-light px-2 py-0.5 text-sm text-quaternary-600 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-focus:top-0 peer-focus:text-sm dark:bg-secondary-dark dark:text-quaternary-300 mr-4">
-                                            {% trans 'Min Room: ' %}
-                                        </span>
-                                        {% render_field filter_form.min_room type="text" id="min_room" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" onchange="updateCities(this.value)" %}
-                                    </label>
-                                </div>
+                                    <!-- Max_Room -->
+                                    <div class="row mb--10">
+                                        <div class="form__group col-12">
+                                            <label for="{{ filter_form.max_room.id_for_label }}" class="form__label">{% trans 'Max_Room: ' %}</label>
+                                            {% render_field filter_form.max_room type="text" id="max_room" class="form__input" %}
+                                        </div>
+                                    </div>
 
-                                <!-- Max_Room -->
-                                <div class="col-span-2 md:col-span-2" style="margin-top: 1em; margin-bottom: 1em;">
-                                    <label for="{{ filter_form.max_room.id_for_label }}" class="relative block rounded-lg border border-secondary-light shadow-base dark:border-primary-light/5 mb-12">
-                                        <span style="font-size: large;" class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-primary-light px-2 py-0.5 text-sm text-quaternary-600 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-focus:top-0 peer-focus:text-sm dark:bg-secondary-dark dark:text-quaternary-300 mr-4">
-                                            {% trans 'Max Room: ' %}
-                                        </span>
-                                        {% render_field filter_form.max_room type="text" id="max_room" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" onchange="updateCities(this.value)" %}
-                                    </label>
-                                </div>
+                                    <!-- Min_Age -->
+                                    <div class="row mb--10">
+                                        <div class="form__group col-12">
+                                            <label for="{{ filter_form.min_age.id_for_label }}" class="form__label">{% trans 'Min_Age: ' %}</label>
+                                            {% render_field filter_form.min_age type="text" id="min_age" class="form__input" %}
+                                        </div>
+                                    </div>
 
-                                 <!-- Min_Age -->
-                                <div class="col-span-2 md:col-span-2" style="margin-top: 1em; margin-bottom: 1em;">
-                                    <label for="{{ filter_form.min_age.id_for_label }}" class="relative block rounded-lg border border-secondary-light shadow-base dark:border-primary-light/5 mb-12">
-                                        <span style="font-size: large;" class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-primary-light px-2 py-0.5 text-sm text-quaternary-600 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-focus:top-0 peer-focus:text-sm dark:bg-secondary-dark dark:text-quaternary-300 mr-4">
-                                            {% trans 'Min Age: ' %}
-                                        </span>
-                                        {% render_field filter_form.min_age type="text" id="min_age" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" onchange="updateCities(this.value)" %}
-                                    </label>
-                                </div>
+                                    <!-- Max_Age -->
+                                    <div class="row mb--10">
+                                        <div class="form__group col-12">
+                                            <label for="{{ filter_form.max_age.id_for_label }}" class="form__label">{% trans 'Max_Age: ' %}</label>
+                                            {% render_field filter_form.max_age type="text" id="max_age" class="form__input" %}
+                                        </div>
+                                    </div>
 
-                                <!-- Max_Age -->
-                                <div class="col-span-2 md:col-span-2" style="margin-top: 1em; margin-bottom: 1em;">
-                                    <label for="{{ filter_form.max_age.id_for_label }}" class="relative block rounded-lg border border-secondary-light shadow-base dark:border-primary-light/5 mb-12">
-                                        <span style="font-size: large;" class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-primary-light px-2 py-0.5 text-sm text-quaternary-600 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-focus:top-0 peer-focus:text-sm dark:bg-secondary-dark dark:text-quaternary-300 mr-4">
-                                            {% trans 'Max Age: ' %}
-                                        </span>
-                                        {% render_field filter_form.max_age type="text" id="max_age" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" onchange="updateCities(this.value)" %}
-                                    </label>
-                                </div>
+                                    <!-- Min_Level -->
+                                    <div class="row mb--10">
+                                        <div class="form__group col-12">
+                                            <label for="{{ filter_form.min_level.id_for_label }}" class="form__label">{% trans 'Min_Level: ' %}</label>
+                                            {% render_field filter_form.min_level type="text" id="min_level" class="form__input" %}
+                                        </div>
+                                    </div>
 
-                                 <!-- Min_Level -->
-                                <div class="col-span-2 md:col-span-2" style="margin-top: 1em; margin-bottom: 1em;">
-                                    <label for="{{ filter_form.min_level.id_for_label }}" class="relative block rounded-lg border border-secondary-light shadow-base dark:border-primary-light/5 mb-12">
-                                        <span style="font-size: large;" class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-primary-light px-2 py-0.5 text-sm text-quaternary-600 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-focus:top-0 peer-focus:text-sm dark:bg-secondary-dark dark:text-quaternary-300 mr-4">
-                                            {% trans 'Min Level: ' %}
-                                        </span>
-                                        {% render_field filter_form.min_level type="text" id="min_level" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" onchange="updateCities(this.value)" %}
-                                    </label>
-                                </div>
+                                    <!-- Max_Level -->
+                                    <div class="row mb--10">
+                                        <div class="form__group col-12">
+                                            <label for="{{ filter_form.max_level.id_for_label }}" class="form__label">{% trans 'Max_Level: ' %}</label>
+                                            {% render_field filter_form.max_level type="text" id="max_level" class="form__input" %}
+                                        </div>
+                                    </div>
 
-                                <!-- Max_Level -->
-                                <div class="col-span-2 md:col-span-2" style="margin-top: 1em; margin-bottom: 1em;">
-                                    <label for="{{ filter_form.max_level.id_for_label }}" class="relative block rounded-lg border border-secondary-light shadow-base dark:border-primary-light/5 mb-12">
-                                        <span style="font-size: large;" class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-primary-light px-2 py-0.5 text-sm text-quaternary-600 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-focus:top-0 peer-focus:text-sm dark:bg-secondary-dark dark:text-quaternary-300 mr-4">
-                                            {% trans 'Max Level: ' %}
-                                        </span>
-                                        {% render_field filter_form.max_level type="text" id="max_level" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" onchange="updateCities(this.value)" %}
-                                    </label>
-                                </div>
+                                    <!-- Document -->
+                                    <div class="row mb--10">
+                                        <div class="form__group col-12">
+                                            <label for="{{ filter_form.document.id_for_label }}" class="form__label">{% trans 'Document: ' %}</label>
+                                            {% render_field filter_form.document type="text" id="document" class="form__input" %}
+                                        </div>
+                                    </div>
 
-                                <!-- Document -->
-                                <div class="col-span-2 md:col-span-2" style="margin-top: 1em; margin-bottom: 1em;">
-                                    <label for="{{ filter_form.document.id_for_label }}" class="relative block rounded-lg border border-secondary-light shadow-base dark:border-primary-light/5 mb-12">
-                                        <span style="font-size: large;" class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-primary-light px-2 py-0.5 text-sm text-quaternary-600 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-focus:top-0 peer-focus:text-sm dark:bg-secondary-dark dark:text-quaternary-300 mr-4">
-                                            {% trans 'Document: ' %}
-                                        </span>
-                                        {% render_field filter_form.document type="text" id="document" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" onchange="updateCities(this.value)" %}
-                                    </label>
-                                </div>
+                                    <!-- Parking -->
+                                    <div class="row mb--10">
+                                        <div class="form__group col-12">
+                                            <label for="{{ filter_form.parking.id_for_label }}" class="form__label">{% trans 'Parking: ' %}</label>
+                                            {% render_field filter_form.parking type="text" id="parking" class="form__input" %}
+                                        </div>
+                                    </div>
 
-                                <!-- Parking -->
-                                <div class="col-span-2 md:col-span-2" style="margin-top: 1em; margin-bottom: 1em;">
-                                    <label for="{{ filter_form.parking.id_for_label }}" class="relative block rounded-lg border border-secondary-light shadow-base dark:border-primary-light/5 mb-12">
-                                        <span style="font-size: large;" class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-primary-light px-2 py-0.5 text-sm text-quaternary-600 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-focus:top-0 peer-focus:text-sm dark:bg-secondary-dark dark:text-quaternary-300 mr-4">
-                                            {% trans 'Parking: ' %}
-                                        </span>
-                                        {% render_field filter_form.parking type="text" id="parking" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" onchange="updateCities(this.value)" %}
-                                    </label>
-                                </div>
+                                    <!-- Elevator -->
+                                    <div class="row mb--10">
+                                        <div class="form__group col-12">
+                                            <label for="{{ filter_form.elevator.id_for_label }}" class="form__label">{% trans 'Elevator: ' %}</label>
+                                            {% render_field filter_form.elevator type="text" id="elevator" class="form__input" %}
+                                        </div>
+                                    </div>
 
-                                <!-- Elevator -->
-                                <div class="col-span-2 md:col-span-2" style="margin-top: 1em; margin-bottom: 1em;">
-                                    <label for="{{ filter_form.elevator.id_for_label }}" class="relative block rounded-lg border border-secondary-light shadow-base dark:border-primary-light/5 mb-12">
-                                        <span style="font-size: large;" class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-primary-light px-2 py-0.5 text-sm text-quaternary-600 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-focus:top-0 peer-focus:text-sm dark:bg-secondary-dark dark:text-quaternary-300 mr-4">
-                                            {% trans 'Elevator: ' %}
-                                        </span>
-                                        {% render_field filter_form.elevator type="text" id="elevator" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" onchange="updateCities(this.value)" %}
-                                    </label>
-                                </div>
+                                    <!-- Warehouse -->
+                                    <div class="row mb--10">
+                                        <div class="form__group col-12">
+                                            <label for="{{ filter_form.warehouse.id_for_label }}" class="form__label">{% trans 'Warehouse: ' %}</label>
+                                            {% render_field filter_form.warehouse type="text" id="warehouse" class="form__input" %}
+                                        </div>
+                                    </div>
 
-                                <!-- Warehouse -->
-                                <div class="col-span-2 md:col-span-2" style="margin-top: 1em; margin-bottom: 1em;">
-                                    <label for="{{ filter_form.warehouse.id_for_label }}" class="relative block rounded-lg border border-secondary-light shadow-base dark:border-primary-light/5 mb-12">
-                                        <span style="font-size: large;" class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-primary-light px-2 py-0.5 text-sm text-quaternary-600 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-focus:top-0 peer-focus:text-sm dark:bg-secondary-dark dark:text-quaternary-300 mr-4">
-                                            {% trans 'Warehouse: ' %}
-                                        </span>
-                                        {% render_field filter_form.warehouse type="text" id="warehouse" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" onchange="updateCities(this.value)" %}
-                                    </label>
-                                </div>
+                                    <!-- Submit -->
+                                    <div class="col-span-2 flex justify-end" style="margin-top: 1.5em;">
+                                        <button style="padding: 1em 2.5em; width: 100%; line-height: 0.7em; font-weight: normal; float: left;" onclick="submitFormAndRefresh()" type="submit" class="btn btn-outline btn-brw-2">{% trans 'Submit File' %}</button>
+                                    </div>
+                                </form>
 
-                                <!-- Submit -->
-                                <div class="col-span-2 flex justify-end" style="margin-top: 3em;">
-                                    <button style="padding: 1em 2.5em; background-color: #00a65c;" onclick="submitFormAndRefresh()" type="submit" class="btn-primary w-full px-4 py-2 md:w-auto">{% trans 'Submit File' %}</button>
-                                </div>
-                            </div>
-                        </form>
-                        <!-- end: Filter Form -->
+                                <!-- JS for filter Form -->
+                                <script>
+                                    function submitFormAndRefresh() {
+                                        // Submit the form
+                                        document.getElementById('filter-form').submit();
+                                        // Refresh the page
+                                        location.reload();
+                                    }
+                                </script>
 
-                        <!-- JS for filter Form -->
-                        <script>
-                            function submitFormAndRefresh() {
-                                // Submit the form
-                                document.getElementById('filter-form').submit();
-                                // Refresh the page
-                                location.reload();
-                            }
-                        </script>
+                                <script>
+                                    document.addEventListener('DOMContentLoaded', function() {
+                                        const province = document.getElementById('province').value;
+                                        const city = document.getElementById('city').value;
 
-                        <script>
-                            document.addEventListener('DOMContentLoaded', function() {
-                                const province = document.getElementById('province').value;
-                                const city = document.getElementById('city').value;
-
-                                if (province) {
-                                    updateCities(province);
-                                }
-                                if (city) {
-                                    updateDistricts(city);
-                                }
-                            });
-
-                            function updateCities(provinceId) {
-                                const url = `/get-cities/?province_id=${provinceId}`;
-                                fetch(url)
-                                    .then(response => response.json())
-                                    .then(data => {
-                                        const citySelect = document.getElementById('city');
-                                        citySelect.innerHTML = '<option value="">Select City</option>';
-                                        data.cities.forEach(city => {
-                                            citySelect.innerHTML += `<option value="${city.id}">${city.name}</option>`;
-                                        });
-
-                                        const selectedCity = '{{ request.GET.city }}';
-                                        if (selectedCity) {
-                                            citySelect.value = selectedCity;
+                                        if (province) {
+                                            updateCities(province);
+                                        }
+                                        if (city) {
+                                            updateDistricts(city);
                                         }
                                     });
-                            }
 
-                            function updateDistricts(cityId) {
-                                const url = `/get-districts/?city_id=${cityId}`;
-                                fetch(url)
-                                    .then(response => response.json())
-                                    .then(data => {
-                                        const districtSelect = document.getElementById('district');
-                                        districtSelect.innerHTML = '<option value="">Select District</option>';
-                                        data.districts.forEach(district => {
-                                            districtSelect.innerHTML += `<option value="${district.id}">${district.name}</option>`;
-                                        });
+                                    function updateCities(provinceId) {
+                                        const url = `/get-cities/?province_id=${provinceId}`;
+                                        fetch(url)
+                                            .then(response => response.json())
+                                            .then(data => {
+                                                const citySelect = document.getElementById('city');
+                                                citySelect.innerHTML = '<option value="">Select City</option>';
+                                                data.cities.forEach(city => {
+                                                    citySelect.innerHTML += `<option value="${city.id}">${city.name}</option>`;
+                                                });
 
-                                        const selectedDistrict = '{{ request.GET.district }}';
-                                        if (selectedDistrict) {
-                                            districtSelect.value = selectedDistrict;
-                                        }
-                                    });
-                            }
+                                                const selectedCity = '{{ request.GET.city }}';
+                                                if (selectedCity) {
+                                                    citySelect.value = selectedCity;
+                                                }
+                                            });
+                                    }
 
-                            function submitFormAndRefresh() {
-                                document.getElementById('filter-form').submit();
-                                location.reload();
-                            }
-                        </script>
-                        <!-- end: JS for filter Form -->
+                                    function updateDistricts(cityId) {
+                                        const url = `/get-districts/?city_id=${cityId}`;
+                                        fetch(url)
+                                            .then(response => response.json())
+                                            .then(data => {
+                                                const districtSelect = document.getElementById('district');
+                                                districtSelect.innerHTML = '<option value="">Select District</option>';
+                                                data.districts.forEach(district => {
+                                                    districtSelect.innerHTML += `<option value="${district.id}">${district.name}</option>`;
+                                                });
 
+                                                const selectedDistrict = '{{ request.GET.district }}';
+                                                if (selectedDistrict) {
+                                                    districtSelect.value = selectedDistrict;
+                                                }
+                                            });
+                                    }
 
+                                    function submitFormAndRefresh() {
+                                        document.getElementById('filter-form').submit();
+                                        location.reload();
+                                    }
+                                </script>
+                                <!-- end: JS for filter Form -->
 
-                        <div class="shop-widget mb--40">
-                            <h3 class="widget-title mb--25">دسته بندی</h3>
-                            <ul class="widget-list category-list">
-                                <li>
-                                    <a href="shop.html">
-                                        <span class="category-title">مجموعه زمستانی</span>
-                                        <i class="fa fa-angle-double-right"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="shop.html">
-                                        <span class="category-title">لباسهای زنانه</span>
-                                        <i class="fa fa-angle-double-right"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="shop.html">
-                                        <span class="category-title">لباس مردانه</span>
-                                        <i class="fa fa-angle-double-right"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="shop.html">
-                                        <span class="category-title">لباس بچه</span>
-                                        <i class="fa fa-angle-double-right"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="shop.html">
-                                        <span class="category-title">دستهبندی نشده</span>
-                                        <i class="fa fa-angle-double-right"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="shop.html">
-                                        <span class="category-title">تجهیزات جانبی</span>
-                                        <i class="fa fa-angle-double-right"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="shop.html">
-                                        <span class="category-title">ورود جدید</span>
-                                        <i class="fa fa-angle-double-right"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="shop-widget mb--40">
-                            <h3 class="widget-title mb--30">رنگ</h3>
-                            <div class="widget-color">
-                                <a href="shop.html" class="red">قرمز</a>
-                                <a href="shop.html" class="pink">صورتی</a>
-                                <a href="shop.html" class="black">سیاه</a>
-                                <a href="shop.html" class="brown"> قهوه ای</a>
-                                <a href="shop.html" class="blue">آبی</a>
-                                <a href="shop.html" class="cholate">شکلات</a>
-                                <a href="shop.html" class="copper">فلز مس</a>
-                                <a href="shop.html" class="gray">خاکستری</a>
-                            </div>
-                        </div>
-                        <div class="shop-widget mb--40">
-                            <h3 class="widget-title mb--25">قیمت</h3>
-                            <ul class="widget-list price-list">
-                                <li>
-                                    <a href="shop.html">
-                                        <span>کم - متوسط</span>
-                                        <strong class="font-weight-medium">10.00 تومان - 80.00 تومان</strong>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="shop.html">
-                                        <span>متوسط - زیاد</span>
-                                        <strong class="font-weight-medium">10.00 تومان - 45.00 تومان</strong>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="shop.html">
-                                        <span>زیاد -  بالا</span>
-                                        <strong class="font-weight-medium">10.00 تومان - 55.00 تومان</strong>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="shop-widget mb--40">
-                            <h3 class="widget-title mb--25">برندها</h3>
-                            <ul class="widget-list brand-list">
-                                <li>
-                                    <a href="shop.html">
-                                        <span>والمارت</span>
-                                        <strong class="color--red font-weight-medium">10</strong>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="shop.html">
-                                        <span>زرد</span>
-                                        <strong class="color--red font-weight-medium">50</strong>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="shop.html">
-                                        <span>H &amp; M</span>
-                                        <strong class="color--red font-weight-medium">46</strong>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="shop.html">
-                                        <span>سیاه &amp; سفید</span>
-                                        <strong class="color--red font-weight-medium">46</strong>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="shop-widget">
-                            <h3 class="widget-title mb--25">برچسب</h3>
-                            <div class="tagcloud">
-                                <a href="shop.html">پارچه</a>
-                                <a href="shop.html">بلیزر</a>
-                                <a href="shop.html">ژاکت</a>
-                                <a href="shop.html">پلیور</a>
-                                <a href="shop.html">تی شرت</a>
-                                <a href="shop.html">شورت</a>
-                                <a href="shop.html">شلوار</a>
-                                <a href="shop.html">لباس مهمانی</a>
-                                <a href="shop.html">لباس کوکتل</a>
-                                <a href="shop.html">ژاکت</a>
-                                <a href="shop.html">شلوار جین</a>
                             </div>
                         </div>
                     </aside>
