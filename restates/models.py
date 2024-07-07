@@ -93,6 +93,10 @@ class SaleFile(models.Model):
     # 		code = code + random.choice(choice_list)
     # 	return code
 
+    @property
+    def price_per_meter(self):
+        return int(self.price/self.area)
+
     def save(self, *args, **kwargs):
         if self.pk is not None:
             old_status = SaleFile.objects.get(pk=self.pk).status
