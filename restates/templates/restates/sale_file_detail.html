@@ -7,7 +7,7 @@
 {% load humanize %}
 {% load widget_tweaks %}
 
-{% block title %}{% trans 'Sale Detail' %}{% endblock %}
+{% block title %}{% trans 'Sale Detail' %} - {{ sale_file.title }}{% endblock %}
 
 
 {% block content %}
@@ -232,7 +232,7 @@
                                 <li>
                                     <a href="#">
                                         <span style="font-size: medium;">{% trans 'Level:' %}</span>
-                                        <strong class="font-weight-medium" style="font-size: medium;">{{ sale_file.level }}</strong>
+                                        <strong class="font-weight-medium" style="font-size: medium;">{{ sale_file.get_level_display }}</strong>
                                     </a>
                                 </li>
 
@@ -344,24 +344,32 @@
                                         <tbody>
 
                                         {% if sale_file.direction %}
-                                            <tr style="border-bottom: #EEEEEE 1px solid; height: 50px;"><th>{% trans 'File Direction: ' %}</th><td>{{ sale_file.direction }}</td></tr>
+                                            <tr style="border-bottom: #EEEEEE 1px solid; height: 50px;"><th>{% trans 'File Direction: ' %}</th><td>{{ sale_file.get_direction_display }}</td></tr>
                                         {% endif %}
 
                                         {% if sale_file.file_levels %}
-                                            <tr style="border-bottom: #EEEEEE 1px solid; height: 50px;!important;"><th>{% trans 'File Levels Number: ' %}</th><td>{{ sale_file.file_levels }}</td></tr>
+                                            <tr style="border-bottom: #EEEEEE 1px solid; height: 50px;!important;"><th>{% trans 'File Levels Number: ' %}</th><td>{{ sale_file.get_file_levels_display }}</td></tr>
                                         {% endif %}
 
                                         {% if sale_file.aparts_per_level %}
-                                            <tr style="border-bottom: #EEEEEE 1px solid; height: 50px;!important;"><th>{% trans 'Apartments per Level: ' %}</th><td>{{ sale_file.aparts_per_level }}</td></tr>
+                                            <tr style="border-bottom: #EEEEEE 1px solid; height: 50px;!important;"><th>{% trans 'Apartments per Level: ' %}</th><td>{{ sale_file.get_aparts_per_level_display }}</td></tr>
                                         {% endif %}
 
-                                        <tr style="border-bottom: #EEEEEE 1px solid; height: 50px;!important;"><th>{% trans 'Restoration: ' %}</th><td>{{ sale_file.restoration }}</td></tr>
+                                        {% if sale_file.restoration %}
+                                            <tr style="border-bottom: #EEEEEE 1px solid; height: 50px;!important;"><th>{% trans 'Restoration: ' %}</th><td>{{ sale_file.get_restoration_display }}</td></tr>
+                                        {% endif %}
 
-                                        <tr style="border-bottom: #EEEEEE 1px solid; height: 50px;!important;"><th>{% trans 'Bench Stove: ' %}</th><td>{{ sale_file.bench_stove }}</td></tr>
+                                        {% if sale_file.bench_stove %}
+                                            <tr style="border-bottom: #EEEEEE 1px solid; height: 50px;!important;"><th>{% trans 'Bench Stove: ' %}</th><td>{{ sale_file.get_bench_stove_display }}</td></tr>
+                                        {% endif %}
 
-                                        <tr style="border-bottom: #EEEEEE 1px solid; height: 50px;!important;"><th>{% trans 'Balcony: ' %}</th><td>{{ sale_file.balcony }}</td></tr>
+                                        {% if sale_file.balcony %}
+                                            <tr style="border-bottom: #EEEEEE 1px solid; height: 50px;!important;"><th>{% trans 'Balcony: ' %}</th><td>{{ sale_file.get_balcony_display }}</td></tr>
+                                        {% endif %}
 
-                                        <tr style="border-bottom: #EEEEEE 1px solid; height: 50px;!important;"><th>{% trans 'Toilet: ' %}</th><td>{{ sale_file.toilet }}</td></tr>
+                                        {% if sale_file.toilet %}
+                                            <tr style="border-bottom: #EEEEEE 1px solid; height: 50px;!important;"><th>{% trans 'Toilet: ' %}</th><td>{{ sale_file.get_toilet_display }}</td></tr>
+                                        {% endif %}
 
                                         {% if sale_file.cooling %}
                                             <tr style="border-bottom: #EEEEEE 1px solid; height: 50px;!important;"><th>{% trans 'Cooling System: ' %}</th><td>{{ sale_file.cooling }}</td></tr>
@@ -372,7 +380,7 @@
                                         {% endif %}
 
                                         {% if sale_file.hot_water %}
-                                            <tr style="border-bottom: #EEEEEE 1px solid; height: 50px;!important;"><th>{% trans 'Hot Water System: ' %}</th><td>{{ sale_file.hot_water }}</td></tr>
+                                            <tr style="border-bottom: #EEEEEE 1px solid; height: 50px;!important;"><th>{% trans 'Hot Water System: ' %}</th><td>{{ sale_file.get_hot_water_display }}</td></tr>
                                         {% endif %}
 
                                         {% if sale_file.floor %}

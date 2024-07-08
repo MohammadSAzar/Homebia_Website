@@ -27,7 +27,7 @@ directions = [
 	('nth', _('North')),
 	('sth', _('South')),
 	('est', _('East')),
-	('wst', _('South')),
+	('wst', _('West')),
 ]
 
 hot_water = [

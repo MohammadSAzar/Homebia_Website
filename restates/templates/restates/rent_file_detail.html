@@ -7,7 +7,7 @@
 {% load humanize %}
 {% load widget_tweaks %}
 
-{% block title %}{% trans 'Rent Detail' %}{% endblock %}
+{% block title %}{% trans 'Rent Detail' %} - {{ rent_file.title }}{% endblock %}
 
 
 {% block content %}
@@ -196,15 +196,15 @@
                             <ul class="widget-list price-list" style="border-top: #E0E0E0 1px solid;">
                                 <li style="padding-top: 20px;">
                                     <a href="#">
-                                        <span style="font-size: medium;">{% trans 'Total Price:' %}</span>
-                                        <strong class="font-weight-medium" style="font-size: medium;">{{ rent_file.price|intcomma:False|farsi_number }} تومان</strong>
+                                        <span style="font-size: medium;">{% trans 'Total Deposit:' %}</span>
+                                        <strong class="font-weight-medium" style="font-size: medium;">{{ rent_file.price_deposit|intcomma:False|farsi_number }} تومان</strong>
                                     </a>
                                 </li>
 
                                 <li>
                                     <a href="#">
-                                        <span style="font-size: medium;">{% trans 'Metric Price:' %}</span>
-                                        <strong class="font-weight-medium" style="font-size: medium;">{{ rent_file.price_per_meter|intcomma:False|farsi_number }} تومان</strong>
+                                        <span style="font-size: medium;">{% trans 'Monthly Rent:' %}</span>
+                                        <strong class="font-weight-medium" style="font-size: medium;">{{ rent_file.price_rent|intcomma:False|farsi_number }} تومان</strong>
                                     </a>
                                 </li>
 
@@ -344,24 +344,32 @@
                                         <tbody>
 
                                         {% if rent_file.direction %}
-                                            <tr style="border-bottom: #EEEEEE 1px solid; height: 50px;"><th>{% trans 'File Direction: ' %}</th><td>{{ rent_file.direction }}</td></tr>
+                                            <tr style="border-bottom: #EEEEEE 1px solid; height: 50px;"><th>{% trans 'File Direction: ' %}</th><td>{{ rent_file.get_direction_display }}</td></tr>
                                         {% endif %}
 
                                         {% if rent_file.file_levels %}
-                                            <tr style="border-bottom: #EEEEEE 1px solid; height: 50px;!important;"><th>{% trans 'File Levels Number: ' %}</th><td>{{ rent_file.file_levels }}</td></tr>
+                                            <tr style="border-bottom: #EEEEEE 1px solid; height: 50px;!important;"><th>{% trans 'File Levels Number: ' %}</th><td>{{ rent_file.get_file_levels_display }}</td></tr>
                                         {% endif %}
 
                                         {% if rent_file.aparts_per_level %}
-                                            <tr style="border-bottom: #EEEEEE 1px solid; height: 50px;!important;"><th>{% trans 'Apartments per Level: ' %}</th><td>{{ rent_file.aparts_per_level }}</td></tr>
+                                            <tr style="border-bottom: #EEEEEE 1px solid; height: 50px;!important;"><th>{% trans 'Apartments per Level: ' %}</th><td>{{ rent_file.get_aparts_per_level_display }}</td></tr>
                                         {% endif %}
 
-                                        <tr style="border-bottom: #EEEEEE 1px solid; height: 50px;!important;"><th>{% trans 'Restoration: ' %}</th><td>{{ rent_file.restoration }}</td></tr>
+                                        {% if rent_file.restoration %}
+                                            <tr style="border-bottom: #EEEEEE 1px solid; height: 50px;!important;"><th>{% trans 'Restoration: ' %}</th><td>{{ rent_file.get_restoration_dispaly }}</td></tr>
+                                        {% endif %}
 
-                                        <tr style="border-bottom: #EEEEEE 1px solid; height: 50px;!important;"><th>{% trans 'Bench Stove: ' %}</th><td>{{ rent_file.bench_stove }}</td></tr>
+                                        {% if rent_file.bench_stove %}
+                                            <tr style="border-bottom: #EEEEEE 1px solid; height: 50px;!important;"><th>{% trans 'Bench Stove: ' %}</th><td>{{ rent_file.get_bench_stove_display }}</td></tr>
+                                        {% endif %}
 
-                                        <tr style="border-bottom: #EEEEEE 1px solid; height: 50px;!important;"><th>{% trans 'Balcony: ' %}</th><td>{{ rent_file.balcony }}</td></tr>
+                                        {% if rent_file.balcony %}
+                                            <tr style="border-bottom: #EEEEEE 1px solid; height: 50px;!important;"><th>{% trans 'Balcony: ' %}</th><td>{{ rent_file.get_balcony_display }}</td></tr>
+                                        {% endif %}
 
-                                        <tr style="border-bottom: #EEEEEE 1px solid; height: 50px;!important;"><th>{% trans 'Toilet: ' %}</th><td>{{ rent_file.toilet }}</td></tr>
+                                        {% if rent_file.toilet %}
+                                            <tr style="border-bottom: #EEEEEE 1px solid; height: 50px;!important;"><th>{% trans 'Toilet: ' %}</th><td>{{ rent_file.get_toilet_display }}</td></tr>
+                                        {% endif %}
 
                                         {% if rent_file.cooling %}
                                             <tr style="border-bottom: #EEEEEE 1px solid; height: 50px;!important;"><th>{% trans 'Cooling System: ' %}</th><td>{{ rent_file.cooling }}</td></tr>
@@ -372,7 +380,7 @@
                                         {% endif %}
 
                                         {% if rent_file.hot_water %}
-                                            <tr style="border-bottom: #EEEEEE 1px solid; height: 50px;!important;"><th>{% trans 'Hot Water System: ' %}</th><td>{{ rent_file.hot_water }}</td></tr>
+                                            <tr style="border-bottom: #EEEEEE 1px solid; height: 50px;!important;"><th>{% trans 'Hot Water System: ' %}</th><td>{{ rent_file.get_hot_water_display }}</td></tr>
                                         {% endif %}
 
                                         {% if rent_file.floor %}
