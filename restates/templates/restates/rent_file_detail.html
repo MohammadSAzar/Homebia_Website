@@ -7,7 +7,7 @@
 {% load humanize %}
 {% load widget_tweaks %}
 
-{% block title %}{% trans 'Sale Detail' %}{% endblock %}
+{% block title %}{% trans 'Rent Detail' %}{% endblock %}
 
 
 {% block content %}
@@ -35,7 +35,7 @@
 
                                         <!-- file cover -->
                                         <figure class="product-gallery__image zoom">
-                                            <img src="{{ sale_file.cover.url }}" alt="Product">
+                                            <img src="{{ rent_file.cover.url }}" alt="Product">
                                             <div class="product-gallery__actions">
                                                 <button class="action-btn btn-zoom-popup">
                                                     <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -46,9 +46,9 @@
                                         </figure>
 
                                         <!-- file cover2 -->
-                                        {% if sale_file.cover2 %}
+                                        {% if rent_file.cover2 %}
                                             <figure class="product-gallery__image zoom">
-                                                <img src="{{ sale_file.cover2.url }}" alt="Product">
+                                                <img src="{{ rent_file.cover2.url }}" alt="Product">
                                                 <div class="product-gallery__actions">
                                                     <button class="action-btn btn-zoom-popup">
                                                     <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -60,9 +60,9 @@
                                         {% endif %}
 
                                         <!-- file cover3 -->
-                                        {% if sale_file.cover3 %}
+                                        {% if rent_file.cover3 %}
                                             <figure class="product-gallery__image zoom">
-                                                <img src="{{ sale_file.cover3.url }}" alt="Product">
+                                                <img src="{{ rent_file.cover3.url }}" alt="Product">
                                                 <div class="product-gallery__actions">
                                                     <button class="action-btn btn-zoom-popup">
                                                         <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -74,9 +74,9 @@
                                         {% endif %}
 
                                         <!-- file cover4 -->
-                                        {% if sale_file.cover4 %}
+                                        {% if rent_file.cover4 %}
                                             <figure class="product-gallery__image zoom">
-                                                <img src="{{ sale_file.cover4.url }}" alt="Product">
+                                                <img src="{{ rent_file.cover4.url }}" alt="Product">
                                                 <div class="product-gallery__actions">
                                                     <button class="action-btn btn-zoom-popup">
                                                         <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -142,15 +142,15 @@
                                             }
                                         }
                                     ]'>
-                                        <figure class="product-gallery__nav-image--single"><img src="{{ sale_file.cover.url }}" alt="Products"></figure>
-                                    {% if sale_file.cover2 %}
-                                        <figure class="product-gallery__nav-image--single"><img src="{{ sale_file.cover2.url }}" alt="Products"></figure>
+                                        <figure class="product-gallery__nav-image--single"><img src="{{ rent_file.cover.url }}" alt="Products"></figure>
+                                    {% if rent_file.cover2 %}
+                                        <figure class="product-gallery__nav-image--single"><img src="{{ rent_file.cover2.url }}" alt="Products"></figure>
                                     {% endif %}
-                                    {% if sale_file.cover3 %}
-                                        <figure class="product-gallery__nav-image--single"><img src="{{ sale_file.cover3.url }}" alt="Products"></figure>
+                                    {% if rent_file.cover3 %}
+                                        <figure class="product-gallery__nav-image--single"><img src="{{ rent_file.cover3.url }}" alt="Products"></figure>
                                     {% endif %}
-                                    {% if sale_file.cover4 %}
-                                        <figure class="product-gallery__nav-image--single"><img src="{{ sale_file.cover4.url }}" alt="Products"></figure>
+                                    {% if rent_file.cover4 %}
+                                        <figure class="product-gallery__nav-image--single"><img src="{{ rent_file.cover4.url }}" alt="Products"></figure>
                                     {% endif %}
                                 </div>
                             </div>
@@ -166,15 +166,15 @@
                     <div class="product-summary pl--30 pl-md--0">
 
                         <!-- title -->
-                        <h3 class="product-title mb--20" style="line-height: 1.5em; text-align: justify;">{{ sale_file.title|linebreaksbr|farsi_number }}</h3>
+                        <h3 class="product-title mb--20" style="line-height: 1.5em; text-align: justify;">{{ rent_file.title|linebreaksbr|farsi_number }}</h3>
 
                         <!-- publisher & code -->
                         <div class="row" style="margin-bottom: 2em;">
                             <div class="col-lg-6">
-                                <p>{% trans 'Publisher: ' %}{{ sale_file.provider_name|farsi_number }}</p>
+                                <p>{% trans 'Publisher: ' %}{{ rent_file.provider_name|farsi_number }}</p>
                             </div>
                             <div class="col-lg-6">
-                                <p style="float: left;">{% trans 'Code: ' %}{{ sale_file.provider_name|farsi_number }}</p>
+                                <p style="float: left;">{% trans 'Code: ' %}{{ rent_file.provider_name|farsi_number }}</p>
                             </div>
                         </div>
 
@@ -182,10 +182,10 @@
                         <div class="variation-form mb--30">
                             <div class="product-size-variations d-flex align-items-center mb--15" style="justify-content: center;">
                                 <div class="product-size-variation variation-wrapper">
-                                    {% if sale_file.district %}
-                                        <p class="product-short-description mb--20" style="font-size: medium;">{{ sale_file.datetime_created }} | {{ sale_file.province }} - {{ sale_file.city }} - {{ sale_file.district }}</p>
+                                    {% if rent_file.district %}
+                                        <p class="product-short-description mb--20" style="font-size: medium;">{{ rent_file.datetime_created }} | {{ rent_file.province }} - {{ rent_file.city }} - {{ rent_file.district }}</p>
                                     {% else %}
-                                        <p class="product-short-description mb--20" style="font-size: medium;">{{ sale_file.datetime_created }} | {{ sale_file.province }} - {{ sale_file.city }}</p>
+                                        <p class="product-short-description mb--20" style="font-size: medium;">{{ rent_file.datetime_created }} | {{ rent_file.province }} - {{ rent_file.city }}</p>
                                     {% endif %}
                                 </div>
                             </div>
@@ -197,42 +197,42 @@
                                 <li style="padding-top: 20px;">
                                     <a href="#">
                                         <span style="font-size: medium;">{% trans 'Total Price:' %}</span>
-                                        <strong class="font-weight-medium" style="font-size: medium;">{{ sale_file.price|intcomma:False|farsi_number }} تومان</strong>
+                                        <strong class="font-weight-medium" style="font-size: medium;">{{ rent_file.price|intcomma:False|farsi_number }} تومان</strong>
                                     </a>
                                 </li>
 
                                 <li>
                                     <a href="#">
                                         <span style="font-size: medium;">{% trans 'Metric Price:' %}</span>
-                                        <strong class="font-weight-medium" style="font-size: medium;">{{ sale_file.price_per_meter|intcomma:False|farsi_number }} تومان</strong>
+                                        <strong class="font-weight-medium" style="font-size: medium;">{{ rent_file.price_per_meter|intcomma:False|farsi_number }} تومان</strong>
                                     </a>
                                 </li>
 
                                 <li>
                                     <a href="#">
                                         <span style="font-size: medium;">{% trans 'Area:' %}</span>
-                                        <strong class="font-weight-medium" style="font-size: medium;">{{ sale_file.area|intcomma:False|farsi_number }} متر</strong>
+                                        <strong class="font-weight-medium" style="font-size: medium;">{{ rent_file.area|intcomma:False|farsi_number }} متر</strong>
                                     </a>
                                 </li>
 
                                 <li>
                                     <a href="#">
                                         <span style="font-size: medium;">{% trans 'Age of Apartment:' %}</span>
-                                        <strong class="font-weight-medium" style="font-size: medium;">{{ sale_file.age }} سال</strong>
+                                        <strong class="font-weight-medium" style="font-size: medium;">{{ rent_file.age }} سال</strong>
                                     </a>
                                 </li>
 
                                 <li>
                                     <a href="#">
                                         <span style="font-size: medium;">{% trans 'Number of Rooms:' %}</span>
-                                        <strong class="font-weight-medium" style="font-size: medium;">{{ sale_file.room }}</strong>
+                                        <strong class="font-weight-medium" style="font-size: medium;">{{ rent_file.room }}</strong>
                                     </a>
                                 </li>
 
                                 <li>
                                     <a href="#">
                                         <span style="font-size: medium;">{% trans 'Level:' %}</span>
-                                        <strong class="font-weight-medium" style="font-size: medium;">{{ sale_file.level }}</strong>
+                                        <strong class="font-weight-medium" style="font-size: medium;">{{ rent_file.level }}</strong>
                                     </a>
                                 </li>
 
@@ -244,7 +244,7 @@
                             <div class="product-size-variations d-flex align-items-center mb--15" style="justify-content: center;">
                                 <div class="product-size-variation variation-wrapper">
 
-                                    {% if sale_file.parking == 'has' %}
+                                    {% if rent_file.parking == 'has' %}
                                         <div class="variation" style="background-color: #C8E6C9">
                                             <a class="product-size-variation-btn" style="width: 80px; color: #424242;">{% trans 'Parking' %}</a>
                                         </div>
@@ -254,7 +254,7 @@
                                         </div>
                                     {% endif %}
 
-                                    {% if sale_file.elevator == 'has' %}
+                                    {% if rent_file.elevator == 'has' %}
                                         <div class="variation" style="background-color: #C8E6C9">
                                             <a class="product-size-variation-btn" style="width: 80px; color: #424242;">{% trans 'Elevator' %}</a>
                                         </div>
@@ -264,7 +264,7 @@
                                         </div>
                                     {% endif %}
 
-                                    {% if sale_file.warehouse == 'has' %}
+                                    {% if rent_file.warehouse == 'has' %}
                                         <div class="variation" style="background-color: #C8E6C9">
                                             <a class="product-size-variation-btn" style="width: 80px; color: #424242;">{% trans 'Warehouse' %}</a>
                                         </div>
@@ -274,7 +274,7 @@
                                         </div>
                                     {% endif %}
 
-                                    {% if sale_file.document == 'has' %}
+                                    {% if rent_file.document == 'has' %}
                                         <div class="variation" style="background-color: #C8E6C9">
                                             <a class="product-size-variation-btn" style="width: 80px; color: #424242;">{% trans 'Document' %}</a>
                                         </div>
@@ -294,7 +294,7 @@
                         </div>
                         <div id="contactDIV" class="variation-form mt--20" style="display: none;">
                             <div class="product-size-variations d-flex align-items-center mb--15" style="justify-content: center;">
-                                <a href="tel:{{ sale_file.phone_number_for_contact }}" class="font-weight-medium" style="font-size: medium; font-weight: bolder; color: black;">{{ sale_file.phone_number_for_contact }}</a>
+                                <a href="tel:{{ rent_file.phone_number_for_contact }}" class="font-weight-medium" style="font-size: medium; font-weight: bolder; color: black;">{{ rent_file.phone_number_for_contact }}</a>
                             </div>
                         </div>
                         <script>
@@ -333,7 +333,7 @@
                             <!-- Description -->
                             <div class="tab-pane fade show active" id="nav-description" role="tabpanel" aria-labelledby="nav-description-tab">
                                 <div class="product-description">
-                                    <p>{{ sale_file.description|safe|linebreaksbr }}</p>
+                                    <p>{{ rent_file.description|safe|linebreaksbr }}</p>
                                 </div>
                             </div>
 
@@ -343,40 +343,40 @@
                                     <table class="table shop_attributes">
                                         <tbody>
 
-                                        {% if sale_file.direction %}
-                                            <tr style="border-bottom: #EEEEEE 1px solid; height: 50px;"><th>{% trans 'File Direction: ' %}</th><td>{{ sale_file.direction }}</td></tr>
+                                        {% if rent_file.direction %}
+                                            <tr style="border-bottom: #EEEEEE 1px solid; height: 50px;"><th>{% trans 'File Direction: ' %}</th><td>{{ rent_file.direction }}</td></tr>
                                         {% endif %}
 
-                                        {% if sale_file.file_levels %}
-                                            <tr style="border-bottom: #EEEEEE 1px solid; height: 50px;!important;"><th>{% trans 'File Levels Number: ' %}</th><td>{{ sale_file.file_levels }}</td></tr>
+                                        {% if rent_file.file_levels %}
+                                            <tr style="border-bottom: #EEEEEE 1px solid; height: 50px;!important;"><th>{% trans 'File Levels Number: ' %}</th><td>{{ rent_file.file_levels }}</td></tr>
                                         {% endif %}
 
-                                        {% if sale_file.aparts_per_level %}
-                                            <tr style="border-bottom: #EEEEEE 1px solid; height: 50px;!important;"><th>{% trans 'Apartments per Level: ' %}</th><td>{{ sale_file.aparts_per_level }}</td></tr>
+                                        {% if rent_file.aparts_per_level %}
+                                            <tr style="border-bottom: #EEEEEE 1px solid; height: 50px;!important;"><th>{% trans 'Apartments per Level: ' %}</th><td>{{ rent_file.aparts_per_level }}</td></tr>
                                         {% endif %}
 
-                                        <tr style="border-bottom: #EEEEEE 1px solid; height: 50px;!important;"><th>{% trans 'Restoration: ' %}</th><td>{{ sale_file.restoration }}</td></tr>
+                                        <tr style="border-bottom: #EEEEEE 1px solid; height: 50px;!important;"><th>{% trans 'Restoration: ' %}</th><td>{{ rent_file.restoration }}</td></tr>
 
-                                        <tr style="border-bottom: #EEEEEE 1px solid; height: 50px;!important;"><th>{% trans 'Bench Stove: ' %}</th><td>{{ sale_file.bench_stove }}</td></tr>
+                                        <tr style="border-bottom: #EEEEEE 1px solid; height: 50px;!important;"><th>{% trans 'Bench Stove: ' %}</th><td>{{ rent_file.bench_stove }}</td></tr>
 
-                                        <tr style="border-bottom: #EEEEEE 1px solid; height: 50px;!important;"><th>{% trans 'Balcony: ' %}</th><td>{{ sale_file.balcony }}</td></tr>
+                                        <tr style="border-bottom: #EEEEEE 1px solid; height: 50px;!important;"><th>{% trans 'Balcony: ' %}</th><td>{{ rent_file.balcony }}</td></tr>
 
-                                        <tr style="border-bottom: #EEEEEE 1px solid; height: 50px;!important;"><th>{% trans 'Toilet: ' %}</th><td>{{ sale_file.toilet }}</td></tr>
+                                        <tr style="border-bottom: #EEEEEE 1px solid; height: 50px;!important;"><th>{% trans 'Toilet: ' %}</th><td>{{ rent_file.toilet }}</td></tr>
 
-                                        {% if sale_file.cooling %}
-                                            <tr style="border-bottom: #EEEEEE 1px solid; height: 50px;!important;"><th>{% trans 'Cooling System: ' %}</th><td>{{ sale_file.cooling }}</td></tr>
+                                        {% if rent_file.cooling %}
+                                            <tr style="border-bottom: #EEEEEE 1px solid; height: 50px;!important;"><th>{% trans 'Cooling System: ' %}</th><td>{{ rent_file.cooling }}</td></tr>
                                         {% endif %}
 
-                                        {% if sale_file.heating %}
-                                            <tr style="border-bottom: #EEEEEE 1px solid; height: 50px;!important;"><th>{% trans 'Heating System: ' %}</th><td>{{ sale_file.heating }}</td></tr>
+                                        {% if rent_file.heating %}
+                                            <tr style="border-bottom: #EEEEEE 1px solid; height: 50px;!important;"><th>{% trans 'Heating System: ' %}</th><td>{{ rent_file.heating }}</td></tr>
                                         {% endif %}
 
-                                        {% if sale_file.hot_water %}
-                                            <tr style="border-bottom: #EEEEEE 1px solid; height: 50px;!important;"><th>{% trans 'Hot Water System: ' %}</th><td>{{ sale_file.hot_water }}</td></tr>
+                                        {% if rent_file.hot_water %}
+                                            <tr style="border-bottom: #EEEEEE 1px solid; height: 50px;!important;"><th>{% trans 'Hot Water System: ' %}</th><td>{{ rent_file.hot_water }}</td></tr>
                                         {% endif %}
 
-                                        {% if sale_file.floor %}
-                                            <tr style="border-bottom: #EEEEEE 1px solid; height: 50px;!important;"><th>{% trans 'Floor Type: ' %}</th><td>{{ sale_file.floor }}</td></tr>
+                                        {% if rent_file.floor %}
+                                            <tr style="border-bottom: #EEEEEE 1px solid; height: 50px;!important;"><th>{% trans 'Floor Type: ' %}</th><td>{{ rent_file.floor }}</td></tr>
                                         {% endif %}
 
                                         </tbody>

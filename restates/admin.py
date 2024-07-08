@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Province, City, District, SaleFile
+from .models import Province, City, District, SaleFile, RentFile
 
 
 @admin.register(SaleFile)
@@ -9,6 +9,18 @@ class SaleFileAdmin(admin.ModelAdmin):
 		'title', 'slug', 'status', 'province', 'city', 'district', 'provider_name', 'phone_number_for_contact', 'price',
 		'room', 'area', 'age', 'document', 'level', 'parking', 'elevator', 'warehouse', 'cover', 'cover2', 'cover3', 'cover4',
 		'unique_url_id', 'datetime_created', 'datetime_expired')
+	ordering = ('-datetime_created',)
+	prepopulated_fields = {'slug': ('title',)}
+	list_filter = ('status', 'province', 'city')
+	readonly_fields = ('unique_url_id', 'datetime_created', 'datetime_expired',)
+
+
+@admin.register(RentFile)
+class RentFileAdmin(admin.ModelAdmin):
+	list_display = (
+		'title', 'slug', 'status', 'province', 'city', 'district', 'provider_name', 'phone_number_for_contact', 'price_deposit',
+		'price_rent', 'room', 'area', 'age', 'document', 'level', 'parking', 'elevator', 'warehouse', 'cover', 'cover2',
+		'cover3', 'cover4', 'unique_url_id', 'datetime_created', 'datetime_expired')
 	ordering = ('-datetime_created',)
 	prepopulated_fields = {'slug': ('title',)}
 	list_filter = ('status', 'province', 'city')

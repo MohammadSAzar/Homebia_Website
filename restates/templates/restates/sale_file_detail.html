@@ -1,0 +1,579 @@
+{% extends '_base.html' %}
+
+{% load static %}
+{% load i18n %}
+{% load jalali_tags %}
+{% load number_converter %}
+{% load humanize %}
+{% load widget_tweaks %}
+
+{% block title %}{% trans 'Sale Detail' %}{% endblock %}
+
+
+{% block content %}
+
+    <div class="page-content-inner pt--80 pt-md--60" >
+        <div class="container">
+
+             <!-- Main -->
+            <div class="row g-0 mb--50 mb-md--57">
+
+                <!-- Covers -->
+                <div class="col-lg-7 product-main-image">
+                    <div class="product-image" >
+                        <div class="product-gallery vertical-slide-nav">
+                            <div class="product-gallery__large-image  mb-sm--30" style="direction: ltr">
+                                <div class="product-gallery__wrapper">
+                                    <div class="element-carousel main-slider image-popup"
+                                         data-slick-options='{
+                                            "slidesToShow": 1,
+                                            "slidesToScroll": 1,
+{#                                            "infinite": true,#}
+                                            "arrows": false,
+                                            "asNavFor": ".nav-slider"
+                                        }'>
+
+                                        <!-- sale file cover -->
+                                        <figure class="product-gallery__image zoom">
+                                            <img src="{{ sale_file.cover.url }}" alt="Product">
+                                            <div class="product-gallery__actions">
+                                                <button class="action-btn btn-zoom-popup">
+                                                    <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M12 5C7.8 5 3.8 7.58 2 12C3.8 16.42 7.8 19 12 19C16.2 19 20.2 16.42 22 12C20.2 7.58 16.2 5 12 5ZM12 17C9.24 17 7 14.76 7 12C7 9.24 9.24 7 12 7C14.76 7 17 9.24 17 12C17 14.76 14.76 17 12 17ZM12 9C10.34 9 9 10.34 9 12C9 13.66 10.34 15 12 15C13.66 15 15 13.66 15 12C15 10.34 13.66 9 12 9Z" fill="currentColor"/>
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                        </figure>
+
+                                        <!-- sale file cover2 -->
+                                        {% if sale_file.cover2 %}
+                                            <figure class="product-gallery__image zoom">
+                                                <img src="{{ sale_file.cover2.url }}" alt="Product">
+                                                <div class="product-gallery__actions">
+                                                    <button class="action-btn btn-zoom-popup">
+                                                    <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M12 5C7.8 5 3.8 7.58 2 12C3.8 16.42 7.8 19 12 19C16.2 19 20.2 16.42 22 12C20.2 7.58 16.2 5 12 5ZM12 17C9.24 17 7 14.76 7 12C7 9.24 9.24 7 12 7C14.76 7 17 9.24 17 12C17 14.76 14.76 17 12 17ZM12 9C10.34 9 9 10.34 9 12C9 13.66 10.34 15 12 15C13.66 15 15 13.66 15 12C15 10.34 13.66 9 12 9Z" fill="currentColor"/>
+                                                    </svg>
+                                                    </button>
+                                                </div>
+                                            </figure>
+                                        {% endif %}
+
+                                        <!-- sale file cover3 -->
+                                        {% if sale_file.cover3 %}
+                                            <figure class="product-gallery__image zoom">
+                                                <img src="{{ sale_file.cover3.url }}" alt="Product">
+                                                <div class="product-gallery__actions">
+                                                    <button class="action-btn btn-zoom-popup">
+                                                        <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M12 5C7.8 5 3.8 7.58 2 12C3.8 16.42 7.8 19 12 19C16.2 19 20.2 16.42 22 12C20.2 7.58 16.2 5 12 5ZM12 17C9.24 17 7 14.76 7 12C7 9.24 9.24 7 12 7C14.76 7 17 9.24 17 12C17 14.76 14.76 17 12 17ZM12 9C10.34 9 9 10.34 9 12C9 13.66 10.34 15 12 15C13.66 15 15 13.66 15 12C15 10.34 13.66 9 12 9Z" fill="currentColor"/>
+                                                        </svg>
+                                                    </button>
+                                                </div>
+                                            </figure>
+                                        {% endif %}
+
+                                        <!-- sale file cover4 -->
+                                        {% if sale_file.cover4 %}
+                                            <figure class="product-gallery__image zoom">
+                                                <img src="{{ sale_file.cover4.url }}" alt="Product">
+                                                <div class="product-gallery__actions">
+                                                    <button class="action-btn btn-zoom-popup">
+                                                        <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M12 5C7.8 5 3.8 7.58 2 12C3.8 16.42 7.8 19 12 19C16.2 19 20.2 16.42 22 12C20.2 7.58 16.2 5 12 5ZM12 17C9.24 17 7 14.76 7 12C7 9.24 9.24 7 12 7C14.76 7 17 9.24 17 12C17 14.76 14.76 17 12 17ZM12 9C10.34 9 9 10.34 9 12C9 13.66 10.34 15 12 15C13.66 15 15 13.66 15 12C15 10.34 13.66 9 12 9Z" fill="currentColor"/>
+                                                        </svg>
+                                                    </button>
+                                                </div>
+                                            </figure>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="product-gallery__nav-image" style="direction: ltr">
+                                <div class="element-carousel nav-slider product-slide-nav slick-center-bottom"
+                                     data-slick-options='{
+                                        "spaceBetween": 10,
+                                        "slidesToShow": 3,
+                                        "slidesToScroll": 1,
+                                        "vertical": true,
+                                        "swipe": true,
+                                        "verticalSwiping": true,
+                                        "infinite": true,
+                                        "focusOnSelect": true,
+                                        "asNavFor": ".main-slider",
+                                        "arrows": true,
+                                        "prevArrow": {"buttonClass": "slick-btn slick-prev", "iconClass": "&#8593;" },
+                                        "nextArrow": {"buttonClass": "slick-btn slick-next", "iconClass": "&#8593;" }
+                                    }'
+                                     data-slick-responsive='[
+                                        {
+                                            "breakpoint":1200,
+                                            "settings": {
+                                                "slidesToShow": 2
+                                            }
+                                        },
+                                        {
+                                            "breakpoint":992,
+                                            "settings": {
+                                                "slidesToShow": 3
+                                            }
+                                        },
+                                        {
+                                            "breakpoint":767,
+                                            "settings": {
+                                                "slidesToShow": 4,
+                                                "vertical": false
+                                            }
+                                        },
+                                        {
+                                            "breakpoint":575,
+                                            "settings": {
+                                                "slidesToShow": 3,
+                                                "vertical": false
+                                            }
+                                        },
+                                        {
+                                            "breakpoint":480,
+                                            "settings": {
+                                                "slidesToShow": 2,
+                                                "vertical": false
+                                            }
+                                        }
+                                    ]'>
+                                        <figure class="product-gallery__nav-image--single"><img src="{{ sale_file.cover.url }}" alt="Products"></figure>
+                                    {% if sale_file.cover2 %}
+                                        <figure class="product-gallery__nav-image--single"><img src="{{ sale_file.cover2.url }}" alt="Products"></figure>
+                                    {% endif %}
+                                    {% if sale_file.cover3 %}
+                                        <figure class="product-gallery__nav-image--single"><img src="{{ sale_file.cover3.url }}" alt="Products"></figure>
+                                    {% endif %}
+                                    {% if sale_file.cover4 %}
+                                        <figure class="product-gallery__nav-image--single"><img src="{{ sale_file.cover4.url }}" alt="Products"></figure>
+                                    {% endif %}
+                                </div>
+                            </div>
+
+
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Information -->
+                <div class="col-lg-5 product-main-details mt-md--50">
+                    <div class="product-summary pl--30 pl-md--0">
+
+                        <!-- title -->
+                        <h3 class="product-title mb--20" style="line-height: 1.5em; text-align: justify;">{{ sale_file.title|linebreaksbr|farsi_number }}</h3>
+
+                        <!-- publisher & code -->
+                        <div class="row" style="margin-bottom: 2em;">
+                            <div class="col-lg-6">
+                                <p>{% trans 'Publisher: ' %}{{ sale_file.provider_name|farsi_number }}</p>
+                            </div>
+                            <div class="col-lg-6">
+                                <p style="float: left;">{% trans 'Code: ' %}{{ sale_file.provider_name|farsi_number }}</p>
+                            </div>
+                        </div>
+
+                        <!-- time & location -->
+                        <div class="variation-form mb--30">
+                            <div class="product-size-variations d-flex align-items-center mb--15" style="justify-content: center;">
+                                <div class="product-size-variation variation-wrapper">
+                                    {% if sale_file.district %}
+                                        <p class="product-short-description mb--20" style="font-size: medium;">{{ sale_file.datetime_created }} | {{ sale_file.province }} - {{ sale_file.city }} - {{ sale_file.district }}</p>
+                                    {% else %}
+                                        <p class="product-short-description mb--20" style="font-size: medium;">{{ sale_file.datetime_created }} | {{ sale_file.province }} - {{ sale_file.city }}</p>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- main information -->
+                        <div class="shop-widget mb--30">
+                            <ul class="widget-list price-list" style="border-top: #E0E0E0 1px solid;">
+                                <li style="padding-top: 20px;">
+                                    <a href="#">
+                                        <span style="font-size: medium;">{% trans 'Total Price:' %}</span>
+                                        <strong class="font-weight-medium" style="font-size: medium;">{{ sale_file.price|intcomma:False|farsi_number }} تومان</strong>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="#">
+                                        <span style="font-size: medium;">{% trans 'Metric Price:' %}</span>
+                                        <strong class="font-weight-medium" style="font-size: medium;">{{ sale_file.price_per_meter|intcomma:False|farsi_number }} تومان</strong>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="#">
+                                        <span style="font-size: medium;">{% trans 'Area:' %}</span>
+                                        <strong class="font-weight-medium" style="font-size: medium;">{{ sale_file.area|intcomma:False|farsi_number }} متر</strong>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="#">
+                                        <span style="font-size: medium;">{% trans 'Age of Apartment:' %}</span>
+                                        <strong class="font-weight-medium" style="font-size: medium;">{{ sale_file.age }} سال</strong>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="#">
+                                        <span style="font-size: medium;">{% trans 'Number of Rooms:' %}</span>
+                                        <strong class="font-weight-medium" style="font-size: medium;">{{ sale_file.room }}</strong>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="#">
+                                        <span style="font-size: medium;">{% trans 'Level:' %}</span>
+                                        <strong class="font-weight-medium" style="font-size: medium;">{{ sale_file.level }}</strong>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </div>
+
+                        <!-- 4-tags -->
+                        <div class="variation-form mb--40">
+                            <div class="product-size-variations d-flex align-items-center mb--15" style="justify-content: center;">
+                                <div class="product-size-variation variation-wrapper">
+
+                                    {% if sale_file.parking == 'has' %}
+                                        <div class="variation" style="background-color: #C8E6C9">
+                                            <a class="product-size-variation-btn" style="width: 80px; color: #424242;">{% trans 'Parking' %}</a>
+                                        </div>
+                                    {% else %}
+                                        <div class="variation" style="background-color: #FFCDD2">
+                                            <a class="product-size-variation-btn" style="width: 80px; color: #424242;">{% trans 'Parking' %}</a>
+                                        </div>
+                                    {% endif %}
+
+                                    {% if sale_file.elevator == 'has' %}
+                                        <div class="variation" style="background-color: #C8E6C9">
+                                            <a class="product-size-variation-btn" style="width: 80px; color: #424242;">{% trans 'Elevator' %}</a>
+                                        </div>
+                                    {% else %}
+                                        <div class="variation" style="background-color: #FFCDD2">
+                                            <a class="product-size-variation-btn" style="width: 80px; color: #424242;">{% trans 'Elevator' %}</a>
+                                        </div>
+                                    {% endif %}
+
+                                    {% if sale_file.warehouse == 'has' %}
+                                        <div class="variation" style="background-color: #C8E6C9">
+                                            <a class="product-size-variation-btn" style="width: 80px; color: #424242;">{% trans 'Warehouse' %}</a>
+                                        </div>
+                                    {% else %}
+                                        <div class="variation" style="background-color: #FFCDD2">
+                                            <a class="product-size-variation-btn" style="width: 80px; color: #424242;">{% trans 'Warehouse' %}</a>
+                                        </div>
+                                    {% endif %}
+
+                                    {% if sale_file.document == 'has' %}
+                                        <div class="variation" style="background-color: #C8E6C9">
+                                            <a class="product-size-variation-btn" style="width: 80px; color: #424242;">{% trans 'Document' %}</a>
+                                        </div>
+                                    {% else %}
+                                        <div class="variation" style="background-color: #FFCDD2">
+                                            <a class="product-size-variation-btn" style="width: 80px; color: #424242;">{% trans 'Document' %}</a>
+                                        </div>
+                                    {% endif %}
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- contact -->
+                        <div class="product-action">
+                            <button id="contactButton" class="btn btn-size-sm btn-shape-square" style="width: 100%;">مشاهده اطلاعات تماس</button>
+                        </div>
+                        <div id="contactDIV" class="variation-form mt--20" style="display: none;">
+                            <div class="product-size-variations d-flex align-items-center mb--15" style="justify-content: center;">
+                                <a href="tel:{{ sale_file.phone_number_for_contact }}" class="font-weight-medium" style="font-size: medium; font-weight: bolder; color: black;">{{ sale_file.phone_number_for_contact }}</a>
+                            </div>
+                        </div>
+                        <script>
+                            document.getElementById('contactButton').addEventListener('click', function() {
+                                var contactDIV = document.getElementById('contactDIV');
+                                if (contactDIV.style.display === 'none') {
+                                    contactDIV.style.display = 'block';
+                                } else {
+                                    contactDIV.style.display = 'none';
+                                }
+                            });
+                        </script>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Additional -->
+            <div class="row justify-content-center mb--77 mb-md--57" >
+                <div class="col-12">
+                    <div class="tab-style-2">
+
+                        <!-- Buttons -->
+                        <div class="nav nav-tabs mb--35 mb-sm--25" id="product-tab" role="tablist">
+                            <button type="button" class="nav-link active" id="nav-description-tab" data-bs-toggle="tab" data-bs-target="#nav-description" role="tab" aria-selected="true">
+                                <span>{% trans 'File Description' %}</span>
+                            </button>
+                            <button type="button" class="nav-link" id="nav-info-tab" data-bs-toggle="tab" data-bs-target="#nav-info" role="tab" aria-selected="true">
+                                <span>{% trans 'Additional Information' %}</span>
+                            </button>
+                        </div>
+
+                        <!-- Content -->
+                        <div class="tab-content" id="product-tabContent">
+
+                            <!-- Description -->
+                            <div class="tab-pane fade show active" id="nav-description" role="tabpanel" aria-labelledby="nav-description-tab">
+                                <div class="product-description">
+                                    <p>{{ sale_file.description|safe|linebreaksbr }}</p>
+                                </div>
+                            </div>
+
+                            <!-- Additional Information -->
+                            <div class="tab-pane fade" id="nav-info" role="tabpanel" aria-labelledby="nav-info-tab">
+                                <div class="table-content table-responsive">
+                                    <table class="table shop_attributes">
+                                        <tbody>
+
+                                        {% if sale_file.direction %}
+                                            <tr style="border-bottom: #EEEEEE 1px solid; height: 50px;"><th>{% trans 'File Direction: ' %}</th><td>{{ sale_file.direction }}</td></tr>
+                                        {% endif %}
+
+                                        {% if sale_file.file_levels %}
+                                            <tr style="border-bottom: #EEEEEE 1px solid; height: 50px;!important;"><th>{% trans 'File Levels Number: ' %}</th><td>{{ sale_file.file_levels }}</td></tr>
+                                        {% endif %}
+
+                                        {% if sale_file.aparts_per_level %}
+                                            <tr style="border-bottom: #EEEEEE 1px solid; height: 50px;!important;"><th>{% trans 'Apartments per Level: ' %}</th><td>{{ sale_file.aparts_per_level }}</td></tr>
+                                        {% endif %}
+
+                                        <tr style="border-bottom: #EEEEEE 1px solid; height: 50px;!important;"><th>{% trans 'Restoration: ' %}</th><td>{{ sale_file.restoration }}</td></tr>
+
+                                        <tr style="border-bottom: #EEEEEE 1px solid; height: 50px;!important;"><th>{% trans 'Bench Stove: ' %}</th><td>{{ sale_file.bench_stove }}</td></tr>
+
+                                        <tr style="border-bottom: #EEEEEE 1px solid; height: 50px;!important;"><th>{% trans 'Balcony: ' %}</th><td>{{ sale_file.balcony }}</td></tr>
+
+                                        <tr style="border-bottom: #EEEEEE 1px solid; height: 50px;!important;"><th>{% trans 'Toilet: ' %}</th><td>{{ sale_file.toilet }}</td></tr>
+
+                                        {% if sale_file.cooling %}
+                                            <tr style="border-bottom: #EEEEEE 1px solid; height: 50px;!important;"><th>{% trans 'Cooling System: ' %}</th><td>{{ sale_file.cooling }}</td></tr>
+                                        {% endif %}
+
+                                        {% if sale_file.heating %}
+                                            <tr style="border-bottom: #EEEEEE 1px solid; height: 50px;!important;"><th>{% trans 'Heating System: ' %}</th><td>{{ sale_file.heating }}</td></tr>
+                                        {% endif %}
+
+                                        {% if sale_file.hot_water %}
+                                            <tr style="border-bottom: #EEEEEE 1px solid; height: 50px;!important;"><th>{% trans 'Hot Water System: ' %}</th><td>{{ sale_file.hot_water }}</td></tr>
+                                        {% endif %}
+
+                                        {% if sale_file.floor %}
+                                            <tr style="border-bottom: #EEEEEE 1px solid; height: 50px;!important;"><th>{% trans 'Floor Type: ' %}</th><td>{{ sale_file.floor }}</td></tr>
+                                        {% endif %}
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="row mb--75 mb-md--55">
+                <div class="col-12">
+                    <div class="element-carousel slick-vertical-center" data-slick-options='{
+                            "spaceBetween": 30,
+                            "slidesToShow": 4,
+                            "slidesToScroll": 1,
+                            "arrows": true,
+                           "prevArrow": {"buttonClass": "slick-btn slick-prev", "iconClass": "la la-angle-double-right" },
+                            "nextArrow": {"buttonClass": "slick-btn slick-next", "iconClass": "la la-angle-double-left" }  }'
+                         data-slick-responsive= '[
+                            {"breakpoint":1199, "settings": {
+                                "slidesToShow": 3
+                            }},
+                            {"breakpoint":991, "settings": {
+                                "slidesToShow": 2
+                            }},
+                            {"breakpoint":575, "settings": {
+                                "slidesToShow": 1
+                            }}
+                        ]'>
+                        <div class="item">
+                            <div class="ft-product">
+                                <div class="product-inner">
+                                    <div class="product-image">
+                                        <figure class="product-image--holder">
+                                            <img src="files/img/products/prod-04-270x300.jpg" alt="Product">
+                                        </figure>
+                                        <a href="product-details.html" class="product-overlay"></a>
+                                        <div class="product-action">
+                                            <a data-bs-toggle="modal" data-bs-target="#productModal" class="action-btn">
+                                                <i class="la la-eye"></i>
+                                            </a>
+                                            <a href="wishlist.html" class="action-btn">
+                                                <i class="la la-heart-o"></i>
+                                            </a>
+                                            <a href="wishlist.html" class="action-btn">
+                                                <i class="la la-repeat"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="product-info">
+                                        <div class="product-category">
+                                            <a href="product-details.html">صندلی</a>
+                                        </div>
+                                        <h3 class="product-title"><a href="product-details.html">صندلی نقطه ای
+                                            طلایی.</a></h3>
+                                        <div class="product-info-bottom">
+                                            <div class="product-price-wrapper">
+                                                <span class="money">150 تومان</span>
+                                            </div>
+                                            <a href="cart.html" class="add-to-cart pr--15">
+                                                <i class="la la-plus"></i>
+                                                <span>افزودن به سبد خرید</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="ft-product">
+                                <div class="product-inner">
+                                    <div class="product-image">
+                                        <figure class="product-image--holder">
+                                            <img src="files/img/products/prod-01-270x300.jpg" alt="Product">
+                                        </figure>
+                                        <a href="product-details.html" class="product-overlay"></a>
+                                        <div class="product-action">
+                                            <a data-bs-toggle="modal" data-bs-target="#productModal" class="action-btn">
+                                                <i class="la la-eye"></i>
+                                            </a>
+                                            <a href="wishlist.html" class="action-btn">
+                                                <i class="la la-heart-o"></i>
+                                            </a>
+                                            <a href="wishlist.html" class="action-btn">
+                                                <i class="la la-repeat"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="product-info">
+                                        <div class="product-category">
+                                            <a href="product-details.html">صندلی</a>
+                                        </div>
+                                        <h3 class="product-title"><a href="product-details.html">صندلی نقطه ای
+                                            طلایی.</a></h3>
+                                        <div class="product-info-bottom">
+                                            <div class="product-price-wrapper">
+                                                <span class="money">150 تومان</span>
+                                            </div>
+                                            <a href="cart.html" class="add-to-cart pr--15">
+                                                <i class="la la-plus"></i>
+                                                <span>افزودن به سبد خرید</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="ft-product">
+                                <div class="product-inner">
+                                    <div class="product-image">
+                                        <figure class="product-image--holder">
+                                            <img src="files/img/products/prod-02-270x300.jpg" alt="Product">
+                                        </figure>
+                                        <a href="product-details.html" class="product-overlay"></a>
+                                        <div class="product-action">
+                                            <a data-bs-toggle="modal" data-bs-target="#productModal" class="action-btn">
+                                                <i class="la la-eye"></i>
+                                            </a>
+                                            <a href="wishlist.html" class="action-btn">
+                                                <i class="la la-heart-o"></i>
+                                            </a>
+                                            <a href="wishlist.html" class="action-btn">
+                                                <i class="la la-repeat"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="product-info">
+                                        <div class="product-category">
+                                            <a href="product-details.html">صندلی</a>
+                                        </div>
+                                        <h3 class="product-title"><a href="product-details.html">صندلی نقطه ای
+                                            طلایی.</a></h3>
+                                        <div class="product-info-bottom">
+                                            <div class="product-price-wrapper">
+                                                <span class="money">150 تومان</span>
+                                            </div>
+                                            <a href="cart.html" class="add-to-cart pr--15">
+                                                <i class="la la-plus"></i>
+                                                <span>افزودن به سبد خرید</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="ft-product">
+                                <div class="product-inner">
+                                    <div class="product-image">
+                                        <figure class="product-image--holder">
+                                            <img src="files/img/products/prod-03-270x300.jpg" alt="Product">
+                                        </figure>
+                                        <a href="product-details.html" class="product-overlay"></a>
+                                        <div class="product-action">
+                                            <a data-bs-toggle="modal" data-bs-target="#productModal" class="action-btn">
+                                                <i class="la la-eye"></i>
+                                            </a>
+                                            <a href="wishlist.html" class="action-btn">
+                                                <i class="la la-heart-o"></i>
+                                            </a>
+                                            <a href="wishlist.html" class="action-btn">
+                                                <i class="la la-repeat"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="product-info">
+                                        <div class="product-category">
+                                            <a href="product-details.html">صندلی</a>
+                                        </div>
+                                        <h3 class="product-title"><a href="product-details.html">صندلی نقطه ای
+                                            طلایی.</a></h3>
+                                        <div class="product-info-bottom">
+                                            <div class="product-price-wrapper">
+                                                <span class="money">150 تومان</span>
+                                            </div>
+                                            <a href="cart.html" class="add-to-cart pr--15">
+                                                <i class="la la-plus"></i>
+                                                <span>افزودن به سبد خرید</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+{% endblock %}
+

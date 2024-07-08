@@ -2,6 +2,11 @@ from django.utils.translation import gettext as _
 
 
 # --------------------------------- Models ---------------------------------
+beings = [
+	('is', _('Is')),
+	('isnt', _('Is not')),
+]
+
 booleans = [
 	('has', _('Has')),
 	('hasnt', _('Has not')),

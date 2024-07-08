@@ -7,7 +7,7 @@
 {% load humanize %}
 {% load widget_tweaks %}
 
-{% block title %}{% trans 'Sale Files' %}{% endblock %}
+{% block title %}{% trans 'Rent Files' %}{% endblock %}
 
 
 {% block content %}
@@ -16,14 +16,14 @@
         <div class="container">
             <div class="row">
 
-                <!-- File >>> main content -->
+                <!-- Rent File >>> main content -->
                 <div class="col-xl-9 col-lg-8 order-lg-2 mb-md--50">
 
-                    <!-- Files >>> main -->
+                    <!-- Rent Files >>> main -->
                     <div class="shop-products">
                         <div class="row">
 
-                            {% for file in files %}
+                            {% for file in rent_files %}
                                 <div class="col-xl-4 col-sm-6 mb--80">
                                     <div class="ft-product" style="border: #e8e8e8 solid 1px; padding: 8px; border-radius: 4px;">
                                         <div class="product-inner">
@@ -36,11 +36,11 @@
                                                 <a href="{{ file.get_absolute_url }}" class="product-overlay"></a>
 
                                                 <!-- actions on file -->
-                                                <div class="product-action">
-                                                    <a data-bs-toggle="modal" data-bs-target="#productModal" class="action-btn"><i class="la la-eye"></i></a>
-                                                    <a href="wishlist.html" class="action-btn"><i class="la la-heart-o"></i></a>
-                                                    <a href="wishlist.html" class="action-btn"><i class="la la-repeat"></i></a>
-                                                </div>
+{#                                                <div class="product-action">#}
+{#                                                    <a data-bs-toggle="modal" data-bs-target="#productModal" class="action-btn"><i class="la la-eye"></i></a>#}
+{#                                                    <a href="wishlist.html" class="action-btn"><i class="la la-heart-o"></i></a>#}
+{#                                                    <a href="wishlist.html" class="action-btn"><i class="la la-repeat"></i></a>#}
+{#                                                </div>#}
                                                 <!-- end: actions on file -->
 
                                             </div>
@@ -48,7 +48,8 @@
 
                                             <!-- file information -->
                                             <div class="product-info">
-                                                <div class="product-category" style="margin-bottom: 1.5em;!important;"><h4 class="file-title">{{ file.title|linebreaksbr|farsi_number }}</h4>
+                                                <div class="product-category" style="margin-bottom: 1.5em;!important;">
+                                                    <a href="{{ file.get_absolute_url }}"><h4 class="file-title">{{ file.title|linebreaksbr|farsi_number }}</h4></a>
                                                     {% if file.district is not None %}
                                                         <h5 style="color: black;!important;">{{ file.province }} - {{ file.city }} - {{ file.district }}</h5>
                                                     {% else %}
@@ -56,11 +57,19 @@
                                                     {% endif %}
                                                 </div>
 
-                                                <div class="product-info-bottom">
+                                                <div class="product-category" style="margin-bottom: 1.5em;!important;">
                                                     <div class="product-price-wrapper">
-                                                        <span class="money" style="font-size: 0.85em; font-weight: normal;">{{ file.price|intcomma:False|farsi_number }} تومان</span>
+                                                        <span class="money" style="font-size: 0.85em; font-weight: normal;">ودیعه: {{ file.price_deposit|intcomma:False|farsi_number }} تومان</span>
                                                     </div>
-                                                    <a href="{{ file.get_absolute_url }}" class="btn btn-outline btn-brw-2" data-animation="fadeInUp" data-duration=".3s" data-delay=".6s" style="line-height: 0.1em; font-weight: normal; float: left;">{% trans 'Read More' %}</a>
+                                                    <div class="product-price-wrapper">
+                                                        <span class="money" style="font-size: 0.85em; font-weight: normal;">اجاره ماهانه: {{ file.price_rent|intcomma:False|farsi_number }} تومان</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="product-info-bottom" style="justify-content: left;">
+                                                    <div class="product-price-wrapper">
+                                                        <a href="{{ file.get_absolute_url }}" class="btn btn-outline btn-brw-2" data-animation="fadeInUp" data-duration=".3s" data-delay=".6s" style="line-height: 0.1em; font-weight: normal; float: left;">{% trans 'Read More' %}</a>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <!-- end: file information -->
@@ -71,9 +80,9 @@
 
                         </div>
                     </div>
-                    <!-- end: Files >>> main -->
+                    <!-- end: Rent Files >>> main -->
 
-                    <!-- Files >>> pagination -->
+                    <!-- Rent Files >>> pagination -->
                     <div class="my-pagination">
                         {% if page_obj.has_previous %}
                             <a href="?page=1">&laquo; {% trans 'First' %}</a>
@@ -107,18 +116,18 @@
                             <span class="my-disabled">{% trans 'Last Page' %} &raquo;</span>
                         {% endif %}
                     </div>
-                    <!-- end: Files >>> pagination -->
+                    <!-- end: Rent Files >>> pagination -->
 
                 </div>
-                <!-- end: File >>> main content -->
+                <!-- end: Rent File >>> main content -->
 
-                <!-- File >>> sidebar -->
+                <!-- Rent File >>> sidebar -->
                 <div class="col-xl-3 col-lg-4 order-lg-1">
                     <aside class="shop-sidebar">
                         <div class="col-lg-12">
                             <div class="checkout-form">
 
-                                <form id="filter-form" method="get" action="{% url 'file_list' %}" enctype="multipart/form-data" class="form form--checkout">
+                                <form id="filter-form" method="get" action="{% url 'rent_file_list' %}" enctype="multipart/form-data" class="form form--checkout">
                                     {% csrf_token %}
 
                                     <!-- Province -->
@@ -145,19 +154,43 @@
                                         </div>
                                     </div>
 
-                                    <!-- Min_Price -->
+                                    <!-- Min_Price_Deposit -->
                                     <div class="row mb--10">
                                         <div class="form__group col-12">
-                                            <label for="{{ filter_form.min_price.id_for_label }}" class="form__label">{% trans 'Min_Price: ' %}</label>
-                                            {% render_field filter_form.min_price type="number" id="min_price" class="form__input" %}
+                                            <label for="{{ filter_form.min_price_deposit.id_for_label }}" class="form__label">{% trans 'Min_Price_Deposit: ' %}</label>
+                                            {% render_field filter_form.min_price_deposit type="number" id="min_price_deposit" class="form__input" %}
                                         </div>
                                     </div>
 
-                                    <!-- Max_Price -->
+                                    <!-- Max_Price_Deposit -->
                                     <div class="row mb--10">
                                         <div class="form__group col-12">
-                                            <label for="{{ filter_form.max_price.id_for_label }}" class="form__label">{% trans 'Max_Price: ' %}</label>
-                                            {% render_field filter_form.max_price type="number" id="max_price" class="form__input" %}
+                                            <label for="{{ filter_form.max_price_deposit.id_for_label }}" class="form__label">{% trans 'Max_Price_Deposit: ' %}</label>
+                                            {% render_field filter_form.max_price_deposit type="number" id="max_price_deposit" class="form__input" %}
+                                        </div>
+                                    </div>
+
+                                    <!-- Min_Price_Rent -->
+                                    <div class="row mb--10">
+                                        <div class="form__group col-12">
+                                            <label for="{{ filter_form.min_price_rent.id_for_label }}" class="form__label">{% trans 'Min_Price_Rent: ' %}</label>
+                                            {% render_field filter_form.min_price_rent type="number" id="min_price_rent" class="form__input" %}
+                                        </div>
+                                    </div>
+
+                                    <!-- Max_Price_Rent -->
+                                    <div class="row mb--10">
+                                        <div class="form__group col-12">
+                                            <label for="{{ filter_form.max_price_rent.id_for_label }}" class="form__label">{% trans 'Max_Price_Rent: ' %}</label>
+                                            {% render_field filter_form.max_price_rent type="number" id="max_price_rent" class="form__input" %}
+                                        </div>
+                                    </div>
+
+                                    <!-- Convertable -->
+                                    <div class="row mb--10">
+                                        <div class="form__group col-12">
+                                            <label for="{{ filter_form.convertable.id_for_label }}" class="form__label">{% trans 'Convertable: ' %}</label>
+                                            {% render_field filter_form.convertable type="text" id="convertable" class="form__input" %}
                                         </div>
                                     </div>
 
@@ -333,7 +366,7 @@
                         </div>
                     </aside>
                 </div>
-                <!-- end: File >>> sidebar -->
+                <!-- end: Rent File >>> sidebar -->
 
             </div>
         </div>

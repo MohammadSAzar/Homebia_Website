@@ -7,7 +7,7 @@
 {% load widget_tweaks %}
 
 
-{% block title %}{% trans 'File' %}{% endblock %}
+{% block title %}{% trans 'Rent File Create' %}{% endblock %}
 
 {% block content %}
 
@@ -25,12 +25,12 @@
         <div class="container pb-14">
             <div class="grid grid-cols-12 gap-2 lg:gap-6">
 
-                <!-- main create file  -->
+                <!-- main create rent file  -->
                 <div class="col-span-12 md:col-span-12">
                     <div class="rounded-lg bg-primary-light p-4 dark:bg-secondary-dark">
                         <div class="col-span-5 md:col-span-3">
 
-                            <!-- Create file -->
+                            <!-- Create rent file -->
                             <form method="post" enctype="multipart/form-data">
                                 {% csrf_token %}
 
@@ -42,6 +42,7 @@
                                   </ol>
                                 </div>
                                 <div class="grid grid-cols-2 items-center gap-6 mt-2">
+
                                     <!-- Province -->
                                     <div class="col-span-2 md:col-span-2" style="margin-top: 1em; margin-bottom: 1em;">
                                         <label style="margin-bottom: 1em;!important;" for="{{ form.province.id_for_label }}" class="relative block rounded-lg border border-secondary-light shadow-base dark:border-primary-light/5 mb-12">
@@ -75,19 +76,45 @@
                                         <p style="font-weight: normal; font-size: small;">ممکن است برای شهر شما محله‌ای تعریف نشده باشد، در این صورت مشکلی نیست و ادامه دهید</p>
                                     </div>
 
-                                    <!-- Price -->
+                                    <!-- Price deposit -->
                                     <div class="col-span-2 md:col-span-1" style="margin-top: 1em; margin-bottom: 1em;">
-                                        <label style="margin-bottom: 1em;!important;" for="{{ form.price.id_for_label }}" class="relative block rounded-lg border border-secondary-light shadow-base dark:border-primary-light/5 mb-12">
+                                        <label style="margin-bottom: 1em;!important;" for="{{ form.price_deposit.id_for_label }}" class="relative block rounded-lg border border-secondary-light shadow-base dark:border-primary-light/5 mb-12">
                                             <span style="font-size: large;" class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-primary-light px-2 py-0.5 text-sm text-quaternary-600 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-focus:top-0 peer-focus:text-sm dark:bg-secondary-dark dark:text-quaternary-300 mr-4">
                                                 {% trans 'Price: ' %}
                                             </span>
-                                            {% render_field form.price type="number" id="price" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" %}
+                                            {% render_field form.price_deposit type="number" id="price_deposit" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" %}
                                         </label>
-                                        {% if form.price.errors %}
-                                            <span style="font-weight: normal; font-size: small; color: red;">{{ form.price.errors }}</span>
+                                        {% if form.price_deposit.errors %}
+                                            <span style="font-weight: normal; font-size: small; color: red;">{{ form.price_deposit.errors }}</span>
                                         {% else %}
                                             <p style="font-weight: normal; font-size: small;">قیمت را به صورت عددی و به تومان وارد نمایید.</p>
                                         {% endif %}
+                                    </div>
+
+                                    <!-- Price rent -->
+                                    <div class="col-span-2 md:col-span-1" style="margin-top: 1em; margin-bottom: 1em;">
+                                        <label style="margin-bottom: 1em;!important;" for="{{ form.price_rent.id_for_label }}" class="relative block rounded-lg border border-secondary-light shadow-base dark:border-primary-light/5 mb-12">
+                                            <span style="font-size: large;" class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-primary-light px-2 py-0.5 text-sm text-quaternary-600 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-focus:top-0 peer-focus:text-sm dark:bg-secondary-dark dark:text-quaternary-300 mr-4">
+                                                {% trans 'Price: ' %}
+                                            </span>
+                                            {% render_field form.price_rent type="number" id="price_rent" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" %}
+                                        </label>
+                                        {% if form.price_rent.errors %}
+                                            <span style="font-weight: normal; font-size: small; color: red;">{{ form.price_rent.errors }}</span>
+                                        {% else %}
+                                            <p style="font-weight: normal; font-size: small;">قیمت را به صورت عددی و به تومان وارد نمایید.</p>
+                                        {% endif %}
+                                    </div>
+
+                                    <!-- Convertable -->
+                                    <div class="col-span-2 md:col-span-2" style="margin-top: 1em; margin-bottom: 1em;">
+                                        <label style="margin-bottom: 1em;!important;" for="{{ form.convertable.id_for_label }}" class="relative block rounded-lg border border-secondary-light shadow-base dark:border-primary-light/5 mb-12">
+                                            <span style="font-size: large;" class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-primary-light px-2 py-0.5 text-sm text-quaternary-600 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-focus:top-0 peer-focus:text-sm dark:bg-secondary-dark dark:text-quaternary-300 mr-4">
+                                                {% trans 'Convertable Status: ' %}
+                                            </span>
+                                            {% render_field form.convertable type="number" id="convertable" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" %}
+                                        </label>
+                                        <p style="font-weight: normal; font-size: small;">وضعیت سند آپارتمان خود را به درستی وارد نمایید.</p>
                                     </div>
 
                                     <!-- Area -->
@@ -206,7 +233,9 @@
                                         </li>
                                   </ol>
                                 </div>
+
                                 <div class="grid grid-cols-4 items-center gap-6 mt-2">
+
                                     <!-- Cover -->
                                     <div class="col-span-2 md:col-span-2" style="margin-top: 1em; margin-bottom: 1em;">
                                         <label style="margin-bottom: 1em;!important;" for="{{ form.cover.id_for_label }}" class="relative block rounded-lg border border-secondary-light shadow-base dark:border-primary-light/5 mb-12">
@@ -250,6 +279,7 @@
                                         </label>
                                         <p style="font-weight: normal; font-size: small;">تصاویر بیشتر بهتر است.</p>
                                     </div>
+
                                 </div>
 
                                 <div class="col-span-6 rounded-lg bg-primary-light dark:bg-secondary-dark" style="margin: 5em 0 3em 0;">
@@ -259,8 +289,10 @@
                                         </li>
                                   </ol>
                                 </div>
+
                                 <div class="grid grid-cols-4 items-center gap-6 mt-2">
-                                    <!-- File Direction -->
+
+                                    <!-- Direction -->
                                     <div class="col-span-2 md:col-span-2" style="margin-top: 1em; margin-bottom: 1em;">
                                         <label style="margin-bottom: 1em;!important;" for="{{ form.direction.id_for_label }}" class="relative block rounded-lg border border-secondary-light shadow-base dark:border-primary-light/5 mb-12">
                                             <span style="font-size: large;" class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-primary-light px-2 py-0.5 text-sm text-quaternary-600 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-focus:top-0 peer-focus:text-sm dark:bg-secondary-dark dark:text-quaternary-300 mr-4">
@@ -270,7 +302,7 @@
                                         </label>
                                     </div>
 
-                                    <!-- File Levels Number -->
+                                    <!-- Levels Number -->
                                     <div class="col-span-2 md:col-span-2" style="margin-top: 1em; margin-bottom: 1em;">
                                         <label style="margin-bottom: 1em;!important;" for="{{ form.file_levels.id_for_label }}" class="relative block rounded-lg border border-secondary-light shadow-base dark:border-primary-light/5 mb-12">
                                             <span style="font-size: large;" class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-primary-light px-2 py-0.5 text-sm text-quaternary-600 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-focus:top-0 peer-focus:text-sm dark:bg-secondary-dark dark:text-quaternary-300 mr-4">
@@ -369,6 +401,7 @@
                                             {% render_field form.floor type="text" id="floor" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" %}
                                         </label>
                                     </div>
+
                                 </div>
 
                                 <div class="col-span-6 rounded-lg bg-primary-light dark:bg-secondary-dark" style="margin: 5em 0 3em 0;">
@@ -378,7 +411,9 @@
                                         </li>
                                   </ol>
                                 </div>
+
                                 <div class="grid grid-cols-2 items-center gap-6 mt-2">
+
                                     <!-- Provider Name -->
                                     <div class="col-span-2 md:col-span-2" style="margin-top: 1em; margin-bottom: 1em;">
                                         <label style="margin-bottom: 1em;!important;" for="{{ form.provider_name.id_for_label }}" class="relative block rounded-lg border border-secondary-light shadow-base dark:border-primary-light/5 mb-12">
@@ -449,12 +484,14 @@
                                             <p style="font-weight: normal; font-size: small;">کد پستی آپارتمان شما تحت هیچ شرایطی در سایت نمایش داده نخواهد شد.</p>
                                         {% endif %}
                                     </div>
+
                                 </div>
 
                                 <!-- Submit -->
                                 <div class="col-span-2 flex justify-end" style="margin-top: 3em;">
-                                    <button style="padding: 1em 2.5em;!important; background-color: #00a65c;!important;" type="submit" class="btn-primary w-full px-4 py-2 md:w-auto">{% trans 'Submit File' %}</button>
+                                    <button style="padding: 1em 2.5em;!important; background-color: #00a65c;!important;" type="submit" class="btn-primary w-full px-4 py-2 md:w-auto">{% trans 'Submit Rent File' %}</button>
                                 </div>
+
                             </form>
 
                             <script>
@@ -501,12 +538,12 @@
                                     });
                                 });
                             </script>
-                            <!-- end: Create file -->
+                            <!-- end: Create rent file -->
 
                         </div>
                     </div>
                 </div>
-                <!-- end: main create file  -->
+                <!-- end: main create rent file  -->
 
             </div>
         </div>

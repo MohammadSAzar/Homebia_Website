@@ -86,13 +86,18 @@
                                                     <a href="{% url 'home' %}" class="mainmenu__link">
                                                         <span class="mm-text" style="font-weight: bold;">{% trans 'Files' %}</span>
                                                         <ul class="sub-menu">
+                                                        <li class="menu-item-has-children" style="margin-bottom: 1em;"><a href="{% url 'sale_file_list' %}"><span class="mm-text" style="font-weight: bold;">{% trans 'Sale Files' %}</span></a></li>
+                                                        <li class="menu-item-has-children" style="margin-bottom: 1em;"><a href="{% url 'rent_file_list' %}"><span class="mm-text" style="font-weight: bold;">{% trans 'Rent Files' %}</span></a></li>
                                                         {% if user.is_authenticated %}
-                                                            <li class="menu-item-has-children" style="margin-bottom: 1em;"><a href="{% url 'file_create' %}"><span class="mm-text" style="font-weight: bold;">{% trans 'File Submit' %}</span></a></li>
+                                                            <li class="menu-item-has-children" style="margin-bottom: 1em;"><a href="{% url 'sale_file_create' %}"><span class="mm-text" style="font-weight: bold;">{% trans 'Sale File Submit' %}</span></a></li>
                                                         {% else %}
-                                                            <li class="menu-item-has-children" style="margin-bottom: 1em;"><a href="{% url 'registration' %}"><span class="mm-text" style="font-weight: bold;">{% trans 'File Submit' %}</span></a></li>
+                                                            <li class="menu-item-has-children" style="margin-bottom: 1em;"><a href="{% url 'registration' %}"><span class="mm-text" style="font-weight: bold;">{% trans 'Sale File Submit' %}</span></a></li>
                                                         {% endif %}
-                                                        <li class="menu-item-has-children" style="margin-bottom: 1em;"><a href="{% url 'file_list' %}"><span class="mm-text" style="font-weight: bold;">{% trans 'Files' %}</span></a></li>
-                                                        <li class="menu-item-has-children" style="margin-bottom: 1em;"><a href="{% url 'home' %}"><span class="mm-text" style="font-weight: bold;">{% trans 'Rents' %}</span></a></li>
+                                                        {% if user.is_authenticated %}
+                                                            <li class="menu-item-has-children" style="margin-bottom: 1em;"><a href="{% url 'rent_file_create' %}"><span class="mm-text" style="font-weight: bold;">{% trans 'Rent File Submit' %}</span></a></li>
+                                                        {% else %}
+                                                            <li class="menu-item-has-children" style="margin-bottom: 1em;"><a href="{% url 'registration' %}"><span class="mm-text" style="font-weight: bold;">{% trans 'Rent File Submit' %}</span></a></li>
+                                                        {% endif %}
                                                     </ul>
                                                     </a>
                                                 </li>
@@ -132,7 +137,7 @@
                                                 <li style="margin-bottom: 3px;">
                                                     <div class="header-toolbar">
                                                         {% if user.is_authenticated %}
-                                                            <a href="{% url 'file_create' %}" class="btn btn-outline btn-size-md btn-color-primary btn-shape-round btn-hover-2" style="width: 167px; margin-left: 0.5em;">{% trans 'ثبت آگهی فروش' %}</a>
+                                                            <a href="{% url 'sale_file_create' %}" class="btn btn-outline btn-size-md btn-color-primary btn-shape-round btn-hover-2" style="width: 167px; margin-left: 0.5em;">{% trans 'ثبت آگهی فروش' %}</a>
                                                             <div class="header-toolbar__item d-block d-lg-none">
                                                                 <a href="#offcanvasMenu" class="header-toolbar__btn toolbar-btn menu-btn">
                                                                     <div class="hamburger-icon">
@@ -166,7 +171,7 @@
                                                 <li style="margin-top: 3px;">
                                                     <div class="header-toolbar">
                                                         {% if user.is_authenticated %}
-                                                            <a href="{% url 'file_create' %}" class="btn btn-outline btn-size-md btn-color-primary btn-shape-round btn-hover-2" style="width: 167px; margin-left: 0.5em;">{% trans 'ثبت آگهی اجاره' %}</a>
+                                                            <a href="{% url 'rent_file_create' %}" class="btn btn-outline btn-size-md btn-color-primary btn-shape-round btn-hover-2" style="width: 167px; margin-left: 0.5em;">{% trans 'ثبت آگهی اجاره' %}</a>
                                                             <div class="header-toolbar__item d-block d-lg-none">
                                                                 <div class="header-toolbar__btn toolbar-btn menu-btn">
 {#                                                                    <div class="hamburger-icon">#}
@@ -264,8 +269,9 @@
                                 <div class="footer-widget">
                                     <ul class="footer-menu">
                                         <li><a href="{% url 'home' %}" style="font-size: 0.9em;">{% trans 'Course' %}</a></li>
-                                        <li><a href="{% url 'home' %}" style="font-size: 0.9em;">{% trans 'Services' %}</a></li>
-                                        <li><a href="{% url 'home' %}" style="font-size: 0.9em;">{% trans 'Files' %}</a></li>
+                                        <li><a href="{% url 'services' %}" style="font-size: 0.9em;">{% trans 'Services' %}</a></li>
+                                        <li><a href="{% url 'sale_file_list' %}" style="font-size: 0.9em;">{% trans 'Sale Files' %}</a></li>
+                                        <li><a href="{% url 'rent_file_list' %}" style="font-size: 0.9em;">{% trans 'Rent Files' %}</a></li>
                                         <li><a href="{% url 'home' %}" style="font-size: 0.9em;">{% trans 'Investment Opportunities' %}</a></li>
                                     </ul>
                                 </div>
@@ -294,8 +300,16 @@
                                 <div class="footer-widget">
                                     <ul class="footer-menu">
                                         <li><a href="{% url 'home' %}" style="font-size: 0.9em; border-bottom: 1px solid #00a65c; color: #00a65c; font-weight: bolder">{% trans 'Register as Consultant' %}</a></li>
-                                        <li><a href="{% url 'home' %}" style="font-size: 0.9em; border-bottom: 1px solid #00a65c; color: #00a65c; font-weight: bolder">{% trans 'Register a File' %}</a></li>
-                                        <li><a href="{% url 'home' %}" style="font-size: 0.9em; border-bottom: 1px solid #00a65c; color: #00a65c; font-weight: bolder">{% trans 'Register a File' %}</a></li>
+                                        {% if user.is_authenticated %}
+                                            <li><a href="{% url 'sale_file_create' %}" style="font-size: 0.9em; border-bottom: 1px solid #00a65c; color: #00a65c; font-weight: bolder">{% trans 'Register Sale File' %}</a></li>
+                                        {% else %}
+                                            <li><a href="{% url 'registration' %}" style="font-size: 0.9em; border-bottom: 1px solid #00a65c; color: #00a65c; font-weight: bolder">{% trans 'Register Sale File' %}</a></li>
+                                        {% endif %}
+                                        {% if user.is_authenticated %}
+                                            <li><a href="{% url 'rent_file_create' %}" style="font-size: 0.9em; border-bottom: 1px solid #00a65c; color: #00a65c; font-weight: bolder">{% trans 'Register Rent File' %}</a></li>
+                                        {% else %}
+                                            <li><a href="{% url 'registration' %}" style="font-size: 0.9em; border-bottom: 1px solid #00a65c; color: #00a65c; font-weight: bolder">{% trans 'Register Rent File' %}</a></li>
+                                        {% endif %}
                                     </ul>
                                 </div>
                             </div>
@@ -355,20 +369,31 @@
                             <ul class="sub-menu">
                                 <li class="menu-item-has-children">
                                     {% if user.is_authenticated %}
-                                        <a href="{% url 'file_create' %}">
-                                            <span class="mm-text">{% trans 'File Submit' %}</span>
+                                        <a href="{% url 'sale_file_create' %}">
+                                            <span class="mm-text">{% trans 'Sale File Submit' %}</span>
                                         </a>
                                     {% else %}
                                         <a href="{% url 'registration' %}">
-                                            <span class="mm-text">{% trans 'File Submit' %}</span>
+                                            <span class="mm-text">{% trans 'Sale File Submit' %}</span>
                                         </a>
                                     {% endif %}
                                 </li>
                                 <li class="menu-item-has-children">
-                                    <a href="{% url 'home' %}">{% trans 'Files' %}</a>
+                                    {% if user.is_authenticated %}
+                                        <a href="{% url 'rent_file_create' %}">
+                                            <span class="mm-text">{% trans 'Rent File Submit' %}</span>
+                                        </a>
+                                    {% else %}
+                                        <a href="{% url 'registration' %}">
+                                            <span class="mm-text">{% trans 'Rent File Submit' %}</span>
+                                        </a>
+                                    {% endif %}
                                 </li>
                                 <li class="menu-item-has-children">
-                                    <a href="{% url 'home' %}">{% trans 'Rents' %}</a>
+                                    <a href="{% url 'sale_file_list' %}">{% trans 'Sale Files' %}</a>
+                                </li>
+                                <li class="menu-item-has-children">
+                                    <a href="{% url 'rent_file_list' %}">{% trans 'Rent Files' %}</a>
                                 </li>
                             </ul>
                         </li>

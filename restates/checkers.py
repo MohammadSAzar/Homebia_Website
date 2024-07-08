@@ -2,7 +2,18 @@ min_file_price = 1000000000  # TOOMAN
 max_file_price = 1000000000000  # TOOMAN
 min_area = 20  # m2
 max_area = 100000  # m2
+min_deposit_price = 0  # TOOMAN
+max_deposit_price = 100000000000  # TOOMAN
+min_rent_price = 0  # TOOMAN
+max_rent_price = 1000000000  # TOOMAN
 
+def rent_file_deposit_price_checker(price):
+    if min_deposit_price <= price <= max_deposit_price:
+        return True
+
+def rent_file_rent_price_checker(price):
+    if min_rent_price <= price <= max_rent_price:
+        return True
 
 def file_price_checker(price):
     if min_file_price <= price <= max_file_price:
