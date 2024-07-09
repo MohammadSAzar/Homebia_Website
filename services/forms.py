@@ -1,7 +1,4 @@
 from django import forms
-from django.db import models
-from jalali_date.fields import JalaliDateTimeField, JalaliDateField
-from jalali_date.widgets import AdminJalaliDateWidget
 from . import models
 
 class CounselingForm(forms.ModelForm):

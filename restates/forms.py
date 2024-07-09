@@ -1,7 +1,8 @@
 from django import forms
 from django.utils.translation import gettext as _
 
-from .models import SaleFile, RentFile, Province, City, District
+from . import models
+from .models import SaleFile, RentFile, Province, City, District, TradeSession
 from . import checkers, choices
 
 
@@ -192,4 +193,12 @@ class RentFileFilterForm(forms.Form):
             self.add_error('max_area', 'متراژ فایل باید بین 20 تا 10000 متر باشد.')
 
         return cleaned_data
+
+
+class TradeSessionForm(forms.ModelForm):
+    class Meta:
+        model = models.TradeSession
+        fields = ['trade_type', 'city', 'ours', 'sale_file', 'rent_file', 'location', 'date', 'time',
+                  'name_and_family_first', 'name_and_family_second', 'phone_number_first', 'phone_number_second']
+
 

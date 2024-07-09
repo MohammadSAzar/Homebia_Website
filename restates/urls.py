@@ -12,4 +12,9 @@ urlpatterns = [
 	re_path(r'sale-file/(?P<slug>[-\w]+)/(?P<unique_url_id>[-\w]+)/', views.SaleFileDetailView.as_view(), name='sale_file_detail'),
 	path('files/rent/', views.RentFileListView.as_view(), name='rent_file_list'),
 	re_path(r'rent-file/(?P<slug>[-\w]+)/(?P<unique_url_id>[-\w]+)/', views.RentFileDetailView.as_view(), name='rent_file_detail'),
+	# Trade URLs
+	path('file/trade/', views.trade_session_view, name='trade_session'),
+	path('file/trade/registration', views.trade_session_registration_view, name='trade_session_registration'),
+	path('file/trade/verification', views.trade_session_verification_view, name='trade_session_verification'),
+	path('file/trade_detail/<int:pk>/', views.trade_session_detail, name='trade_session_detail'),
 ]

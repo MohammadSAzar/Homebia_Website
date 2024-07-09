@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-22 17:35+0330\n"
+"POT-Creation-Date: 2024-07-09 13:59+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,154 +18,185 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: .\_base.html:72 .\_base.html:281
+#: .\_base.html:72 .\_base.html:347
 msgid "Homepage"
 msgstr "خانه"
 
-#: .\_base.html:77 .\_base.html:215 .\_base.html:285
+#: .\_base.html:77 .\_base.html:272 .\_base.html:351
 msgid "Services"
 msgstr "خدمات"
 
-#: .\_base.html:79 .\_base.html:289
+#: .\_base.html:79 .\_base.html:355
 msgid "Counseling"
 msgstr "مشاوره"
 
-#: .\_base.html:80 .\_base.html:293
+#: .\_base.html:80 .\_base.html:359
 msgid "Participation in Session"
 msgstr "حضور در نشست"
 
-#: .\_base.html:81 .\_base.html:296
+#: .\_base.html:81 .\_base.html:362
 msgid "Participation in Visit"
 msgstr "حضور در بازدید"
 
-#: .\_base.html:87 .\_base.html:216 .\_base.html:302
+#: .\_base.html:87 .\_base.html:368
 msgid "Files"
 msgstr "آگهی‌ها"
 
-#: .\_base.html:93
-msgid "Cases"
-msgstr "سرمایه‌گذاری"
+#: .\_base.html:89 .\_base.html:273 .\_base.html:393
+#| msgid "Files"
+msgid "Sale Files"
+msgstr "آگهی‌های فروش"
 
-#: .\_base.html:98 .\_base.html:310
+#: .\_base.html:90 .\_base.html:274 .\_base.html:396
+#| msgid "Files"
+msgid "Rent Files"
+msgstr "آگهی‌های اجاره"
+
+#: .\_base.html:92 .\_base.html:94 .\_base.html:373 .\_base.html:377
+msgid "Sale File Submit"
+msgstr "ثبت آگهی فروش"
+
+#: .\_base.html:97 .\_base.html:99 .\_base.html:384 .\_base.html:388
+msgid "Rent File Submit"
+msgstr "ثبت آگهی اجاره"
+
+#: .\_base.html:106 .\_base.html:402
 msgid "Admin Panel"
 msgstr "پنل ادمین"
 
-#: .\_base.html:100 .\_base.html:200 .\_base.html:314
+#: .\_base.html:108 .\_base.html:257 .\_base.html:406
 msgid "Homebia Blog"
 msgstr "بلاگ هومبیا"
 
-#: .\_base.html:101 .\_base.html:198 .\_base.html:318
+#: .\_base.html:109 .\_base.html:255 .\_base.html:410
 msgid "Contact Us"
 msgstr "تماس با ما"
 
-#: .\_base.html:102 .\_base.html:199 .\_base.html:321
+#: .\_base.html:110 .\_base.html:256 .\_base.html:413
 msgid "About Us"
 msgstr "درباره ما"
 
-#: .\_base.html:103 .\_base.html:226 .\_base.html:324
+#: .\_base.html:111 .\_base.html:284 .\_base.html:416
 msgid "Homebia Socials"
 msgstr "شبکه‌های اجتماعی"
 
-#: .\_base.html:118
+#: .\_base.html:118 .\_base.html:423
 msgid "User Dashboard"
 msgstr "حساب کاربری"
 
-#: .\_base.html:132
+#: .\_base.html:122 .\_base.html:425
 msgid "Login / Signup"
 msgstr "ورود / ثبت نام"
 
-#: .\_base.html:195
+#: .\_base.html:140 .\_base.html:154
+msgid "ثبت آگهی فروش"
+msgstr "ثبت آگهی فروش"
+
+#: .\_base.html:174 .\_base.html:188
+msgid "ثبت آگهی اجاره"
+msgstr "ثبت آگهی اجاره"
+
+#: .\_base.html:252
 msgid "Homebia"
 msgstr "هومبیا"
 
-#: .\_base.html:201
+#: .\_base.html:258
 msgid "Homebia Rules"
 msgstr "قوانین هومبیا"
 
-#: .\_base.html:202
+#: .\_base.html:259
 msgid "FAQ"
 msgstr "سوالات متداول"
 
-#: .\_base.html:211
+#: .\_base.html:268
 msgid "Products"
 msgstr "محصولات"
 
-#: .\_base.html:214
+#: .\_base.html:271
 msgid "Course"
 msgstr "دوره آموزشی"
 
-#: .\_base.html:217 .\_base.html:306
+#: .\_base.html:275
 msgid "Investment Opportunities"
 msgstr "فرصت‌های سرمایه‌گذاری"
 
-#: .\_base.html:229
+#: .\_base.html:287
 msgid "Instagram"
 msgstr "اینستاگرام"
 
-#: .\_base.html:230
+#: .\_base.html:288
 msgid "LinkedIn"
 msgstr "لینکدین"
 
-#: .\_base.html:231
+#: .\_base.html:289
 msgid "Youtube"
 msgstr "یوتیوب"
 
-#: .\_base.html:232
+#: .\_base.html:290
 msgid "Aparat"
 msgstr "آپارات"
 
-#: .\_base.html:241
+#: .\_base.html:299
 msgid "Important Links"
 msgstr "پیوندهای مهم"
 
-#: .\_base.html:244
+#: .\_base.html:302
 msgid "Register as Consultant"
 msgstr "ثبت نام مشاور"
 
-#: .\_base.html:245 .\_base.html:246
-msgid "Register a File"
-msgstr "ثبت آگهی"
+#: .\_base.html:304 .\_base.html:306
+#| msgid "Register a File"
+msgid "Register Sale File"
+msgstr "ثبت آگهی فروش"
 
-#: .\_base_profile.html:67
+#: .\_base.html:309 .\_base.html:311
+#| msgid "Register a File"
+msgid "Register Rent File"
+msgstr "ثبت آگهی اجاره"
+
+#: .\_base_profile.html:68
 msgid "Personal Information"
 msgstr "اطلاعات شخصی من"
 
-#: .\_base_profile.html:71
+#: .\_base_profile.html:72
 msgid "See My Information"
 msgstr "مشاهده اطلاعات"
 
-#: .\_base_profile.html:74
+#: .\_base_profile.html:75
 msgid "Change My Information"
 msgstr "تغییر اطلاعات"
 
-#: .\_base_profile.html:77
+#: .\_base_profile.html:78
 msgid "Account Approval"
 msgstr "تایید حساب کاربری"
 
-#: .\_base_profile.html:87
+#: .\_base_profile.html:88
 msgid "My Services"
 msgstr "خدمات دریافتی من"
 
-#: .\_base_profile.html:91
+#: .\_base_profile.html:92
 msgid "My Counselings"
 msgstr "مشاوره‌های من"
 
-#: .\_base_profile.html:94
+#: .\_base_profile.html:95
 msgid "My Sessions"
 msgstr "نشست‌های من"
 
-#: .\_base_profile.html:97
+#: .\_base_profile.html:98
 msgid "My Visits"
 msgstr "بازدید‌های من"
 
-#: .\_base_profile.html:100
+#: .\_base_profile.html:101
 msgid "My Investments"
 msgstr "سرمایه‌گذاری‌های من"
 
-#: .\_base_profile.html:103
+#: .\_base_profile.html:104
 msgid "My Trades"
 msgstr "معاملات من"
 
-#: .\_base_profile.html:156
+#: .\_base_profile.html:181
 msgid "Exit"
 msgstr "خروج از حساب کاربری"
+
+#~ msgid "Cases"
+#~ msgstr "سرمایه‌گذاری"

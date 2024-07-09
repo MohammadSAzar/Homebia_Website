@@ -1,11 +1,16 @@
-from django.shortcuts import reverse
+from django.shortcuts import render, redirect, get_object_or_404, reverse
+from django.contrib.auth import login
+from django.urls import reverse
 from django.views.generic import CreateView, DetailView, CreateView, ListView
-from django.http import JsonResponse
-from django.template.loader import render_to_string
+from django.http import JsonResponse, HttpResponseRedirect
 from django.contrib import messages
 
-from .models import SaleFile, RentFile, City, District
-from .forms import SaleFileCreateForm, SaleFileFilterForm, RentFileCreateForm, RentFileFilterForm
+from accounts.models import CustomUserModel
+from accounts.forms import RegistrationForm
+from accounts.checkers import send_otp, get_random_otp, otp_time_checker
+
+from .models import SaleFile, RentFile, City, District, TradeSession
+from .forms import SaleFileCreateForm, SaleFileFilterForm, RentFileCreateForm, RentFileFilterForm, TradeSessionForm
 
 
 # --------------------------------- Locations ---------------------------------
@@ -22,15 +27,18 @@ def load_districts(request):
     district_choices = [(district.id, district.name) for district in districts]
     return JsonResponse({'districts': district_choices})
 
+
 def load_cities_list(request):
     province_id = request.GET.get('province_id')
     cities = City.objects.filter(province_id=province_id).values('id', 'name')
     return JsonResponse({'cities': list(cities)})
 
+
 def load_districts_list(request):
     city_id = request.GET.get('city_id')
     districts = District.objects.filter(city_id=city_id).values('id', 'name')
     return JsonResponse({'districts': list(districts)})
+
 
 # --------------------------------- Sale Files ---------------------------------
 class SaleFileCreateView(CreateView):
@@ -208,6 +216,80 @@ class RentFileListView(ListView):
         return context
 
 
+# --------------------------------- Trades ---------------------------------
+def trade_session_view(request):
+    if request.method == 'POST':
+        form = TradeSessionForm(request.POST)
+        if form.is_valid():
+            form.save()
+            context = {
+                'form': form,
+            }
+            return HttpResponseRedirect(reverse('trade_session_registration'))
+    else:
+        form = TradeSessionForm()
+    return render(request, 'restates/trade_session.html', {'form': form})
 
 
+def trade_session_registration_view(request):
+    form = RegistrationForm
+    if request.method == 'POST':
+        try:
+            if 'phone_number' in request.POST:
+                phone_number = request.POST.get('phone_number')
+                user = CustomUserModel.objects.get(phone_number=phone_number)
+                if user.otp_code is not None and otp_time_checker(user.phone_number):
+                    request.session['user_phone_number'] = user.phone_number
+                    return HttpResponseRedirect(reverse('trade_session_verification'))
+                otp = get_random_otp()
+                send_otp(phone_number, otp)
+                user.otp_code = otp
+                user.save()
+                request.session['user_phone_number'] = user.phone_number
+                return HttpResponseRedirect(reverse('trade_session_verification'))
+        except CustomUserModel.DoesNotExist:
+            form = RegistrationForm(request.POST)
+            if form.is_valid():
+                user = form.save(commit=False)
+                otp = get_random_otp()
+                send_otp(phone_number, otp)
+                user.otp_code = otp
+                user.is_active = False
+                user.save()
+                request.session['user_phone_number'] = user.phone_number
+                return HttpResponseRedirect(reverse('trade_session_verification'))
+    context = {
+        'form': form,
+    }
+    return render(request, 'restates/trade_session_registration.html', context)
+
+
+def trade_session_verification_view(request):
+    try:
+        trade_session = TradeSession.objects.get(id=TradeSession.objects.last().id)
+        phone_number = request.session.get('phone_number_first')
+        user = CustomUserModel.objects.get(phone_number=phone_number)
+        if request.method == 'POST':
+            if not otp_time_checker(user.phone_number) or user.otp_code != int(request.POST.get('otp')):
+                return HttpResponseRedirect(reverse('trade_session_registration'))
+            user.is_active = True
+            trade_session.phone_number = user.phone_number
+            trade_session.save()
+            user.save()
+            login(request, user)
+            return redirect('session_detail', pk=trade_session.pk)
+        context = {
+            'phone_number': phone_number,
+        }
+        return render(request, 'restates/trade_session_verification.html', context)
+    except CustomUserModel.DoesNotExist:
+        return HttpResponseRedirect(reverse('trade_session_registration'))
+
+
+def trade_session_detail(request, pk):
+    trade_session = get_object_or_404(TradeSession, pk=pk)
+    context = {
+        'trade_session': trade_session,
+    }
+    return render(request, 'restates/trade_session_detail.html', context)
 

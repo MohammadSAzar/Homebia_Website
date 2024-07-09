@@ -1,5 +1,6 @@
 import random
 import string
+from jdatetime import date, timedelta
 
 from django.db import models
 from django.shortcuts import reverse
@@ -8,6 +9,7 @@ from django.utils import timezone
 from django.utils.translation import gettext as _
 
 from . import choices
+from services.models import next_seven_days_shamsi, statuses, times, session_price_value
 
 
 # --------------------------------- Locations ---------------------------------
@@ -37,6 +39,11 @@ class District(models.Model):
 # --------------------------------- Files ---------------------------------
 def generate_unique_id():
     return ''.join(random.choices(string.ascii_letters + string.digits, k=20))
+
+
+def generate_unique_code():
+    return ''.join(random.choices(string.digits + string.digits, k=6))
+
 
 class SaleFile(models.Model):
     # location fields
@@ -74,6 +81,7 @@ class SaleFile(models.Model):
     description = models.TextField(max_length=1000, blank=True, null=True)
     slug = models.SlugField(max_length=255, null=True, blank=True, unique=True, allow_unicode=True)
     unique_url_id = models.CharField(max_length=20, null=True, unique=True, blank=True)
+    sale_file_code = models.CharField(max_length=6, null=True, unique=True, blank=True)
     status = models.CharField(max_length=10, choices=choices.statuses, default='pen')
     datetime_created = models.DateTimeField(auto_now_add=True)
     datetime_expired = models.DateTimeField(blank=True, null=True)
@@ -107,6 +115,8 @@ class SaleFile(models.Model):
                 self.datetime_expired = timezone.now() + timezone.timedelta(days=60)
         if not self.unique_url_id:
             self.unique_url_id = generate_unique_id()
+        if not self.sale_file_code:
+            self.sale_file_code = generate_unique_code()
         if not self.slug:
             self.slug = slugify(self.title, allow_unicode=True)
         super(SaleFile, self).save(*args, **kwargs)
@@ -159,6 +169,7 @@ class RentFile(models.Model):
     description = models.TextField(max_length=1000, blank=True, null=True)
     slug = models.SlugField(max_length=255, null=True, blank=True, unique=True, allow_unicode=True)
     unique_url_id = models.CharField(max_length=20, null=True, unique=True, blank=True)
+    rent_file_code = models.CharField(max_length=6, null=True, unique=True, blank=True)
     status = models.CharField(max_length=10, choices=choices.statuses, default='pen')
     datetime_created = models.DateTimeField(auto_now_add=True)
     datetime_expired = models.DateTimeField(blank=True, null=True)
@@ -188,6 +199,8 @@ class RentFile(models.Model):
                 self.datetime_expired = timezone.now() + timezone.timedelta(days=60)
         if not self.unique_url_id:
             self.unique_url_id = generate_unique_id()
+        if not self.rent_file_code:
+            self.rent_file_code = generate_unique_code()
         if not self.slug:
             self.slug = slugify(self.title, allow_unicode=True)
         super(RentFile, self).save(*args, **kwargs)
@@ -200,3 +213,99 @@ class RentFile(models.Model):
 
     def get_absolute_url(self):
         return reverse('rent_file_detail', args=[self.slug, self.unique_url_id])
+
+
+# --------------------------------- Trade ---------------------------------
+trade_cities = [
+    ('thrn', _('Tehran')),
+    ('karj', _('Karaj')),
+    ('ands', _('Andisheh')),
+    ('shrr', _('Shahriar')),
+    ('prds', _('Pardis')),
+    ('prnd', _('Parand')),
+]
+types = [
+    ('sale', _('Sale')),
+    ('rent', _('Rent')),
+    ]
+locations = [
+    ('ours', _('Ours')),
+    ('yours', _('Yours')),
+]
+beings = [
+    ('is', _('Is')),
+    ('isnt', _('Is Not')),
+]
+
+
+class TradeSession(models.Model):
+    # Constants (importd)
+    DATES = next_seven_days_shamsi
+    TIMES = times
+    STATUSES = statuses
+    # Constants (here)
+    CITIES = trade_cities
+    LOCATIONS = locations
+    TYPES = types
+    BEINGS = beings
+    # Session
+    city = models.CharField(max_length=30, choices=CITIES, default='thrn', verbose_name=_('City'))
+    location = models.CharField(max_length=30, choices=LOCATIONS, verbose_name=_('Location'))
+    date = models.CharField(max_length=200, choices=DATES, verbose_name=_('Date of Session'))
+    time = models.CharField(max_length=200, choices=TIMES, verbose_name=_('Time of Session'))
+    name_and_family_first = models.CharField(max_length=200, verbose_name=_('First Name and Family'))
+    name_and_family_second = models.CharField(max_length=200, blank=True, null=True, verbose_name=_('Second Name and Family'))
+    phone_number_first = models.CharField(max_length=11, verbose_name=_('First Phone Number'))
+    phone_number_second = models.CharField(max_length=11, blank=True, null=True, verbose_name=_('Second Phone Number'))
+    # File
+    trade_type = models.CharField(max_length=30, choices=TYPES, verbose_name=_('Trade Type'))
+    ours = models.CharField(max_length=30, choices=beings, verbose_name=_('Is trade ours?'))
+    sale_file = models.ForeignKey(SaleFile, on_delete=models.SET_NULL, null=True, blank=True, related_name='trades', verbose_name=_('Sale File'))
+    rent_file = models.ForeignKey(RentFile, on_delete=models.SET_NULL, null=True, blank=True, related_name='trades', verbose_name=_('Rent File'))
+    # Result
+    is_success = models.CharField(max_length=200, choices=beings, default='isnt', verbose_name=_('Is trade successful?'))
+    is_followed = models.CharField(max_length=200, choices=beings, default='isnt', verbose_name=_('Is trade has follow-up?'))
+    is_paid = models.CharField(max_length=200, choices=beings, default='isnt', verbose_name=_('Is payment done?'))
+    # General
+    trade_code = models.CharField(max_length=20, null=True, unique=True, blank=True)
+    status = models.CharField(max_length=30, choices=STATUSES, default='pen', verbose_name=_('Status'))
+    datetime_created = models.DateTimeField(auto_now_add=True, verbose_name=_('Date and Time of Creation'))
+
+    @property
+    def session_price(self):
+        price = session_price_value
+        return price
+
+    @property
+    def tax(self):
+        tax = int(session_price_value * 0.1)
+        return tax
+
+    @property
+    def session_price_plus_tax(self):
+        price = int(session_price_value + session_price_value * 0.1)
+        return price
+
+    @property
+    def commission(self):
+        return self.commission
+
+    def save(self, *args, **kwargs):
+        if not self.trade_code:
+            self.trade_code = generate_unique_id()
+        super(TradeSession, self).save(*args, **kwargs)
+
+    # @property
+    # def tracking_code(self):
+    #     number_list = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+    #     choice_list = list(string.ascii_lowercase) + number_list + number_list
+    #     code = ''
+    #     for i in range(19):
+    #         code = code + random.choice(choice_list)
+    #     return code
+
+    def get_absolute_url(self):
+        return reverse('trade_detail', args=[self.id])
+
+
+
