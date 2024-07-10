@@ -81,7 +81,7 @@ class SaleFile(models.Model):
     description = models.TextField(max_length=1000, blank=True, null=True)
     slug = models.SlugField(max_length=255, null=True, blank=True, unique=True, allow_unicode=True)
     unique_url_id = models.CharField(max_length=20, null=True, unique=True, blank=True)
-    sale_file_code = models.CharField(max_length=6, null=True, unique=True, blank=True)
+    code = models.CharField(max_length=6, null=True, unique=True, blank=True)
     status = models.CharField(max_length=10, choices=choices.statuses, default='pen')
     datetime_created = models.DateTimeField(auto_now_add=True)
     datetime_expired = models.DateTimeField(blank=True, null=True)
@@ -115,8 +115,8 @@ class SaleFile(models.Model):
                 self.datetime_expired = timezone.now() + timezone.timedelta(days=60)
         if not self.unique_url_id:
             self.unique_url_id = generate_unique_id()
-        if not self.sale_file_code:
-            self.sale_file_code = generate_unique_code()
+        if not self.code:
+            self.code = generate_unique_code()
         if not self.slug:
             self.slug = slugify(self.title, allow_unicode=True)
         super(SaleFile, self).save(*args, **kwargs)
@@ -169,7 +169,7 @@ class RentFile(models.Model):
     description = models.TextField(max_length=1000, blank=True, null=True)
     slug = models.SlugField(max_length=255, null=True, blank=True, unique=True, allow_unicode=True)
     unique_url_id = models.CharField(max_length=20, null=True, unique=True, blank=True)
-    rent_file_code = models.CharField(max_length=6, null=True, unique=True, blank=True)
+    code = models.CharField(max_length=6, null=True, unique=True, blank=True)
     status = models.CharField(max_length=10, choices=choices.statuses, default='pen')
     datetime_created = models.DateTimeField(auto_now_add=True)
     datetime_expired = models.DateTimeField(blank=True, null=True)
@@ -199,8 +199,8 @@ class RentFile(models.Model):
                 self.datetime_expired = timezone.now() + timezone.timedelta(days=60)
         if not self.unique_url_id:
             self.unique_url_id = generate_unique_id()
-        if not self.rent_file_code:
-            self.rent_file_code = generate_unique_code()
+        if not self.code:
+            self.code = generate_unique_code()
         if not self.slug:
             self.slug = slugify(self.title, allow_unicode=True)
         super(RentFile, self).save(*args, **kwargs)
@@ -261,7 +261,9 @@ class TradeSession(models.Model):
     trade_type = models.CharField(max_length=30, choices=TYPES, verbose_name=_('Trade Type'))
     ours = models.CharField(max_length=30, choices=beings, verbose_name=_('Is trade ours?'))
     sale_file = models.ForeignKey(SaleFile, on_delete=models.SET_NULL, null=True, blank=True, related_name='trades', verbose_name=_('Sale File'))
+    sale_code = models.CharField(max_length=6, null=True, unique=True, blank=True, verbose_name=_('Sale File Code'))
     rent_file = models.ForeignKey(RentFile, on_delete=models.SET_NULL, null=True, blank=True, related_name='trades', verbose_name=_('Rent File'))
+    rent_code = models.CharField(max_length=6, null=True, unique=True, blank=True, verbose_name=_('Rent File Code'))
     # Result
     is_success = models.CharField(max_length=200, choices=beings, default='isnt', verbose_name=_('Is trade successful?'))
     is_followed = models.CharField(max_length=200, choices=beings, default='isnt', verbose_name=_('Is trade has follow-up?'))
