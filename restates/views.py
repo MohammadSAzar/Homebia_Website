@@ -221,15 +221,18 @@ def trade_session_view(request):
     if request.method == 'POST':
         form = TradeSessionForm(request.POST)
         if form.is_valid():
+            trade_session = form.save(commit=False)
             if request.POST.get('sale_code') != '':
                 sale_code = request.POST.get('sale_code')
                 sale_file = SaleFile.objects.get(code=sale_code)
-                form.sale_file = sale_file
+                # form.sale_file = sale_file
+                trade_session.sale_file = sale_file
             if request.POST.get('rent_code') != '':
                 rent_code = request.POST.get('rent_code')
                 rent_file = RentFile.objects.get(code=rent_code)
-                form.rent_file = rent_file
-            form.save()
+                # form.rent_file = rent_file
+                trade_session.rent_file = rent_file
+            trade_session.save()
             context = {
                 'form': form,
             }
@@ -298,7 +301,10 @@ def trade_session_verification_view(request):
 
 
 def trade_session_detail(request, pk):
-    trade_session = get_object_or_404(TradeSession, pk=pk)
+    # trade_session = get_object_or_404(TradeSession, pk=pk)
+    trade_session = TradeSession.objects.select_related('rent_file', 'sale_file').get(pk=pk)
+    title = trade_session.rent_file
+    print(title)
     context = {
         'trade_session': trade_session,
     }

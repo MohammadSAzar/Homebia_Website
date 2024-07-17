@@ -38,31 +38,71 @@
 
                                     <!-- Trade type -->
                                     <div class="flex items-center justify-between gap-x-2 py-6">
-                                        <div class="text-sm text-quaternary-600 dark:text-quaternary-300 lg:text-base">{% trans 'Session type' %}</div>
+                                        <div class="text-sm text-quaternary-600 dark:text-quaternary-300 lg:text-base">{% trans 'Trade type:' %}</div>
+                                        <div class="text-sm text-tertiary-500 dark:text-tertiary-400 lg:text-base">
+                                            <span class="font-bold">{{ trade_session.get_trade_type_display }}</span>
+                                        </div>
+                                    </div>
+
+                                    <!-- Sale file code -->
+                                    {% if trade_session.sale_code %}
+                                        <div class="flex items-center justify-between gap-x-2 py-6">
+                                            <div class="text-sm text-quaternary-600 dark:text-quaternary-300 lg:text-base">{% trans 'Sale code:' %}</div>
+                                            <div class="text-sm text-tertiary-500 dark:text-tertiary-400 lg:text-base">
+                                                <span class="font-bold">{{ trade_session.sale_code }}</span>
+                                            </div>
+                                        </div>
+                                    {% endif %}
+
+                                    <!-- Sale file -->
+                                    {% if trade_session.sale_code %}
+                                        <div class="flex items-center justify-between gap-x-2 py-6">
+                                            <div class="text-sm text-quaternary-600 dark:text-quaternary-300 lg:text-base">{% trans 'Sale file:' %}</div>
+                                            <div class="text-sm text-tertiary-500 dark:text-tertiary-400 lg:text-base">
+                                                <a href="{{ trade_session.sale_file.get_absolute_url }}"><span class="font-bold">{{ trade_session.sale_file.title|linebreaksbr|farsi_number }}</span></a>
+                                            </div>
+                                        </div>
+                                    {% endif %}
+
+                                    <!-- Rent file code -->
+                                    {% if trade_session.rent_code %}
+                                        <div class="flex items-center justify-between gap-x-2 py-6">
+                                            <div class="text-sm text-quaternary-600 dark:text-quaternary-300 lg:text-base">{% trans 'Rent code:' %}</div>
+                                            <div class="text-sm text-tertiary-500 dark:text-tertiary-400 lg:text-base">
+                                                <span class="font-bold">{{ trade_session.rent_code }}</span>
+                                            </div>
+                                        </div>
+                                    {% endif %}
+
+                                    <!-- Rent file -->
+                                    {% if trade_session.rent_code %}
+                                        <div class="flex items-center justify-between gap-x-2 py-6">
+                                            <div class="text-sm text-quaternary-600 dark:text-quaternary-300 lg:text-base">{% trans 'Rent file:' %}</div>
+                                            <div class="text-sm text-tertiary-500 dark:text-tertiary-400 lg:text-base">
+                                                <a href="{{ trade_session.rent_file.get_absolute_url }}"><span class="font-bold">{{ trade_session.rent_file.title|linebreaksbr|farsi_number }}</span></a>
+                                            </div>
+                                        </div>
+                                    {% endif %}
+
+                                    <!-- City -->
+                                    <div class="flex items-center justify-between gap-x-2 py-6">
+                                        <div class="text-sm text-quaternary-600 dark:text-quaternary-300 lg:text-base">{% trans 'City of happening:' %}</div>
                                         <div class="text-sm text-tertiary-500 dark:text-tertiary-400 lg:text-base">
                                             <span class="font-bold">{{ trade_session.get_city_display }}</span>
                                         </div>
                                     </div>
 
-                                    <!-- city -->
+                                    <!-- Location -->
                                     <div class="flex items-center justify-between gap-x-2 py-6">
-                                        <div class="text-sm text-quaternary-600 dark:text-quaternary-300 lg:text-base">{% trans 'Session type' %}</div>
+                                        <div class="text-sm text-quaternary-600 dark:text-quaternary-300 lg:text-base">{% trans 'Location of happening:' %}</div>
                                         <div class="text-sm text-tertiary-500 dark:text-tertiary-400 lg:text-base">
-                                            <span class="font-bold">{{ trade_session.get_city_display }}</span>
-                                        </div>
-                                    </div>
-
-                                    <!-- customer type -->
-                                    <div class="flex items-center justify-between gap-x-2 py-6">
-                                        <div class="text-sm text-quaternary-600 dark:text-quaternary-300 lg:text-base">{% trans 'Session type' %}</div>
-                                        <div class="text-sm text-tertiary-500 dark:text-tertiary-400 lg:text-base">
-                                            <span class="font-bold">{{ trade_session.get_customer_type_display }}</span>
+                                            <span class="font-bold">{{ trade_session.get_location_display }}</span>
                                         </div>
                                     </div>
 
                                     <!-- date -->
                                     <div class="flex items-center justify-between gap-x-2 py-6">
-                                        <div class="text-sm text-quaternary-600 dark:text-quaternary-300 lg:text-base">{% trans 'Session date' %}</div>
+                                        <div class="text-sm text-quaternary-600 dark:text-quaternary-300 lg:text-base">{% trans 'Date of happening:' %}</div>
                                         <div class="text-sm text-tertiary-500 dark:text-tertiary-400 lg:text-base">
                                             <span class="font-bold">{{ trade_session.get_date_display }}</span>
                                         </div>
@@ -70,7 +110,7 @@
 
                                     <!-- time -->
                                     <div class="flex items-center justify-between gap-x-2 py-6">
-                                        <div class="text-sm text-quaternary-600 dark:text-quaternary-300 lg:text-base">{% trans 'Session time' %}</div>
+                                        <div class="text-sm text-quaternary-600 dark:text-quaternary-300 lg:text-base">{% trans 'Time of happening:' %}</div>
                                         <div class="text-sm text-tertiary-500 dark:text-tertiary-400 lg:text-base">
                                             <span class="font-bold">{{ trade_session.get_time_display }}</span>
                                         </div>
@@ -78,7 +118,7 @@
 
                                     <!-- name & family -->
                                     <div class="flex items-center justify-between gap-x-2 py-6">
-                                        <div class="text-sm text-quaternary-600 dark:text-quaternary-300 lg:text-base">{% trans 'Name & Family' %}</div>
+                                        <div class="text-sm text-quaternary-600 dark:text-quaternary-300 lg:text-base">{% trans 'Name & Family:' %}</div>
                                         <div class="text-sm text-tertiary-500 dark:text-tertiary-400 lg:text-base">
                                             <span class="font-bold">{{ trade_session.name_and_family }}</span>
                                         </div>
