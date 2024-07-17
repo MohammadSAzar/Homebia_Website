@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404, reverse
 from django.contrib.auth import login
 from django.urls import reverse
-from django.views.generic import CreateView, DetailView, CreateView, ListView
+from django.views.generic import DetailView, CreateView, ListView
 from django.http import JsonResponse, HttpResponseRedirect
 from django.contrib import messages
 
@@ -221,6 +221,14 @@ def trade_session_view(request):
     if request.method == 'POST':
         form = TradeSessionForm(request.POST)
         if form.is_valid():
+            if request.POST.get('sale_code') != '':
+                sale_code = request.POST.get('sale_code')
+                sale_file = SaleFile.objects.get(code=sale_code)
+                form.sale_file = sale_file
+            if request.POST.get('rent_code') != '':
+                rent_code = request.POST.get('rent_code')
+                rent_file = RentFile.objects.get(code=rent_code)
+                form.rent_file = rent_file
             form.save()
             context = {
                 'form': form,
@@ -240,12 +248,14 @@ def trade_session_registration_view(request):
                 user = CustomUserModel.objects.get(phone_number=phone_number)
                 if user.otp_code is not None and otp_time_checker(user.phone_number):
                     request.session['user_phone_number'] = user.phone_number
+                    print('pussy pussy pussy pussy')
                     return HttpResponseRedirect(reverse('trade_session_verification'))
                 otp = get_random_otp()
                 send_otp(phone_number, otp)
                 user.otp_code = otp
                 user.save()
                 request.session['user_phone_number'] = user.phone_number
+                print('dick dick dick dick')
                 return HttpResponseRedirect(reverse('trade_session_verification'))
         except CustomUserModel.DoesNotExist:
             form = RegistrationForm(request.POST)
@@ -257,6 +267,7 @@ def trade_session_registration_view(request):
                 user.is_active = False
                 user.save()
                 request.session['user_phone_number'] = user.phone_number
+                print('nipple nipple nipple nipple')
                 return HttpResponseRedirect(reverse('trade_session_verification'))
     context = {
         'form': form,
@@ -267,7 +278,7 @@ def trade_session_registration_view(request):
 def trade_session_verification_view(request):
     try:
         trade_session = TradeSession.objects.get(id=TradeSession.objects.last().id)
-        phone_number = request.session.get('phone_number_first')
+        phone_number = request.session.get('user_phone_number')
         user = CustomUserModel.objects.get(phone_number=phone_number)
         if request.method == 'POST':
             if not otp_time_checker(user.phone_number) or user.otp_code != int(request.POST.get('otp')):
@@ -277,7 +288,7 @@ def trade_session_verification_view(request):
             trade_session.save()
             user.save()
             login(request, user)
-            return redirect('session_detail', pk=trade_session.pk)
+            return redirect('trade_session_detail', pk=trade_session.pk)
         context = {
             'phone_number': phone_number,
         }

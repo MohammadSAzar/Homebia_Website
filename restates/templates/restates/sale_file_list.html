@@ -50,6 +50,7 @@
                                             <div class="product-info">
                                                 <div class="product-category" style="margin-bottom: 1.5em;!important;">
                                                     <a href="{{ file.get_absolute_url }}"><h4 class="file-title">{{ file.title|linebreaksbr|farsi_number }}</h4></a>
+                                                    <h5 style="color: black;!important;">کد آگهی: {{ file.code }}</h5>
                                                     {% if file.district is not None %}
                                                         <h5 style="color: black;!important;">{{ file.province }} - {{ file.city }} - {{ file.district }}</h5>
                                                     {% else %}

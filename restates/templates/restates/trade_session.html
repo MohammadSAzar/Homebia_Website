@@ -117,43 +117,13 @@
                                         </label>
                                     </div>
 
-                                    <!-- Name1 -->
+                                    <!-- Name & Family -->
                                     <div class="col-span-2 md:col-span-1">
-                                        <label for="{{ form.name_and_family_first.id_for_label }}" class="relative block rounded-lg border border-secondary-light shadow-base dark:border-primary-light/5 mb-12">
+                                        <label for="{{ form.name_and_family.id_for_label }}" class="relative block rounded-lg border border-secondary-light shadow-base dark:border-primary-light/5 mb-12">
                                             <span class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-primary-light px-2 py-0.5 text-sm text-quaternary-600 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-focus:top-0 peer-focus:text-sm dark:bg-secondary-dark dark:text-quaternary-300 mr-4">
-                                                {% trans 'First side name:' %}
+                                                {% trans 'Name & Family:' %}
                                             </span>
-                                            {% render_field form.name_and_family_first type="text" id="name_and_family_first" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" %}
-                                        </label>
-                                    </div>
-
-                                    <!-- Phone1 -->
-                                    <div class="col-span-2 md:col-span-1">
-                                        <label for="{{ form.phone_number_first.id_for_label }}" class="relative block rounded-lg border border-secondary-light shadow-base dark:border-primary-light/5 mb-12">
-                                            <span class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-primary-light px-2 py-0.5 text-sm text-quaternary-600 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-focus:top-0 peer-focus:text-sm dark:bg-secondary-dark dark:text-quaternary-300 mr-4">
-                                                {% trans 'First side phone number:' %}
-                                            </span>
-                                            {% render_field form.phone_number_first type="number" id="phone_number_first" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" %}
-                                        </label>
-                                    </div>
-
-                                    <!-- Name2 -->
-                                    <div class="col-span-2 md:col-span-1">
-                                        <label for="{{ form.name_and_family_second.id_for_label }}" class="relative block rounded-lg border border-secondary-light shadow-base dark:border-primary-light/5 mb-12">
-                                            <span class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-primary-light px-2 py-0.5 text-sm text-quaternary-600 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-focus:top-0 peer-focus:text-sm dark:bg-secondary-dark dark:text-quaternary-300 mr-4">
-                                                {% trans 'Second side name:' %}
-                                            </span>
-                                            {% render_field form.name_and_family_second type="text" id="name_and_family_second" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" %}
-                                        </label>
-                                    </div>
-
-                                    <!-- Phone2 -->
-                                    <div class="col-span-2 md:col-span-1">
-                                        <label for="{{ form.phone_number_second.id_for_label }}" class="relative block rounded-lg border border-secondary-light shadow-base dark:border-primary-light/5 mb-12">
-                                            <span class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-primary-light px-2 py-0.5 text-sm text-quaternary-600 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-focus:top-0 peer-focus:text-sm dark:bg-secondary-dark dark:text-quaternary-300 mr-4">
-                                                {% trans 'Second side phone number:' %}
-                                            </span>
-                                            {% render_field form.phone_number_second type="number" id="phone_number_second" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" %}
+                                            {% render_field form.name_and_family type="text" id="name_and_family" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" %}
                                         </label>
                                     </div>
 

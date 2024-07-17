@@ -48,8 +48,7 @@ class DistrictAdmin(admin.ModelAdmin):
 class TradeSessionAdmin(admin.ModelAdmin):
 	list_display = (
 		'city', 'trade_type', 'ours', 'sale_file', 'sale_code', 'rent_file', 'rent_code', 'is_success', 'is_followed',
-		'is_paid', 'status', 'datetime_created', 'location', 'date', 'time', 'name_and_family_first',
-		'name_and_family_second', 'phone_number_first', 'phone_number_second',)
+		'is_paid', 'status', 'datetime_created', 'location', 'date', 'time', 'name_and_family', 'phone_number')
 	ordering = ('-datetime_created',)
 
 

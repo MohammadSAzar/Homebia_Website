@@ -199,6 +199,6 @@ class TradeSessionForm(forms.ModelForm):
     class Meta:
         model = models.TradeSession
         fields = ['trade_type', 'city', 'ours', 'sale_file', 'sale_code', 'rent_file', 'rent_code', 'location', 'date',
-                  'time', 'name_and_family_first', 'name_and_family_second', 'phone_number_first', 'phone_number_second']
+                  'time', 'name_and_family', 'phone_number']
 
 

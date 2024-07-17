@@ -79,6 +79,7 @@ def counseling_verification_view(request):
 	except CustomUserModel.DoesNotExist:
 		return HttpResponseRedirect(reverse('counseling_registration'))
 
+
 def counseling_detail(request, pk):
 	counseling = get_object_or_404(Counseling, pk=pk)
 	context = {
