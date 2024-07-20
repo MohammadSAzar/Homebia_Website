@@ -24,7 +24,8 @@
                         <div class="row">
 
                             {% for file in sale_files %}
-                                <div class="col-xl-4 col-sm-6 mb--80">
+                                {% if file.status == 'acc' %}
+                                    <div class="col-xl-4 col-sm-6 mb--80">
                                     <div class="ft-product" style="border: #e8e8e8 solid 1px; padding: 8px; border-radius: 4px;">
                                         <div class="product-inner">
 
@@ -69,6 +70,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                {% endif %}
                             {% endfor %}
 
                         </div>
@@ -261,7 +263,7 @@
 
                                     <!-- Submit -->
                                     <div class="col-span-2 flex justify-end" style="margin-top: 1.5em;">
-                                        <button style="padding: 1em 2.5em; width: 100%; line-height: 0.7em; font-weight: normal; float: left;" onclick="submitFormAndRefresh()" type="submit" class="btn btn-outline btn-brw-2">{% trans 'Submit File' %}</button>
+                                        <button style="padding: 1em 2.5em; width: 100%; line-height: 0.7em; font-weight: normal; float: left;" onclick="submitFormAndRefresh()" type="submit" class="btn btn-outline btn-brw-2">{% trans 'Do Filter' %}</button>
                                     </div>
                                 </form>
 

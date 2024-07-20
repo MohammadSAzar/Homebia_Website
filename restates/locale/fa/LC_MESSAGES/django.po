@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-17 13:17+0330\n"
+"POT-Creation-Date: 2024-07-20 12:43+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: .\choices.py:6 .\models.py:236
+#: .\choices.py:6 .\models.py:218
 msgid "Is"
 msgstr "هست"
 
@@ -70,15 +70,15 @@ msgstr "شرقی"
 msgid "West"
 msgstr "غربی"
 
-#: .\forms.py:62 .\forms.py:147 .\models.py:50 .\models.py:136
+#: .\forms.py:62 .\forms.py:147 .\models.py:50 .\models.py:127
 msgid "Province"
 msgstr "استان"
 
-#: .\forms.py:63 .\forms.py:148 .\models.py:51 .\models.py:137 .\models.py:252
+#: .\forms.py:63 .\forms.py:148 .\models.py:51 .\models.py:128 .\models.py:234
 msgid "City"
 msgstr "شهر"
 
-#: .\forms.py:64 .\forms.py:149 .\models.py:52 .\models.py:138
+#: .\forms.py:64 .\forms.py:149 .\models.py:52 .\models.py:129
 msgid "District"
 msgstr "محله"
 
@@ -122,35 +122,35 @@ msgstr "حداقل طبقه"
 msgid "Max Level"
 msgstr "حداکثر طبقه"
 
-#: .\forms.py:75 .\forms.py:163 .\models.py:58 .\models.py:146
-#: .\templates\restates\rent_file_detail.html:279
-#: .\templates\restates\rent_file_detail.html:283
-#: .\templates\restates\sale_file_detail.html:279
-#: .\templates\restates\sale_file_detail.html:283
+#: .\forms.py:75 .\forms.py:163 .\models.py:58 .\models.py:137
+#: .\templates\restates\rent_file_detail.html:307
+#: .\templates\restates\rent_file_detail.html:311
+#: .\templates\restates\sale_file_detail.html:308
+#: .\templates\restates\sale_file_detail.html:312
 msgid "Document"
 msgstr "سند تک‌برگ"
 
-#: .\forms.py:76 .\forms.py:164 .\models.py:60 .\models.py:148
-#: .\templates\restates\rent_file_detail.html:249
-#: .\templates\restates\rent_file_detail.html:253
-#: .\templates\restates\sale_file_detail.html:249
-#: .\templates\restates\sale_file_detail.html:253
+#: .\forms.py:76 .\forms.py:164 .\models.py:60 .\models.py:139
+#: .\templates\restates\rent_file_detail.html:277
+#: .\templates\restates\rent_file_detail.html:281
+#: .\templates\restates\sale_file_detail.html:278
+#: .\templates\restates\sale_file_detail.html:282
 msgid "Parking"
 msgstr "پارکینگ"
 
-#: .\forms.py:77 .\forms.py:165 .\models.py:61 .\models.py:149
-#: .\templates\restates\rent_file_detail.html:259
-#: .\templates\restates\rent_file_detail.html:263
-#: .\templates\restates\sale_file_detail.html:259
-#: .\templates\restates\sale_file_detail.html:263
+#: .\forms.py:77 .\forms.py:165 .\models.py:61 .\models.py:140
+#: .\templates\restates\rent_file_detail.html:287
+#: .\templates\restates\rent_file_detail.html:291
+#: .\templates\restates\sale_file_detail.html:288
+#: .\templates\restates\sale_file_detail.html:292
 msgid "Elevator"
 msgstr "آسانسور"
 
-#: .\forms.py:78 .\forms.py:166 .\models.py:62 .\models.py:150
-#: .\templates\restates\rent_file_detail.html:269
-#: .\templates\restates\rent_file_detail.html:273
-#: .\templates\restates\sale_file_detail.html:269
-#: .\templates\restates\sale_file_detail.html:273
+#: .\forms.py:78 .\forms.py:166 .\models.py:62 .\models.py:141
+#: .\templates\restates\rent_file_detail.html:297
+#: .\templates\restates\rent_file_detail.html:301
+#: .\templates\restates\sale_file_detail.html:298
+#: .\templates\restates\sale_file_detail.html:302
 msgid "Warehouse"
 msgstr "انباری"
 
@@ -170,7 +170,7 @@ msgstr "حداقل اجاره"
 msgid "Max Price Rent"
 msgstr "حداکثر اجاره"
 
-#: .\forms.py:154 .\models.py:142
+#: .\forms.py:154 .\models.py:133
 msgid "Convertable"
 msgstr "امکان تبدیل ودیعه به اجاره"
 
@@ -178,222 +178,219 @@ msgstr "امکان تبدیل ودیعه به اجاره"
 msgid "Price"
 msgstr "قیمت"
 
-#: .\models.py:55 .\models.py:143
+#: .\models.py:55 .\models.py:134
 msgid "Number of Rooms"
 msgstr "تعداد اتاق"
 
-#: .\models.py:56 .\models.py:144
+#: .\models.py:56 .\models.py:135
 msgid "Area"
 msgstr "متراژ"
 
-#: .\models.py:57 .\models.py:145
+#: .\models.py:57 .\models.py:136
 msgid "Age of Apartment"
 msgstr "سن آپارتمان"
 
-#: .\models.py:59 .\models.py:147
+#: .\models.py:59 .\models.py:138
 msgid "Level"
 msgstr "طبقه"
 
-#: .\models.py:63 .\models.py:151
+#: .\models.py:63 .\models.py:142
 msgid "File cover"
 msgstr "تصویر اصلی آپارتمان"
 
-#: .\models.py:64 .\models.py:152
+#: .\models.py:64 .\models.py:143
 msgid "File cover 2"
 msgstr "تصویر دوم آپارتمان"
 
-#: .\models.py:65 .\models.py:153
+#: .\models.py:65 .\models.py:144
 msgid "File cover 3"
 msgstr "تصویر سوم آپارتمان"
 
-#: .\models.py:66 .\models.py:154
+#: .\models.py:66 .\models.py:145
 msgid "File cover 4"
 msgstr "تصویر چهارم آپارتمان"
 
-#: .\models.py:68 .\models.py:156
+#: .\models.py:68 .\models.py:147
 msgid "File Direction"
 msgstr "جهت آپارتمان"
 
-#: .\models.py:69 .\models.py:157
+#: .\models.py:69 .\models.py:148
 msgid "File Levels Number"
 msgstr "تعداد طبقات ساختمان"
 
-#: .\models.py:70 .\models.py:158
+#: .\models.py:70 .\models.py:149
 msgid "Apartments per Level"
 msgstr "تعداد واحد در هر طبقه"
 
-#: .\models.py:71 .\models.py:159
+#: .\models.py:71 .\models.py:150
 msgid "Restoration"
 msgstr "وضعیت بازسازی"
 
-#: .\models.py:72 .\models.py:160
+#: .\models.py:72 .\models.py:151
 msgid "Bench Stove"
 msgstr "گاز رومیزی"
 
-#: .\models.py:73 .\models.py:161
+#: .\models.py:73 .\models.py:152
 msgid "Balcony"
 msgstr "بالکن"
 
-#: .\models.py:74 .\models.py:162
+#: .\models.py:74 .\models.py:153
 msgid "Toilet"
 msgstr "سرویس بهداشتی"
 
-#: .\models.py:75 .\models.py:163
+#: .\models.py:75 .\models.py:154
 msgid "Hot Water System"
 msgstr "سیستم آب گرم"
 
-#: .\models.py:76 .\models.py:164
+#: .\models.py:76 .\models.py:155
 msgid "Cooling System"
 msgstr "سیستم سرمایش"
 
-#: .\models.py:77 .\models.py:165
+#: .\models.py:77 .\models.py:156
 msgid "Heating System"
 msgstr "سیستم گرمایش"
 
-#: .\models.py:78 .\models.py:166
+#: .\models.py:78 .\models.py:157
 msgid "Floor Type"
 msgstr "جنس کف"
 
-#: .\models.py:80 .\models.py:168
+#: .\models.py:80 .\models.py:159
 msgid "File Title"
 msgstr "عنوان آگهی"
 
-#: .\models.py:89 .\models.py:177
+#: .\models.py:89 .\models.py:168
 msgid "Provider Name"
 msgstr "نام منتشر کننده آگهی"
 
-#: .\models.py:90 .\models.py:178
+#: .\models.py:90 .\models.py:169
 msgid "Provider Phone Number"
 msgstr "تلفن همراه منتشر کننده"
 
-#: .\models.py:91 .\models.py:179
+#: .\models.py:91 .\models.py:170
 msgid "Provider National Code"
 msgstr "کد ملی منتشر کننده آگهی"
 
-#: .\models.py:92 .\models.py:180
+#: .\models.py:92 .\models.py:171
 msgid "Owner National Code"
 msgstr "کد ملی مالک آپارتمان"
 
-#: .\models.py:93 .\models.py:181
+#: .\models.py:93 .\models.py:172
 msgid "File Postal Code"
 msgstr "کد پستی آپارتمان"
 
-#: .\models.py:140
+#: .\models.py:131
 msgid "Deposit Price"
 msgstr "مبلغ ودیعه"
 
-#: .\models.py:141
+#: .\models.py:132
 msgid "Rent Price"
 msgstr "مبلغ اجاره"
 
-#: .\models.py:220
+#: .\models.py:202
 msgid "Tehran"
 msgstr "تهران"
 
-#: .\models.py:221
+#: .\models.py:203
 msgid "Karaj"
 msgstr "کرج"
 
-#: .\models.py:222
+#: .\models.py:204
 msgid "Andisheh"
 msgstr "اندیشه"
 
-#: .\models.py:223
+#: .\models.py:205
 msgid "Shahriar"
 msgstr "شهریار"
 
-#: .\models.py:224
+#: .\models.py:206
 msgid "Pardis"
 msgstr "پردیس"
 
-#: .\models.py:225
+#: .\models.py:207
 msgid "Parand"
 msgstr "پرند"
 
-#: .\models.py:228
+#: .\models.py:210
 msgid "Sale"
 msgstr "فروش"
 
-#: .\models.py:229
+#: .\models.py:211
 msgid "Rent"
 msgstr "اجاره"
 
-#: .\models.py:232
+#: .\models.py:214
 msgid "Ours"
 msgstr "به میزبانی هومبابا"
 
-#: .\models.py:233
+#: .\models.py:215
 msgid "Yours"
 msgstr "در محل پیشنهادی شما"
 
-#: .\models.py:237
+#: .\models.py:219
 msgid "Is Not"
 msgstr "نیست"
 
-#: .\models.py:253
-#| msgid "Restoration"
+#: .\models.py:235
 msgid "Location"
 msgstr "محل برگزاری"
 
-#: .\models.py:254
+#: .\models.py:236
 msgid "Date of Session"
 msgstr "تاریخ برگزاری"
 
-#: .\models.py:255
+#: .\models.py:237
 msgid "Time of Session"
 msgstr "زمان برگزاری"
 
-#: .\models.py:256
+#: .\models.py:238
 msgid "First Name and Family"
 msgstr "نام و نام خانوادگی"
 
-#: .\models.py:258
-#| msgid "Provider Phone Number"
+#: .\models.py:239
 msgid "First Phone Number"
 msgstr "تلفن همراه منتشر کننده"
 
-#: .\models.py:261
-#| msgid "Floor Type"
+#: .\models.py:241
 msgid "Trade Type"
 msgstr "نوع معامله"
 
-#: .\models.py:262
+#: .\models.py:242
 msgid "Is trade ours?"
 msgstr "آیا فایل از آگهی‌های هومبابا است؟"
 
-#: .\models.py:263
+#: .\models.py:243
 msgid "Sale File"
 msgstr "آگهی‌ فروش"
 
-#: .\models.py:264
+#: .\models.py:244
 msgid "Sale File Code"
 msgstr "کد آگهی فروش"
 
-#: .\models.py:265
+#: .\models.py:245
 msgid "Rent File"
 msgstr "آگهی اجاره"
 
-#: .\models.py:266
+#: .\models.py:246
 msgid "Rent File Code"
 msgstr "کد آگهی اجاره"
 
-#: .\models.py:268
+#: .\models.py:248
 msgid "Is trade successful?"
 msgstr "آیا معامله موفقیت‌آمیز بود؟"
 
-#: .\models.py:269
+#: .\models.py:249
 msgid "Is trade has follow-up?"
 msgstr "آیا معامله نیاز به پیگیری دارد؟"
 
-#: .\models.py:270
+#: .\models.py:250
 msgid "Is payment done?"
 msgstr "آیا پرداخت کمیسیون انجام شده است؟"
 
-#: .\models.py:273
+#: .\models.py:253
 msgid "Status"
 msgstr "وضعیت"
 
-#: .\models.py:274
+#: .\models.py:254
 msgid "Date and Time of Creation"
 msgstr "زمان و تاریخ ایجاد"
 
@@ -407,23 +404,23 @@ msgid "اطلاعات اصلی آپارتمان"
 msgstr "اطلاعات اصلی آپارتمان"
 
 #: .\templates\restates\rent_file_create.html:50
-#: .\templates\restates\rent_file_list.html:138
+#: .\templates\restates\rent_file_list.html:140
 #: .\templates\restates\sale_file_create.html:51
-#: .\templates\restates\sale_file_list.html:129
+#: .\templates\restates\sale_file_list.html:131
 msgid "Province: "
 msgstr "استان: "
 
 #: .\templates\restates\rent_file_create.html:61
-#: .\templates\restates\rent_file_list.html:146
+#: .\templates\restates\rent_file_list.html:148
 #: .\templates\restates\sale_file_create.html:62
-#: .\templates\restates\sale_file_list.html:137
+#: .\templates\restates\sale_file_list.html:139
 msgid "City: "
 msgstr "شهر: "
 
 #: .\templates\restates\rent_file_create.html:72
-#: .\templates\restates\rent_file_list.html:154
+#: .\templates\restates\rent_file_list.html:156
 #: .\templates\restates\sale_file_create.html:73
-#: .\templates\restates\sale_file_list.html:145
+#: .\templates\restates\sale_file_list.html:147
 msgid "District: "
 msgstr "محله: "
 
@@ -470,16 +467,16 @@ msgid "Parking Status: "
 msgstr "پارکینگ: "
 
 #: .\templates\restates\rent_file_create.html:190
-#: .\templates\restates\rent_file_list.html:282
+#: .\templates\restates\rent_file_list.html:284
 #: .\templates\restates\sale_file_create.html:165
-#: .\templates\restates\sale_file_list.html:249
+#: .\templates\restates\sale_file_list.html:251
 msgid "Elevator: "
 msgstr "آسانسور: "
 
 #: .\templates\restates\rent_file_create.html:200
-#: .\templates\restates\rent_file_list.html:290
+#: .\templates\restates\rent_file_list.html:292
 #: .\templates\restates\sale_file_create.html:175
-#: .\templates\restates\sale_file_list.html:257
+#: .\templates\restates\sale_file_list.html:259
 msgid "Warehouse: "
 msgstr "انباری: "
 
@@ -524,79 +521,79 @@ msgid "اطلاعات فرعی آپارتمان"
 msgstr ""
 
 #: .\templates\restates\rent_file_create.html:299
-#: .\templates\restates\rent_file_detail.html:347
+#: .\templates\restates\rent_file_detail.html:375
 #: .\templates\restates\sale_file_create.html:273
-#: .\templates\restates\sale_file_detail.html:347
+#: .\templates\restates\sale_file_detail.html:376
 msgid "File Direction: "
 msgstr "جهت آپارتمان: "
 
 #: .\templates\restates\rent_file_create.html:309
-#: .\templates\restates\rent_file_detail.html:351
+#: .\templates\restates\rent_file_detail.html:379
 #: .\templates\restates\sale_file_create.html:283
-#: .\templates\restates\sale_file_detail.html:351
+#: .\templates\restates\sale_file_detail.html:380
 msgid "File Levels Number: "
 msgstr "تعداد طبقات ساختمان: "
 
 #: .\templates\restates\rent_file_create.html:319
-#: .\templates\restates\rent_file_detail.html:355
+#: .\templates\restates\rent_file_detail.html:383
 #: .\templates\restates\sale_file_create.html:293
-#: .\templates\restates\sale_file_detail.html:355
+#: .\templates\restates\sale_file_detail.html:384
 msgid "Apartments per Level: "
 msgstr "تعداد واحد در هر طبقه: "
 
 #: .\templates\restates\rent_file_create.html:329
-#: .\templates\restates\rent_file_detail.html:367
+#: .\templates\restates\rent_file_detail.html:395
 #: .\templates\restates\sale_file_create.html:303
-#: .\templates\restates\sale_file_detail.html:367
+#: .\templates\restates\sale_file_detail.html:396
 msgid "Balcony: "
 msgstr "بالکن: "
 
 #: .\templates\restates\rent_file_create.html:339
-#: .\templates\restates\rent_file_detail.html:363
+#: .\templates\restates\rent_file_detail.html:391
 #: .\templates\restates\sale_file_create.html:313
-#: .\templates\restates\sale_file_detail.html:363
+#: .\templates\restates\sale_file_detail.html:392
 msgid "Bench Stove: "
 msgstr "گاز رومیزی: "
 
 #: .\templates\restates\rent_file_create.html:349
-#: .\templates\restates\rent_file_detail.html:359
+#: .\templates\restates\rent_file_detail.html:387
 #: .\templates\restates\sale_file_create.html:323
-#: .\templates\restates\sale_file_detail.html:359
+#: .\templates\restates\sale_file_detail.html:388
 msgid "Restoration: "
 msgstr "وضعیت بازسازی: "
 
 #: .\templates\restates\rent_file_create.html:359
-#: .\templates\restates\rent_file_detail.html:371
+#: .\templates\restates\rent_file_detail.html:399
 #: .\templates\restates\sale_file_create.html:333
-#: .\templates\restates\sale_file_detail.html:371
+#: .\templates\restates\sale_file_detail.html:400
 msgid "Toilet: "
 msgstr "سرویس بهداشتی: "
 
 #: .\templates\restates\rent_file_create.html:369
-#: .\templates\restates\rent_file_detail.html:383
+#: .\templates\restates\rent_file_detail.html:411
 #: .\templates\restates\sale_file_create.html:343
-#: .\templates\restates\sale_file_detail.html:383
+#: .\templates\restates\sale_file_detail.html:412
 msgid "Hot Water System: "
 msgstr "سیستم آب گرم: "
 
 #: .\templates\restates\rent_file_create.html:379
-#: .\templates\restates\rent_file_detail.html:375
+#: .\templates\restates\rent_file_detail.html:403
 #: .\templates\restates\sale_file_create.html:353
-#: .\templates\restates\sale_file_detail.html:375
+#: .\templates\restates\sale_file_detail.html:404
 msgid "Cooling System: "
 msgstr "سیستم سرمایش: "
 
 #: .\templates\restates\rent_file_create.html:389
-#: .\templates\restates\rent_file_detail.html:379
+#: .\templates\restates\rent_file_detail.html:407
 #: .\templates\restates\sale_file_create.html:363
-#: .\templates\restates\sale_file_detail.html:379
+#: .\templates\restates\sale_file_detail.html:408
 msgid "Heating System: "
 msgstr "سیستم گرمایش: "
 
 #: .\templates\restates\rent_file_create.html:399
-#: .\templates\restates\rent_file_detail.html:387
+#: .\templates\restates\rent_file_detail.html:415
 #: .\templates\restates\sale_file_create.html:373
-#: .\templates\restates\sale_file_detail.html:387
+#: .\templates\restates\sale_file_detail.html:416
 msgid "Floor Type: "
 msgstr "جنس کف: "
 
@@ -634,55 +631,65 @@ msgstr "کد پستی آپارتمان: "
 msgid "Submit Rent File"
 msgstr "انتشار آگهی اجاره"
 
-#: .\templates\restates\rent_file_detail.html:10
+#: .\templates\restates\rent_file_detail.html:11
 msgid "Rent Detail"
 msgstr "جزئیات آگهی"
 
-#: .\templates\restates\rent_file_detail.html:174
-#: .\templates\restates\sale_file_detail.html:174
+#: .\templates\restates\rent_file_detail.html:166
+#: .\templates\restates\sale_file_detail.html:167
+msgid "If you want a trade session for this file, CLICK!"
+msgstr "اگر قصد معامله این فایل را دارید، کلیک کنید"
+
+#: .\templates\restates\rent_file_detail.html:167
+#: .\templates\restates\sale_file_detail.html:168
+msgid "Code copied! Go to trade session request page "
+msgstr "کد آگهی کپی شد، به صفحه ثبت درخواست نشست معاملاتی بروید"
+
+#: .\templates\restates\rent_file_detail.html:202
+#: .\templates\restates\sale_file_detail.html:203
 msgid "Publisher: "
 msgstr "منتشر کننده: "
 
-#: .\templates\restates\rent_file_detail.html:177
-#: .\templates\restates\sale_file_detail.html:177
+#: .\templates\restates\rent_file_detail.html:205
+#: .\templates\restates\sale_file_detail.html:206
 msgid "Code: "
 msgstr "کد آگهی: "
 
-#: .\templates\restates\rent_file_detail.html:199
+#: .\templates\restates\rent_file_detail.html:227
 msgid "Total Deposit:"
 msgstr "ودیعه: "
 
-#: .\templates\restates\rent_file_detail.html:206
+#: .\templates\restates\rent_file_detail.html:234
 msgid "Monthly Rent:"
 msgstr "اجاره ماهانه: "
 
-#: .\templates\restates\rent_file_detail.html:213
-#: .\templates\restates\sale_file_detail.html:213
+#: .\templates\restates\rent_file_detail.html:241
+#: .\templates\restates\sale_file_detail.html:242
 msgid "Area:"
 msgstr "متراژ:"
 
-#: .\templates\restates\rent_file_detail.html:220
-#: .\templates\restates\sale_file_detail.html:220
+#: .\templates\restates\rent_file_detail.html:248
+#: .\templates\restates\sale_file_detail.html:249
 msgid "Age of Apartment:"
 msgstr "سن آپارتمان:"
 
-#: .\templates\restates\rent_file_detail.html:227
-#: .\templates\restates\sale_file_detail.html:227
+#: .\templates\restates\rent_file_detail.html:255
+#: .\templates\restates\sale_file_detail.html:256
 msgid "Number of Rooms:"
 msgstr "تعداد اتاق:"
 
-#: .\templates\restates\rent_file_detail.html:234
-#: .\templates\restates\sale_file_detail.html:234
+#: .\templates\restates\rent_file_detail.html:262
+#: .\templates\restates\sale_file_detail.html:263
 msgid "Level:"
 msgstr "طبقه:"
 
-#: .\templates\restates\rent_file_detail.html:323
-#: .\templates\restates\sale_file_detail.html:323
+#: .\templates\restates\rent_file_detail.html:351
+#: .\templates\restates\sale_file_detail.html:352
 msgid "File Description"
 msgstr "توضیحات آگهی"
 
-#: .\templates\restates\rent_file_detail.html:326
-#: .\templates\restates\sale_file_detail.html:326
+#: .\templates\restates\rent_file_detail.html:354
+#: .\templates\restates\sale_file_detail.html:355
 msgid "Additional Information"
 msgstr "اطلاعات تکمیلی"
 
@@ -690,113 +697,113 @@ msgstr "اطلاعات تکمیلی"
 msgid "Rent Files"
 msgstr "آگهی‌های اجاره"
 
-#: .\templates\restates\rent_file_list.html:73
-#: .\templates\restates\sale_file_list.html:65
+#: .\templates\restates\rent_file_list.html:74
+#: .\templates\restates\sale_file_list.html:66
 msgid "Read More"
 msgstr "بیشتر"
 
-#: .\templates\restates\rent_file_list.html:90
 #: .\templates\restates\rent_file_list.html:92
-#: .\templates\restates\sale_file_list.html:81
+#: .\templates\restates\rent_file_list.html:94
 #: .\templates\restates\sale_file_list.html:83
+#: .\templates\restates\sale_file_list.html:85
 msgid "First"
 msgstr "ابتدا"
 
-#: .\templates\restates\rent_file_list.html:96
 #: .\templates\restates\rent_file_list.html:98
-#: .\templates\restates\sale_file_list.html:87
+#: .\templates\restates\rent_file_list.html:100
 #: .\templates\restates\sale_file_list.html:89
+#: .\templates\restates\sale_file_list.html:91
 msgid "Previous"
 msgstr "قبلی"
 
-#: .\templates\restates\rent_file_list.html:110
 #: .\templates\restates\rent_file_list.html:112
-#: .\templates\restates\sale_file_list.html:101
+#: .\templates\restates\rent_file_list.html:114
 #: .\templates\restates\sale_file_list.html:103
+#: .\templates\restates\sale_file_list.html:105
 msgid "Next"
 msgstr "بعدی"
 
-#: .\templates\restates\rent_file_list.html:116
 #: .\templates\restates\rent_file_list.html:118
-#: .\templates\restates\sale_file_list.html:107
+#: .\templates\restates\rent_file_list.html:120
 #: .\templates\restates\sale_file_list.html:109
+#: .\templates\restates\sale_file_list.html:111
 msgid "Last Page"
 msgstr "انتها"
 
-#: .\templates\restates\rent_file_list.html:162
+#: .\templates\restates\rent_file_list.html:164
 msgid "Min_Price_Deposit: "
 msgstr "حداقل ودیعه: "
 
-#: .\templates\restates\rent_file_list.html:170
+#: .\templates\restates\rent_file_list.html:172
 msgid "Max_Price_Deposit: "
 msgstr "حداکثر ودیعه: "
 
-#: .\templates\restates\rent_file_list.html:178
+#: .\templates\restates\rent_file_list.html:180
 msgid "Min_Price_Rent: "
 msgstr "حداقل اجاره: "
 
-#: .\templates\restates\rent_file_list.html:186
+#: .\templates\restates\rent_file_list.html:188
 msgid "Max_Price_Rent: "
 msgstr "حداکثر اجاره: "
 
-#: .\templates\restates\rent_file_list.html:194
+#: .\templates\restates\rent_file_list.html:196
 msgid "Convertable: "
 msgstr "امکان تبدیل ودیعه به اجاره: "
 
-#: .\templates\restates\rent_file_list.html:202
-#: .\templates\restates\sale_file_list.html:169
+#: .\templates\restates\rent_file_list.html:204
+#: .\templates\restates\sale_file_list.html:171
 msgid "Min_Area: "
 msgstr "حداقل متراژ: "
 
-#: .\templates\restates\rent_file_list.html:210
-#: .\templates\restates\sale_file_list.html:177
+#: .\templates\restates\rent_file_list.html:212
+#: .\templates\restates\sale_file_list.html:179
 msgid "Max_Area: "
 msgstr "حداکثر متراژ: "
 
-#: .\templates\restates\rent_file_list.html:218
-#: .\templates\restates\sale_file_list.html:185
+#: .\templates\restates\rent_file_list.html:220
+#: .\templates\restates\sale_file_list.html:187
 msgid "Min_Room: "
 msgstr "حداقل تعداد اتاق: "
 
-#: .\templates\restates\rent_file_list.html:226
-#: .\templates\restates\sale_file_list.html:193
+#: .\templates\restates\rent_file_list.html:228
+#: .\templates\restates\sale_file_list.html:195
 msgid "Max_Room: "
 msgstr "حداکثر تعداد اتاق: "
 
-#: .\templates\restates\rent_file_list.html:234
-#: .\templates\restates\sale_file_list.html:201
+#: .\templates\restates\rent_file_list.html:236
+#: .\templates\restates\sale_file_list.html:203
 msgid "Min_Age: "
 msgstr "حداقل سن آپارتمان: "
 
-#: .\templates\restates\rent_file_list.html:242
-#: .\templates\restates\sale_file_list.html:209
+#: .\templates\restates\rent_file_list.html:244
+#: .\templates\restates\sale_file_list.html:211
 msgid "Max_Age: "
 msgstr "حداکثر سن آپارتمان: "
 
-#: .\templates\restates\rent_file_list.html:250
-#: .\templates\restates\sale_file_list.html:217
+#: .\templates\restates\rent_file_list.html:252
+#: .\templates\restates\sale_file_list.html:219
 msgid "Min_Level: "
 msgstr "حداقل طبقه: "
 
-#: .\templates\restates\rent_file_list.html:258
-#: .\templates\restates\sale_file_list.html:225
+#: .\templates\restates\rent_file_list.html:260
+#: .\templates\restates\sale_file_list.html:227
 msgid "Max_Level: "
 msgstr "حداکثر طبقه: "
 
-#: .\templates\restates\rent_file_list.html:266
-#: .\templates\restates\sale_file_list.html:233
+#: .\templates\restates\rent_file_list.html:268
+#: .\templates\restates\sale_file_list.html:235
 msgid "Document: "
 msgstr "وضعیت سند تک‌برگ: "
 
-#: .\templates\restates\rent_file_list.html:274
-#: .\templates\restates\sale_file_list.html:241
+#: .\templates\restates\rent_file_list.html:276
+#: .\templates\restates\sale_file_list.html:243
 msgid "Parking: "
 msgstr "پارکینگ: "
 
-#: .\templates\restates\rent_file_list.html:297
-#: .\templates\restates\sale_file_list.html:264
-msgid "Submit File"
-msgstr "انتشار آگهی فروش"
+#: .\templates\restates\rent_file_list.html:299
+#: .\templates\restates\sale_file_list.html:266
+msgid "Do Filter"
+msgstr "اعمال فیلتر"
 
 #: .\templates\restates\sale_file_create.html:10
 msgid "Sale File Create"
@@ -810,15 +817,15 @@ msgstr "قیمت: "
 msgid "Submit Sale File"
 msgstr "انتشار آگهی فروش"
 
-#: .\templates\restates\sale_file_detail.html:10
+#: .\templates\restates\sale_file_detail.html:11
 msgid "Sale Detail"
 msgstr "جزئیات آگهی"
 
-#: .\templates\restates\sale_file_detail.html:199
+#: .\templates\restates\sale_file_detail.html:228
 msgid "Total Price:"
 msgstr "قیمت کل:"
 
-#: .\templates\restates\sale_file_detail.html:206
+#: .\templates\restates\sale_file_detail.html:235
 msgid "Metric Price:"
 msgstr "قیمت متری:"
 
@@ -826,25 +833,31 @@ msgstr "قیمت متری:"
 msgid "Sale Files"
 msgstr "آگهی‌های فروش"
 
-#: .\templates\restates\sale_file_list.html:153
+#: .\templates\restates\sale_file_list.html:155
 msgid "Min_Price: "
 msgstr "حداقل قیمت: "
 
-#: .\templates\restates\sale_file_list.html:161
+#: .\templates\restates\sale_file_list.html:163
 msgid "Max_Price: "
 msgstr "حداکثر قیمت: "
 
 #: .\templates\restates\trade_session.html:10
+#: .\templates\restates\trade_session_from_rent_detail.html:10
+#: .\templates\restates\trade_session_from_sale_detail.html:10
 msgid "Trade"
 msgstr "نشست معاملاتی"
 
 #: .\templates\restates\trade_session.html:22
 #: .\templates\restates\trade_session_detail.html:23
+#: .\templates\restates\trade_session_from_rent_detail.html:22
+#: .\templates\restates\trade_session_from_sale_detail.html:22
 msgid "Submit a trade session request"
 msgstr "ثبت درخواست نشست معاملاتی"
 
 #: .\templates\restates\trade_session.html:25
 #: .\templates\restates\trade_session_detail.html:26
+#: .\templates\restates\trade_session_from_rent_detail.html:25
+#: .\templates\restates\trade_session_from_sale_detail.html:25
 msgid "Detail of trade session request"
 msgstr "جزئیات درخواست نشست معاملاتی"
 
@@ -857,50 +870,61 @@ msgid "Choose the trade type"
 msgstr "نوع معامله را انتخاب کنید:"
 
 #: .\templates\restates\trade_session.html:64
+#: .\templates\restates\trade_session_from_sale_detail.html:44
 msgid "Enter the sale file code:"
 msgstr "کد آگهی فروش را وارد نمایید:"
 
-#: .\templates\restates\trade_session.html:74
+#: .\templates\restates\trade_session.html:77
+#: .\templates\restates\trade_session_from_rent_detail.html:44
 msgid "Enter the rent file code:"
 msgstr "کد آگهی اجاره را وارد نمایید:"
 
-#: .\templates\restates\trade_session.html:84
+#: .\templates\restates\trade_session.html:90
+#: .\templates\restates\trade_session_from_rent_detail.html:54
+#: .\templates\restates\trade_session_from_sale_detail.html:54
 msgid "Choose the city"
 msgstr "شهر برگزاری نشست را انتخاب کنید:"
 
-#: .\templates\restates\trade_session.html:94
+#: .\templates\restates\trade_session.html:100
+#: .\templates\restates\trade_session_from_rent_detail.html:64
+#: .\templates\restates\trade_session_from_sale_detail.html:64
 msgid "Where do you prefer for location?"
 msgstr "تمایل خود برای محل برگزاری نشست را انتخاب کنید:"
 
-#: .\templates\restates\trade_session.html:104
+#: .\templates\restates\trade_session.html:110
+#: .\templates\restates\trade_session_from_rent_detail.html:74
+#: .\templates\restates\trade_session_from_sale_detail.html:74
 msgid "Choose the session date"
 msgstr "تاریخ برگزاری نشست را انتخاب کنید:"
 
-#: .\templates\restates\trade_session.html:114
+#: .\templates\restates\trade_session.html:120
+#: .\templates\restates\trade_session_from_rent_detail.html:84
+#: .\templates\restates\trade_session_from_sale_detail.html:84
 msgid "Choose the session time"
 msgstr "زمان برگزاری نشست را انتخاب کنید:"
 
-#: .\templates\restates\trade_session.html:124
+#: .\templates\restates\trade_session.html:130
 #: .\templates\restates\trade_session_detail.html:121
+#: .\templates\restates\trade_session_from_rent_detail.html:94
+#: .\templates\restates\trade_session_from_sale_detail.html:94
 msgid "Name & Family:"
 msgstr "نام و نام خانوادگی: "
 
-#: .\templates\restates\trade_session.html:132
+#: .\templates\restates\trade_session.html:138
+#: .\templates\restates\trade_session_from_rent_detail.html:102
+#: .\templates\restates\trade_session_from_sale_detail.html:102
 msgid "Submit the trade session request"
 msgstr "ثبت درخواست نشست معاملاتی"
 
 #: .\templates\restates\trade_session_detail.html:11
-
 msgid "Trade Session detail"
 msgstr "جزئیات نشست معاملاتی"
 
 #: .\templates\restates\trade_session_detail.html:41
-
 msgid "Trade type:"
 msgstr "نوع معامله: "
 
 #: .\templates\restates\trade_session_detail.html:50
-
 msgid "Sale code:"
 msgstr "کد آگهی فروش:"
 
@@ -953,7 +977,6 @@ msgstr "مالیات"
 
 #: .\templates\restates\trade_session_detail.html:165
 #: .\templates\restates\trade_session_detail.html:198
-
 msgid "Total price"
 msgstr "قیمت کل:"
 
@@ -1002,4 +1025,5 @@ msgstr "کد را دریافت نکردید؟"
 msgid "Register in Homebia"
 msgstr "ورود به هومبیا"
 
-
+#~ msgid "Submit File"
+#~ msgstr "انتشار آگهی فروش"

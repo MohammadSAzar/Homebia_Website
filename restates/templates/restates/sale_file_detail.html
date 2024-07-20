@@ -159,27 +159,36 @@
                         </div>
                     </div>
 
-                    <button id="copyButton" data-code="{{ sale_file.code }}">Copy Code</button>
-                    <button id="tradePageButton" style="display:none;" onclick="redirectToTradePage()">Go to Trade Page</button>
+                    <div class="variation-form mb--40">
+                        <div class="product-size-variations d-flex align-items-center mb--15" style="justify-content: center;">
+                            <div class="product-size-variation variation-wrapper">
 
-                    <script>
-                        document.getElementById('copyButton').addEventListener('click', function() {
-                            const code = this.getAttribute('data-code');
-                            navigator.clipboard.writeText(code).then(function() {
-                                alert('Code copied to clipboard: ' + code);
-                                document.getElementById('tradePageButton').style.display = 'block';
-                            }, function(err) {
-                                console.error('Could not copy text: ', err);
-                            });
-                        });
+                                <div class="product-action">
+                                    <button id="copyButton" class="btn btn-size-sm btn-shape-square" style="width: 100%; margin-top: 2em; font-size: 1em;" data-code="{{ sale_file.code }}">{% trans 'If you want a trade session for this file, CLICK!' %}</button>
+                                    <button id="tradePageButton" class="btn btn-size-sm btn-shape-square" style="width: 100%; margin-top: 2em; display:none; font-size: 1em;" onclick="redirectToTradePage()">{% trans 'Code copied! Go to trade session request page ' %}</button>
+                                </div>
 
-                        function redirectToTradePage() {
-                            const code = document.getElementById('copyButton').getAttribute('data-code');
-                            window.location.href = `{% url 'trade_session_from_sale' %}?code=` + code;
-                        }
-                    </script>
+                                <script>
+                                    document.getElementById('copyButton').addEventListener('click', function() {
+                                        const code = this.getAttribute('data-code');
+                                        navigator.clipboard.writeText(code).then(function() {
+                                            {#alert('Code copied to clipboard: ' + code);#}
+                                            document.getElementById('tradePageButton').style.display = 'block';
+                                            document.getElementById('copyButton').style.display = 'none';
+                                        }, function(err) {
+                                            console.error('Could not copy text: ', err);
+                                        });
+                                    });
 
+                                    function redirectToTradePage() {
+                                        const code = document.getElementById('copyButton').getAttribute('data-code');
+                                        window.location.href = `{% url 'trade_session_from_sale' %}?code=` + code;
+                                    }
+                                </script>
 
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Information -->
