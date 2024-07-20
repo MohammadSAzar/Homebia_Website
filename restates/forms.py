@@ -201,4 +201,27 @@ class TradeSessionForm(forms.ModelForm):
         fields = ['trade_type', 'city', 'ours', 'sale_file', 'sale_code', 'rent_file', 'rent_code', 'location', 'date',
                   'time', 'name_and_family', 'phone_number']
 
+    # def clean(self):
+    #     cleaned_data = super().clean()
+    #     if cleaned_data.get('sale_code') != '':
+    #         sale_code = cleaned_data.get('sale_code')
+    #         if sale_code not in SaleFile.objects.values_list('code', flat=True):
+    #             self.add_error('sale_code', 'کد آگهی ورودی معتبر نیست.')
+    #     if cleaned_data.get('rent_code') != '':
+    #         rent_code = cleaned_data.get('rent_code')
+    #         if rent_code not in RentFile.objects.values_list('code', flat=True):
+    #             self.add_error('rent_code', 'کد آگهی ورودی معتبر نیست.')
+    #
+    #     return cleaned_data
+
+class SaleTradeSessionForm(forms.ModelForm):
+    class Meta:
+        model = models.TradeSession
+        fields = ['city', 'sale_code', 'location', 'date', 'time', 'name_and_family', 'phone_number']
+
+
+class RentTradeSessionForm(forms.ModelForm):
+    class Meta:
+        model = models.TradeSession
+        fields = ['city', 'rent_code', 'location', 'date', 'time', 'name_and_family', 'phone_number']
 

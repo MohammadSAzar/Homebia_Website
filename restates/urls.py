@@ -14,6 +14,8 @@ urlpatterns = [
 	re_path(r'rent-file/(?P<slug>[-\w]+)/(?P<unique_url_id>[-\w]+)/', views.RentFileDetailView.as_view(), name='rent_file_detail'),
 	# Trade URLs
 	path('file/trade/', views.trade_session_view, name='trade_session'),
+	path('file/trade-from-sale/', views.trade_session_view_from_sale_detail, name='trade_session_from_sale'),
+	path('file/trade-from-rent/', views.trade_session_view_from_rent_detail, name='trade_session_from_rent'),
 	path('file/trade/registration', views.trade_session_registration_view, name='trade_session_registration'),
 	path('file/trade/verification', views.trade_session_verification_view, name='trade_session_verification'),
 	path('file/trade_detail/<int:pk>/', views.trade_session_detail, name='trade_session_detail'),

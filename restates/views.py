@@ -10,7 +10,8 @@ from accounts.forms import RegistrationForm
 from accounts.checkers import send_otp, get_random_otp, otp_time_checker
 
 from .models import SaleFile, RentFile, City, District, TradeSession
-from .forms import SaleFileCreateForm, SaleFileFilterForm, RentFileCreateForm, RentFileFilterForm, TradeSessionForm
+from .forms import (SaleFileCreateForm, SaleFileFilterForm, RentFileCreateForm, RentFileFilterForm, TradeSessionForm,
+                    SaleTradeSessionForm, RentTradeSessionForm)
 
 
 # --------------------------------- Locations ---------------------------------
@@ -225,12 +226,10 @@ def trade_session_view(request):
             if request.POST.get('sale_code') != '':
                 sale_code = request.POST.get('sale_code')
                 sale_file = SaleFile.objects.get(code=sale_code)
-                # form.sale_file = sale_file
                 trade_session.sale_file = sale_file
             if request.POST.get('rent_code') != '':
                 rent_code = request.POST.get('rent_code')
                 rent_file = RentFile.objects.get(code=rent_code)
-                # form.rent_file = rent_file
                 trade_session.rent_file = rent_file
             trade_session.save()
             context = {
@@ -240,6 +239,68 @@ def trade_session_view(request):
     else:
         form = TradeSessionForm()
     return render(request, 'restates/trade_session.html', {'form': form})
+
+
+def trade_session_view_from_sale_detail(request):
+    sale_code = request.GET.get('code', '')
+    sale_file = get_object_or_404(SaleFile, code=sale_code)
+    ours = 'is'
+    trade_type = 'sale'
+    if request.method == 'POST':
+        form = SaleTradeSessionForm(request.POST)
+        if form.is_valid():
+            print('COCK')
+            trade_session = form.save(commit=False)
+            trade_session.sale_code = sale_code
+            trade_session.sale_file = sale_file
+            trade_session.ours = ours
+            trade_session.trade_type = trade_type
+            trade_session.save()
+            return redirect(reverse('trade_session_registration'))
+        else:
+            print(form.errors)
+    else:
+        print('PUSS')
+        initial_data = {
+            'ours': 'is',
+            'trade_type': 'sale',
+        }
+        if sale_code:
+            initial_data['sale_code'] = sale_code
+        form = SaleTradeSessionForm(initial=initial_data)
+
+    return render(request, 'restates/trade_session_from_sale_detail.html', {'form': form})
+
+
+def trade_session_view_from_rent_detail(request):
+    rent_code = request.GET.get('code', '')
+    rent_file = get_object_or_404(RentFile, code=rent_code)
+    ours = 'is'
+    trade_type = 'rent'
+    if request.method == 'POST':
+        form = RentTradeSessionForm(request.POST)
+        if form.is_valid():
+            print('COCK')
+            trade_session = form.save(commit=False)
+            trade_session.rent_code = rent_code
+            trade_session.rent_file = rent_file
+            trade_session.ours = ours
+            trade_session.trade_type = trade_type
+            trade_session.save()
+            return redirect(reverse('trade_session_registration'))
+        else:
+            print(form.errors)
+    else:
+        print('PUSS')
+        initial_data = {
+            'ours': 'is',
+            'trade_type': 'rent',
+        }
+        if rent_code:
+            initial_data['rent_code'] = rent_code
+        form = RentTradeSessionForm(initial=initial_data)
+
+    return render(request, 'restates/trade_session_from_rent_detail.html', {'form': form})
 
 
 def trade_session_registration_view(request):

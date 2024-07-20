@@ -3,6 +3,7 @@
 {% load static %}
 {% load i18n %}
 {% load jalali_tags %}
+{% load shamsi_date %}
 {% load number_converter %}
 {% load humanize %}
 {% load widget_tweaks %}
@@ -22,6 +23,7 @@
                 <div class="col-lg-7 product-main-image">
                     <div class="product-image" >
                         <div class="product-gallery vertical-slide-nav">
+
                             <div class="product-gallery__large-image  mb-sm--30" style="direction: ltr">
                                 <div class="product-gallery__wrapper">
                                     <div class="element-carousel main-slider image-popup"
@@ -90,7 +92,6 @@
                                 </div>
                             </div>
 
-
                             <div class="product-gallery__nav-image" style="direction: ltr">
                                 <div class="element-carousel nav-slider product-slide-nav slick-center-bottom"
                                      data-slick-options='{
@@ -155,10 +156,30 @@
                                 </div>
                             </div>
 
-
-
                         </div>
                     </div>
+
+                    <button id="copyButton" data-code="{{ sale_file.code }}">Copy Code</button>
+                    <button id="tradePageButton" style="display:none;" onclick="redirectToTradePage()">Go to Trade Page</button>
+
+                    <script>
+                        document.getElementById('copyButton').addEventListener('click', function() {
+                            const code = this.getAttribute('data-code');
+                            navigator.clipboard.writeText(code).then(function() {
+                                alert('Code copied to clipboard: ' + code);
+                                document.getElementById('tradePageButton').style.display = 'block';
+                            }, function(err) {
+                                console.error('Could not copy text: ', err);
+                            });
+                        });
+
+                        function redirectToTradePage() {
+                            const code = document.getElementById('copyButton').getAttribute('data-code');
+                            window.location.href = `{% url 'trade_session_from_sale' %}?code=` + code;
+                        }
+                    </script>
+
+
                 </div>
 
                 <!-- Information -->
@@ -183,9 +204,9 @@
                             <div class="product-size-variations d-flex align-items-center mb--15" style="justify-content: center;">
                                 <div class="product-size-variation variation-wrapper">
                                     {% if sale_file.district %}
-                                        <p class="product-short-description mb--20" style="font-size: medium;">{{ sale_file.datetime_created }} | {{ sale_file.province }} - {{ sale_file.city }} - {{ sale_file.district }}</p>
+                                        <p class="product-short-description mb--20" style="font-size: medium;">{{ sale_file.datetime_created|shamsi_date }} | {{ sale_file.province }} - {{ sale_file.city }} - {{ sale_file.district }}</p>
                                     {% else %}
-                                        <p class="product-short-description mb--20" style="font-size: medium;">{{ sale_file.datetime_created }} | {{ sale_file.province }} - {{ sale_file.city }}</p>
+                                        <p class="product-short-description mb--20" style="font-size: medium;">{{ sale_file.datetime_created|shamsi_date }} | {{ sale_file.province }} - {{ sale_file.city }}</p>
                                     {% endif %}
                                 </div>
                             </div>

@@ -92,15 +92,6 @@ class SaleFile(models.Model):
     owner_national_code = models.CharField(max_length=10, blank=True, null=True, verbose_name=_('Owner National Code'))
     file_postal_code = models.CharField(max_length=10, blank=True, null=True, verbose_name=_('File Postal Code'))
 
-    # @property
-    # def tracking_code(self):
-    # 	number_list = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
-    # 	choice_list = list(string.ascii_lowercase) + number_list + number_list
-    # 	code = ''
-    # 	for i in range(19):
-    # 		code = code + random.choice(choice_list)
-    # 	return code
-
     @property
     def price_per_meter(self):
         return int(self.price/self.area)
@@ -180,15 +171,6 @@ class RentFile(models.Model):
     owner_national_code = models.CharField(max_length=10, blank=True, null=True, verbose_name=_('Owner National Code'))
     file_postal_code = models.CharField(max_length=10, blank=True, null=True, verbose_name=_('File Postal Code'))
 
-    # @property
-    # def tracking_code(self):
-    # 	number_list = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
-    # 	choice_list = list(string.ascii_lowercase) + number_list + number_list
-    # 	code = ''
-    # 	for i in range(19):
-    # 		code = code + random.choice(choice_list)
-    # 	return code
-
     def save(self, *args, **kwargs):
         if self.pk is not None:
             old_status = RentFile.objects.get(pk=self.pk).status
@@ -239,7 +221,7 @@ beings = [
 
 
 class TradeSession(models.Model):
-    # Constants (importd)
+    # Constants (imported)
     DATES = next_seven_days_shamsi
     TIMES = times
     STATUSES = statuses
@@ -254,16 +236,14 @@ class TradeSession(models.Model):
     date = models.CharField(max_length=200, choices=DATES, verbose_name=_('Date of Session'))
     time = models.CharField(max_length=200, choices=TIMES, verbose_name=_('Time of Session'))
     name_and_family = models.CharField(max_length=200, verbose_name=_('First Name and Family'))
-    # name_and_family_second = models.CharField(max_length=200, blank=True, null=True, verbose_name=_('Second Name and Family'))
     phone_number = models.CharField(max_length=11, blank=True, null=True, verbose_name=_('First Phone Number'))
-    # phone_number_second = models.CharField(max_length=11, blank=True, null=True, verbose_name=_('Second Phone Number'))
     # File
     trade_type = models.CharField(max_length=30, choices=TYPES, verbose_name=_('Trade Type'))
     ours = models.CharField(max_length=30, choices=beings, verbose_name=_('Is trade ours?'))
     sale_file = models.ForeignKey(SaleFile, on_delete=models.SET_NULL, null=True, blank=True, related_name='trades', verbose_name=_('Sale File'))
-    sale_code = models.CharField(max_length=6, null=True, unique=True, blank=True, verbose_name=_('Sale File Code'))
+    sale_code = models.CharField(max_length=6, null=True, blank=True, verbose_name=_('Sale File Code'))
     rent_file = models.ForeignKey(RentFile, on_delete=models.SET_NULL, null=True, blank=True, related_name='trades', verbose_name=_('Rent File'))
-    rent_code = models.CharField(max_length=6, null=True, unique=True, blank=True, verbose_name=_('Rent File Code'))
+    rent_code = models.CharField(max_length=6, null=True, blank=True, verbose_name=_('Rent File Code'))
     # Result
     is_success = models.CharField(max_length=200, choices=beings, default='isnt', verbose_name=_('Is trade successful?'))
     is_followed = models.CharField(max_length=200, choices=beings, default='isnt', verbose_name=_('Is trade has follow-up?'))
