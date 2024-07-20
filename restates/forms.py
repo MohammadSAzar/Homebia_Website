@@ -7,15 +7,15 @@ from . import checkers, choices
 
 
 create_file_fields = ['province', 'city', 'district', 'price', 'room', 'area', 'age', 'document', 'level', 'parking', 'elevator',
-                      'warehouse', 'title', 'description', 'cover', 'cover2', 'cover3', 'cover4',
-                      'direction', 'file_levels', 'aparts_per_level', 'balcony', 'bench_stove', 'restoration', 'toilet',
-                      'hot_water', 'cooling', 'heating', 'floor', 'provider_name', 'phone_number_for_contact',
-                      'provider_national_code', 'owner_national_code', 'file_postal_code']
+                      'warehouse', 'title', 'description', 'cover', 'cover2', 'cover3', 'cover4', 'direction', 'file_levels',
+                      'aparts_per_level', 'balcony', 'bench_stove', 'restoration', 'toilet', 'hot_water', 'cooling', 'heating',
+                      'floor', 'provider_name', 'phone_number_for_contact', 'provider_national_code', 'owner_national_code',
+                      'file_postal_code']
 
 create_rent_file_fields = ['province', 'city', 'district', 'price_deposit', 'price_rent', 'convertable', 'room', 'area', 'age',
                            'document', 'level', 'parking', 'elevator','warehouse', 'title', 'description', 'cover', 'cover2',
-                           'cover3', 'cover4', 'direction', 'file_levels', 'aparts_per_level', 'balcony', 'bench_stove',
-                           'restoration', 'toilet', 'hot_water', 'cooling', 'heating', 'floor', 'provider_name', 'phone_number_for_contact',
+                           'cover3', 'cover4', 'direction', 'file_levels', 'aparts_per_level', 'balcony', 'bench_stove', 'restoration',
+                           'toilet', 'hot_water', 'cooling', 'heating', 'floor', 'provider_name', 'phone_number_for_contact',
                            'provider_national_code', 'owner_national_code', 'file_postal_code']
 
 class SaleFileCreateForm(forms.ModelForm):
@@ -201,18 +201,21 @@ class TradeSessionForm(forms.ModelForm):
         fields = ['trade_type', 'city', 'ours', 'sale_file', 'sale_code', 'rent_file', 'rent_code', 'location', 'date',
                   'time', 'name_and_family', 'phone_number']
 
-    # def clean(self):
-    #     cleaned_data = super().clean()
-    #     if cleaned_data.get('sale_code') != '':
-    #         sale_code = cleaned_data.get('sale_code')
-    #         if sale_code not in SaleFile.objects.values_list('code', flat=True):
-    #             self.add_error('sale_code', 'کد آگهی ورودی معتبر نیست.')
-    #     if cleaned_data.get('rent_code') != '':
-    #         rent_code = cleaned_data.get('rent_code')
-    #         if rent_code not in RentFile.objects.values_list('code', flat=True):
-    #             self.add_error('rent_code', 'کد آگهی ورودی معتبر نیست.')
-    #
-    #     return cleaned_data
+    def clean(self):
+        cleaned_data = super().clean()
+        sale_code = cleaned_data.get('sale_code')
+        rent_code = cleaned_data.get('rent_code')
+        sale_codes = SaleFile.objects.values_list('code', flat=True)
+        rent_codes = RentFile.objects.values_list('code', flat=True)
+
+        if sale_code not in sale_codes and sale_code != '':
+            self.add_error('sale_code', 'کد آگهی فروش وارد شده موجود نیست!')
+
+        if rent_code not in rent_codes and rent_code != '':
+            self.add_error('rent_code', 'کد آگهی اجاره وارد شده موجود نیست!')
+
+        return cleaned_data
+
 
 class SaleTradeSessionForm(forms.ModelForm):
     class Meta:
