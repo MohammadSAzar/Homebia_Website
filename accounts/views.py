@@ -7,6 +7,9 @@ from .models import CustomUserModel, Profile
 from .forms import RegistrationForm, AuthenticationForm, IntoEditForm
 from .checkers import send_otp, get_random_otp, otp_time_checker
 
+from services.models import Counseling, Session, Visit
+from restates.models import SaleFile, RentFile, TradeSession
+
 
 def registration_view(request):
 	form = RegistrationForm
@@ -60,7 +63,7 @@ def verification_view(request):
 		return HttpResponseRedirect(reverse('registration'))
 
 
-# Profile views
+# --------------------------------- Profile ---------------------------------
 def profile_info_now(request):
 	return render(request, 'accounts/profile_info_now.html')
 
@@ -98,15 +101,20 @@ def profile_info_edit(request):
 
 
 def profile_your_services(request):
-	return render(request, 'accounts/profile_your_services.html')
+	phone_number = request.session.get('user_phone_number')
+	counselings = Counseling.objects.filter(phone_number=phone_number).all()
+	sessions = Session.objects.filter(phone_number=phone_number).all()
+	visits = Visit.objects.filter(phone_number=phone_number).all()
+	context = {
+		'counselings': counselings,
+		'sessions': sessions,
+		'visits': visits,
+	}
+	return render(request, 'accounts/profile_your_services.html', context)
 
 
-def profile_your_cases(request):
-	return render(request, 'accounts/profile_your_cases.html')
-
-
-def profile_your_files(request):
-	return render(request, 'accounts/profile_your_files.html')
+def profile_your_trades(request):
+	return render(request, 'accounts/profile_your_trades.html')
 
 
 

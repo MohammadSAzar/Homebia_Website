@@ -68,7 +68,7 @@ def next_seven_days_shamsi():
             days[j]['result_day'] = 'یکشنبه'
     final_days = []
     for k in range(0, 7):
-        converted_day = str(days[k]['result_day'] + ' ------ ' + days[k]['result_date'])
+        converted_day = str(days[k]['result_day'] + ' - ' + days[k]['result_date'])
         final_days.append((
             'result_day', converted_day,
         ))

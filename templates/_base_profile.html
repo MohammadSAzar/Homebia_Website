@@ -89,20 +89,14 @@
                                             </a>
                                             <ul class="nk-menu-sub">
                                                 <li class="nk-menu-item">
-                                                    <a href="html/user-list-regular.html" class="nk-menu-link"><span class="nk-menu-text">{% trans 'My Counselings' %}</span></a>
+                                                    <a href="{% url 'profile_your_services' %}" class="nk-menu-link"><span class="nk-menu-text">{% trans 'My Counselings' %}</span></a>
                                                 </li>
                                                 <li class="nk-menu-item">
-                                                    <a href="html/user-list-compact.html" class="nk-menu-link"><span class="nk-menu-text">{% trans 'My Sessions' %}</span></a>
+                                                    <a href="{% url 'profile_your_trades' %}" class="nk-menu-link"><span class="nk-menu-text">{% trans 'My Trades' %}</span></a>
                                                 </li>
-                                                <li class="nk-menu-item">
-                                                    <a href="html/user-list-compact.html" class="nk-menu-link"><span class="nk-menu-text">{% trans 'My Visits' %}</span></a>
-                                                </li>
-                                                <li class="nk-menu-item">
-                                                    <a href="html/user-list-compact.html" class="nk-menu-link"><span class="nk-menu-text">{% trans 'My Investments' %}</span></a>
-                                                </li>
-                                                <li class="nk-menu-item">
-                                                    <a href="html/user-list-compact.html" class="nk-menu-link"><span class="nk-menu-text">{% trans 'My Trades' %}</span></a>
-                                                </li>
+{#                                                <li class="nk-menu-item">#}
+{#                                                    <a href="{% url 'profile_your_cases' %}" class="nk-menu-link"><span class="nk-menu-text">{% trans 'My Cases' %}</span></a>#}
+{#                                                </li>#}
                                             </ul>
                                         </li>
                                         <!-- end: Your information -->
