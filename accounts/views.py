@@ -114,7 +114,12 @@ def profile_your_services(request):
 
 
 def profile_your_trades(request):
-	return render(request, 'accounts/profile_your_trades.html')
+	phone_number = request.session.get('user_phone_number')
+	trades = TradeSession.objects.filter(phone_number=phone_number).all()
+	context = {
+		'trades': trades,
+	}
+	return render(request, 'accounts/profile_your_trades.html', context)
 
 
 
