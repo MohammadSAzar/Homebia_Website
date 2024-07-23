@@ -115,7 +115,7 @@ def profile_your_services(request):
 
 def profile_your_trades(request):
 	phone_number = request.session.get('user_phone_number')
-	trades = TradeSession.objects.filter(phone_number=phone_number).all()
+	trades = TradeSession.objects.select_related('rent_file', 'sale_file').filter(phone_number=phone_number).all()
 	context = {
 		'trades': trades,
 	}

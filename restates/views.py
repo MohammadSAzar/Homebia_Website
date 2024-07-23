@@ -218,24 +218,61 @@ class RentFileListView(ListView):
 
 
 # --------------------------------- Trades ---------------------------------
+# def trade_session_view(request):
+#     if request.method == 'POST':
+#         form = TradeSessionForm(request.POST)
+#         if form.is_valid():
+#             trade_session = form.save(commit=False)
+#             if not request.POST.get('sale_code'):
+#                 print('GGGG')
+#                 sale_code = request.POST.get('sale_code')
+#                 print('SALECODE: ', sale_code)
+#                 sale_file = SaleFile.objects.get(code=sale_code)
+#                 trade_session.sale_file = sale_file
+#             if not request.POST.get('rent_code'):
+#                 print('FFFF')
+#                 rent_code = request.POST.get('rent_code')
+#                 rent_file = RentFile.objects.get(code=rent_code)
+#                 trade_session.rent_file = rent_file
+#             trade_session.save()
+#             print('ASS')
+#             context = {
+#                 'form': form,
+#             }
+#             return HttpResponseRedirect(reverse('trade_session_registration'))
+#         else:
+#             print('Form errors:', form.errors)
+#     else:
+#         form = TradeSessionForm()
+#     return render(request, 'restates/trade_session.html', {'form': form})
+
+
 def trade_session_view(request):
     if request.method == 'POST':
         form = TradeSessionForm(request.POST)
         if form.is_valid():
             trade_session = form.save(commit=False)
-            if request.POST.get('sale_code') != '':
-                sale_code = request.POST.get('sale_code')
-                sale_file = SaleFile.objects.get(code=sale_code)
-                trade_session.sale_file = sale_file
-            if request.POST.get('rent_code') != '':
-                rent_code = request.POST.get('rent_code')
-                rent_file = RentFile.objects.get(code=rent_code)
-                trade_session.rent_file = rent_file
+            sale_code = request.POST.get('sale_code')
+            rent_code = request.POST.get('rent_code')
+            if sale_code:
+                try:
+                    sale_file = SaleFile.objects.get(code=sale_code)
+                    trade_session.sale_file = sale_file
+                except SaleFile.DoesNotExist:
+                    form.add_error('sale_code', 'کد آگهی فروش وارد شده موجود نیست!')
+                    return render(request, 'restates/trade_session.html', {'form': form})
+            if rent_code:
+                try:
+                    rent_file = RentFile.objects.get(code=rent_code)
+                    trade_session.rent_file = rent_file
+                except RentFile.DoesNotExist:
+                    form.add_error('sale_code', 'کد آگهی اجاره وارد شده موجود نیست!')
+                    return render(request, 'restates/trade_session.html', {'form': form})
+
             trade_session.save()
-            context = {
-                'form': form,
-            }
             return HttpResponseRedirect(reverse('trade_session_registration'))
+        else:
+            print('Form errors:', form.errors)
     else:
         form = TradeSessionForm()
     return render(request, 'restates/trade_session.html', {'form': form})
@@ -370,4 +407,5 @@ def trade_session_detail(request, pk):
         'trade_session': trade_session,
     }
     return render(request, 'restates/trade_session_detail.html', context)
+
 

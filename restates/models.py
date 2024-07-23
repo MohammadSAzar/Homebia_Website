@@ -218,6 +218,10 @@ beings = [
     ('is', _('Is')),
     ('isnt', _('Is Not')),
 ]
+noyes = [
+    ('yes', _('Yes')),
+    ('no', _('No')),
+]
 
 
 class TradeSession(models.Model):
@@ -230,6 +234,7 @@ class TradeSession(models.Model):
     LOCATIONS = locations
     TYPES = types
     BEINGS = beings
+    NOYES = noyes
     # Session
     city = models.CharField(max_length=30, choices=CITIES, default='thrn', verbose_name=_('City'))
     location = models.CharField(max_length=30, choices=LOCATIONS, verbose_name=_('Location'))
@@ -239,15 +244,15 @@ class TradeSession(models.Model):
     phone_number = models.CharField(max_length=11, blank=True, null=True, verbose_name=_('First Phone Number'))
     # File
     trade_type = models.CharField(max_length=30, choices=TYPES, verbose_name=_('Trade Type'))
-    ours = models.CharField(max_length=30, choices=beings, verbose_name=_('Is trade ours?'))
+    ours = models.CharField(max_length=30, choices=BEINGS, verbose_name=_('Is trade ours?'))
     sale_file = models.ForeignKey(SaleFile, on_delete=models.SET_NULL, null=True, blank=True, related_name='trades', verbose_name=_('Sale File'))
     sale_code = models.CharField(max_length=6, null=True, blank=True, verbose_name=_('Sale File Code'))
     rent_file = models.ForeignKey(RentFile, on_delete=models.SET_NULL, null=True, blank=True, related_name='trades', verbose_name=_('Rent File'))
     rent_code = models.CharField(max_length=6, null=True, blank=True, verbose_name=_('Rent File Code'))
     # Result
-    is_success = models.CharField(max_length=200, choices=beings, default='isnt', verbose_name=_('Is trade successful?'))
-    is_followed = models.CharField(max_length=200, choices=beings, default='isnt', verbose_name=_('Is trade has follow-up?'))
-    is_paid = models.CharField(max_length=200, choices=beings, default='isnt', verbose_name=_('Is payment done?'))
+    is_success = models.CharField(max_length=200, choices=NOYES, default='no', verbose_name=_('Is trade successful?'))
+    is_followed = models.CharField(max_length=200, choices=NOYES, default='no', verbose_name=_('Is trade has follow-up?'))
+    is_paid = models.CharField(max_length=200, choices=NOYES, default='no', verbose_name=_('Is payment done?'))
     # General
     trade_code = models.CharField(max_length=20, null=True, unique=True, blank=True)
     status = models.CharField(max_length=30, choices=STATUSES, default='pen', verbose_name=_('Status'))

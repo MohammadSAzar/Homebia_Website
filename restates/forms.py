@@ -208,10 +208,10 @@ class TradeSessionForm(forms.ModelForm):
         sale_codes = SaleFile.objects.values_list('code', flat=True)
         rent_codes = RentFile.objects.values_list('code', flat=True)
 
-        if sale_code not in sale_codes and sale_code != '':
+        if sale_code and sale_code not in sale_codes:
             self.add_error('sale_code', 'کد آگهی فروش وارد شده موجود نیست!')
 
-        if rent_code not in rent_codes and rent_code != '':
+        if rent_code and rent_code not in rent_codes:
             self.add_error('rent_code', 'کد آگهی اجاره وارد شده موجود نیست!')
 
         return cleaned_data

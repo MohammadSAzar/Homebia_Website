@@ -34,8 +34,19 @@
 
                         <div class="col-span-5 md:col-span-3">
                             <div class="grid grid-cols-1 items-center gap-6 mt-2">
+
                                 <form method="post">
                                     {% csrf_token %}
+
+                                    <!-- Trade type -->
+                                    <div class="col-span-2 md:col-span-1" id="trade-type-group">
+                                        <label for="{{ form.trade_type.id_for_label }}" class="relative block rounded-lg border border-secondary-light shadow-base dark:border-primary-light/5 mb-12">
+                                            <span class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-primary-light px-2 py-0.5 text-sm text-quaternary-600 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-focus:top-0 peer-focus:text-sm dark:bg-secondary-dark dark:text-quaternary-300 mr-4">
+                                                {% trans 'Choose the trade type' %}
+                                            </span>
+                                            {% render_field form.trade_type type="text" id="trade_type" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" %}
+                                        </label>
+                                    </div>
 
                                     <!-- Ours -->
                                     <div class="col-span-2 md:col-span-1 mt-2">
@@ -44,16 +55,6 @@
                                               {% trans 'Is file trade ours?' %}
                                             </span>
                                             {% render_field form.ours type="text" id="ours" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" %}
-                                        </label>
-                                    </div>
-
-                                    <!-- Trade type -->
-                                    <div class="col-span-2 md:col-span-1" id="trade-type-group" style="display: none;">
-                                        <label for="{{ form.trade_type.id_for_label }}" class="relative block rounded-lg border border-secondary-light shadow-base dark:border-primary-light/5 mb-12">
-                                            <span class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-primary-light px-2 py-0.5 text-sm text-quaternary-600 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-focus:top-0 peer-focus:text-sm dark:bg-secondary-dark dark:text-quaternary-300 mr-4">
-                                                {% trans 'Choose the trade type' %}
-                                            </span>
-                                            {% render_field form.trade_type type="text" id="trade_type" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" %}
                                         </label>
                                     </div>
 
@@ -140,45 +141,73 @@
 
                                 </form>
 
-
                                 <script>
                                     document.addEventListener("DOMContentLoaded", function() {
                                         const oursField = document.getElementById("ours");
+                                        const tradeTypeField = document.getElementById("trade_type");
                                         const tradeTypeGroup = document.getElementById("trade-type-group");
                                         const saleCodeGroup = document.getElementById("sale-code-group");
                                         const rentCodeGroup = document.getElementById("rent-code-group");
-                                        const tradeTypeField = document.getElementById("trade_type");
+                                        const saleCodeField = document.getElementById("sale_code");
+                                        const rentCodeField = document.getElementById("rent_code");
+                                        const submitButton = document.querySelector('button[type="submit"]');
 
                                         function handleOursChange() {
-                                            if (oursField.value === "is") {
-                                                tradeTypeGroup.style.display = "block";
+                                            const oursValue = oursField.value;
+                                            if (oursValue === "is") {
+                                                handleTradeTypeChange(); // Ensure correct display based on trade_type value
+                                                submitButton.disabled = false; // Enable submit button when "is" is selected
                                             } else {
-                                                tradeTypeGroup.style.display = "none";
+                                                saleCodeGroup.style.display = "none";
+                                                rentCodeGroup.style.display = "none";
+                                                saleCodeField.value = "";
+                                                rentCodeField.value = "";
+                                                submitButton.disabled = false; // Enable submit button when "isnt" is selected
+                                            }
+                                        }
+
+                                        function handleTradeTypeChange() {
+                                            const tradeTypeValue = tradeTypeField.value;
+                                            const oursValue = oursField.value;
+                                            if (oursValue === "is") {
+                                                if (tradeTypeValue === "sale") {
+                                                    saleCodeGroup.style.display = "block";
+                                                    rentCodeGroup.style.display = "none";
+                                                } else if (tradeTypeValue === "rent") {
+                                                    rentCodeGroup.style.display = "block";
+                                                    saleCodeGroup.style.display = "none";
+                                                } else {
+                                                    saleCodeGroup.style.display = "none";
+                                                    rentCodeGroup.style.display = "none";
+                                                }
+                                            } else {
                                                 saleCodeGroup.style.display = "none";
                                                 rentCodeGroup.style.display = "none";
                                             }
                                         }
 
-                                        function handleTradeTypeChange() {
-                                            if (tradeTypeField.value === "sale") {
+                                        function showErrors() {
+                                            const saleCodeError = document.querySelector('#sale_code + span');
+                                            const rentCodeError = document.querySelector('#rent_code + span');
+                                            if (saleCodeError) {
+                                                tradeTypeGroup.style.display = "block";
                                                 saleCodeGroup.style.display = "block";
-                                                rentCodeGroup.style.display = "none";
-                                            } else if (tradeTypeField.value === "rent") {
+                                            }
+                                            if (rentCodeError) {
+                                                tradeTypeGroup.style.display = "block";
                                                 rentCodeGroup.style.display = "block";
-                                                saleCodeGroup.style.display = "none";
-                                            } else {
-                                                saleCodeGroup.style.display = "none";
-                                                rentCodeGroup.style.display = "none";
                                             }
                                         }
 
                                         oursField.addEventListener("change", handleOursChange);
                                         tradeTypeField.addEventListener("change", handleTradeTypeChange);
 
+                                        // Initial call to set the visibility based on the initial state of the form
                                         handleOursChange();
                                         handleTradeTypeChange();
+                                        showErrors();
                                     });
-                                    </script>
+                                </script>
 
                             </div>
                         </div>

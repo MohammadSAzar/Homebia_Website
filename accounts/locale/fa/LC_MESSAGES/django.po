@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-22 17:41+0330\n"
+"POT-Creation-Date: 2024-07-21 13:36+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -62,7 +62,7 @@ msgstr "کشور"
 msgid "Province"
 msgstr "استان"
 
-#: .\models.py:23
+#: .\models.py:23 .\templates\accounts\profile_your_services.html:202
 msgid "City"
 msgstr "شهر"
 
@@ -82,7 +82,7 @@ msgstr "تایید شده"
 msgid "Not Authenticated"
 msgstr "تایید نشده"
 
-#: .\models.py:32 .\templates\accounts\profile_info_now.html:160
+#: .\models.py:32 .\templates\accounts\profile_info_now.html:122
 msgid "In Progress"
 msgstr "در حال بررسی"
 
@@ -101,37 +101,35 @@ msgstr "ارسال اطلاعات"
 
 #: .\templates\accounts\profile_info_auth.html:33
 #: .\templates\accounts\profile_info_edit.html:30
-#: .\templates\accounts\profile_info_now.html:24
-#: .\templates\accounts\profile_info_now.html:79
-#: .\templates\accounts\profile_info_now.html:134
+#: .\templates\accounts\profile_info_now.html:45
 msgid "Personal Information"
 msgstr "اطلاعات شخصی"
 
 #: .\templates\accounts\profile_info_auth.html:51
 #: .\templates\accounts\profile_info_edit.html:48
-#: .\templates\accounts\profile_info_now.html:42
-#: .\templates\accounts\profile_info_now.html:97
-#: .\templates\accounts\profile_info_now.html:152
+#: .\templates\accounts\profile_info_now.html:64
+#: .\templates\accounts\profile_info_now.html:89
+#: .\templates\accounts\profile_info_now.html:114
 msgid "Phone Number"
 msgstr "شماره همراه"
 
 #: .\templates\accounts\profile_info_auth.html:58
 #: .\templates\accounts\profile_info_edit.html:55
-#: .\templates\accounts\profile_info_now.html:49
-#: .\templates\accounts\profile_info_now.html:104
-#: .\templates\accounts\profile_info_now.html:159
+#: .\templates\accounts\profile_info_now.html:71
+#: .\templates\accounts\profile_info_now.html:96
+#: .\templates\accounts\profile_info_now.html:121
 msgid "Account Status"
 msgstr "وضعیت حساب کاربری"
 
 #: .\templates\accounts\profile_info_auth.html:59
 #: .\templates\accounts\profile_info_edit.html:56
-#: .\templates\accounts\profile_info_now.html:105
+#: .\templates\accounts\profile_info_now.html:97
 msgid "Not Completed"
 msgstr "تکمیل نشده"
 
 #: .\templates\accounts\profile_info_auth.html:64
 #: .\templates\accounts\profile_info_edit.html:61
-#: .\templates\accounts\profile_info_now.html:110
+#: .\templates\accounts\profile_info_now.html:102
 msgid "Complete The Information"
 msgstr "تکمیل اطلاعات"
 
@@ -143,28 +141,116 @@ msgstr "بروزرسانی حساب کاربری"
 msgid "User Dashboard"
 msgstr "حساب کاربری"
 
-#: .\templates\accounts\profile_info_now.html:50
+#: .\templates\accounts\profile_info_now.html:72
 msgid "Verified"
 msgstr "تایید شده"
 
-#: .\templates\accounts\profile_info_now.html:55
+#: .\templates\accounts\profile_info_now.html:77
 msgid "Personal Information Update"
 msgstr "بروزرسانی اطلاعات شخصی"
+
+#: .\templates\accounts\profile_your_services.html:9
+msgid "My Services"
+msgstr "خدمات دریافتی من"
+
+#: .\templates\accounts\profile_your_services.html:22
+msgid "Counselings"
+msgstr "مشاوره‌ها"
+
+#: .\templates\accounts\profile_your_services.html:55
+#: .\templates\accounts\profile_your_services.html:127
+#: .\templates\accounts\profile_your_services.html:199
+msgid "Row"
+msgstr "ردیف"
+
+#: .\templates\accounts\profile_your_services.html:56
+#: .\templates\accounts\profile_your_services.html:128
+#: .\templates\accounts\profile_your_services.html:200
+msgid "Date"
+msgstr "تاریخ"
+
+#: .\templates\accounts\profile_your_services.html:57
+#: .\templates\accounts\profile_your_services.html:129
+#: .\templates\accounts\profile_your_services.html:201
+msgid "Name"
+msgstr "نام"
+
+#: .\templates\accounts\profile_your_services.html:58
+#: .\templates\accounts\profile_your_services.html:130
+msgid "Type"
+msgstr "نوع"
+
+#: .\templates\accounts\profile_your_services.html:59
+#: .\templates\accounts\profile_your_services.html:131
+#: .\templates\accounts\profile_your_services.html:203
+msgid "Status"
+msgstr "وضعیت"
+
+#: .\templates\accounts\profile_your_services.html:94
+msgid "Sessions"
+msgstr "نشست‌ها"
+
+#: .\templates\accounts\profile_your_services.html:166
+msgid "Visits"
+msgstr "بازدیدها"
+
+#: .\templates\accounts\profile_your_trades.html:9
+msgid "My Trades"
+msgstr "معاملات من"
+
+#: .\templates\accounts\profile_your_trades.html:22
+msgid "Trade Code: "
+msgstr "کد معامله: "
+
+#: .\templates\accounts\profile_your_trades.html:32
+msgid "Trade Type: "
+msgstr "نوع معامله: "
+
+#: .\templates\accounts\profile_your_trades.html:44
+msgid "Date: "
+msgstr "تاریخ: "
+
+#: .\templates\accounts\profile_your_trades.html:56
+msgid "City: "
+msgstr "شهر: "
+
+#: .\templates\accounts\profile_your_trades.html:68
+msgid "Name: "
+msgstr "نام: "
+
+#: .\templates\accounts\profile_your_trades.html:81
+msgid "File Code: "
+msgstr "کد فایل: "
+
+#: .\templates\accounts\profile_your_trades.html:99
+msgid "Is Followed?"
+msgstr "آیا معامله نیاز به پیگیری دارد؟"
+
+#: .\templates\accounts\profile_your_trades.html:111
+msgid "Is Success?"
+msgstr "آیا معامله موفقیت‌آمیز بود؟"
+
+#: .\templates\accounts\profile_your_trades.html:123
+msgid "Is Paid?"
+msgstr "آیا پرداخت کمیسیون انجام شده است؟"
+
+#: .\templates\accounts\profile_your_trades.html:135
+msgid "Status: "
+msgstr "وضعیت: "
 
 #: .\templates\accounts\registration.html:10
 msgid "Website Login/Signup"
 msgstr "ورود به سایت"
 
 #: .\templates\accounts\registration.html:22
-#| msgid "Phone Number Verification"
 msgid "Phone Number Registration"
 msgstr "ورود به سایت با شماره تلفن همراه"
 
-#: .\templates\accounts\registration.html:41
+#: .\templates\accounts\registration.html:42
 msgid "Enter Your Phone Number: "
 msgstr "شماره تلفن همراه خود را وارد کنید: "
 
-#: .\templates\accounts\registration.html:50
+#: .\templates\accounts\registration.html:51
 msgid "Get Approval Code"
 msgstr "دریافت کد تایید"
 
@@ -191,5 +277,3 @@ msgstr "کد را دریافت نکردید؟"
 #: .\templates\accounts\verification.html:59
 msgid "Register in Homebia"
 msgstr "ورود به هومبیا"
-
-
