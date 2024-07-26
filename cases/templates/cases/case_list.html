@@ -1,0 +1,385 @@
+{% extends '_base.html' %}
+
+{% load static %}
+{% load i18n %}
+{% load jalali_tags %}
+{% load number_converter %}
+{% load humanize %}
+{% load widget_tweaks %}
+
+{% block title %}{% trans 'Case List' %}{% endblock %}
+
+
+{% block content %}
+
+    <div class="shop-page-wrapper ptb--80">
+        <div class="container">
+            <div class="row">
+
+                <!-- Case List >>> main content -->
+                <div class="col-xl-9 col-lg-8 order-lg-2 mb-md--50">
+
+                    <!-- Case List >>> main -->
+                    <div class="shop-products">
+                        <div class="row">
+
+                            {% for case in cases %}
+                                {% if case.status == 'a' or case.status == 's' %}
+                                    <div class="col-xl-4 col-sm-6 mb--80">
+                                    <div class="ft-product" style="border: #e8e8e8 solid 1px; padding: 8px; border-radius: 4px;">
+                                        <div class="product-inner">
+
+                                            <!-- case cover -->
+                                            <div class="product-image">
+                                                <figure class="product-image--holder">
+                                                    <img src="{{ case.cover.url }}" alt="Product">
+                                                </figure>
+                                                <a href="{{ case.get_absolute_url }}" class="product-overlay"></a>
+
+                                                <!-- actions on case -->
+{#                                                <div class="product-action">#}
+{#                                                    <a data-bs-toggle="modal" data-bs-target="#productModal" class="action-btn"><i class="la la-eye"></i></a>#}
+{#                                                    <a href="wishlist.html" class="action-btn"><i class="la la-heart-o"></i></a>#}
+{#                                                    <a href="wishlist.html" class="action-btn"><i class="la la-repeat"></i></a>#}
+{#                                                </div>#}
+                                                <!-- end: actions on case -->
+
+                                            </div>
+                                            <!-- end: case cover -->
+
+                                            <!-- case information -->
+                                            <div class="product-info">
+                                                <div class="product-category" style="margin-bottom: 1.5em;!important;">
+
+                                                    <a href="{{ case.get_absolute_url }}"><h4 class="file-title">{{ case.title|linebreaksbr|farsi_number }}</h4></a>
+                                                    <h5 style="color: black;!important;">کد پروژه: {{ case.code }}</h5>
+                                                    <h5 style="color: black;!important;">{{ case.province }} - {{ case.city }} - {{ case.district }}</h5>
+                                                    <h5 style="color: black;!important;">ضمانت خرید: {{ case.get_buy_assurance_display }}</h5>
+                                                    <h5 style="color: black;!important;">سود تضمینی: {{ case.get_guaranteed_gain_display }} - {{ case.guaranteed_gain_percent }} درصد</h5>
+                                                    <h5 style="color: black;!important;">تاریخ اتمام: {{ case.end_time }}</h5>
+                                                    <h5 style="color: black;!important;">وضعیت پروژه: {{ case.get_status_display }}</h5>
+                                                </div>
+
+                                                <div class="product-category" style="margin-bottom: 1.5em;!important;">
+                                                    <div class="product-price-wrapper">
+                                                        <span class="money" style="font-size: 0.85em; font-weight: normal;">سازنده: {{ case.maker|intcomma:False }}</span>
+                                                    </div>
+                                                    <div class="product-price-wrapper">
+                                                        <span class="money" style="font-size: 0.85em; font-weight: normal;">ظرفیت: {{ case.capacity|intcomma:False|farsi_number }} متر</span>
+                                                    </div>
+                                                    <div class="product-price-wrapper">
+                                                        <span class="money" style="font-size: 0.85em; font-weight: normal;">قیمت هر متر: {{ case.metric_price|intcomma:False|farsi_number }} تومان</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="product-info-bottom" style="justify-content: left;">
+                                                    <div class="product-price-wrapper">
+                                                        <a href="{{ case.get_absolute_url }}" class="btn btn-outline btn-brw-2" data-animation="fadeInUp" data-duration=".3s" data-delay=".6s" style="line-height: 0.1em; font-weight: normal; float: left;">{% trans 'Read More' %}</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- end: file information -->
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endif %}
+                            {% endfor %}
+
+                        </div>
+                    </div>
+                    <!-- end: Case List >>> main -->
+
+                    <!-- Case List >>> pagination -->
+                    <div class="my-pagination">
+                        {% if page_obj.has_previous %}
+                            <a href="?page=1">&laquo; {% trans 'First' %}</a>
+                        {% else %}
+                            <span class="my-disabled">&laquo; {% trans 'First' %}</span>
+                        {% endif %}
+
+                        {% if page_obj.has_previous %}
+                            <a href="?page={{ page_obj.previous_page_number }}">‹ {% trans 'Previous' %}</a>
+                        {% else %}
+                            <span class="my-disabled">‹ {% trans 'Previous' %}</span>
+                        {% endif %}
+
+                        {% for num in page_obj.paginator.page_range %}
+                            {% if num == page_obj.number %}
+                                <span class="my-current">{{ num }}</span>
+                            {% else %}
+                                <a href="?page={{ num }}">{{ num }}</a>
+                            {% endif %}
+                        {% endfor %}
+
+                        {% if page_obj.has_next %}
+                            <a href="?page={{ page_obj.next_page_number }}">{% trans 'Next' %} ›</a>
+                        {% else %}
+                            <span class="my-disabled">{% trans 'Next' %} ›</span>
+                        {% endif %}
+
+                        {% if page_obj.has_next %}
+                            <a href="?page={{ page_obj.paginator.num_pages }}">{% trans 'Last Page' %} &raquo;</a>
+                        {% else %}
+                            <span class="my-disabled">{% trans 'Last Page' %} &raquo;</span>
+                        {% endif %}
+                    </div>
+                    <!-- end: Case List >>> pagination -->
+
+                </div>
+                <!-- end: Case List >>> main content -->
+
+                <!-- Case List >>> sidebar -->
+                <div class="col-xl-3 col-lg-4 order-lg-1">
+                    <aside class="shop-sidebar">
+                        <div class="col-lg-12">
+                            <div class="checkout-form">
+
+{#                                <form id="filter-form" method="get" action="{% url 'rent_file_list' %}" enctype="multipart/form-data" class="form form--checkout">#}
+{#                                    {% csrf_token %}#}
+{##}
+{#                                    <!-- Province -->#}
+{#                                    <div class="row mb--10">#}
+{#                                        <div class="form__group col-12">#}
+{#                                            <label for="{{ filter_form.province.id_for_label }}" class="form__label">{% trans 'Province: ' %}</label>#}
+{#                                            {% render_field filter_form.province type="text" id="province" class="form__input" onchange="updateCities(this.value)" %}#}
+{#                                        </div>#}
+{#                                    </div>#}
+{##}
+{#                                    <!-- City -->#}
+{#                                    <div class="row mb--10">#}
+{#                                        <div class="form__group col-12">#}
+{#                                            <label for="{{ filter_form.city.id_for_label }}" class="form__label">{% trans 'City: ' %}</label>#}
+{#                                            {% render_field filter_form.city type="text" id="city" class="form__input" onchange="updateDistricts(this.value)" %}#}
+{#                                        </div>#}
+{#                                    </div>#}
+{##}
+{#                                    <!-- District -->#}
+{#                                    <div class="row mb--10">#}
+{#                                        <div class="form__group col-12">#}
+{#                                            <label for="{{ filter_form.district.id_for_label }}" class="form__label">{% trans 'District: ' %}</label>#}
+{#                                            {% render_field filter_form.district type="text" id="district" class="form__input" %}#}
+{#                                        </div>#}
+{#                                    </div>#}
+{##}
+{#                                    <!-- Min_Price_Deposit -->#}
+{#                                    <div class="row mb--10">#}
+{#                                        <div class="form__group col-12">#}
+{#                                            <label for="{{ filter_form.min_price_deposit.id_for_label }}" class="form__label">{% trans 'Min_Price_Deposit: ' %}</label>#}
+{#                                            {% render_field filter_form.min_price_deposit type="number" id="min_price_deposit" class="form__input" %}#}
+{#                                        </div>#}
+{#                                    </div>#}
+{##}
+{#                                    <!-- Max_Price_Deposit -->#}
+{#                                    <div class="row mb--10">#}
+{#                                        <div class="form__group col-12">#}
+{#                                            <label for="{{ filter_form.max_price_deposit.id_for_label }}" class="form__label">{% trans 'Max_Price_Deposit: ' %}</label>#}
+{#                                            {% render_field filter_form.max_price_deposit type="number" id="max_price_deposit" class="form__input" %}#}
+{#                                        </div>#}
+{#                                    </div>#}
+{##}
+{#                                    <!-- Min_Price_Rent -->#}
+{#                                    <div class="row mb--10">#}
+{#                                        <div class="form__group col-12">#}
+{#                                            <label for="{{ filter_form.min_price_rent.id_for_label }}" class="form__label">{% trans 'Min_Price_Rent: ' %}</label>#}
+{#                                            {% render_field filter_form.min_price_rent type="number" id="min_price_rent" class="form__input" %}#}
+{#                                        </div>#}
+{#                                    </div>#}
+{##}
+{#                                    <!-- Max_Price_Rent -->#}
+{#                                    <div class="row mb--10">#}
+{#                                        <div class="form__group col-12">#}
+{#                                            <label for="{{ filter_form.max_price_rent.id_for_label }}" class="form__label">{% trans 'Max_Price_Rent: ' %}</label>#}
+{#                                            {% render_field filter_form.max_price_rent type="number" id="max_price_rent" class="form__input" %}#}
+{#                                        </div>#}
+{#                                    </div>#}
+{##}
+{#                                    <!-- Convertable -->#}
+{#                                    <div class="row mb--10">#}
+{#                                        <div class="form__group col-12">#}
+{#                                            <label for="{{ filter_form.convertable.id_for_label }}" class="form__label">{% trans 'Convertable: ' %}</label>#}
+{#                                            {% render_field filter_form.convertable type="text" id="convertable" class="form__input" %}#}
+{#                                        </div>#}
+{#                                    </div>#}
+{##}
+{#                                    <!-- Min_Area -->#}
+{#                                    <div class="row mb--10">#}
+{#                                        <div class="form__group col-12">#}
+{#                                            <label for="{{ filter_form.min_area.id_for_label }}" class="form__label">{% trans 'Min_Area: ' %}</label>#}
+{#                                            {% render_field filter_form.min_area type="number" id="min_area" class="form__input" %}#}
+{#                                        </div>#}
+{#                                    </div>#}
+{##}
+{#                                    <!-- Max_Area -->#}
+{#                                    <div class="row mb--10">#}
+{#                                        <div class="form__group col-12">#}
+{#                                            <label for="{{ filter_form.max_area.id_for_label }}" class="form__label">{% trans 'Max_Area: ' %}</label>#}
+{#                                            {% render_field filter_form.max_area type="number" id="max_area" class="form__input" %}#}
+{#                                        </div>#}
+{#                                    </div>#}
+{##}
+{#                                    <!-- Min_Room -->#}
+{#                                    <div class="row mb--10">#}
+{#                                        <div class="form__group col-12">#}
+{#                                            <label for="{{ filter_form.min_room.id_for_label }}" class="form__label">{% trans 'Min_Room: ' %}</label>#}
+{#                                            {% render_field filter_form.min_room type="text" id="min_room" class="form__input" %}#}
+{#                                        </div>#}
+{#                                    </div>#}
+{##}
+{#                                    <!-- Max_Room -->#}
+{#                                    <div class="row mb--10">#}
+{#                                        <div class="form__group col-12">#}
+{#                                            <label for="{{ filter_form.max_room.id_for_label }}" class="form__label">{% trans 'Max_Room: ' %}</label>#}
+{#                                            {% render_field filter_form.max_room type="text" id="max_room" class="form__input" %}#}
+{#                                        </div>#}
+{#                                    </div>#}
+{##}
+{#                                    <!-- Min_Age -->#}
+{#                                    <div class="row mb--10">#}
+{#                                        <div class="form__group col-12">#}
+{#                                            <label for="{{ filter_form.min_age.id_for_label }}" class="form__label">{% trans 'Min_Age: ' %}</label>#}
+{#                                            {% render_field filter_form.min_age type="text" id="min_age" class="form__input" %}#}
+{#                                        </div>#}
+{#                                    </div>#}
+{##}
+{#                                    <!-- Max_Age -->#}
+{#                                    <div class="row mb--10">#}
+{#                                        <div class="form__group col-12">#}
+{#                                            <label for="{{ filter_form.max_age.id_for_label }}" class="form__label">{% trans 'Max_Age: ' %}</label>#}
+{#                                            {% render_field filter_form.max_age type="text" id="max_age" class="form__input" %}#}
+{#                                        </div>#}
+{#                                    </div>#}
+{##}
+{#                                    <!-- Min_Level -->#}
+{#                                    <div class="row mb--10">#}
+{#                                        <div class="form__group col-12">#}
+{#                                            <label for="{{ filter_form.min_level.id_for_label }}" class="form__label">{% trans 'Min_Level: ' %}</label>#}
+{#                                            {% render_field filter_form.min_level type="text" id="min_level" class="form__input" %}#}
+{#                                        </div>#}
+{#                                    </div>#}
+{##}
+{#                                    <!-- Max_Level -->#}
+{#                                    <div class="row mb--10">#}
+{#                                        <div class="form__group col-12">#}
+{#                                            <label for="{{ filter_form.max_level.id_for_label }}" class="form__label">{% trans 'Max_Level: ' %}</label>#}
+{#                                            {% render_field filter_form.max_level type="text" id="max_level" class="form__input" %}#}
+{#                                        </div>#}
+{#                                    </div>#}
+{##}
+{#                                    <!-- Document -->#}
+{#                                    <div class="row mb--10">#}
+{#                                        <div class="form__group col-12">#}
+{#                                            <label for="{{ filter_form.document.id_for_label }}" class="form__label">{% trans 'Document: ' %}</label>#}
+{#                                            {% render_field filter_form.document type="text" id="document" class="form__input" %}#}
+{#                                        </div>#}
+{#                                    </div>#}
+{##}
+{#                                    <!-- Parking -->#}
+{#                                    <div class="row mb--10">#}
+{#                                        <div class="form__group col-12">#}
+{#                                            <label for="{{ filter_form.parking.id_for_label }}" class="form__label">{% trans 'Parking: ' %}</label>#}
+{#                                            {% render_field filter_form.parking type="text" id="parking" class="form__input" %}#}
+{#                                        </div>#}
+{#                                    </div>#}
+{##}
+{#                                    <!-- Elevator -->#}
+{#                                    <div class="row mb--10">#}
+{#                                        <div class="form__group col-12">#}
+{#                                            <label for="{{ filter_form.elevator.id_for_label }}" class="form__label">{% trans 'Elevator: ' %}</label>#}
+{#                                            {% render_field filter_form.elevator type="text" id="elevator" class="form__input" %}#}
+{#                                        </div>#}
+{#                                    </div>#}
+{##}
+{#                                    <!-- Warehouse -->#}
+{#                                    <div class="row mb--10">#}
+{#                                        <div class="form__group col-12">#}
+{#                                            <label for="{{ filter_form.warehouse.id_for_label }}" class="form__label">{% trans 'Warehouse: ' %}</label>#}
+{#                                            {% render_field filter_form.warehouse type="text" id="warehouse" class="form__input" %}#}
+{#                                        </div>#}
+{#                                    </div>#}
+{##}
+{#                                    <!-- Submit -->#}
+{#                                    <div class="col-span-2 flex justify-end" style="margin-top: 1.5em;">#}
+{#                                        <button style="padding: 1em 2.5em; width: 100%; line-height: 0.7em; font-weight: normal; float: left;" onclick="submitFormAndRefresh()" type="submit" class="btn btn-outline btn-brw-2">{% trans 'Do Filter' %}</button>#}
+{#                                    </div>#}
+{#                                </form>#}
+{##}
+{#                                <!-- JS for filter Form -->#}
+{#                                <script>#}
+{#                                    function submitFormAndRefresh() {#}
+{#                                        // Submit the form#}
+{#                                        document.getElementById('filter-form').submit();#}
+{#                                        // Refresh the page#}
+{#                                        location.reload();#}
+{#                                    }#}
+{#                                </script>#}
+{##}
+{#                                <script>#}
+{#                                    document.addEventListener('DOMContentLoaded', function() {#}
+{#                                        const province = document.getElementById('province').value;#}
+{#                                        const city = document.getElementById('city').value;#}
+{##}
+{#                                        if (province) {#}
+{#                                            updateCities(province);#}
+{#                                        }#}
+{#                                        if (city) {#}
+{#                                            updateDistricts(city);#}
+{#                                        }#}
+{#                                    });#}
+{##}
+{#                                    function updateCities(provinceId) {#}
+{#                                        const url = `/get-cities/?province_id=${provinceId}`;#}
+{#                                        fetch(url)#}
+{#                                            .then(response => response.json())#}
+{#                                            .then(data => {#}
+{#                                                const citySelect = document.getElementById('city');#}
+{#                                                citySelect.innerHTML = '<option value="">Select City</option>';#}
+{#                                                data.cities.forEach(city => {#}
+{#                                                    citySelect.innerHTML += `<option value="${city.id}">${city.name}</option>`;#}
+{#                                                });#}
+{##}
+{#                                                const selectedCity = '{{ request.GET.city }}';#}
+{#                                                if (selectedCity) {#}
+{#                                                    citySelect.value = selectedCity;#}
+{#                                                }#}
+{#                                            });#}
+{#                                    }#}
+{##}
+{#                                    function updateDistricts(cityId) {#}
+{#                                        const url = `/get-districts/?city_id=${cityId}`;#}
+{#                                        fetch(url)#}
+{#                                            .then(response => response.json())#}
+{#                                            .then(data => {#}
+{#                                                const districtSelect = document.getElementById('district');#}
+{#                                                districtSelect.innerHTML = '<option value="">Select District</option>';#}
+{#                                                data.districts.forEach(district => {#}
+{#                                                    districtSelect.innerHTML += `<option value="${district.id}">${district.name}</option>`;#}
+{#                                                });#}
+{##}
+{#                                                const selectedDistrict = '{{ request.GET.district }}';#}
+{#                                                if (selectedDistrict) {#}
+{#                                                    districtSelect.value = selectedDistrict;#}
+{#                                                }#}
+{#                                            });#}
+{#                                    }#}
+{##}
+{#                                    function submitFormAndRefresh() {#}
+{#                                        document.getElementById('filter-form').submit();#}
+{#                                        location.reload();#}
+{#                                    }#}
+{#                                </script>#}
+                                <!-- end: JS for filter Form -->
+
+                            </div>
+                        </div>
+                    </aside>
+                </div>
+                <!-- end: Case List >>> sidebar -->
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+
+
