@@ -2,7 +2,7 @@ from django import forms
 from .models import CaseOrder
 
 
-class AddToCart(forms.Form):
+class AddToCartForm(forms.Form):
     CHOICES = [(i, str(i)) for i in range(1, 100)]
     meter = forms.TypedChoiceField(choices=CHOICES, coerce=int)
     inplace = forms.BooleanField(required=False, widget=forms.HiddenInput)

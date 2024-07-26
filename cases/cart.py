@@ -35,7 +35,7 @@ class Cart:
         for case in cases:
             cart[str(case.id)]['case_obj'] = case
         for item in cart.values():
-            item['total_price'] = item['meter'] * item['case_obj'].base_value
+            item['total_price'] = item['meter'] * item['case_obj'].metric_price
             yield item
 
     def __len__(self):
@@ -46,14 +46,10 @@ class Cart:
         self.save()
 
     def total_value(self):
-        # case_ids = self.cart.keys()
-        # cases = Case.objects.filter(id__in=case_ids)
-        return sum(item['meter'] * item['case_obj'].base_value for item in self.cart.values())
+        return sum(item['meter'] * item['case_obj'].metric_price for item in self.cart.values())
 
     def total_value_plus_tax(self):
-        # case_ids = self.cart.keys()
-        # cases = Case.objects.filter(id__in=case_ids)
-        return sum(int(item['meter'] * item['case_obj'].base_value * 1.09) for item in self.cart.values())
+        return sum(int(item['meter'] * item['case_obj'].metric_price * 1.10) for item in self.cart.values())
 
     def is_empty(self):
         if self.cart:

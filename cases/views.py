@@ -4,7 +4,7 @@ from django.contrib import messages
 from django.views.generic import ListView, DetailView
 
 from .models import Case, CaseOrder, CaseOrderItem
-from .forms import AddToCart, OrderForm
+from .forms import AddToCartForm, OrderForm
 from .cart import Cart
 
 
@@ -24,7 +24,7 @@ class CaseDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['add_to_cart_form'] = AddToCart()
+        context['add_to_cart_form'] = AddToCartForm()
         return context
 
 
@@ -32,7 +32,7 @@ class CaseDetailView(DetailView):
 def cart_detail_view(request):
     cart = Cart(request)
     for item in cart:
-        item['case_update_meter_form'] = AddToCart(initial={
+        item['case_update_meter_form'] = AddToCartForm(initial={
             'meter': item['meter'],
             'inplace': True,
         })
@@ -45,7 +45,7 @@ def cart_detail_view(request):
 def add_to_cart_view(request, case_id):
     cart = Cart(request)
     case = get_object_or_404(Case, id=case_id)
-    form = AddToCart(request.POST)
+    form = AddToCartForm(request.POST)
     if form.is_valid():
         cleaned_data = form.cleaned_data
         meter = cleaned_data['meter']
@@ -98,12 +98,10 @@ def order_create_view(request):
                     order=order_obj,
                     case=case,
                     meter=item['meter'],
-                    base_value=case.base_value,
+                    metric_price=case.metric_price,
                 )
             cart.clear()
 
-            request.user.first_name = order_obj.first_name
-            request.user.last_name = order_obj.last_name
             request.user.save()
             messages.success(request, 'سفارش شما با موفقیت ثبت شد')
             order_form = OrderForm()

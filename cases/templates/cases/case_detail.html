@@ -1,0 +1,508 @@
+{% extends '_base.html' %}
+
+{% load static %}
+{% load i18n %}
+{% load jalali_tags %}
+{% load shamsi_date %}
+{% load number_converter %}
+{% load humanize %}
+{% load widget_tweaks %}
+
+{% block title %}{% trans 'Case Detail' %} - {{ case.title }}{% endblock %}
+
+
+{% block content %}
+
+    <div class="page-content-inner pt--80 pt-md--60" >
+        <div class="container">
+
+             <!-- Main -->
+            <div class="row g-0 mb--50 mb-md--57">
+
+                <!-- Covers -->
+                <div class="col-lg-7 product-main-image">
+                    <div class="product-image" >
+                        <div class="product-gallery vertical-slide-nav">
+                            <div class="product-gallery__large-image  mb-sm--30" style="direction: ltr">
+                                <div class="product-gallery__wrapper">
+                                    <div class="element-carousel main-slider image-popup"
+                                         data-slick-options='{
+                                            "slidesToShow": 1,
+                                            "slidesToScroll": 1,
+{#                                            "infinite": true,#}
+                                            "arrows": false,
+                                            "asNavFor": ".nav-slider"
+                                        }'>
+
+                                        <!-- file cover -->
+                                        <figure class="product-gallery__image zoom">
+                                            <img src="{{ case.cover.url }}" alt="Product">
+                                            <div class="product-gallery__actions">
+                                                <button class="action-btn btn-zoom-popup">
+                                                    <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M12 5C7.8 5 3.8 7.58 2 12C3.8 16.42 7.8 19 12 19C16.2 19 20.2 16.42 22 12C20.2 7.58 16.2 5 12 5ZM12 17C9.24 17 7 14.76 7 12C7 9.24 9.24 7 12 7C14.76 7 17 9.24 17 12C17 14.76 14.76 17 12 17ZM12 9C10.34 9 9 10.34 9 12C9 13.66 10.34 15 12 15C13.66 15 15 13.66 15 12C15 10.34 13.66 9 12 9Z" fill="currentColor"/>
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                        </figure>
+
+                                        <!-- file cover2 -->
+                                        {% if case.cover2 %}
+                                            <figure class="product-gallery__image zoom">
+                                                <img src="{{ case.cover2.url }}" alt="Product">
+                                                <div class="product-gallery__actions">
+                                                    <button class="action-btn btn-zoom-popup">
+                                                    <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M12 5C7.8 5 3.8 7.58 2 12C3.8 16.42 7.8 19 12 19C16.2 19 20.2 16.42 22 12C20.2 7.58 16.2 5 12 5ZM12 17C9.24 17 7 14.76 7 12C7 9.24 9.24 7 12 7C14.76 7 17 9.24 17 12C17 14.76 14.76 17 12 17ZM12 9C10.34 9 9 10.34 9 12C9 13.66 10.34 15 12 15C13.66 15 15 13.66 15 12C15 10.34 13.66 9 12 9Z" fill="currentColor"/>
+                                                    </svg>
+                                                    </button>
+                                                </div>
+                                            </figure>
+                                        {% endif %}
+
+                                        <!-- file cover3 -->
+                                        {% if case.cover3 %}
+                                            <figure class="product-gallery__image zoom">
+                                                <img src="{{ case.cover3.url }}" alt="Product">
+                                                <div class="product-gallery__actions">
+                                                    <button class="action-btn btn-zoom-popup">
+                                                        <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M12 5C7.8 5 3.8 7.58 2 12C3.8 16.42 7.8 19 12 19C16.2 19 20.2 16.42 22 12C20.2 7.58 16.2 5 12 5ZM12 17C9.24 17 7 14.76 7 12C7 9.24 9.24 7 12 7C14.76 7 17 9.24 17 12C17 14.76 14.76 17 12 17ZM12 9C10.34 9 9 10.34 9 12C9 13.66 10.34 15 12 15C13.66 15 15 13.66 15 12C15 10.34 13.66 9 12 9Z" fill="currentColor"/>
+                                                        </svg>
+                                                    </button>
+                                                </div>
+                                            </figure>
+                                        {% endif %}
+
+                                        <!-- file cover4 -->
+                                        {% if case.cover4 %}
+                                            <figure class="product-gallery__image zoom">
+                                                <img src="{{ case.cover4.url }}" alt="Product">
+                                                <div class="product-gallery__actions">
+                                                    <button class="action-btn btn-zoom-popup">
+                                                        <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M12 5C7.8 5 3.8 7.58 2 12C3.8 16.42 7.8 19 12 19C16.2 19 20.2 16.42 22 12C20.2 7.58 16.2 5 12 5ZM12 17C9.24 17 7 14.76 7 12C7 9.24 9.24 7 12 7C14.76 7 17 9.24 17 12C17 14.76 14.76 17 12 17ZM12 9C10.34 9 9 10.34 9 12C9 13.66 10.34 15 12 15C13.66 15 15 13.66 15 12C15 10.34 13.66 9 12 9Z" fill="currentColor"/>
+                                                        </svg>
+                                                    </button>
+                                                </div>
+                                            </figure>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="product-gallery__nav-image" style="direction: ltr">
+                                <div class="element-carousel nav-slider product-slide-nav slick-center-bottom"
+                                     data-slick-options='{
+                                        "spaceBetween": 10,
+                                        "slidesToShow": 3,
+                                        "slidesToScroll": 1,
+                                        "vertical": true,
+                                        "swipe": true,
+                                        "verticalSwiping": true,
+                                        "infinite": true,
+                                        "focusOnSelect": true,
+                                        "asNavFor": ".main-slider",
+                                        "arrows": true,
+                                        "prevArrow": {"buttonClass": "slick-btn slick-prev", "iconClass": "&#8593;" },
+                                        "nextArrow": {"buttonClass": "slick-btn slick-next", "iconClass": "&#8593;" }
+                                    }'
+                                     data-slick-responsive='[
+                                        {
+                                            "breakpoint":1200,
+                                            "settings": {
+                                                "slidesToShow": 2
+                                            }
+                                        },
+                                        {
+                                            "breakpoint":992,
+                                            "settings": {
+                                                "slidesToShow": 3
+                                            }
+                                        },
+                                        {
+                                            "breakpoint":767,
+                                            "settings": {
+                                                "slidesToShow": 4,
+                                                "vertical": false
+                                            }
+                                        },
+                                        {
+                                            "breakpoint":575,
+                                            "settings": {
+                                                "slidesToShow": 3,
+                                                "vertical": false
+                                            }
+                                        },
+                                        {
+                                            "breakpoint":480,
+                                            "settings": {
+                                                "slidesToShow": 2,
+                                                "vertical": false
+                                            }
+                                        }
+                                    ]'>
+                                        <figure class="product-gallery__nav-image--single"><img src="{{ case.cover.url }}" alt="Products"></figure>
+                                    {% if case.cover2 %}
+                                        <figure class="product-gallery__nav-image--single"><img src="{{ case.cover2.url }}" alt="Products"></figure>
+                                    {% endif %}
+                                    {% if case.cover3 %}
+                                        <figure class="product-gallery__nav-image--single"><img src="{{ case.cover3.url }}" alt="Products"></figure>
+                                    {% endif %}
+                                    {% if case.cover4 %}
+                                        <figure class="product-gallery__nav-image--single"><img src="{{ case.cover4.url }}" alt="Products"></figure>
+                                    {% endif %}
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Information -->
+                <div class="col-lg-5 product-main-details mt-md--50">
+                    <div class="product-summary pl--30 pl-md--0">
+
+                        <!-- title -->
+                        <h3 class="product-title mb--20" style="line-height: 1.5em; text-align: justify;">{{ case.title|linebreaksbr|farsi_number }}</h3>
+
+                        <!-- publisher & code -->
+                        <div class="row" style="margin-bottom: 2em;">
+                            <div class="col-lg-6">
+                                <p>{% trans 'Maker: ' %}{{ case.maker|farsi_number }}</p>
+                            </div>
+                            <div class="col-lg-6">
+                                <p style="float: left;">{% trans 'Project Code: ' %}{{ case.code|farsi_number }}</p>
+                            </div>
+                        </div>
+
+                        <!-- time & location -->
+                        <div class="variation-form mb--30">
+                            <div class="product-size-variations d-flex align-items-center mb--15" style="justify-content: center;">
+                                <div class="product-size-variation variation-wrapper">
+                                    <p class="product-short-description mb--20" style="font-size: medium;">{{ case.datetime_created|shamsi_date }} | {{ case.province }} - {{ case.city }} - {{ case.district }}</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- main information -->
+                        <div class="shop-widget mb--30">
+                            <ul class="widget-list price-list" style="border-top: #E0E0E0 1px solid;">
+                                <li style="padding-top: 20px;">
+                                    <a href="#">
+                                        <span style="font-size: medium;">{% trans 'Project Capacity:' %}</span>
+                                        <strong class="font-weight-medium" style="font-size: medium;">{{ case.capacity|intcomma:False|farsi_number }} متر</strong>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="#">
+                                        <span style="font-size: medium;">{% trans 'Metric Price:' %}</span>
+                                        <strong class="font-weight-medium" style="font-size: medium;">{{ case.metric_price|intcomma:False|farsi_number }} تومان</strong>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="#">
+                                        <span style="font-size: medium;">{% trans 'Minimum Salable Meter:' %}</span>
+                                        <strong class="font-weight-medium" style="font-size: medium;">1 متر</strong>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="#">
+                                        <span style="font-size: medium;">{% trans 'Project End Date:' %}</span>
+                                        <strong class="font-weight-medium" style="font-size: medium;">{{ case.end_time }}</strong>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="#">
+                                        <span style="font-size: medium;">{% trans 'Project Status:' %}</span>
+                                        <strong class="font-weight-medium" style="font-size: medium;">{{ case.get_status_display }}</strong>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </div>
+
+                        <!-- 2/3-tags -->
+                        <div class="variation-form mb--40">
+                            <div class="product-size-variations d-flex align-items-center mb--15" style="justify-content: center;">
+                                <div class="product-size-variation variation-wrapper">
+
+                                    {% if case.buy_assurance %}
+                                        <div class="variation" style="background-color: #C8E6C9">
+                                            <a class="product-size-variation-btn" style="width: 150px; color: #424242;">{% trans 'Buy Assurance' %}</a>
+                                        </div>
+                                    {% else %}
+                                        <div class="variation" style="background-color: #FFCDD2">
+                                            <a class="product-size-variation-btn" style="width: 150px; color: #424242;">{% trans 'Buy Assurance' %}</a>
+                                        </div>
+                                    {% endif %}
+
+                                    {% if case.guaranteed_gain %}
+                                        <div class="variation" style="background-color: #C8E6C9">
+                                            <a class="product-size-variation-btn" style="width: 220px; color: #424242;">{% trans 'Guaranteed Gain' %} = {{ case.guaranteed_gain_percent }} درصد</a>
+                                        </div>
+                                    {% else %}
+                                        <div class="variation" style="background-color: #FFCDD2">
+                                            <a class="product-size-variation-btn" style="width: 220px; color: #424242;">{% trans 'Guaranteed Gain' %}</a>
+                                        </div>
+                                    {% endif %}
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- add to cart -->
+
+                        <div class="product-action">
+                            <button id="addButton" class="btn btn-size-sm btn-shape-square" style="width: 100%;">اگر قصد سرمایه‌گذاری دارید، کلیک کنید</button>
+                        </div>
+
+                        <div id="addDIV" class="variation-form mt--20" style="display: none;">
+
+                            <form action="{% url 'cart_add' case.id %}" method="post" style="margin-top: 3em;">
+                                {% csrf_token %}
+                                <label class="quantity-label" style="margin-bottom: 1em; font-size: 1em" for="{{ add_to_cart_form.meter.id_for_label }}">متراژ انتخابی:</label>
+                                <div style="border: #373737 0.05em solid; line-height: 1.7em">
+                                    {% render_field add_to_cart_form.meter class="quantity-input" type="number" value="1" min="1" %}
+                                </div>
+                                <div class="product-action" style="margin-top: 1em;">
+                                    <button type="submit" id="addButton" class="btn btn-size-sm btn-shape-square" style="width: 100%;">افزودن به سبد خرید</button>
+                                </div>
+                            </form>
+
+                        </div>
+
+                        <script>
+                            document.getElementById('addButton').addEventListener('click', function() {
+                                var addDIV = document.getElementById('addDIV');
+                                if (addDIV.style.display === 'none') {
+                                    addDIV.style.display = 'block';
+                                } else {
+                                    addDIV.style.display = 'none';
+                                }
+                            });
+                        </script>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Additional -->
+            <div class="row justify-content-center mb--77 mb-md--57" >
+                <div class="col-12">
+                    <div class="tab-style-2">
+
+                        <!-- Buttons -->
+                        <div class="nav nav-tabs mb--35 mb-sm--25">
+                            <button type="button" class="nav-link active">
+                                <span>{% trans 'Case Description' %}</span>
+                            </button>
+                        </div>
+
+                        <!-- Content -->
+                        <div class="tab-content" id="product-tabContent">
+
+                            <!-- Description -->
+                            <div class="tab-pane fade show active">
+                                <div class="product-description">
+                                    <p>{{ case.description.html|safe|linebreaksbr }}</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="row mb--75 mb-md--55">
+                <div class="col-12">
+                    <div class="element-carousel slick-vertical-center" data-slick-options='{
+                            "spaceBetween": 30,
+                            "slidesToShow": 4,
+                            "slidesToScroll": 1,
+                            "arrows": true,
+                           "prevArrow": {"buttonClass": "slick-btn slick-prev", "iconClass": "la la-angle-double-right" },
+                            "nextArrow": {"buttonClass": "slick-btn slick-next", "iconClass": "la la-angle-double-left" }  }'
+                         data-slick-responsive= '[
+                            {"breakpoint":1199, "settings": {
+                                "slidesToShow": 3
+                            }},
+                            {"breakpoint":991, "settings": {
+                                "slidesToShow": 2
+                            }},
+                            {"breakpoint":575, "settings": {
+                                "slidesToShow": 1
+                            }}
+                        ]'>
+                        <div class="item">
+                            <div class="ft-product">
+                                <div class="product-inner">
+                                    <div class="product-image">
+                                        <figure class="product-image--holder">
+                                            <img src="files/img/products/prod-04-270x300.jpg" alt="Product">
+                                        </figure>
+                                        <a href="product-details.html" class="product-overlay"></a>
+                                        <div class="product-action">
+                                            <a data-bs-toggle="modal" data-bs-target="#productModal" class="action-btn">
+                                                <i class="la la-eye"></i>
+                                            </a>
+                                            <a href="wishlist.html" class="action-btn">
+                                                <i class="la la-heart-o"></i>
+                                            </a>
+                                            <a href="wishlist.html" class="action-btn">
+                                                <i class="la la-repeat"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="product-info">
+                                        <div class="product-category">
+                                            <a href="product-details.html">صندلی</a>
+                                        </div>
+                                        <h3 class="product-title"><a href="product-details.html">صندلی نقطه ای
+                                            طلایی.</a></h3>
+                                        <div class="product-info-bottom">
+                                            <div class="product-price-wrapper">
+                                                <span class="money">150 تومان</span>
+                                            </div>
+                                            <a href="cart.html" class="add-to-cart pr--15">
+                                                <i class="la la-plus"></i>
+                                                <span>افزودن به سبد خرید</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="ft-product">
+                                <div class="product-inner">
+                                    <div class="product-image">
+                                        <figure class="product-image--holder">
+                                            <img src="files/img/products/prod-01-270x300.jpg" alt="Product">
+                                        </figure>
+                                        <a href="product-details.html" class="product-overlay"></a>
+                                        <div class="product-action">
+                                            <a data-bs-toggle="modal" data-bs-target="#productModal" class="action-btn">
+                                                <i class="la la-eye"></i>
+                                            </a>
+                                            <a href="wishlist.html" class="action-btn">
+                                                <i class="la la-heart-o"></i>
+                                            </a>
+                                            <a href="wishlist.html" class="action-btn">
+                                                <i class="la la-repeat"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="product-info">
+                                        <div class="product-category">
+                                            <a href="product-details.html">صندلی</a>
+                                        </div>
+                                        <h3 class="product-title"><a href="product-details.html">صندلی نقطه ای
+                                            طلایی.</a></h3>
+                                        <div class="product-info-bottom">
+                                            <div class="product-price-wrapper">
+                                                <span class="money">150 تومان</span>
+                                            </div>
+                                            <a href="cart.html" class="add-to-cart pr--15">
+                                                <i class="la la-plus"></i>
+                                                <span>افزودن به سبد خرید</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="ft-product">
+                                <div class="product-inner">
+                                    <div class="product-image">
+                                        <figure class="product-image--holder">
+                                            <img src="files/img/products/prod-02-270x300.jpg" alt="Product">
+                                        </figure>
+                                        <a href="product-details.html" class="product-overlay"></a>
+                                        <div class="product-action">
+                                            <a data-bs-toggle="modal" data-bs-target="#productModal" class="action-btn">
+                                                <i class="la la-eye"></i>
+                                            </a>
+                                            <a href="wishlist.html" class="action-btn">
+                                                <i class="la la-heart-o"></i>
+                                            </a>
+                                            <a href="wishlist.html" class="action-btn">
+                                                <i class="la la-repeat"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="product-info">
+                                        <div class="product-category">
+                                            <a href="product-details.html">صندلی</a>
+                                        </div>
+                                        <h3 class="product-title"><a href="product-details.html">صندلی نقطه ای
+                                            طلایی.</a></h3>
+                                        <div class="product-info-bottom">
+                                            <div class="product-price-wrapper">
+                                                <span class="money">150 تومان</span>
+                                            </div>
+                                            <a href="cart.html" class="add-to-cart pr--15">
+                                                <i class="la la-plus"></i>
+                                                <span>افزودن به سبد خرید</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="ft-product">
+                                <div class="product-inner">
+                                    <div class="product-image">
+                                        <figure class="product-image--holder">
+                                            <img src="files/img/products/prod-03-270x300.jpg" alt="Product">
+                                        </figure>
+                                        <a href="product-details.html" class="product-overlay"></a>
+                                        <div class="product-action">
+                                            <a data-bs-toggle="modal" data-bs-target="#productModal" class="action-btn">
+                                                <i class="la la-eye"></i>
+                                            </a>
+                                            <a href="wishlist.html" class="action-btn">
+                                                <i class="la la-heart-o"></i>
+                                            </a>
+                                            <a href="wishlist.html" class="action-btn">
+                                                <i class="la la-repeat"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="product-info">
+                                        <div class="product-category">
+                                            <a href="product-details.html">صندلی</a>
+                                        </div>
+                                        <h3 class="product-title"><a href="product-details.html">صندلی نقطه ای
+                                            طلایی.</a></h3>
+                                        <div class="product-info-bottom">
+                                            <div class="product-price-wrapper">
+                                                <span class="money">150 تومان</span>
+                                            </div>
+                                            <a href="cart.html" class="add-to-cart pr--15">
+                                                <i class="la la-plus"></i>
+                                                <span>افزودن به سبد خرید</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+{% endblock %}
+

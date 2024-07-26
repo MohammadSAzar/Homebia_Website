@@ -1,6 +1,7 @@
 import random
 import string
 
+
 from django.db import models
 from django.urls import reverse
 from django.utils.text import slugify
@@ -34,7 +35,7 @@ class Case(models.Model):
     guaranteed_gain = models.BooleanField(default=False, verbose_name=_('Guaranteed gain'))
     guaranteed_gain_percent = models.PositiveIntegerField(blank=True, null=True, verbose_name=_('Guaranteed gain percent'))
     end_time = models.CharField(max_length=200, verbose_name=_('End time'))
-    description = QuillField(verbose_name=_('Description'))
+    description = QuillField(max_length=2000, blank=True, null=True)
     status = models.CharField(max_length=10, choices=CASE_STATUSES, verbose_name=_('Status'))
     cover = models.ImageField(upload_to='cases/covers/', blank=True, verbose_name=_('Case Cover'))
     cover2 = models.ImageField(upload_to='cases/covers/', null=True, blank=True, verbose_name=_('Case cover 2'))
