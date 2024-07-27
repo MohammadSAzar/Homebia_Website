@@ -73,8 +73,8 @@ class CaseOrder(models.Model):
     ]
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name=_('User'))
     is_paid = models.BooleanField(default=False, verbose_name=_('Payment Status'))
-    status = models.CharField(max_length=10, choices=ORDER_STATUSES, verbose_name=_('Status'))
-    notes = models.CharField(max_length=1000, verbose_name=_('Notes'))
+    status = models.CharField(max_length=10, default='wa', choices=ORDER_STATUSES, verbose_name=_('Status'))
+    notes = models.CharField(max_length=1000, blank=True, null=True, verbose_name=_('Notes'))
     datetime_created = models.DateTimeField(auto_now_add=True, verbose_name=_('Date & time of creation'))
     datetime_modified = models.DateTimeField(auto_now=True, verbose_name=_('Date & time of modification'))
 

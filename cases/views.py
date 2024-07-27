@@ -30,14 +30,44 @@ class CaseDetailView(DetailView):
 
 # --------------------------------- Cart Views ---------------------------------
 def cart_detail_view(request):
+    order_form = OrderForm()
     cart = Cart(request)
+
     for item in cart:
         item['case_update_meter_form'] = AddToCartForm(initial={
             'meter': item['meter'],
             'inplace': True,
         })
+    # context = {
+    #     'cart': cart,
+    #     'order_form': order_form,
+    # }
+
+    if request.method == 'POST':
+        order_form = OrderForm(request.POST)
+
+        if order_form.is_valid():
+            order_obj = order_form.save(commit=False)
+            order_obj.user = request.user
+            order_obj.save()
+
+            for item in cart:
+                case = item['case_obj']
+                CaseOrderItem.objects.create(
+                    order=order_obj,
+                    case=case,
+                    meter=item['meter'],
+                )
+            cart.clear()
+
+            # messages.success(request, 'سفارش شما با موفقیت ثبت شد')
+            # order_form = OrderForm()
+            # request.session['order_id'] = order_obj.id
+            return redirect('case_list')
+
     context = {
         'cart': cart,
+        'order_form': order_form,
     }
     return render(request, 'cases/cart_detail.html', context)
 
@@ -89,7 +119,6 @@ def order_create_view(request):
 
         if order_form.is_valid():
             order_obj = order_form.save(commit=False)
-            order_obj.user = request.user
             order_obj.save()
 
             for item in cart:

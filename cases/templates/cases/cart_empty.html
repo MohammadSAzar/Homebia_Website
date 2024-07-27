@@ -1,0 +1,31 @@
+{% extends '_base.html' %}
+
+{% load static %}
+{% load i18n %}
+{% load jalali_tags %}
+{% load shamsi_date %}
+{% load number_converter %}
+{% load humanize %}
+{% load widget_tweaks %}
+
+
+{% block title %}{% trans 'Empty Cart' %}{% endblock %}
+
+{% block content %}
+    <!-- Main Wrapper Start -->
+    <main class="main-content-wrapper">
+        <div class="error-area pt--90 pt-xl--70 pb--120 pb-xl--100 pb-lg--95 pb-sm--90">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-xl-7 col-lg-8 text-center">
+                        <div class="error">
+                            <p style="text-align: center; color: black;">{% trans 'Your Cart is empty, if you want to see our cases, click on below button' %}</p>
+                            <a href="{% url 'case_list' %}" class="btn">{% trans 'See Cases' %}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- Main Wrapper End -->
+{% endblock %}

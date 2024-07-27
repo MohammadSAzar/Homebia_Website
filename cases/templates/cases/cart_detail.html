@@ -125,7 +125,39 @@
 
                             </div>
                         </div>
-                        <a href="{% url 'order_create' %}" class="btn btn-size-md btn-shape-square btn-fullwidth">{% trans 'Proceed to Payment' %}</a>
+{#                        <a href="{% url 'home' %}" class="btn btn-size-md btn-shape-square btn-fullwidth">{% trans 'Proceed to Payment' %}</a>#}
+
+                        <div class="product-action">
+                            <button id="formButton" class="btn btn-size-sm btn-shape-square" style="width: 100%;">{% trans 'Complete the Order' %}</button>
+                        </div>
+                        <div id="formDIV" class="variation-form mt--20" style="display: none;">
+                            <div class="product-size-variations d-flex align-items-center mb--15" style="justify-content: center;">
+
+                                <form action="" method="POST" novalidate>
+                                    {% csrf_token %}
+                                    <label style="margin-bottom: 1em;!important;" for="{{ order_form.notes.id_for_label }}" class="relative block rounded-lg border border-secondary-light shadow-base dark:border-primary-light/5 mb-12">
+                                        <span style="font-size: large;" class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-primary-light px-2 py-0.5 text-sm text-quaternary-600 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-focus:top-0 peer-focus:text-sm dark:bg-secondary-dark dark:text-quaternary-300 mr-4">
+                                            {% trans 'Notes: ' %}
+                                        </span>
+                                        {% render_field order_form.notes type="text" id="notes" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" %}
+                                        <button type="submit" class="font-weight-medium" style="font-size: medium; font-weight: bolder; color: black;">{% trans 'Proceed to Payment' %}</button>
+                                    </label>
+                                </form>
+
+                            </div>
+                        </div>
+
+                        <script>
+                            document.getElementById('formButton').addEventListener('click', function() {
+                                var formDIV = document.getElementById('formDIV');
+                                if (formDIV.style.display === 'none') {
+                                    formDIV.style.display = 'block';
+                                } else {
+                                    formDIV.style.display = 'none';
+                                }
+                            });
+                        </script>
+
                     </div>
                 </div>
                 <!-- end: Cart detail >>> summary -->
