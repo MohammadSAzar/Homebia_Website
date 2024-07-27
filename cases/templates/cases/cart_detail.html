@@ -1,0 +1,139 @@
+{% extends '_base.html' %}
+
+{% load static %}
+{% load i18n %}
+{% load jalali_tags %}
+{% load shamsi_date %}
+{% load number_converter %}
+{% load humanize %}
+{% load widget_tweaks %}
+
+{% block title %}{% trans 'Cart Detail' %}{% endblock %}
+
+
+{% block content %}
+
+    <!-- Cart detail >>> main -->
+    <div class="page-content-inner ptb--80 pt-md--40 pb-md--60">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mb-md--50">
+
+                    <!-- Cart detail >>> items -->
+                    <div class="row g-0">
+                        <div class="col-12">
+                            <div class="table-content table-responsive">
+                                <table class="table text-center">
+                                    <thead>
+                                        <tr>
+                                            <th>&nbsp;</th>
+{#                                            <th class="text-start">ردیف</th>#}
+                                            <th class="text-start" style="font-weight: normal; font-size: 1em">{% trans 'Case' %}</th>
+                                            <th style="font-weight: normal; font-size: 1em">{% trans 'Each Fee' %}</th>
+                                            <th style="font-weight: normal; font-size: 1em">{% trans 'Meter' %}</th>
+                                            <th style="font-weight: normal; font-size: 1em">{% trans 'Final Fee' %}</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for item in cart %}
+                                            <tr>
+                                                <td class="product-remove text-start"><a style="color: red;" href="{% url 'cart_remove' item.case_obj.id %}">x</a></td>
+
+{#                                                <td class="product-remove text-start">{{ forloop.counter }}</td>#}
+
+                                                <td class="product-name text-start wide-column">
+                                                    <span style="font-size: 0.9em;"><a href="{{ item.case_obj.get_absolute_url }}">{{ item.case_obj.title|farsi_number }}</a></span>
+                                                </td>
+
+                                                <td class="product-price">
+                                                    <span class="product-price-wrapper">
+                                                        <span class="money">{{ item.case_obj.metric_price|intcomma:False|farsi_number }}</span>
+                                                    </span>
+                                                </td>
+
+                                                <td class="product-quantity">
+                                                    <form action="{% url 'cart_add' item.case_obj.id %}" method="post">
+                                                        {% csrf_token %}
+                                                        <input type="number" class="quantity-input" style="width: 70px; border: 1px solid black; margin-bottom: 2px;" name="meter" value="{{ item.meter }}" min="1">
+                                                        <div style="margin-top: 2px;">{{ item.case_update_meter_form.inplace }}</div>
+                                                        <button type="submit" style="border: 1px solid black; width: 70px; text-align: center;">{% trans 'Update' %}</button>
+                                                    </form>
+                                                </td>
+
+                                                <td class="product-total-price">
+                                                    <span class="product-price-wrapper">
+                                                        <span class="money">{{ item.total_price|intcomma:False|farsi_number }}</span>
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end: Cart detail >>> items -->
+
+                    <!-- Cart detail >>> delete -->
+                    <div class="row g-0 border-top pt--20 mt--20">
+                        <div class="col-sm-6 text-sm-end">
+                            <form action="{% url 'cart_clear' %}" method="POST">
+                                {% csrf_token %}
+                                <button style="float: right; background-color: transparent; color: #EF5350; border-bottom: solid 1px #EF5350;!important; border-top: none; border-left: none; border-right: none;" type="submit" >{% trans 'Clear Cart' %}</button>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- End: Cart detail >>> delete -->
+
+                </div>
+
+                <!-- Cart detail >>> summary -->
+                <div class="col-lg-4">
+                    <div class="cart-collaterals">
+                        <div class="cart-totals">
+{#                            <h3 class="font-size-14 font-bold mb--15">مجموع سبد خرید</h3>#}
+                            <div class="cart-calculator">
+
+                                <div class="cart-calculator__item">
+                                    <div class="cart-calculator__item--head">
+                                        <span>{% trans 'Cart Sum:' %}</span>
+                                    </div>
+                                    <div class="cart-calculator__item--value" style="text-align: center;">
+                                        <span>{{ cart.total_value|intcomma:False|farsi_number }}</span>
+                                    </div>
+                                </div>
+
+                                <div class="cart-calculator__item">
+                                    <div class="cart-calculator__item--head">
+                                        <span>{% trans 'Tax:' %}</span>
+                                    </div>
+                                    <div class="cart-calculator__item--value" style="text-align: center;">
+                                        <span>{{ cart.tax|intcomma:False|farsi_number }}</span>
+                                    </div>
+                                </div>
+
+                                <div class="cart-calculator__item order-total">
+                                    <div class="cart-calculator__item--head">
+                                        <span>{% trans 'Final Price:' %}</span>
+                                    </div>
+                                    <div class="cart-calculator__item--value">
+                                        <span class="product-price-wrapper" style="text-align: center;">
+                                            <span class="money">{{ cart.total_value_plus_tax|intcomma:False|farsi_number }}</span>
+                                        </span>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <a href="{% url 'order_create' %}" class="btn btn-size-md btn-shape-square btn-fullwidth">{% trans 'Proceed to Payment' %}</a>
+                    </div>
+                </div>
+                <!-- end: Cart detail >>> summary -->
+
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
+

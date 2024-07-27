@@ -48,6 +48,9 @@ class Cart:
     def total_value(self):
         return sum(item['meter'] * item['case_obj'].metric_price for item in self.cart.values())
 
+    def tax(self):
+        return sum(int(item['meter'] * item['case_obj'].metric_price * 0.10) for item in self.cart.values())
+
     def total_value_plus_tax(self):
         return sum(int(item['meter'] * item['case_obj'].metric_price * 1.10) for item in self.cart.values())
 
