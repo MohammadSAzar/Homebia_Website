@@ -4,7 +4,7 @@ from django.urls import reverse
 from django.http import HttpResponseRedirect
 
 from .models import CustomUserModel, Profile
-from .forms import RegistrationForm, AuthenticationForm, IntoEditForm
+from .forms import RegistrationForm, AuthenticationForm, InfoEditForm
 from .checkers import send_otp, get_random_otp, otp_time_checker
 
 from services.models import Counseling, Session, Visit
@@ -87,13 +87,13 @@ def profile_info_auth(request):
 
 def profile_info_edit(request):
 	if request.method == 'POST':
-		form = IntoEditForm(request.POST)
+		form = InfoEditForm(request.POST)
 		user = request.user
 		if form.is_valid():
 			form.save()
 			return HttpResponseRedirect(reverse('profile_info_now'))
 	else:
-		form = IntoEditForm()
+		form = InfoEditForm()
 	context = {
 		'form': form,
 	}

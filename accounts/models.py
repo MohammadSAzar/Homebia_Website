@@ -32,6 +32,7 @@ class CustomUserModel(AbstractUser):
 		('i', _('In Progress')),
 	]
 	username = None
+	# password = models.CharField(max_length=128, blank=True, null=True)
 	phone_number = models.CharField(max_length=11, unique=True)
 	otp_code = models.PositiveIntegerField(blank=True, null=True)
 	otp_code_datetime_created = models.DateTimeField(auto_now=True)

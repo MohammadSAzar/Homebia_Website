@@ -11,8 +11,10 @@
 {% block content %}
 
     {% if user.is_verified == 'a' %}
+
         <h3 style="text-align: center; margin-top: 5em">حساب کاربری شما تایید شده است.</h3>
         <div style="margin-top: 3em; text-align: center;"><span style="text-align: center; margin-top: 3em">برای تغییر، روی گزینه "تغییر اطلاعات" در منو کناری کلیک نمایید.</span></div>
+
     {% elif user.is_verified == 'n' %}
 
         <div class="nk-block">
@@ -75,8 +77,10 @@
         </div>
 
     {% elif user.is_verified == 'i' %}
+
         <h3 style="text-align: center; margin-top: 5em">حساب کاربری شما در دست بررسی است.</h3>
         <div style="margin-top: 3em; text-align: center;"><span style="text-align: center; margin-top: 3em">نتیجه بررسی حساب کاربری شما، به زودی تعیین خواهد شد.</span></div>
+
     {% endif %}
 
 {% endblock %}

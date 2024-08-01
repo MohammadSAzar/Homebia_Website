@@ -263,16 +263,32 @@
 
                         <div id="addDIV" class="variation-form mt--20" style="display: none;">
 
-                            <form action="{% url 'cart_add' case.id %}" method="post" style="margin-top: 3em;">
-                                {% csrf_token %}
-                                <label class="quantity-label" style="margin-bottom: 1em; font-size: 1em" for="{{ add_to_cart_form.meter.id_for_label }}">متراژ انتخابی:</label>
-                                <div style="border: #373737 0.05em solid; line-height: 1.7em">
-                                    {% render_field add_to_cart_form.meter class="quantity-input" type="number" value="1" min="1" %}
-                                </div>
+                            {% if user.is_authenticated %}
+                                {% if user.is_verified == 'a' %}
+                                    <form action="{% url 'cart_add' case.id %}" method="post" style="margin-top: 3em;">
+                                        {% csrf_token %}
+                                        <label class="quantity-label" style="margin-bottom: 1em; font-size: 1em" for="{{ add_to_cart_form.meter.id_for_label }}">متراژ انتخابی:</label>
+                                        <div style="border: #373737 0.05em solid; line-height: 1.7em">
+                                            {% render_field add_to_cart_form.meter class="quantity-input" type="number" value="1" min="1" %}
+                                        </div>
+                                        <div class="product-action" style="margin-top: 1em;">
+                                            <button type="submit" id="addButton" class="btn btn-size-sm btn-shape-square" style="width: 100%;">افزودن به سبد خرید</button>
+                                        </div>
+                                    </form>
+                                {% elif user.is_verified == 'i' %}
+                                    <div class="product-action" style="margin-top: 1em;">
+                                        <button id="addButton" class="btn btn-size-sm btn-shape-square" style="width: 100%;"><a href="{% url 'profile_info_auth' %}">مشاهده وضعیت احراز هویت</a></button>
+                                    </div>
+                                {% else %}
+                                    <div class="product-action" style="margin-top: 1em;">
+                                        <button id="addButton" class="btn btn-size-sm btn-shape-square" style="width: 100%;"><a href="{% url 'profile_info_auth' %}">برای خرید باید احراز هویت خود را تکمیل نمایید.</a></button>
+                                    </div>
+                                {% endif %}
+                            {% else %}
                                 <div class="product-action" style="margin-top: 1em;">
-                                    <button type="submit" id="addButton" class="btn btn-size-sm btn-shape-square" style="width: 100%;">افزودن به سبد خرید</button>
+                                    <button id="addButton" class="btn btn-size-sm btn-shape-square" style="width: 100%;"><a href="{% url 'registration' %}">برای خرید باید ابتدا باید وارد سایت شوید.</a></button>
                                 </div>
-                            </form>
+                            {% endif %}
 
                         </div>
 
