@@ -1,6 +1,21 @@
 from django.contrib import admin
 
-from .models import Case, CaseOrder, CaseOrderItem
+from .models import Case, CaseOrder, CaseOrderItem, Province, City, District
+
+
+@admin.register(Province)
+class ProvinceAdmin(admin.ModelAdmin):
+	list_display = ('name',)
+
+
+@admin.register(City)
+class CityAdmin(admin.ModelAdmin):
+	list_display = ('name', 'province')
+
+
+@admin.register(District)
+class DistrictAdmin(admin.ModelAdmin):
+	list_display = ('name', 'city')
 
 
 @admin.register(Case)

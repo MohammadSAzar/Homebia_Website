@@ -4,6 +4,10 @@ from . import views
 
 
 urlpatterns = [
+    path('load_case_cities/', views.load_cities, name='load_case_cities'),
+    path('load_case_districts/', views.load_districts, name='load_case_districts'),
+    path('get_case_cities/', views.load_cities_list, name='load_case_cities_list'),
+    path('get_case_districts/', views.load_districts_list, name='load_case_districts_list'),
     path('case/list', views.CaseListView.as_view(), name='case_list'),
     path('add/<int:case_id>/', views.add_to_cart_view, name='cart_add'),
     path('remove/<int:case_id>/', views.remove_from_cart_view, name='cart_remove'),

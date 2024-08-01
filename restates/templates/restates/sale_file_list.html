@@ -155,6 +155,9 @@
                                             <label for="{{ filter_form.min_price.id_for_label }}" class="form__label">{% trans 'Min_Price: ' %}</label>
                                             {% render_field filter_form.min_price type="number" id="min_price" class="form__input" %}
                                         </div>
+                                        {% if filter_form.min_price.errors %}
+                                            <span style="font-weight: normal; font-size: small; color: red;">{{ filter_form.min_price.errors }}</span>
+                                        {% endif %}
                                     </div>
 
                                     <!-- Max_Price -->
@@ -163,6 +166,9 @@
                                             <label for="{{ filter_form.max_price.id_for_label }}" class="form__label">{% trans 'Max_Price: ' %}</label>
                                             {% render_field filter_form.max_price type="number" id="max_price" class="form__input" %}
                                         </div>
+                                        {% if filter_form.max_price.errors %}
+                                            <span style="font-weight: normal; font-size: small; color: red;">{{ filter_form.max_price.errors }}</span>
+                                        {% endif %}
                                     </div>
 
                                     <!-- Min_Area -->
@@ -171,6 +177,9 @@
                                             <label for="{{ filter_form.min_area.id_for_label }}" class="form__label">{% trans 'Min_Area: ' %}</label>
                                             {% render_field filter_form.min_area type="number" id="min_area" class="form__input" %}
                                         </div>
+                                        {% if filter_form.min_area.errors %}
+                                            <span style="font-weight: normal; font-size: small; color: red;">{{ filter_form.min_area.errors }}</span>
+                                        {% endif %}
                                     </div>
 
                                     <!-- Max_Area -->
@@ -179,6 +188,9 @@
                                             <label for="{{ filter_form.max_area.id_for_label }}" class="form__label">{% trans 'Max_Area: ' %}</label>
                                             {% render_field filter_form.max_area type="number" id="max_area" class="form__input" %}
                                         </div>
+                                        {% if filter_form.max_area.errors %}
+                                            <span style="font-weight: normal; font-size: small; color: red;">{{ filter_form.max_area.errors }}</span>
+                                        {% endif %}
                                     </div>
 
                                     <!-- Min_Room -->
@@ -187,6 +199,9 @@
                                             <label for="{{ filter_form.min_room.id_for_label }}" class="form__label">{% trans 'Min_Room: ' %}</label>
                                             {% render_field filter_form.min_room type="text" id="min_room" class="form__input" %}
                                         </div>
+                                        {% if filter_form.min_room.errors %}
+                                            <span style="font-weight: normal; font-size: small; color: red;">{{ filter_form.min_room.errors }}</span>
+                                        {% endif %}
                                     </div>
 
                                     <!-- Max_Room -->
@@ -195,6 +210,9 @@
                                             <label for="{{ filter_form.max_room.id_for_label }}" class="form__label">{% trans 'Max_Room: ' %}</label>
                                             {% render_field filter_form.max_room type="text" id="max_room" class="form__input" %}
                                         </div>
+                                        {% if filter_form.max_room.errors %}
+                                            <span style="font-weight: normal; font-size: small; color: red;">{{ filter_form.max_room.errors }}</span>
+                                        {% endif %}
                                     </div>
 
                                     <!-- Min_Age -->
@@ -203,6 +221,9 @@
                                             <label for="{{ filter_form.min_age.id_for_label }}" class="form__label">{% trans 'Min_Age: ' %}</label>
                                             {% render_field filter_form.min_age type="text" id="min_age" class="form__input" %}
                                         </div>
+                                        {% if filter_form.min_age.errors %}
+                                            <span style="font-weight: normal; font-size: small; color: red;">{{ filter_form.min_age.errors }}</span>
+                                        {% endif %}
                                     </div>
 
                                     <!-- Max_Age -->
@@ -211,6 +232,9 @@
                                             <label for="{{ filter_form.max_age.id_for_label }}" class="form__label">{% trans 'Max_Age: ' %}</label>
                                             {% render_field filter_form.max_age type="text" id="max_age" class="form__input" %}
                                         </div>
+                                        {% if filter_form.max_age.errors %}
+                                            <span style="font-weight: normal; font-size: small; color: red;">{{ filter_form.max_age.errors }}</span>
+                                        {% endif %}
                                     </div>
 
                                     <!-- Min_Level -->
@@ -219,6 +243,9 @@
                                             <label for="{{ filter_form.min_level.id_for_label }}" class="form__label">{% trans 'Min_Level: ' %}</label>
                                             {% render_field filter_form.min_level type="text" id="min_level" class="form__input" %}
                                         </div>
+                                        {% if filter_form.min_level.errors %}
+                                            <span style="font-weight: normal; font-size: small; color: red;">{{ filter_form.min_level.errors }}</span>
+                                        {% endif %}
                                     </div>
 
                                     <!-- Max_Level -->
@@ -227,6 +254,9 @@
                                             <label for="{{ filter_form.max_level.id_for_label }}" class="form__label">{% trans 'Max_Level: ' %}</label>
                                             {% render_field filter_form.max_level type="text" id="max_level" class="form__input" %}
                                         </div>
+                                        {% if filter_form.max_level.errors %}
+                                            <span style="font-weight: normal; font-size: small; color: red;">{{ filter_form.max_level.errors }}</span>
+                                        {% endif %}
                                     </div>
 
                                     <!-- Document -->
@@ -270,9 +300,7 @@
                                 <!-- JS for filter Form -->
                                 <script>
                                     function submitFormAndRefresh() {
-                                        // Submit the form
                                         document.getElementById('filter-form').submit();
-                                        // Refresh the page
                                         location.reload();
                                     }
                                 </script>

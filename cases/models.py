@@ -1,7 +1,6 @@
 import random
 import string
 
-
 from django.db import models
 from django.urls import reverse
 from django.utils.text import slugify
@@ -10,6 +9,31 @@ from django.conf import settings
 from django_quill.fields import QuillField
 
 
+# --------------------------------- Locations ---------------------------------
+class Province(models.Model):
+    name = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.name
+
+
+class City(models.Model):
+    name = models.CharField(max_length=100)
+    province = models.ForeignKey(Province, on_delete=models.CASCADE, related_name='cities')
+
+    def __str__(self):
+        return self.name
+
+
+class District(models.Model):
+    name = models.CharField(max_length=100)
+    city = models.ForeignKey(City, on_delete=models.CASCADE, related_name='districts')
+
+    def __str__(self):
+        return self.name
+
+
+# --------------------------------- Cases ---------------------------------
 def generate_unique_id():
     return ''.join(random.choices(string.ascii_letters + string.digits, k=20))
 
@@ -26,9 +50,9 @@ class Case(models.Model):
     ]
     title = models.CharField(max_length=300, verbose_name=_('Title'))
     maker = models.CharField(max_length=100, verbose_name=_('Maker'))
-    province = models.CharField(max_length=50, verbose_name=_('Province'))
-    city = models.CharField(max_length=50, verbose_name=_('City'))
-    district = models.CharField(max_length=50, verbose_name=_('District'))
+    province = models.ForeignKey(Province, on_delete=models.SET_NULL, null=True, blank=True, related_name='cases', verbose_name=_('Province'))
+    city = models.ForeignKey(City, on_delete=models.SET_NULL, null=True, blank=True, related_name='cases', verbose_name=_('City'))
+    district = models.ForeignKey(District, on_delete=models.SET_NULL, null=True, blank=True, related_name='cases', verbose_name=_('District'))
     capacity = models.PositiveIntegerField(blank=True, verbose_name=_('Capacity'))
     metric_price = models.PositiveIntegerField(verbose_name=_('Metric Price'))
     buy_assurance = models.BooleanField(default=False, verbose_name=_('Buy assurance'))
