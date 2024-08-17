@@ -114,21 +114,6 @@
                                                 <span class="px-md-3">{% trans 'Submit' %}</span>
                                             </button>
                                         </div>
-
-                                        {% if form.errors %}
-                                            <div class="error-list">
-                                                <ul>
-                                                    {% for field in form %}
-                                                        {% if field.errors %}
-                                                            <li><strong>{{ field.label }}:</strong> {{ field.errors|striptags }}</li>
-                                                        {% endif %}
-                                                    {% endfor %}
-                                                    {% if form.non_field_errors %}
-                                                        <li><strong>General errors:</strong> {{ form.non_field_errors|striptags }}</li>
-                                                    {% endif %}
-                                                </ul>
-                                            </div>
-                                        {% endif %}
                                     </form>
 
                                 </div>

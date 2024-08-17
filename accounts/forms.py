@@ -47,4 +47,4 @@ class AuthenticationForm(forms.ModelForm):
 class InfoEditForm(forms.ModelForm):
 	class Meta:
 		model = models.Profile
-		fields = ['f_name', 'l_name', 'province', 'city', 'address', 'postal_code']
+		fields = ['email', 'country', 'province', 'city', 'address', 'postal_code']

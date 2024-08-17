@@ -99,14 +99,20 @@ class CaseOrder(models.Model):
     is_paid = models.BooleanField(default=False, verbose_name=_('Payment Status'))
     status = models.CharField(max_length=10, default='wa', choices=ORDER_STATUSES, verbose_name=_('Status'))
     notes = models.CharField(max_length=1000, blank=True, null=True, verbose_name=_('Notes'))
+    code = models.CharField(max_length=6, null=True, unique=True, blank=True)
     datetime_created = models.DateTimeField(auto_now_add=True, verbose_name=_('Date & time of creation'))
     datetime_modified = models.DateTimeField(auto_now=True, verbose_name=_('Date & time of modification'))
 
+    def save(self, *args, **kwargs):
+        if not self.code:
+            self.code = generate_unique_code()
+        super(CaseOrder, self).save(*args, **kwargs)
+
     def get_total_price(self):
-        return sum(item.meter*item.price for item in self.item.all())
+        return sum(item.meter*item.case.metric_price for item in self.item.all())
 
     def __str__(self):
-        return f'Order: {self.id}'
+        return f'Order: {self.code}'
 
 
 class CaseOrderItem(models.Model):

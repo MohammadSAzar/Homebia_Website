@@ -31,7 +31,7 @@ class CaseAdmin(admin.ModelAdmin):
 
 @admin.register(CaseOrder)
 class CaseOrderAdmin(admin.ModelAdmin):
-	list_display = ('user', 'status', 'is_paid', 'datetime_created', 'datetime_modified')
+	list_display = ('code', 'user', 'status', 'is_paid', 'datetime_created', 'datetime_modified')
 	ordering = ('-datetime_created',)
 
 

@@ -9,6 +9,7 @@ from .checkers import send_otp, get_random_otp, otp_time_checker
 
 from services.models import Counseling, Session, Visit
 from restates.models import SaleFile, RentFile, TradeSession
+from cases.models import Case, CaseOrder, CaseOrderItem
 
 
 def registration_view(request):
@@ -94,8 +95,10 @@ def profile_info_edit(request):
 	if request.method == 'POST':
 		form = InfoEditForm(request.POST)
 		user = request.user
+		profile = Profile.objects.get(user=user)
 		if form.is_valid():
 			form.save()
+			profile.save()
 			return HttpResponseRedirect(reverse('profile_info_now'))
 	else:
 		form = InfoEditForm()
@@ -127,4 +130,11 @@ def profile_your_trades(request):
 	return render(request, 'accounts/profile_your_trades.html', context)
 
 
+def profile_your_cases(request):
+	phone_number = request.session.get('user_phone_number')
+	case_orders = CaseOrder.objects.prefetch_related('item__case').filter(user__phone_number=phone_number).all()
+	context = {
+		'case_orders': case_orders,
+	}
+	return render(request, 'accounts/profile_your_cases.html', context)
 
