@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-21 13:36+0330\n"
+"POT-Creation-Date: 2024-08-17 18:02+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,135 +19,189 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: .\models.py:11
-msgid "Male"
-msgstr "آقا"
-
-#: .\models.py:12
-msgid "Female"
-msgstr "خانم"
-
-#: .\models.py:14
-msgid "First Name"
-msgstr "نام"
-
-#: .\models.py:15
-msgid "Last Name"
-msgstr "نام خانوادگی"
-
-#: .\models.py:16
-msgid "Sex"
-msgstr "جنسیت"
-
-#: .\models.py:17
-msgid "National Code"
-msgstr "کد ملی"
-
-#: .\models.py:18
-msgid "National Card Image"
-msgstr "تصویر کارت ملی"
-
-#: .\models.py:19
-msgid "Bank Card Image"
-msgstr "تصویر کارت بانکی"
-
-#: .\models.py:20
-msgid "Authentication Image"
-msgstr "تصویر احراز هویت"
-
-#: .\models.py:21
-msgid "Country"
-msgstr "کشور"
-
-#: .\models.py:22
-msgid "Province"
-msgstr "استان"
-
-#: .\models.py:23 .\templates\accounts\profile_your_services.html:202
-msgid "City"
-msgstr "شهر"
-
-#: .\models.py:24
-msgid "Postal Code"
-msgstr "کد پستی"
-
-#: .\models.py:25
-msgid "Address"
-msgstr "نشانی"
-
-#: .\models.py:30
 msgid "Authenticated"
 msgstr "تایید شده"
 
-#: .\models.py:31
+#: .\models.py:12
 msgid "Not Authenticated"
 msgstr "تایید نشده"
 
-#: .\models.py:32 .\templates\accounts\profile_info_now.html:122
+#: .\models.py:13 .\templates\accounts\profile_info_now.html:98
 msgid "In Progress"
 msgstr "در حال بررسی"
 
-#: .\models.py:39
+#: .\models.py:19
 msgid "Authentication Status"
 msgstr "وضعیت احراز هویت"
+
+#: .\models.py:29
+msgid "Male"
+msgstr "آقا"
+
+#: .\models.py:30
+msgid "Female"
+msgstr "خانم"
+
+#: .\models.py:32 .\templates\accounts\profile_info_auth.html:38
+msgid "First Name"
+msgstr "نام"
+
+#: .\models.py:33 .\templates\accounts\profile_info_auth.html:44
+msgid "Last Name"
+msgstr "نام خانوادگی"
+
+#: .\models.py:34 .\templates\accounts\profile_info_auth.html:50
+msgid "Sex"
+msgstr "جنسیت"
+
+#: .\models.py:35 .\templates\accounts\profile_info_auth.html:56
+msgid "National Code"
+msgstr "کد ملی"
+
+#: .\models.py:36 .\templates\accounts\profile_info_auth.html:86
+#: .\templates\accounts\profile_info_edit.html:63
+msgid "Email"
+msgstr "ایمیل"
+
+#: .\models.py:37
+msgid "National Card Image"
+msgstr "تصویر کارت ملی"
+
+#: .\models.py:38
+msgid "Bank Card Image"
+msgstr "تصویر کارت بانکی"
+
+#: .\models.py:39
+msgid "Authentication Image"
+msgstr "تصویر احراز هویت"
+
+#: .\models.py:40 .\templates\accounts\profile_info_auth.html:62
+#: .\templates\accounts\profile_info_edit.html:39
+msgid "Country"
+msgstr "کشور"
+
+#: .\models.py:41 .\templates\accounts\profile_info_auth.html:68
+#: .\templates\accounts\profile_info_edit.html:45
+msgid "Province"
+msgstr "استان"
+
+#: .\models.py:42 .\templates\accounts\profile_info_auth.html:74
+#: .\templates\accounts\profile_info_edit.html:51
+#: .\templates\accounts\profile_your_services.html:113
+msgid "City"
+msgstr "شهر"
+
+#: .\models.py:43 .\templates\accounts\profile_info_auth.html:80
+#: .\templates\accounts\profile_info_edit.html:57
+msgid "Postal Code"
+msgstr "کد پستی"
+
+#: .\models.py:44 .\templates\accounts\profile_info_auth.html:104
+#: .\templates\accounts\profile_info_edit.html:69
+msgid "Address"
+msgstr "نشانی"
 
 #: .\templates\accounts\profile_info_auth.html:9
 msgid "Authentication"
 msgstr "احراز هویت"
 
-#: .\templates\accounts\profile_info_auth.html:27
-#: .\templates\accounts\profile_info_edit.html:23
-msgid "Send The Information"
-msgstr "ارسال اطلاعات"
+#: .\templates\accounts\profile_info_auth.html:28
+msgid "Authentication Form"
+msgstr "فرم احراز هویت"
 
-#: .\templates\accounts\profile_info_auth.html:33
-#: .\templates\accounts\profile_info_edit.html:30
-#: .\templates\accounts\profile_info_now.html:45
-msgid "Personal Information"
-msgstr "اطلاعات شخصی"
+#: .\templates\accounts\profile_info_auth.html:92
+msgid "National Card"
+msgstr "تصویر کارت ملی"
 
-#: .\templates\accounts\profile_info_auth.html:51
-#: .\templates\accounts\profile_info_edit.html:48
-#: .\templates\accounts\profile_info_now.html:64
-#: .\templates\accounts\profile_info_now.html:89
-#: .\templates\accounts\profile_info_now.html:114
-msgid "Phone Number"
-msgstr "شماره همراه"
+#: .\templates\accounts\profile_info_auth.html:98
+msgid "Authentication Picture"
+msgstr "تصویر احراز هویت"
 
-#: .\templates\accounts\profile_info_auth.html:58
-#: .\templates\accounts\profile_info_edit.html:55
-#: .\templates\accounts\profile_info_now.html:71
-#: .\templates\accounts\profile_info_now.html:96
-#: .\templates\accounts\profile_info_now.html:121
-msgid "Account Status"
-msgstr "وضعیت حساب کاربری"
-
-#: .\templates\accounts\profile_info_auth.html:59
-#: .\templates\accounts\profile_info_edit.html:56
-#: .\templates\accounts\profile_info_now.html:97
-msgid "Not Completed"
-msgstr "تکمیل نشده"
-
-#: .\templates\accounts\profile_info_auth.html:64
-#: .\templates\accounts\profile_info_edit.html:61
-#: .\templates\accounts\profile_info_now.html:102
-msgid "Complete The Information"
-msgstr "تکمیل اطلاعات"
+#: .\templates\accounts\profile_info_auth.html:111
+#: .\templates\accounts\profile_info_edit.html:76
+msgid "Submit"
+msgstr "ارسال"
 
 #: .\templates\accounts\profile_info_edit.html:9
 msgid "Profile Update"
 msgstr "بروزرسانی حساب کاربری"
 
+#: .\templates\accounts\profile_info_edit.html:24
+msgid "Personal Information Edit"
+msgstr "اصلاح اطلاعات شخصی"
+
 #: .\templates\accounts\profile_info_now.html:9
 msgid "User Dashboard"
 msgstr "حساب کاربری"
 
+#: .\templates\accounts\profile_info_now.html:22
+msgid "Personal Information"
+msgstr "اطلاعات شخصی"
+
+#: .\templates\accounts\profile_info_now.html:41
+#: .\templates\accounts\profile_info_now.html:65
+#: .\templates\accounts\profile_info_now.html:90
+msgid "Phone Number"
+msgstr "شماره همراه"
+
+#: .\templates\accounts\profile_info_now.html:48
 #: .\templates\accounts\profile_info_now.html:72
+#: .\templates\accounts\profile_info_now.html:97
+msgid "Account Status"
+msgstr "وضعیت حساب کاربری"
+
+#: .\templates\accounts\profile_info_now.html:49
 msgid "Verified"
 msgstr "تایید شده"
 
-#: .\templates\accounts\profile_info_now.html:77
-msgid "Personal Information Update"
+#: .\templates\accounts\profile_info_now.html:54
+msgid "Information Update"
 msgstr "بروزرسانی اطلاعات شخصی"
+
+#: .\templates\accounts\profile_info_now.html:73
+msgid "Not Completed"
+msgstr "تکمیل نشده"
+
+#: .\templates\accounts\profile_info_now.html:78
+msgid "Complete The Information"
+msgstr "تکمیل اطلاعات"
+
+#: .\templates\accounts\profile_your_cases.html:11
+msgid "My Investments"
+msgstr "سرمایه‌گذاری‌های من"
+
+#: .\templates\accounts\profile_your_cases.html:24
+msgid "Case Code: "
+msgstr "کد پروژه: "
+
+#: .\templates\accounts\profile_your_cases.html:34
+msgid "Case Title: "
+msgstr "عنوان پروژه: "
+
+#: .\templates\accounts\profile_your_cases.html:50
+msgid "Meter: "
+msgstr "متراژ: "
+
+#: .\templates\accounts\profile_your_cases.html:54
+msgid "Metr"
+msgstr "متر"
+
+#: .\templates\accounts\profile_your_cases.html:64
+msgid "Total Price: "
+msgstr "قیمت کل (بدون مالیات): "
+
+#: .\templates\accounts\profile_your_cases.html:67
+msgid "Tooman"
+msgstr "تومان"
+
+#: .\templates\accounts\profile_your_cases.html:76
+msgid "Datetime: "
+msgstr "تاریخ و زمان سرمایه‌گذاری: "
+
+#: .\templates\accounts\profile_your_cases.html:88
+#: .\templates\accounts\profile_your_trades.html:135
+msgid "Status: "
+msgstr "وضعیت: "
 
 #: .\templates\accounts\profile_your_services.html:9
 msgid "My Services"
@@ -157,40 +211,40 @@ msgstr "خدمات دریافتی من"
 msgid "Counselings"
 msgstr "مشاوره‌ها"
 
-#: .\templates\accounts\profile_your_services.html:55
-#: .\templates\accounts\profile_your_services.html:127
-#: .\templates\accounts\profile_your_services.html:199
+#: .\templates\accounts\profile_your_services.html:32
+#: .\templates\accounts\profile_your_services.html:71
+#: .\templates\accounts\profile_your_services.html:110
 msgid "Row"
 msgstr "ردیف"
 
-#: .\templates\accounts\profile_your_services.html:56
-#: .\templates\accounts\profile_your_services.html:128
-#: .\templates\accounts\profile_your_services.html:200
+#: .\templates\accounts\profile_your_services.html:33
+#: .\templates\accounts\profile_your_services.html:72
+#: .\templates\accounts\profile_your_services.html:111
 msgid "Date"
 msgstr "تاریخ"
 
-#: .\templates\accounts\profile_your_services.html:57
-#: .\templates\accounts\profile_your_services.html:129
-#: .\templates\accounts\profile_your_services.html:201
+#: .\templates\accounts\profile_your_services.html:34
+#: .\templates\accounts\profile_your_services.html:73
+#: .\templates\accounts\profile_your_services.html:112
 msgid "Name"
 msgstr "نام"
 
-#: .\templates\accounts\profile_your_services.html:58
-#: .\templates\accounts\profile_your_services.html:130
+#: .\templates\accounts\profile_your_services.html:35
+#: .\templates\accounts\profile_your_services.html:74
 msgid "Type"
 msgstr "نوع"
 
-#: .\templates\accounts\profile_your_services.html:59
-#: .\templates\accounts\profile_your_services.html:131
-#: .\templates\accounts\profile_your_services.html:203
+#: .\templates\accounts\profile_your_services.html:36
+#: .\templates\accounts\profile_your_services.html:75
+#: .\templates\accounts\profile_your_services.html:114
 msgid "Status"
 msgstr "وضعیت"
 
-#: .\templates\accounts\profile_your_services.html:94
+#: .\templates\accounts\profile_your_services.html:61
 msgid "Sessions"
 msgstr "نشست‌ها"
 
-#: .\templates\accounts\profile_your_services.html:166
+#: .\templates\accounts\profile_your_services.html:100
 msgid "Visits"
 msgstr "بازدیدها"
 
@@ -233,10 +287,6 @@ msgstr "آیا معامله موفقیت‌آمیز بود؟"
 #: .\templates\accounts\profile_your_trades.html:123
 msgid "Is Paid?"
 msgstr "آیا پرداخت کمیسیون انجام شده است؟"
-
-#: .\templates\accounts\profile_your_trades.html:135
-msgid "Status: "
-msgstr "وضعیت: "
 
 #: .\templates\accounts\registration.html:10
 msgid "Website Login/Signup"

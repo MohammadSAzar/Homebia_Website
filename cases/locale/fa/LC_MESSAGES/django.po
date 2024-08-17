@@ -1,0 +1,321 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-08-17 18:22+0330\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+#: .\forms.py:10
+msgid "Has"
+msgstr "دارد"
+
+#: .\forms.py:11
+msgid "Has not"
+msgstr "ندارد"
+
+#: .\forms.py:13 .\models.py:53
+msgid "Province"
+msgstr "استان"
+
+#: .\forms.py:14 .\models.py:54
+msgid "City"
+msgstr "شهر"
+
+#: .\forms.py:15 .\models.py:55
+msgid "District"
+msgstr "محله"
+
+#: .\forms.py:16
+msgid "Min Metric Price"
+msgstr "حداقل قیمت هر متر"
+
+#: .\forms.py:17
+msgid "Max Metric Price"
+msgstr "حداکثر قیمت هر متر"
+
+#: .\forms.py:18 .\templates\cases\case_detail.html:236
+#: .\templates\cases\case_detail.html:240
+msgid "Buy Assurance"
+msgstr "ضمانت خرید"
+
+#: .\forms.py:19 .\templates\cases\case_detail.html:246
+#: .\templates\cases\case_detail.html:250
+msgid "Guaranteed Gain"
+msgstr "سود تضمینی"
+
+#: .\models.py:47
+msgid "Active"
+msgstr "فعال"
+
+#: .\models.py:48
+msgid "Soon"
+msgstr "بزودی"
+
+#: .\models.py:49
+msgid "Ended"
+msgstr "خاتمه‌یافته"
+
+#: .\models.py:51
+msgid "Title"
+msgstr "عنوان"
+
+#: .\models.py:52
+msgid "Maker"
+msgstr "سازنده"
+
+#: .\models.py:56
+msgid "Capacity"
+msgstr "ظرفیت"
+
+#: .\models.py:57
+msgid "Metric Price"
+msgstr "قیمت هر متر"
+
+#: .\models.py:58
+msgid "Buy assurance"
+msgstr "ضمانت خرید"
+
+#: .\models.py:59
+msgid "Guaranteed gain"
+msgstr "سود تضمینی"
+
+#: .\models.py:60
+msgid "Guaranteed gain percent"
+msgstr "درصد سود تضمینی"
+
+#: .\models.py:61
+msgid "End time"
+msgstr "زمان اتمام"
+
+#: .\models.py:63 .\models.py:100
+msgid "Status"
+msgstr "وضعیت"
+
+#: .\models.py:64
+msgid "Case Cover"
+msgstr "تصویر پروژه"
+
+#: .\models.py:65
+msgid "Case cover 2"
+msgstr "تصویر دوم پروژه"
+
+#: .\models.py:66
+msgid "Case cover 3"
+msgstr "تصویر سوم پروژه"
+
+#: .\models.py:67
+msgid "Case cover 4"
+msgstr "تصویر چهارم پروژه"
+
+#: .\models.py:94
+msgid "Waiting"
+msgstr "در انتظار"
+
+#: .\models.py:95
+msgid "Canceled"
+msgstr "لغو شده"
+
+#: .\models.py:96
+msgid "Done"
+msgstr "انجام‌شده"
+
+#: .\models.py:98
+msgid "User"
+msgstr "کاربر"
+
+#: .\models.py:99
+msgid "Payment Status"
+msgstr "وضعیت پرداخت"
+
+#: .\models.py:101
+msgid "Notes"
+msgstr "توضیحات"
+
+#: .\models.py:103
+msgid "Date & time of creation"
+msgstr "تاریخ و زمان ایجاد"
+
+#: .\models.py:104
+msgid "Date & time of modification"
+msgstr "تاریخ و زمان اصلاح"
+
+#: .\models.py:119
+msgid "Case Order"
+msgstr "سفارش"
+
+#: .\models.py:120
+msgid "Project"
+msgstr "پروژه"
+
+#: .\models.py:121
+msgid "Area"
+msgstr "متراژ"
+
+#: .\templates\cases\cart_detail.html:11
+msgid "Cart Detail"
+msgstr "جزئیات سبد خرید"
+
+#: .\templates\cases\cart_detail.html:31
+msgid "Case"
+msgstr "پروژه"
+
+#: .\templates\cases\cart_detail.html:32
+msgid "Each Fee"
+msgstr "قیمت هر آیتم"
+
+#: .\templates\cases\cart_detail.html:33
+msgid "Meter"
+msgstr "متراژ"
+
+#: .\templates\cases\cart_detail.html:34
+msgid "Final Fee"
+msgstr "قیمت کل"
+
+#: .\templates\cases\cart_detail.html:59
+msgid "Update"
+msgstr "بروزرسانی"
+
+#: .\templates\cases\cart_detail.html:82
+msgid "Clear Cart"
+msgstr "پاک کردن سبد"
+
+#: .\templates\cases\cart_detail.html:99
+msgid "Cart Sum:"
+msgstr "جمع مبلغ سفارش: "
+
+#: .\templates\cases\cart_detail.html:108
+msgid "Tax:"
+msgstr "مالیات"
+
+#: .\templates\cases\cart_detail.html:117
+msgid "Final Price:"
+msgstr "مبلغ نهایی"
+
+#: .\templates\cases\cart_detail.html:131
+msgid "Complete the Order"
+msgstr "تکمیل سفارش"
+
+#: .\templates\cases\cart_detail.html:140
+msgid "Notes: "
+msgstr "توضیحات: "
+
+#: .\templates\cases\cart_detail.html:143
+msgid "Proceed to Payment"
+msgstr "رفتن به صفحه پرداخت"
+
+#: .\templates\cases\cart_empty.html:12
+msgid "Empty Cart"
+msgstr "سبد خرید خالی"
+
+#: .\templates\cases\cart_empty.html:22
+msgid "Your Cart is empty, if you want to see our cases, click on below button"
+msgstr "سبد خرید شما خالی است، برای مشاهده فرصت‌های سرمایه‌گذاری کلیک کنید"
+
+#: .\templates\cases\cart_empty.html:23
+msgid "See Cases"
+msgstr "مشاهده فرصت‌های سرمایه‌گذاری"
+
+#: .\templates\cases\case_detail.html:11
+msgid "Case Detail"
+msgstr "جزئیات پروژه"
+
+#: .\templates\cases\case_detail.html:172
+msgid "Maker: "
+msgstr "سازنده: "
+
+#: .\templates\cases\case_detail.html:175
+msgid "Project Code: "
+msgstr "کد پروژه: "
+
+#: .\templates\cases\case_detail.html:193
+msgid "Project Capacity:"
+msgstr "ظرفیت پروژه:"
+
+#: .\templates\cases\case_detail.html:200
+msgid "Metric Price:"
+msgstr "قیمت هر متر:"
+
+#: .\templates\cases\case_detail.html:207
+msgid "Minimum Salable Meter:"
+msgstr "حداقل متراژ قابل خرید:"
+
+#: .\templates\cases\case_detail.html:214
+msgid "Project End Date:"
+msgstr "تاریخ اتمام پروژه:"
+
+#: .\templates\cases\case_detail.html:221
+msgid "Project Status:"
+msgstr "وضعیت پروژه:"
+
+#: .\templates\cases\case_detail.html:318
+msgid "Case Description"
+msgstr "توضیحات پروژه"
+
+#: .\templates\cases\case_list.html:10
+msgid "Case List"
+msgstr "فرصت‌های سرمایه‌گذاری"
+
+#: .\templates\cases\case_list.html:69
+msgid "Read More"
+msgstr "بیشتر"
+
+#: .\templates\cases\case_list.html:87 .\templates\cases\case_list.html:89
+msgid "First"
+msgstr "ابتدا"
+
+#: .\templates\cases\case_list.html:93 .\templates\cases\case_list.html:95
+msgid "Previous"
+msgstr "قبلی"
+
+#: .\templates\cases\case_list.html:107 .\templates\cases\case_list.html:109
+msgid "Next"
+msgstr "بعدی"
+
+#: .\templates\cases\case_list.html:113 .\templates\cases\case_list.html:115
+msgid "Last Page"
+msgstr "انتها"
+
+#: .\templates\cases\case_list.html:135
+msgid "Province: "
+msgstr "استان: "
+
+#: .\templates\cases\case_list.html:143
+msgid "City: "
+msgstr "شهر: "
+
+#: .\templates\cases\case_list.html:151
+msgid "District: "
+msgstr "محله: "
+
+#: .\templates\cases\case_list.html:159
+msgid "Min Metric Price: "
+msgstr "حداقل قیمت هر متر: "
+
+#: .\templates\cases\case_list.html:170
+msgid "Max Metric Price: "
+msgstr "حداکثر قیمت هر متر: "
+
+#: .\templates\cases\case_list.html:182
+msgid "Buy Assurance: "
+msgstr "ضمانت خرید: "
+
+#: .\templates\cases\case_list.html:190
+msgid "Guaranteed Gain: "
+msgstr "سود تضمینی: "
+
+#: .\templates\cases\case_list.html:197
+msgid "Do Filter"
+msgstr "اعمال فیلتر"
+

@@ -84,7 +84,7 @@
                                   {% if trade.trade_type == 'sale' %}
                                     <a href="{{ trade.sale_file.get_absolute_url }}" style="color: #00a65c" class="text-gray-700 fs-16">{{ trade.sale_code }}</a>
                                   {% else %}
-                                    <span class="text-gray-700 fs-16">{{ trade.rent_code }}</span>
+                                    <a href="{{ trade.rent_file.get_absolute_url }}" style="color: #00a65c" class="text-gray-700 fs-16">{{ trade.rent_code }}</a>
                                   {% endif %}
                                 </div>
                               </div>
