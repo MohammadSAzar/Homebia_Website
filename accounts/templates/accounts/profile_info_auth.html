@@ -23,53 +23,125 @@
 
                     <div class="card-inner card-inner-lg">
 
-                        <form action="" method="post" enctype="multipart/form-data">
-                            {% csrf_token %}
-                            {{ form.as_p }}
-                            <button type="submit">{% trans 'Send The Information' %}</button>
-                        </form>
-                        <!-- Title -->
-                        <div class="nk-block-head nk-block-head-lg">
-                            <div class="nk-block-between">
-                                <div class="nk-block-head-content">
-                                    <h4 class="nk-block-title">{% trans 'Personal Information' %}</h4>
-                                    <div class="nk-block-des">
-                                        <p></p>
-                                    </div>
+
+
+                        <div class="col-12 col-xl-12 col-xxl-12">
+
+                            <div class="card rounded-12 shadow-dark-80 border border-gray-50 mb-3 mb-xl-5">
+                                <div class="d-flex align-items-center px-3 px-md-4 py-3 border-bottom border-gray-200">
+                                    <h5 class="card-header-title my-2 ps-md-3 font-weight-semibold">{% trans 'Authentication Form' %}</h5>
                                 </div>
-                                <div class="nk-block-head-content align-self-start d-lg-none">
-                                    <a href="#" class="toggle btn btn-icon btn-trigger mt-n1" data-target="userAside"><em class="icon ni ni-menu-alt-r"></em></a>
+                                <div class="card-body px-0 p-md-4">
+
+                                    <form method="post" class="px-3 form-style-two">
+                                        {% csrf_token %}
+                                        <div class="row">
+                                            <!-- First Name -->
+                                            <div class="col-sm-6 mb-md-4 pb-3">
+                                                <label for="{{ form.f_name.id_for_label }}" class="form-label form-label-lg">{% trans 'First Name' %}</label>
+                                                {% render_field form.f_name type="text" id="f_name" class="form-control form-control-xl" %}
+                                            </div>
+
+                                            <!-- Last Name -->
+                                            <div class="col-sm-6 mb-md-4 pb-3">
+                                                <label for="{{ form.l_name.id_for_label }}" class="form-label form-label-lg">{% trans 'Last Name' %}</label>
+                                                {% render_field form.l_name type="text" id="l_name" class="form-control form-control-xl" %}
+                                            </div>
+
+                                            <!-- Sex -->
+                                            <div class="col-sm-6 mb-md-4 pb-3">
+                                                <label for="{{ form.sex.id_for_label }}" class="form-label form-label-lg">{% trans 'Sex' %}</label>
+                                                {% render_field form.sex type="text" id="sex" class="form-control form-control-xl" %}
+                                            </div>
+
+                                            <!-- National Code -->
+                                            <div class="col-sm-6 mb-md-4 pb-3">
+                                                <label for="{{ form.national_code.id_for_label }}" class="form-label form-label-lg">{% trans 'National Code' %}</label>
+                                                {% render_field form.national_code type="number" id="national_code" class="form-control form-control-xl" %}
+                                            </div>
+
+                                            <!-- Country -->
+                                            <div class="col-sm-4 mb-md-4 pb-3">
+                                                <label for="{{ form.country.id_for_label }}" class="form-label form-label-lg">{% trans 'Country' %}</label>
+                                                {% render_field form.country type="text" id="country" class="form-control form-control-xl" %}
+                                            </div>
+
+                                            <!-- Province -->
+                                            <div class="col-sm-4 mb-md-4 pb-3">
+                                                <label for="{{ form.province.id_for_label }}" class="form-label form-label-lg">{% trans 'Province' %}</label>
+                                                {% render_field form.province type="text" id="province" class="form-control form-control-xl" %}
+                                            </div>
+
+                                            <!-- City -->
+                                            <div class="col-sm-4 mb-md-4 pb-3">
+                                                <label for="{{ form.city.id_for_label }}" class="form-label form-label-lg">{% trans 'City' %}</label>
+                                                {% render_field form.city type="text" id="city" class="form-control form-control-xl" %}
+                                            </div>
+
+                                            <!-- Postal Code -->
+                                            <div class="col-sm-6 mb-md-4 pb-3">
+                                                <label for="{{ form.postal_code.id_for_label }}" class="form-label form-label-lg">{% trans 'Postal Code' %}</label>
+                                                {% render_field form.postal_code type="number" id="postal_code" class="form-control form-control-xl" %}
+                                            </div>
+
+                                            <!-- Email -->
+                                            <div class="col-sm-6 mb-md-4 pb-3">
+                                                <label for="{{ form.email.id_for_label }}" class="form-label form-label-lg">{% trans 'Email' %}</label>
+                                                {% render_field form.email type="email" id="email" class="form-control form-control-xl" %}
+                                            </div>
+
+                                            <!-- National Card -->
+                                            <div class="col-sm-6 mb-md-4 pb-3">
+                                                <label for="{{ form.national_card.id_for_label }}" class="form-label form-label-lg">{% trans 'National Card' %}</label>
+                                                {% render_field form.national_card type="file" id="national_card" class="form-control form-control-xl" %}
+                                            </div>
+
+                                            <!-- Authentication Picture -->
+                                            <div class="col-sm-6 mb-md-4 pb-3">
+                                                <label for="{{ form.auth_picture.id_for_label }}" class="form-label form-label-lg">{% trans 'Authentication Picture' %}</label>
+                                                {% render_field form.auth_picture type="file" id="auth_picture" class="form-control form-control-xl" %}
+                                            </div>
+
+                                            <!-- Address -->
+                                            <div class="col-sm-12 mb-md-4 pb-3">
+                                                <label for="{{ form.address.id_for_label }}" class="form-label form-label-lg">{% trans 'Address' %}</label>
+                                                {% render_field form.address type="text" id="address" class="form-control form-control-xl" %}
+                                            </div>
+                                        </div>
+
+                                        <div class="text-end py-md-3">
+                                            <button type="submit" class="btn btn-lg btn-primary px-md-4 mt-lg-3">
+                                                <span class="px-md-3">{% trans 'Submit' %}</span>
+                                            </button>
+                                        </div>
+
+                                        {% if form.errors %}
+                                            <div class="error-list">
+                                                <ul>
+                                                    {% for field in form %}
+                                                        {% if field.errors %}
+                                                            <li><strong>{{ field.label }}:</strong> {{ field.errors|striptags }}</li>
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                    {% if form.non_field_errors %}
+                                                        <li><strong>General errors:</strong> {{ form.non_field_errors|striptags }}</li>
+                                                    {% endif %}
+                                                </ul>
+                                            </div>
+                                        {% endif %}
+                                    </form>
+
                                 </div>
                             </div>
-                        </div>
-                        <!-- end: Title -->
-
-                        <!-- Items -->
-                        <div class="nk-block">
-                            <div class="nk-data data-list">
-
-                                <div class="data-item" data-bs-toggle="modal" data-bs-target="#profile-edit">
-                                    <div class="data-col">
-                                        <span class="data-label" style="font-size: large">{% trans 'Phone Number' %}</span>
-                                        <span class="data-value" style="font-size: large">{{ user.phone_number }}</span>
-                                    </div>
-                                </div>
-
-                                <div class="data-item" data-bs-toggle="modal" data-bs-target="#profile-edit">
-                                    <div class="data-col">
-                                        <span class="data-label" style="font-size: large">{% trans 'Account Status' %}</span>
-                                        <span class="data-value" style="font-size: large; color: #db4646">{% trans 'Not Completed' %}</span>
-                                    </div>
-                                </div>
-
-                                <div class="data-item" data-bs-toggle="modal" data-bs-target="#profile-edit" style="direction: ltr; margin-top: 1.5em">
-                                    <a href="{% url 'profile_info_auth' %}" class="btn btn-round btn-xl btn-primary" style="background-color: #00a65c; border: #00A65C; padding-left: 2em; padding-right: 2em;">{% trans 'Complete The Information' %}</a>
-                                </div>
-
-                            </div>
 
                         </div>
-                        <!-- end: Items -->
+
+{#                        <form action="" method="post" enctype="multipart/form-data">#}
+{#                            {% csrf_token %}#}
+{#                            {{ form.as_p }}#}
+{#                            <button type="submit">{% trans 'Send The Information' %}</button>#}
+{#                        </form>#}
+
                     </div>
 
                 </div>

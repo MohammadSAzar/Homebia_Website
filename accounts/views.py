@@ -73,15 +73,20 @@ def profile_info_auth(request):
 		form = AuthenticationForm(request.POST)
 		user = request.user
 		if form.is_valid():
+			profile = form.save(commit=False)
+			profile.user = user
+			profile.save()
 			form.save()
 			user.is_verified = 'i'
 			user.save()
 			return HttpResponseRedirect(reverse('profile_info_now'))
 	else:
+		print('cock')
 		form = AuthenticationForm()
 	context = {
 		'form': form,
 	}
+	print('piss')
 	return render(request, 'accounts/profile_info_auth.html', context)
 
 
