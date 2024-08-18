@@ -103,8 +103,10 @@
                                                     <a href="#" class="mainmenu__link"><span class="mm-text" style="font-weight: bold;">{% trans 'Links' %}</span></a>
                                                     <ul class="sub-menu">
                                                         <li class="menu-item-has-children" style="margin-bottom: 1em;"><a href="{% url 'blog_list' %}"><span class="mm-text" style="font-weight: bold;">{% trans 'Homebia Blog' %}</span></a></li>
-                                                        <li class="menu-item-has-children" style="margin-bottom: 1em;"><a href="{% url 'home' %}"><span class="mm-text" style="font-weight: bold;">{% trans 'Contact Us' %}</span></a></li>
-                                                        <li class="menu-item-has-children" style="margin-bottom: 1em;"><a href="{% url 'home' %}"><span class="mm-text" style="font-weight: bold;">{% trans 'About Us' %}</span></a></li>
+                                                        <li class="menu-item-has-children" style="margin-bottom: 1em;"><a href="{% url 'contact' %}"><span class="mm-text" style="font-weight: bold;">{% trans 'Contact Us' %}</span></a></li>
+                                                        <li class="menu-item-has-children" style="margin-bottom: 1em;"><a href="{% url 'about' %}"><span class="mm-text" style="font-weight: bold;">{% trans 'About Us' %}</span></a></li>
+                                                        <li class="menu-item-has-children" style="margin-bottom: 1em;"><a href="{% url 'rules' %}"><span class="mm-text" style="font-weight: bold;">{% trans 'Rules' %}</span></a></li>
+                                                        <li class="menu-item-has-children" style="margin-bottom: 1em;"><a href="{% url 'faq' %}"><span class="mm-text" style="font-weight: bold;">{% trans 'FAQ' %}</span></a></li>
                                                     </ul>
                                                 </li>
 
@@ -255,11 +257,11 @@
                                 <h3 class="widget-title mb--35 mb-sm--20" style="font-size: 1.1em;">{% trans 'Homebia' %}</h3>
                                 <div class="footer-widget">
                                     <ul class="footer-menu">
-                                        <li><a href="{% url 'home' %}" style="font-size: 0.9em;">{% trans 'Contact Us' %}</a></li>
-                                        <li><a href="{% url 'home' %}" style="font-size: 0.9em;">{% trans 'About Us' %}</a></li>
-                                        <li><a href="{% url 'home' %}" style="font-size: 0.9em;">{% trans 'Homebia Blog' %}</a></li>
-                                        <li><a href="{% url 'home' %}" style="font-size: 0.9em;">{% trans 'Homebia Rules' %}</a></li>
-                                        <li><a href="{% url 'home' %}" style="font-size: 0.9em;">{% trans 'FAQ' %}</a></li>
+                                        <li><a href="{% url 'contact' %}" style="font-size: 0.9em;">{% trans 'Contact Us' %}</a></li>
+                                        <li><a href="{% url 'about' %}" style="font-size: 0.9em;">{% trans 'About Us' %}</a></li>
+                                        <li><a href="{% url 'blog_list' %}" style="font-size: 0.9em;">{% trans 'Homebia Blog' %}</a></li>
+                                        <li><a href="{% url 'rules' %}" style="font-size: 0.9em;">{% trans 'Rules' %}</a></li>
+                                        <li><a href="{% url 'faq' %}" style="font-size: 0.9em;">{% trans 'FAQ' %}</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -417,10 +419,16 @@
                                     </a>
                                 </li>
                                 <li class="menu-item-has-children">
-                                    <a href="{% url 'home' %}">{% trans 'Contact Us' %}</a>
+                                    <a href="{% url 'contact' %}">{% trans 'Contact Us' %}</a>
                                 </li>
                                 <li class="menu-item-has-children">
-                                    <a href="{% url 'home' %}">{% trans 'About Us' %}</a>
+                                    <a href="{% url 'about' %}">{% trans 'About Us' %}</a>
+                                </li>
+                                <li class="menu-item-has-children">
+                                    <a href="{% url 'rules' %}">{% trans 'Rules' %}</a>
+                                </li>
+                                <li class="menu-item-has-children">
+                                    <a href="{% url 'faq' %}">{% trans 'FAQ' %}</a>
                                 </li>
                             </ul>
                         </li>

@@ -27,3 +27,10 @@ def about_view(request):
     return render(request, 'pages/about.html')
 
 
+def rules_view(request):
+    return render(request, 'pages/rules.html')
+
+
+def faq_view(request):
+    return render(request, 'pages/faq.html')
+
