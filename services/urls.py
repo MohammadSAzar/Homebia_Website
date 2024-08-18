@@ -18,6 +18,8 @@ urlpatterns = [
     path('visit/registration', views.visit_registration_view, name='visit_registration'),
     path('visit/verification', views.visit_verification_view, name='visit_verification'),
     path('visit_detail/<int:pk>/', views.visit_detail, name='visit_detail'),
+    # Agent URLs
+    path('agent_submission/', views.agent_submission_view, name='agent_submission'),
 ]
 
 

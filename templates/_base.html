@@ -53,7 +53,7 @@
                                 <div class="header__main-inner" style="padding-top: 0;!important; padding-bottom: 0;!important;">
 
                                     <!-- Logo -->
-                                    <div class="header__main-left" style="margin-right: 0.5em;">
+                                    <div class="header__main" style="margin-right: 0.5em; margin-left: 20px;!important;">
                                         <div class="logo">
                                             <a href="{% url 'home' %}" class="logo--normal">
                                                 <img src="{% static 'main/img/logos/ho-logo-1.png' %}" alt="Logo">
@@ -68,18 +68,13 @@
                                             <ul class="mainmenu">
 
                                                 <li class="mainmenu__item menu-item-has-children" style="padding-left: 40px;">
-                                                    <a href="{% url 'home' %}" class="mainmenu__link">
-                                                        <span class="mm-text" style="font-weight: bold;">{% trans 'Homepage' %}</span>
-                                                    </a>
-                                                </li>
-
-                                                <li class="mainmenu__item menu-item-has-children">
-                                                    <a href="{% url 'services' %}" class="mainmenu__link"><span class="mm-text" style="font-weight: bold;">{% trans 'Services' %}</span></a>
+                                                    <a href="#" class="mainmenu__link"><span class="mm-text" style=" color: #00A65C; font-weight: bold;">{% trans 'Services' %}</span></a>
                                                     <ul class="sub-menu">
                                                         <li class="menu-item-has-children" style="margin-bottom: 1em;"><a href="{% url 'counseling' %}"><span class="mm-text" style="font-weight: bold;">{% trans 'Counseling' %}</span></a></li>
                                                         <li class="menu-item-has-children" style="margin-bottom: 1em;"><a href="{% url 'session' %}"><span class="mm-text" style="font-weight: bold;">{% trans 'Participation in Session' %}</span></a></li>
                                                         <li class="menu-item-has-children" style="margin-bottom: 1em;"><a href="{% url 'visit' %}"><span class="mm-text" style="font-weight: bold;">{% trans 'Participation in Visit' %}</span></a></li>
-                                                        <li class="menu-item-has-children"><a href="{% url 'case_list' %}"><span class="mm-text" style="font-weight: bold;">{% trans 'Investment Opportunities' %}</span></a></li>
+                                                        <li class="menu-item-has-children" style="margin-bottom: 1em;"><a href="{% url 'case_list' %}"><span class="mm-text" style="font-weight: bold;">{% trans 'Investment Opportunities' %}</span></a></li>
+                                                        <li class="menu-item-has-children"><a href="#"><span class="mm-text" style="font-weight: bold;  color: #00A65C;">{% trans 'Course' %}</span></a></li>
                                                     </ul>
                                                 </li>
 
@@ -105,12 +100,11 @@
                                                 </li>
 
                                                 <li class="mainmenu__item menu-item-has-children">
-                                                    <a href="http://127.0.0.1:8000/admin" class="mainmenu__link"><span class="mm-text" style="font-weight: bold;">{% trans 'Admin Panel' %}</span></a>
+                                                    <a href="#" class="mainmenu__link"><span class="mm-text" style="font-weight: bold;">{% trans 'Links' %}</span></a>
                                                     <ul class="sub-menu">
                                                         <li class="menu-item-has-children" style="margin-bottom: 1em;"><a href="{% url 'blog_list' %}"><span class="mm-text" style="font-weight: bold;">{% trans 'Homebia Blog' %}</span></a></li>
                                                         <li class="menu-item-has-children" style="margin-bottom: 1em;"><a href="{% url 'home' %}"><span class="mm-text" style="font-weight: bold;">{% trans 'Contact Us' %}</span></a></li>
                                                         <li class="menu-item-has-children" style="margin-bottom: 1em;"><a href="{% url 'home' %}"><span class="mm-text" style="font-weight: bold;">{% trans 'About Us' %}</span></a></li>
-                                                        <li class="menu-item-has-children"><a href="{% url 'home' %}"><span class="mm-text" style="font-weight: bold;">{% trans 'Homebia Socials' %}</span></a></li>
                                                     </ul>
                                                 </li>
 
@@ -126,6 +120,12 @@
                                                     {% endif %}
                                                 </li>
 
+                                                <li class="mainmenu__item menu-item-has-children">
+                                                    <a href="{% url 'agent_submission' %}" class="mainmenu__link">
+                                                        <span class="mm-text" style="font-weight: bold; color: #00A65C">{% trans 'Agent Submission' %}</span>
+                                                    </a>
+                                                </li>
+
                                             </ul>
                                         </nav>
                                     </div>
@@ -134,8 +134,8 @@
                                     <!-- File Submit -->
                                     <div class="header__main-right">
                                         <div class="header-toolbar-wrap">
-
                                             <ul>
+
                                                 <li style="margin-bottom: 3px;">
                                                     <div class="header-toolbar">
                                                         {% if user.is_authenticated %}
@@ -203,6 +203,7 @@
                                                         {% endif %}
                                                     </div>
                                                 </li>
+
                                             </ul>
                                         </div>
                                     </div>
@@ -270,8 +271,9 @@
                                 <h3 class="widget-title mb--35 mb-sm--20" style="font-size: 1.1em;">{% trans 'Products' %}</h3>
                                 <div class="footer-widget">
                                     <ul class="footer-menu">
-                                        <li><a href="{% url 'home' %}" style="font-size: 0.9em;">{% trans 'Course' %}</a></li>
-                                        <li><a href="{% url 'services' %}" style="font-size: 0.9em;">{% trans 'Services' %}</a></li>
+                                        <li><a href="{% url 'counseling' %}" style="font-size: 0.9em;">{% trans 'Counseling' %}</a></li>
+                                        <li><a href="{% url 'session' %}" style="font-size: 0.9em;">{% trans 'Participation in Session' %}</a></li>
+                                        <li><a href="{% url 'visit' %}" style="font-size: 0.9em;">{% trans 'Participation in Visit' %}</a></li>
                                         <li><a href="{% url 'sale_file_list' %}" style="font-size: 0.9em;">{% trans 'Sale Files' %}</a></li>
                                         <li><a href="{% url 'rent_file_list' %}" style="font-size: 0.9em;">{% trans 'Rent Files' %}</a></li>
                                         <li><a href="{% url 'home' %}" style="font-size: 0.9em;">{% trans 'Investment Opportunities' %}</a></li>
@@ -301,6 +303,7 @@
                                 <h3 class="widget-title mb--35 mb-sm--20" style="font-size: 1.1em;">{% trans 'Important Links' %}</h3>
                                 <div class="footer-widget">
                                     <ul class="footer-menu">
+                                        <li><a href="{% url 'home' %}" style="font-size: 0.9em; border-bottom: 1px solid #00a65c; color: #00a65c; font-weight: bolder">{% trans 'Course' %}</a></li>
                                         <li><a href="{% url 'home' %}" style="font-size: 0.9em; border-bottom: 1px solid #00a65c; color: #00a65c; font-weight: bolder">{% trans 'Register as Consultant' %}</a></li>
                                         {% if user.is_authenticated %}
                                             <li><a href="{% url 'sale_file_create' %}" style="font-size: 0.9em; border-bottom: 1px solid #00a65c; color: #00a65c; font-weight: bolder">{% trans 'Register Sale File' %}</a></li>
@@ -320,7 +323,6 @@
                     </div>
                 </div>
             </div>
-
 
             <!-- Footer >>> DESIGNER -->
             <div class="footer-bottom">
@@ -345,17 +347,11 @@
                 <nav class="offcanvas-navigation">
                     <ul class="offcanvas-menu">
 
-                        <li class="menu-item-has-children active">
-                            <a href="{% url 'home' %}">{% trans 'Homepage' %}</a>
-                        </li>
-
                         <li class="menu-item-has-children">
-                            <a href="{% url 'services' %}">{% trans 'Services' %}</a>
+                            <a href="#" style="color: #00A65C;">{% trans 'Services' %}</a>
                             <ul class="sub-menu">
                                 <li class="menu-item-has-children">
-                                    <a href="{% url 'counseling' %}">
-                                        <span class="mm-text">{% trans 'Counseling' %}</span>
-                                    </a>
+                                    <a href="{% url 'counseling' %}">{% trans 'Counseling' %}</a>
                                 </li>
                                 <li class="menu-item-has-children">
                                     <a href="{% url 'session' %}">{% trans 'Participation in Session' %}</a>
@@ -364,7 +360,10 @@
                                     <a href="{% url 'visit' %}">{% trans 'Participation in Visit' %}</a>
                                 </li>
                                 <li class="menu-item-has-children">
-                                    <a href="{% url 'case_list' %}">{% trans 'Investment Opportunitiess' %}</a>
+                                    <a href="{% url 'case_list' %}">{% trans 'Investment Opportunities' %}</a>
+                                </li>
+                                <li class="menu-item-has-children">
+                                    <a href="#" style="color: #00A65C">{% trans 'Course' %}</a>
                                 </li>
                             </ul>
                         </li>
@@ -410,10 +409,10 @@
                         </li>
 
                         <li class="menu-item-has-children">
-                            <a href="http://127.0.0.1:8000/admin">{% trans 'Admin Panel' %}</a>
+                            <a href="#">{% trans 'Links' %}</a>
                             <ul class="sub-menu">
                                 <li class="menu-item-has-children">
-                                    <a href="{% url 'home' %}">
+                                    <a href="{% url 'blog_list' %}">
                                         <span class="mm-text">{% trans 'Homebia Blog' %}</span>
                                     </a>
                                 </li>
@@ -422,9 +421,6 @@
                                 </li>
                                 <li class="menu-item-has-children">
                                     <a href="{% url 'home' %}">{% trans 'About Us' %}</a>
-                                </li>
-                                <li class="menu-item-has-children">
-                                    <a href="{% url 'home' %}">{% trans 'Homebia Socials' %}</a>
                                 </li>
                             </ul>
                         </li>
@@ -435,6 +431,10 @@
                             {% else %}
                                 <a href="{% url 'registration' %}">{% trans 'Login / Signup' %}</a>
                             {% endif %}
+                        </li>
+
+                        <li class="menu-item-has-children active">
+                            <a href="{% url 'agent_submission' %}" style="color: #00A65C">{% trans 'Agent Submission' %}</a>
                         </li>
 
                     </ul>

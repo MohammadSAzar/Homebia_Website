@@ -12,7 +12,7 @@ from .models import Counseling, Session, Visit
 from .forms import CounselingForm, SessionForm, VisitForm
 
 
-# Counseling Views
+# -------------------------------------- Counseling Views -------------------------------------- #
 def counseling_view(request):
 	if request.method == 'POST':
 		form = CounselingForm(request.POST)
@@ -25,6 +25,7 @@ def counseling_view(request):
 	else:
 		form = CounselingForm()
 	return render(request, 'services/counseling.html', {'form': form})
+
 
 def counseling_registration_view(request):
 	form = RegistrationForm
@@ -58,6 +59,7 @@ def counseling_registration_view(request):
 	}
 	return render(request, 'services/counseling_registration.html', context)
 
+
 def counseling_verification_view(request):
 	try:
 		counseling = Counseling.objects.get(id=Counseling.objects.last().id)
@@ -88,7 +90,7 @@ def counseling_detail(request, pk):
 	return render(request, 'services/counseling_detail.html', context)
 
 
-# Session Views
+# -------------------------------------- Session Views  -------------------------------------- #
 def session_view(request):
 	if request.method == 'POST':
 		form = SessionForm(request.POST)
@@ -101,6 +103,7 @@ def session_view(request):
 	else:
 		form = SessionForm()
 	return render(request, 'services/session.html', {'form': form})
+
 
 def session_registration_view(request):
 	form = RegistrationForm
@@ -134,6 +137,7 @@ def session_registration_view(request):
 	}
 	return render(request, 'services/session_registration.html', context)
 
+
 def session_verification_view(request):
 	try:
 		session = Session.objects.get(id=Session.objects.last().id)
@@ -155,6 +159,7 @@ def session_verification_view(request):
 	except CustomUserModel.DoesNotExist:
 		return HttpResponseRedirect(reverse('session_registration'))
 
+
 def session_detail(request, pk):
 	session = get_object_or_404(Session, pk=pk)
 	context = {
@@ -163,7 +168,7 @@ def session_detail(request, pk):
 	return render(request, 'services/session_detail.html', context)
 
 
-# Visit Views
+# -------------------------------------- Visit Views -------------------------------------- #
 def visit_view(request):
 	if request.method == 'POST':
 		form = VisitForm(request.POST)
@@ -176,6 +181,7 @@ def visit_view(request):
 	else:
 		form = VisitForm()
 	return render(request, 'services/visit.html', {'form': form})
+
 
 def visit_registration_view(request):
 	form = RegistrationForm
@@ -209,6 +215,7 @@ def visit_registration_view(request):
 	}
 	return render(request, 'services/visit_registration.html', context)
 
+
 def visit_verification_view(request):
 	try:
 		visit = Visit.objects.get(id=Visit.objects.last().id)
@@ -230,6 +237,7 @@ def visit_verification_view(request):
 	except CustomUserModel.DoesNotExist:
 		return HttpResponseRedirect(reverse('visit_registration'))
 
+
 def visit_detail(request, pk):
 	visit = get_object_or_404(Visit, pk=pk)
 	context = {
@@ -237,4 +245,8 @@ def visit_detail(request, pk):
 	}
 	return render(request, 'services/visit_detail.html', context)
 
+
+# -------------------------------------- Agent -------------------------------------- #
+def agent_submission_view(request, pk):
+	return render(request, 'services/agent_submission.html')
 

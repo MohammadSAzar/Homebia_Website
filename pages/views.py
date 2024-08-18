@@ -14,3 +14,16 @@ def home_view(request):
 def services_view(request):
     return render(request, 'pages/services.html')
 
+
+def four_o_four_view(request):
+    return render(request, 'pages/404.html')
+
+
+def contact_view(request):
+    return render(request, 'pages/contact.html')
+
+
+def about_view(request):
+    return render(request, 'pages/about.html')
+
+
