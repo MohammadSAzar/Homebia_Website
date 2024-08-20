@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-22 16:14+0330\n"
+"POT-Creation-Date: 2024-08-20 19:15+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,23 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: .\templates\pages\404.html:8
+msgid "404"
+msgstr "صفحه وجود ندارد"
+
+#: .\templates\pages\about.html:8
+msgid "About"
+msgstr "درباره ما"
+
+#: .\templates\pages\contact.html:8
+msgid "Contact"
+msgstr "تماس با ما"
+
+#: .\templates\pages\faq.html:8
+msgid "FAQ"
+msgstr "سوالات متداول"
+
 #: .\templates\pages\home.html:8
 msgid "Homepage"
 msgstr "خانه"
@@ -33,7 +50,7 @@ msgstr "نشست"
 msgid "Visit"
 msgstr "بازدید"
 
-#: .\templates\pages\home.html:67 .\templates\pages\services.html:19
+#: .\templates\pages\home.html:67
 msgid "Homebia Services"
 msgstr "خدمات هومبیا"
 
@@ -41,8 +58,8 @@ msgstr "خدمات هومبیا"
 msgid "Latest Articles on Homebia Blog"
 msgstr "آخرین مقالات در بلاگ هومبیا"
 
-#: .\templates\pages\services.html:8
-msgid "Services"
-msgstr "خدمات"
+#: .\templates\pages\rules.html:8
+msgid "Rules"
+msgstr "قوانین"
 
 
