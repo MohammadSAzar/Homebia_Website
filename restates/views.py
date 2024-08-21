@@ -218,35 +218,6 @@ class RentFileListView(ListView):
 
 
 # --------------------------------- Trades ---------------------------------
-# def trade_session_view(request):
-#     if request.method == 'POST':
-#         form = TradeSessionForm(request.POST)
-#         if form.is_valid():
-#             trade_session = form.save(commit=False)
-#             if not request.POST.get('sale_code'):
-#                 print('GGGG')
-#                 sale_code = request.POST.get('sale_code')
-#                 print('SALECODE: ', sale_code)
-#                 sale_file = SaleFile.objects.get(code=sale_code)
-#                 trade_session.sale_file = sale_file
-#             if not request.POST.get('rent_code'):
-#                 print('FFFF')
-#                 rent_code = request.POST.get('rent_code')
-#                 rent_file = RentFile.objects.get(code=rent_code)
-#                 trade_session.rent_file = rent_file
-#             trade_session.save()
-#             print('ASS')
-#             context = {
-#                 'form': form,
-#             }
-#             return HttpResponseRedirect(reverse('trade_session_registration'))
-#         else:
-#             print('Form errors:', form.errors)
-#     else:
-#         form = TradeSessionForm()
-#     return render(request, 'restates/trade_session.html', {'form': form})
-
-
 def trade_session_view(request):
     if request.method == 'POST':
         form = TradeSessionForm(request.POST)

@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth import login
+from django.contrib import messages
 from django.urls import reverse
 from django.http import HttpResponseRedirect
 
@@ -80,6 +81,7 @@ def profile_info_auth(request):
 			form.save()
 			user.is_verified = 'i'
 			user.save()
+			messages.success(request, "اطلاعات شما دریافت شد، نتیجه فرایند احراز هویت بزودی تعیین می‌شود.")
 			return HttpResponseRedirect(reverse('profile_info_now'))
 	else:
 		print('cock')
@@ -99,6 +101,7 @@ def profile_info_edit(request):
 		if form.is_valid():
 			form.save()
 			profile.save()
+			messages.success(request, "اطلاعات شما با موفقیت اصلاح شد.")
 			return HttpResponseRedirect(reverse('profile_info_now'))
 	else:
 		form = InfoEditForm()
