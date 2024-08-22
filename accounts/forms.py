@@ -48,3 +48,5 @@ class InfoEditForm(forms.ModelForm):
 	class Meta:
 		model = models.Profile
 		fields = ['email', 'country', 'province', 'city', 'address', 'postal_code']
+
+

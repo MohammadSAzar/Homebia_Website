@@ -2,7 +2,6 @@ from django.contrib.auth.base_user import BaseUserManager
 
 
 class CustomUserManager(BaseUserManager):
-
 	def create_user(self, phone_number, password=None, **other_fields):
 		if not phone_number:
 			raise ValueError('Mobile is required!')

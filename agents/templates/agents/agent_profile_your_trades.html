@@ -1,0 +1,151 @@
+{% extends '_base_profile.html' %}
+
+{% load static %}
+{% load i18n %}
+{% load jalali_tags %}
+{% load number_converter %}
+{% load widget_tweaks %}
+
+{% block title %}{% trans 'My Trades' %}{% endblock %}
+
+{% block content %}
+
+    <div class="row">
+        {% for trade in trades %}
+            <div class="col-12 col-xxl-6 mb-4">
+                <div class="card rounded-12 shadow-dark-80">
+
+                    <div class="card-body px-0 pb-0">
+
+                      <!-- Trade code -->
+                      <div class="d-flex align-items-center border-bottom border-gray-200 pb-3 px-3 px-md-4">
+                          <span style="font-weight: bold;" class="ps-ms-2 font-weight-semibold text-gray-700 fs-16">{% trans 'Trade Code: ' %}{{ trade.trade_code }}</span>
+                      </div>
+
+                      <!-- Trade data -->
+                      <div class="list-group">
+
+                        <!-- Type -->
+                        <div class="px-3 px-md-4 py-3 border-bottom border-gray-200">
+                          <div class="row px-md-2">
+                            <div class="col">
+                              <span class="ps-ms-2 font-weight-semibold text-gray-700 fs-16">{% trans 'Trade Type: ' %}</span>
+                            </div>
+                            <div class="col-auto">
+                              <span class="text-gray-700 fs-16">{{ trade.get_trade_type_display }}</span>
+                            </div>
+                          </div>
+                        </div>
+
+                        <!-- Date -->
+                        <div class="px-3 px-md-4 py-3 border-bottom border-gray-200">
+                          <div class="row px-md-2">
+                            <div class="col">
+                              <span class="ps-ms-2 font-weight-semibold text-gray-700 fs-16">{% trans 'Date: ' %}</span>
+                            </div>
+                            <div class="col-auto">
+                              <span class="text-gray-700 fs-16">{{ trade.get_date_display }}</span>
+                            </div>
+                          </div>
+                        </div>
+
+                        <!-- City -->
+                        <div class="px-3 px-md-4 py-3 border-bottom border-gray-200">
+                          <div class="row px-md-2">
+                            <div class="col">
+                              <span class="ps-ms-2 font-weight-semibold text-gray-700 fs-16">{% trans 'City: ' %}</span>
+                            </div>
+                            <div class="col-auto">
+                              <span class="text-gray-700 fs-16">{{ trade.get_city_display }}</span>
+                            </div>
+                          </div>
+                        </div>
+
+                        <!-- Name -->
+                        <div class="px-3 px-md-4 py-3 border-bottom border-gray-200">
+                          <div class="row px-md-2">
+                            <div class="col">
+                              <span class="ps-ms-2 font-weight-semibold text-gray-700 fs-16">{% trans 'Name: ' %}</span>
+                            </div>
+                            <div class="col-auto">
+                              <span class="text-gray-700 fs-16">{{ trade.name_and_family }}</span>
+                            </div>
+                          </div>
+                        </div>
+
+                        <!-- Hombaba code -->
+                        {% if trade.ours == 'is' %}
+                            <div class="px-3 px-md-4 py-3 border-bottom border-gray-200">
+                              <div class="row px-md-2">
+                                <div class="col">
+                                  <span class="ps-ms-2 font-weight-semibold text-gray-700 fs-16">{% trans 'File Code: ' %}</span>
+                                </div>
+                                <div class="col-auto">
+                                  {% if trade.trade_type == 'sale' %}
+                                    <a href="{{ trade.sale_file.get_absolute_url }}" style="color: #00a65c" class="text-gray-700 fs-16">{{ trade.sale_code }}</a>
+                                  {% else %}
+                                    <a href="{{ trade.rent_file.get_absolute_url }}" style="color: #00a65c" class="text-gray-700 fs-16">{{ trade.rent_code }}</a>
+                                  {% endif %}
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        {% endif %}
+
+                        <!-- Followed -->
+                        <div class="px-3 px-md-4 py-3 border-bottom border-gray-200">
+                          <div class="row px-md-2">
+                            <div class="col">
+                              <span class="ps-ms-2 font-weight-semibold text-gray-700 fs-16">{% trans 'Is Followed?' %}</span>
+                            </div>
+                            <div class="col-auto">
+                              <span class="text-gray-700 fs-16">{{ trade.get_is_followed_display }}</span>
+                            </div>
+                          </div>
+                        </div>
+
+                        <!-- Success -->
+                        <div class="px-3 px-md-4 py-3 border-bottom border-gray-200">
+                          <div class="row px-md-2">
+                            <div class="col">
+                              <span class="ps-ms-2 font-weight-semibold text-gray-700 fs-16">{% trans 'Is Success?' %}</span>
+                            </div>
+                            <div class="col-auto">
+                              <span class="text-gray-700 fs-16">{{ trade.get_is_success_display }}</span>
+                            </div>
+                          </div>
+                        </div>
+
+                        <!-- Paid -->
+                        <div class="px-3 px-md-4 py-3 border-bottom border-gray-200">
+                          <div class="row px-md-2">
+                            <div class="col">
+                              <span class="ps-ms-2 font-weight-semibold text-gray-700 fs-16">{% trans 'Is Paid?' %}</span>
+                            </div>
+                            <div class="col-auto">
+                              <span class="text-gray-700 fs-16">{{ trade.get_is_paid_display }}</span>
+                            </div>
+                          </div>
+                        </div>
+
+                        <!-- Status -->
+                        <div class="px-3 px-md-4 py-3 border-bottom border-gray-200">
+                          <div class="row px-md-2">
+                            <div class="col">
+                              <span class="ps-ms-2 font-weight-semibold text-gray-700 fs-16">{% trans 'Status: ' %}</span>
+                            </div>
+                            <div class="col-auto">
+                              <span class="text-gray-700 fs-16">{{ trade.get_status_display }}</span>
+                            </div>
+                          </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}
+

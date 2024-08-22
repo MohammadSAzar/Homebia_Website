@@ -1,0 +1,134 @@
+{% extends '_base_profile.html' %}
+
+{% load static %}
+{% load i18n %}
+{% load jalali_tags %}
+{% load number_converter %}
+{% load widget_tweaks %}
+
+{% block title %}{% trans 'Authentication' %}{% endblock %}
+
+{% block content %}
+
+    {% if user.is_verified == 'a' %}
+
+        <h3 style="text-align: center; margin-top: 5em">حساب کاربری شما تایید شده است.</h3>
+        <div style="margin-top: 3em; text-align: center;"><span style="text-align: center; margin-top: 3em">برای تغییر، روی گزینه "تغییر اطلاعات" در منو کناری کلیک نمایید.</span></div>
+
+    {% elif user.is_verified == 'n' %}
+
+        <div class="nk-block">
+            <div class="card card-bordered">
+                <div class="card-aside-wrap">
+                    <div class="card-inner card-inner-lg">
+                        <div class="col-12 col-xl-12 col-xxl-12">
+                            <div class="card rounded-12 shadow-dark-80 border border-gray-50 mb-3 mb-xl-5">
+
+                                <div class="d-flex align-items-center px-3 px-md-4 py-3 border-bottom border-gray-200">
+                                    <h5 class="card-header-title my-2 ps-md-3 font-weight-semibold">{% trans 'Authentication Form' %}</h5>
+                                    <span>تنها در صورتی که قصد استفاده از فرصت‌های سرمایه‌گذاری هومبابا را دارید، تایید حساب کاربری شما الزامی خواهد بود.</span>
+                                </div>
+                                <div class="card-body px-0 p-md-4">
+
+                                    <form method="post" class="px-3 form-style-two">
+                                        {% csrf_token %}
+                                        <div class="row">
+                                            <!-- First Name -->
+                                            <div class="col-sm-6 mb-md-4 pb-3">
+                                                <label for="{{ form.f_name.id_for_label }}" class="form-label form-label-lg">{% trans 'First Name' %}</label>
+                                                {% render_field form.f_name type="text" id="f_name" class="form-control form-control-xl" %}
+                                            </div>
+
+                                            <!-- Last Name -->
+                                            <div class="col-sm-6 mb-md-4 pb-3">
+                                                <label for="{{ form.l_name.id_for_label }}" class="form-label form-label-lg">{% trans 'Last Name' %}</label>
+                                                {% render_field form.l_name type="text" id="l_name" class="form-control form-control-xl" %}
+                                            </div>
+
+                                            <!-- Sex -->
+                                            <div class="col-sm-6 mb-md-4 pb-3">
+                                                <label for="{{ form.sex.id_for_label }}" class="form-label form-label-lg">{% trans 'Sex' %}</label>
+                                                {% render_field form.sex type="text" id="sex" class="form-control form-control-xl" %}
+                                            </div>
+
+                                            <!-- National Code -->
+                                            <div class="col-sm-6 mb-md-4 pb-3">
+                                                <label for="{{ form.national_code.id_for_label }}" class="form-label form-label-lg">{% trans 'National Code' %}</label>
+                                                {% render_field form.national_code type="number" id="national_code" class="form-control form-control-xl" %}
+                                            </div>
+
+                                            <!-- Country -->
+                                            <div class="col-sm-4 mb-md-4 pb-3">
+                                                <label for="{{ form.country.id_for_label }}" class="form-label form-label-lg">{% trans 'Country' %}</label>
+                                                {% render_field form.country type="text" id="country" class="form-control form-control-xl" %}
+                                            </div>
+
+                                            <!-- Province -->
+                                            <div class="col-sm-4 mb-md-4 pb-3">
+                                                <label for="{{ form.province.id_for_label }}" class="form-label form-label-lg">{% trans 'Province' %}</label>
+                                                {% render_field form.province type="text" id="province" class="form-control form-control-xl" %}
+                                            </div>
+
+                                            <!-- City -->
+                                            <div class="col-sm-4 mb-md-4 pb-3">
+                                                <label for="{{ form.city.id_for_label }}" class="form-label form-label-lg">{% trans 'City' %}</label>
+                                                {% render_field form.city type="text" id="city" class="form-control form-control-xl" %}
+                                            </div>
+
+                                            <!-- Postal Code -->
+                                            <div class="col-sm-6 mb-md-4 pb-3">
+                                                <label for="{{ form.postal_code.id_for_label }}" class="form-label form-label-lg">{% trans 'Postal Code' %}</label>
+                                                {% render_field form.postal_code type="number" id="postal_code" class="form-control form-control-xl" %}
+                                            </div>
+
+                                            <!-- Email -->
+                                            <div class="col-sm-6 mb-md-4 pb-3">
+                                                <label for="{{ form.email.id_for_label }}" class="form-label form-label-lg">{% trans 'Email' %}</label>
+                                                {% render_field form.email type="email" id="email" class="form-control form-control-xl" %}
+                                            </div>
+
+                                            <!-- National Card -->
+                                            <div class="col-sm-6 mb-md-4 pb-3">
+                                                <label for="{{ form.national_card.id_for_label }}" class="form-label form-label-lg">{% trans 'National Card' %}</label>
+                                                {% render_field form.national_card type="file" id="national_card" class="form-control form-control-xl" %}
+                                            </div>
+
+                                            <!-- Authentication Picture -->
+                                            <div class="col-sm-6 mb-md-4 pb-3">
+                                                <label for="{{ form.auth_picture.id_for_label }}" class="form-label form-label-lg">{% trans 'Authentication Picture' %}</label>
+                                                {% render_field form.auth_picture type="file" id="auth_picture" class="form-control form-control-xl" %}
+                                            </div>
+
+                                            <!-- Address -->
+                                            <div class="col-sm-12 mb-md-4 pb-3">
+                                                <label for="{{ form.address.id_for_label }}" class="form-label form-label-lg">{% trans 'Address' %}</label>
+                                                {% render_field form.address type="text" id="address" class="form-control form-control-xl" %}
+                                            </div>
+                                        </div>
+
+                                        <div class="text-end py-md-3">
+                                            <button type="submit" class="btn btn-lg btn-primary px-md-4 mt-lg-3">
+                                                <span class="px-md-3">{% trans 'Submit' %}</span>
+                                            </button>
+                                        </div>
+                                    </form>
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    {% elif user.is_verified == 'i' %}
+
+        <h3 style="text-align: center; margin-top: 5em">حساب کاربری شما در دست بررسی است.</h3>
+        <div style="margin-top: 3em; text-align: center;"><span style="text-align: center; margin-top: 3em">نتیجه بررسی حساب کاربری شما، به زودی تعیین خواهد شد.</span></div>
+
+    {% endif %}
+
+{% endblock %}
+

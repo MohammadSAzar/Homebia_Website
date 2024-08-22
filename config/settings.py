@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'widget_tweaks',
 
     'accounts',
+    'agents',
     'blog',
     'cases',
     'restates',
