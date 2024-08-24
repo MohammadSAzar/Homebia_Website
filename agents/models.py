@@ -25,7 +25,6 @@ class City(models.Model):
 
 # --------------------------------- Models ---------------------------------
 class AgentCustomUserModel(AbstractUser):
-    # pass
     COMPLETE_INFO_CHOICES = [
         ('cmp', _('Completed')),
         ('dnt', _('Not Completed')),
@@ -35,7 +34,7 @@ class AgentCustomUserModel(AbstractUser):
     phone_number = models.CharField(max_length=11, unique=True, verbose_name=_('Phone Number'))
     otp_code = models.PositiveIntegerField(blank=True, null=True)
     otp_code_datetime_created = models.DateTimeField(auto_now=True)
-    complete_info = models.CharField(max_length=10, choices=COMPLETE_INFO_CHOICES, blank=True, null=True, default='n', verbose_name=_('Complete Information'))
+    complete_info = models.CharField(max_length=10, choices=COMPLETE_INFO_CHOICES, blank=True, null=True, default='dnt', verbose_name=_('Complete Information'))
 
     objects = AgentCustomUserManager()
     backend = 'agents.backends.AgentCustomAuthBackend'
@@ -44,7 +43,7 @@ class AgentCustomUserModel(AbstractUser):
 
     groups = models.ManyToManyField(
         Group,
-        related_name='agent_custom_users',  # Unique related name
+        related_name='agent_custom_users',
         blank=True,
         help_text='The groups this user belongs to. A user will get all permissions granted to each of their groups.',
         verbose_name='groups',
@@ -52,7 +51,7 @@ class AgentCustomUserModel(AbstractUser):
 
     user_permissions = models.ManyToManyField(
         Permission,
-        related_name='agent_custom_user_permissions',  # Unique related name
+        related_name='agent_custom_user_permissions',
         blank=True,
         help_text='Specific permissions for this user.',
         verbose_name='user permissions',

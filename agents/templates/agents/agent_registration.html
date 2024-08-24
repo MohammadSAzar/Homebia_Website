@@ -5,9 +5,10 @@
 {% load jalali_tags %}
 {% load number_converter %}
 {% load widget_tweaks %}
+{% load user_filters %}
 
 
-{% block title %}{% trans 'Website Login/Signup' %}{% endblock %}
+{% block title %}{% trans 'Agent Login/Signup' %}{% endblock %}
 
 {% block content %}
 
@@ -15,18 +16,18 @@
         <div class="container pb-14">
             <div class="grid grid-cols-12 gap-2 lg:gap-6">
 
-                <!-- Registration top ribbon  -->
+                <!-- Agent Registration top ribbon  -->
                 <div class="col-span-12 rounded-lg bg-primary-light dark:bg-secondary-dark">
                     <ol class="grid grid-cols-1 overflow-hidden rounded-lg">
                         <li class="flex flex-col items-center justify-center gap-2 bg-tertiary-500/10 p-4 text-xs text-tertiary-500 dark:bg-tertiary-400/10 dark:text-tertiary-400 sm:text-sm md:text-base" style="background-color: #00A65C;">
-                            <p class="leading-none" style="font-size: 1.3em; color: #fefeff; font-weight: bold">{% trans 'Phone Number Registration' %}</p>
+                            <p class="leading-none" style="font-size: 1.3em; color: #fefeff; font-weight: bold">{% trans 'Phone Number Agent Registration' %}</p>
                         </li>
                   </ol>
-                <p style="margin-top: 6px;">برای ثبت آگهی فروش یا اجاره، ابتدا باید با صرف فقط 10 ثانیه زمان، وارد سایت بشوید.</p>
+                <p style="margin-top: 6px;">برای آغاز همکاری با هومبابا به عنوان مشاور، نیاز است که ابتدا وارد سایت شده و سپس اطلاعات اولیه خود را با ما به اشتراک بگذارید.</p>
                 </div>
-                <!-- end: Registration top ribbon -->
+                <!-- end: Agent Registration top ribbon -->
                 
-                <!-- Registration  -->
+                <!-- Agent Registration  -->
                 <div class="col-span-12 md:col-span-12">
                     <div class="rounded-lg bg-primary-light p-4 dark:bg-secondary-dark">
                         <div class="col-span-5 md:col-span-3">
@@ -43,7 +44,7 @@
                                             </span>
                                             {% render_field form.phone_number type="text" id="number" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" %}
                                         </label>
-                                        <p style="font-weight: normal;"><span>با ورود به هومبیا، </span><a href="{% url 'home' %}" style=" text-decoration: none; color: #00A65CFF;">قوانین </a><span>و </span><a href="{% url 'home' %}" style=" text-decoration: none; color: #00A65CFF;">سیاست حریم خصوصی </a><span>را می پذیرم.</span></p>
+                                        <p style="font-weight: normal;"><span>با ورود به هومبیا، </span><a href="{% url 'home' %}" style=" text-decoration: none; color: #00A65CFF;">قوانین </a><span>و </span><a href="{% url 'home' %}" style=" text-decoration: none; color: #00A65CFF;">سیاست حریم خصوصی </a><span>را می‌پذیرم.</span></p>
                                     </div>
 
                                     <!-- Submit -->
@@ -57,7 +58,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- end: Registration  -->
+                <!-- end: َAgent Registration  -->
 
             </div>
         </div>

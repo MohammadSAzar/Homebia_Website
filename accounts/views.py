@@ -11,6 +11,7 @@ from .checkers import send_otp, get_random_otp, otp_time_checker
 from services.models import Counseling, Session, Visit
 from restates.models import SaleFile, RentFile, TradeSession
 from cases.models import Case, CaseOrder, CaseOrderItem
+from agents.models import AgentCustomUserModel
 
 
 def registration_view(request):
@@ -67,7 +68,19 @@ def verification_view(request):
 
 # --------------------------------- Profile ---------------------------------
 def profile_info_now(request):
-	return render(request, 'accounts/profile_info_now.html')
+	context = {}
+	phone_number = request.session.get('user_phone_number')
+	if phone_number:
+		try:
+			agent_user = AgentCustomUserModel.objects.get(phone_number=phone_number)
+			context['agent_user'] = agent_user
+		except AgentCustomUserModel.DoesNotExist:
+			user = CustomUserModel.objects.get(phone_number=phone_number)
+			context['user'] = user
+	else:
+		user = request.user
+		context['user'] = user
+	return render(request, 'accounts/profile_info_now.html', context)
 
 
 def profile_info_auth(request):

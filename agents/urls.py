@@ -5,7 +5,7 @@ from . import views
 urlpatterns = [
     path('agent_registration/', views.agent_registration_view, name='agent_registration'),
     path('agent_verification/', views.agent_verification_view, name='agent_verification'),
-    path('agent_completion/', views.agent_completion_view, name='agent_completion'),
+    # path('agent_completion/', views.agent_completion_view, name='agent_completion'),
     path('agent_profile/', views.agent_profile_info_now, name='agent_profile_info_now'),
     # path('info_auth/', views.profile_info_auth, name='profile_info_auth'),
     # path('info_edit/', views.profile_info_edit, name='profile_info_edit'),

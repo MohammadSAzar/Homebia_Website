@@ -110,6 +110,7 @@
                     <!-- end: Sidebar >>> menu -->
 
                 </div>
+                <!-- end: Sidebar -->
 
                 <!-- Header & Content -->
                 <div class="nk-wrap">
@@ -122,6 +123,7 @@
                             <button class="modal-my-button">بستن پیام و ادامه سفر در هومبیا</button>
                         </div>
                     </div>
+                    <!-- end: File create message -->
 
                     <script>
                         $(document).ready(function() {
@@ -159,12 +161,20 @@
                                 <div class="nk-header-tools">
                                     <ul class="nk-quick-nav">
                                         <li class="dropdown language-dropdown d-none d-sm-block me-n1">
+
                                             <!-- Name -->
                                             <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown">
-                                                <div class="user-toggle">
-                                                    <div class="user-name dropdown-indicator" style="font-size: 1.6em; padding-top: 0.5em;">{{ user }}</div>
-                                                </div>
+                                                {% if agent_user %}
+                                                    <div class="user-toggle">
+                                                        <div class="user-name dropdown-indicator" style="font-size: 1.6em; padding-top: 0.5em;">{{ agent_user }}</div>
+                                                    </div>
+                                                {% else %}
+                                                    <div class="user-toggle">
+                                                        <div class="user-name dropdown-indicator" style="font-size: 1.6em; padding-top: 0.5em;">{{ user }}</div>
+                                                    </div>
+                                                {% endif %}
                                             </a>
+
                                             <!-- Exit -->
                                             <div class="dropdown-menu dropdown-menu-md dropdown-menu-end dropdown-menu-s1">
                                                 <div class="dropdown-inner">
@@ -178,6 +188,7 @@
                                                     </ul>
                                                 </div>
                                             </div>
+
                                         </li>
                                     </ul>
                                     <!-- .nk-quick-nav -->

@@ -5,9 +5,10 @@
 {% load jalali_tags %}
 {% load number_converter %}
 {% load widget_tweaks %}
+{% load user_filters %}
 
 
-{% block title %}{% trans 'Login Verification' %}{% endblock %}
+{% block title %}{% trans 'Agent Login Verification' %}{% endblock %}
 
 {% block content %}
 
@@ -15,17 +16,17 @@
         <div class="container pb-14">
             <div class="grid grid-cols-12 gap-2 lg:gap-6">
 
-                <!-- Verification top ribbon  -->
+                <!-- Agent Verification top ribbon  -->
                 <div class="col-span-12 rounded-lg bg-primary-light dark:bg-secondary-dark">
                     <ol class="grid grid-cols-1 overflow-hidden rounded-lg">
                         <li class="flex flex-col items-center justify-center gap-2 bg-tertiary-500/10 p-4 text-xs text-tertiary-500 dark:bg-tertiary-400/10 dark:text-tertiary-400 sm:text-sm md:text-base" style="background-color: #00A65C;">
-                            <p class="leading-none" style="font-size: 1.3em; color: #fefeff; font-weight: bold">{% trans 'Phone Number Verification' %}</p>
+                            <p class="leading-none" style="font-size: 1.3em; color: #fefeff; font-weight: bold">{% trans 'Phone Number Agent Verification' %}</p>
                         </li>
                   </ol>
                 </div>
-                <!-- end: Verification top ribbon -->
+                <!-- end: Agent Verification top ribbon -->
 
-                <!-- Verification  -->
+                <!-- Agent Verification  -->
                 <div class="col-span-12 md:col-span-12">
                     <div class="rounded-lg bg-primary-light p-4 dark:bg-secondary-dark">
                         <div class="col-span-5 md:col-span-3">
@@ -65,7 +66,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- end: Verification  -->
+                <!-- end: Agent Verification  -->
 
             </div>
         </div>

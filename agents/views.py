@@ -1,10 +1,11 @@
 from django.shortcuts import render
-from django.contrib.auth import login
+from django.contrib.auth import login, authenticate
 from django.contrib import messages
 from django.urls import reverse
 from django.http import HttpResponseRedirect
 
 from .models import AgentCustomUserModel, AgentProfile
+from accounts.models import CustomUserModel
 from .forms import AgentRegistrationForm, AgentInfoCompletionForm
 from .checkers import send_otp, get_random_otp, otp_time_checker
 
@@ -51,8 +52,12 @@ def agent_verification_view(request):
 				return HttpResponseRedirect(reverse('agent_registration'))
 			user.is_active = True
 			user.save()
+			if user.is_active:
+				print('ACTIVE')
+			if user.is_authenticated:
+				print('AUTH')
 			login(request, user)
-			return HttpResponseRedirect(reverse('agent_completion'))
+			return HttpResponseRedirect(reverse('agent_profile_info_now'))
 		context = {
 			'phone_number': phone_number,
 		}
@@ -61,30 +66,40 @@ def agent_verification_view(request):
 		return HttpResponseRedirect(reverse('agent_registration'))
 
 
-def agent_completion_view(request):
-	if request.method == 'POST':
-		form = AgentInfoCompletionForm(request.POST)
-		agent_user = request.user
-		if form.is_valid():
-			agent_profile = form.save(commit=False)
-			agent_profile.user = agent_user
-			agent_profile.save()
-			form.save()
-			agent_user.complete_info = 'ipr'
-			agent_user.save()
-			messages.success(request, "اطلاعات شما دریافت شد، نتیجه بررسی اطلاعات شما بزودی تعیین می‌شود.")
-			return HttpResponseRedirect(reverse('agent_profile_info_now'))
-	else:
-		print('cock')
-		form = AgentInfoCompletionForm()
-	context = {
-		'form': form,
-	}
-	print('piss')
-	return render(request, 'agents/agent_completion.html', context)
+# def agent_completion_view(request):
+# 	if request.method == 'POST':
+# 		form = AgentInfoCompletionForm(request.POST)
+# 		agent_user = request.user
+# 		if form.is_valid():
+# 			agent_profile = form.save(commit=False)
+# 			agent_profile.agent = agent_user
+# 			agent_profile.save()
+# 			form.save()
+# 			agent_user.complete_info = 'ipr'
+# 			agent_user.save()
+# 			messages.success(request, "اطلاعات شما دریافت شد، نتیجه بررسی اطلاعات شما بزودی تعیین می‌شود.")
+# 			return HttpResponseRedirect(reverse('agent_profile_info_now'))
+# 	else:
+# 		form = AgentInfoCompletionForm()
+# 	context = {
+# 		'form': form,
+# 	}
+# 	return render(request, 'agents/agent_completion.html', context)
 
 
 def agent_profile_info_now(request):
-	return render(request, 'agents/agent_profile_info_now.html')
+	context = {}
+	phone_number = request.session.get('user_phone_number')
+	if phone_number:
+		try:
+			agent_user = AgentCustomUserModel.objects.get(phone_number=phone_number)
+			context['agent_user'] = agent_user
+		except AgentCustomUserModel.DoesNotExist:
+			user = CustomUserModel.objects.get(phone_number=phone_number)
+			context['user'] = user
+	else:
+		user = request.user
+		context['user'] = user
+	return render(request, 'agents/agent_profile_info_now.html', context)
 
 
