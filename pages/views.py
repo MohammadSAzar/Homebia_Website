@@ -12,14 +12,12 @@ def home_view(request):
     user_now = request.user
     if isinstance(user_now, CustomUserModel):
         context['user'] = user_now
-        print('ASS')
-    if isinstance(user_now, AgentCustomUserModel):
-        context['agent_user'] = user_now
-        print('DICK')
     else:
+        phone_number = request.session.get('user_phone_number')
+        if phone_number:
+            agent_user = AgentCustomUserModel.objects.get(phone_number=phone_number)
+            context['agent_user'] = agent_user
         context['user'] = user_now
-        print('COCK')
-
     return render(request, 'pages/home.html', context)
 
 
