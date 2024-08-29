@@ -94,12 +94,32 @@ def agent_profile_info_now(request):
 		try:
 			agent_user = AgentCustomUserModel.objects.get(phone_number=phone_number)
 			context['agent_user'] = agent_user
+			print('ASS')
+
+			if request.method == 'POST':
+				form = AgentInfoCompletionForm(request.POST)
+				# agent_user = request.user
+				if form.is_valid():
+					agent_profile = form.save(commit=False)
+					agent_profile.agent = agent_user
+					agent_profile.save()
+					form.save()
+					agent_user.complete_info = 'ipr'
+					agent_user.save()
+					messages.success(request, "اطلاعات شما دریافت شد، نتیجه بررسی آن بزودی تعیین می‌شود.")
+					return HttpResponseRedirect(reverse('agent_profile_info_now'))
+			else:
+				form = AgentInfoCompletionForm()
+			context['form'] = form
+
 		except AgentCustomUserModel.DoesNotExist:
 			user = CustomUserModel.objects.get(phone_number=phone_number)
 			context['user'] = user
+			print('CUNT')
 	else:
 		user = request.user
 		context['user'] = user
+		print('DICK')
 	return render(request, 'agents/agent_profile_info_now.html', context)
 
 

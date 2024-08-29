@@ -6,7 +6,7 @@
 {% load number_converter %}
 {% load widget_tweaks %}
 
-{% block title %}{% trans 'User Dashboard' %}{% endblock %}
+{% block title %}{% trans 'Agent Dashboard' %}{% endblock %}
 
 {% block content %}
 
@@ -32,14 +32,15 @@
                     <!-- end: Title -->
 
                     <!-- Items -->
-                    {% if user.is_verified == 'a' %}
+                    {% if agent_user.complete_info == 'cmp' %}
+
                         <div class="nk-block">
                             <div class="nk-data data-list">
 
                                 <div class="data-item" data-bs-toggle="modal" data-bs-target="#profile-edit">
                                     <div class="data-col">
                                         <span class="data-label" style="font-size: large">{% trans 'Phone Number' %}</span>
-                                        <span class="data-value" style="font-size: large">{{ user.phone_number }}</span>
+                                        <span class="data-value" style="font-size: large">{{ agent_user.phone_number }}</span>
                                     </div>
                                 </div>
 
@@ -50,45 +51,23 @@
                                     </div>
                                 </div>
 
-                                <div class="data-item" data-bs-toggle="modal" data-bs-target="#profile-edit" style="direction: ltr; margin-top: 1.5em">
+                                <div style="margin-top: 5em; text-align: center; align-content: center; align-items: center;">
+                                    <span style="font-size: medium; color: #0b1219; margin-right: 25px;">شما مشاور همکار هومبابا هستید، جهت تغییر اطلاعات خود، به لینک زیر بروید.</span>
                                     <a href="{% url 'profile_info_edit' %}" class="btn btn-round btn-xl btn-primary" style="background-color: #00a65c; border: #00A65C; padding-left: 2em; padding-right: 2em;">{% trans 'Information Update' %}</a>
                                 </div>
 
                             </div>
                         </div>
-                    {% elif user.is_verified == 'n' %}
+
+                    {% elif agent_user.complete_info == 'ipr' %}
+
                         <div class="nk-block">
                             <div class="nk-data data-list">
 
                                 <div class="data-item" data-bs-toggle="modal" data-bs-target="#profile-edit">
                                     <div class="data-col">
                                         <span class="data-label" style="font-size: large">{% trans 'Phone Number' %}</span>
-                                        <span class="data-value" style="font-size: large">{{ user.phone_number }}</span>
-                                    </div>
-                                </div>
-
-                                <div class="data-item" data-bs-toggle="modal" data-bs-target="#profile-edit">
-                                    <div class="data-col">
-                                        <span class="data-label" style="font-size: large">{% trans 'Account Status' %}</span>
-                                        <span class="data-value" style="font-size: large; color: #db4646">{% trans 'Not Completed' %}</span>
-                                    </div>
-                                </div>
-
-                                <div class="data-item" data-bs-toggle="modal" data-bs-target="#profile-edit" style="direction: ltr; margin-top: 1.5em">
-                                    <a href="{% url 'profile_info_auth' %}" class="btn btn-round btn-xl btn-primary" style="background-color: #00a65c; border: #00A65C; padding-left: 2em; padding-right: 2em;">{% trans 'Complete The Information' %}</a>
-                                </div>
-
-                            </div>
-
-                        </div>
-                    {% elif user.is_verified == 'i' %}
-                        <div class="nk-block">
-                            <div class="nk-data data-list">
-
-                                <div class="data-item" data-bs-toggle="modal" data-bs-target="#profile-edit">
-                                    <div class="data-col">
-                                        <span class="data-label" style="font-size: large">{% trans 'Phone Number' %}</span>
-                                        <span class="data-value" style="font-size: large">{{ user.phone_number }}</span>
+                                        <span class="data-value" style="font-size: large">{{ agent_user.phone_number }}</span>
                                     </div>
                                 </div>
 
@@ -99,9 +78,156 @@
                                     </div>
                                 </div>
 
-                            </div>
+                                <div style="margin-top: 5em; text-align: center; align-content: center; align-items: center;">
+                                    <span style="font-size: medium; color: #0b1219; margin-right: 25px;">اطلاعات شما دریافت شده و فرایند تایید شما به عنوان مشاور همکار هومبابا، در حال انجام است.</span>
+                                </div>
 
+                            </div>
                         </div>
+
+                    {% elif agent_user.complete_info == 'dnt' %}
+
+                        <div class="nk-block">
+                            <div class="nk-data data-list">
+
+                                <div class="data-item" data-bs-toggle="modal" data-bs-target="#profile-edit">
+                                    <div class="data-col">
+                                        <span class="data-label" style="font-size: large">{% trans 'Phone Number' %}</span>
+                                        <span class="data-value" style="font-size: large">{{ agent_user.phone_number }}</span>
+                                    </div>
+                                </div>
+
+                                <div class="data-item">
+                                    <div class="data-col">
+                                        <span class="data-label" style="font-size: large">{% trans 'Account Status' %}</span>
+                                        <span class="data-value" style="font-size: large; color: #db4646">{% trans 'Not Completed' %}</span>
+                                    </div>
+                                </div>
+
+                                <div style="margin-top: 5em; text-align: center; align-content: center; align-items: center;">
+                                    <span style="font-size: larger; color: #0b1219; margin-right: 25px;">برای ادامه باید اطلاعات فرم زیر را تکمیل نمایید.</span>
+                                </div>
+
+                                <!-- Form -->
+                                <form method="post" class="px-3 form-style-two" style="margin-top: 3em;">
+                                    {% csrf_token %}
+
+                                    <div class="row">
+                                        <!-- First Name -->
+                                        <div class="col-sm-4 mb-md-4 pb-3">
+                                            <label for="{{ form.f_name.id_for_label }}" class="form-label form-label-lg">{% trans 'First Name' %}</label>
+                                            {% render_field form.f_name type="text" id="f_name" class="form-control form-control-xl" %}
+                                        </div>
+
+                                        <!-- Last Name -->
+                                        <div class="col-sm-4 mb-md-4 pb-3">
+                                            <label for="{{ form.l_name.id_for_label }}" class="form-label form-label-lg">{% trans 'Last Name' %}</label>
+                                            {% render_field form.l_name type="text" id="l_name" class="form-control form-control-xl" %}
+                                        </div>
+
+                                        <!-- Sex -->
+                                        <div class="col-sm-4 mb-md-4 pb-3">
+                                            <label for="{{ form.sex.id_for_label }}" class="form-label form-label-lg">{% trans 'Sex' %}</label>
+                                            {% render_field form.sex type="text" id="sex" class="form-control form-control-xl" %}
+                                        </div>
+
+                                        <!-- National Code -->
+                                        <div class="col-sm-4 mb-md-4 pb-3">
+                                            <label for="{{ form.national_code.id_for_label }}" class="form-label form-label-lg">{% trans 'National Code' %}</label>
+                                            {% render_field form.national_code type="text" id="national_code" class="form-control form-control-xl" %}
+                                        </div>
+
+                                        <!-- Email -->
+                                        <div class="col-sm-4 mb-md-4 pb-3">
+                                            <label for="{{ form.email.id_for_label }}" class="form-label form-label-lg">{% trans 'Email' %}</label>
+                                            {% render_field form.email type="text" id="email" class="form-control form-control-xl" %}
+                                        </div>
+
+                                        <!-- Fixed Phone Number -->
+                                        <div class="col-sm-4 mb-md-4 pb-3">
+                                            <label for="{{ form.fixed_phone_number.id_for_label }}" class="form-label form-label-lg">{% trans 'Fixed Phone Number' %}</label>
+                                            {% render_field form.fixed_phone_number type="text" id="fixed_phone_number" class="form-control form-control-xl" %}
+                                        </div>
+
+                                        <!-- Province -->
+                                        <div class="col-sm-4 mb-md-4 pb-3">
+                                            <label for="{{ form.province.id_for_label }}" class="form-label form-label-lg">{% trans 'Province' %}</label>
+                                            {% render_field form.province type="text" id="province" class="form-control form-control-xl" %}
+                                        </div>
+
+                                        <!-- City -->
+                                        <div class="col-sm-4 mb-md-4 pb-3">
+                                            <label for="{{ form.city.id_for_label }}" class="form-label form-label-lg">{% trans 'City' %}</label>
+                                            {% render_field form.city type="text" id="city" class="form-control form-control-xl" %}
+                                        </div>
+
+                                        <!-- Postal Code -->
+                                        <div class="col-sm-4 mb-md-4 pb-3">
+                                            <label for="{{ form.postal_code.id_for_label }}" class="form-label form-label-lg">{% trans 'Postal Code' %}</label>
+                                            {% render_field form.postal_code type="text" id="postal_code" class="form-control form-control-xl" %}
+                                        </div>
+
+                                        <!-- Address -->
+                                        <div class="col-sm-12 mb-md-4 pb-3">
+                                            <label for="{{ form.address.id_for_label }}" class="form-label form-label-lg">{% trans 'Address' %}</label>
+                                            {% render_field form.address type="text" id="address" class="form-control form-control-xl" %}
+                                        </div>
+
+                                        <!-- National Card -->
+                                        <div class="col-sm-6 mb-md-4 pb-3">
+                                            <label for="{{ form.national_card.id_for_label }}" class="form-label form-label-lg">{% trans 'National Card' %}</label>
+                                            {% render_field form.national_card type="file" id="national_card" class="form-control form-control-xl" %}
+                                        </div>
+
+                                        <!-- Auth Picture -->
+                                        <div class="col-sm-6 mb-md-4 pb-3">
+                                            <label for="{{ form.auth_picture.id_for_label }}" class="form-label form-label-lg">{% trans 'Auth Picture' %}</label>
+                                            {% render_field form.auth_picture type="file" id="auth_picture" class="form-control form-control-xl" %}
+                                        </div>
+
+                                        <!-- Bank Card -->
+                                        <div class="col-sm-6 mb-md-4 pb-3">
+                                            <label for="{{ form.bank_card.id_for_label }}" class="form-label form-label-lg">{% trans 'Bank Card' %}</label>
+                                            {% render_field form.bank_card type="file" id="bank_card" class="form-control form-control-xl" %}
+                                        </div>
+
+                                        <!-- Bank Sheba -->
+                                        <div class="col-sm-6 mb-md-4 pb-3">
+                                            <label for="{{ form.bank_sheba.id_for_label }}" class="form-label form-label-lg">{% trans 'Bank Sheba' %}</label>
+                                            {% render_field form.bank_sheba type="text" id="bank_sheba" class="form-control form-control-xl" %}
+                                        </div>
+
+                                        <!-- Experience -->
+                                        <div class="col-sm-4 mb-md-4 pb-3">
+                                            <label for="{{ form.experience.id_for_label }}" class="form-label form-label-lg">{% trans 'Experience' %}</label>
+                                            {% render_field form.experience type="text" id="experience" class="form-control form-control-xl" %}
+                                        </div>
+
+                                        <!-- Course Tendency -->
+                                        <div class="col-sm-4 mb-md-4 pb-3">
+                                            <label for="{{ form.course_tendency.id_for_label }}" class="form-label form-label-lg">{% trans 'Course Tendency' %}</label>
+                                            {% render_field form.course_tendency type="text" id="course_tendency" class="form-control form-control-xl" %}
+                                        </div>
+
+                                        <!-- Introduction Way -->
+                                        <div class="col-sm-4 mb-md-4 pb-3">
+                                            <label for="{{ form.introduction_way.id_for_label }}" class="form-label form-label-lg">{% trans 'Introduction Way' %}</label>
+                                            {% render_field form.introduction_way type="text" id="introduction_way" class="form-control form-control-xl" %}
+                                        </div>
+
+                                    </div>
+
+                                    <div class="text-end py-md-3">
+                                        <button type="submit" class="btn btn-lg btn-primary px-md-4 mt-lg-3">
+                                            <span class="px-md-3">{% trans 'Submit' %}</span>
+                                        </button>
+                                    </div>
+                                </form>
+                                <!-- end: Form -->
+
+                            </div>
+                        </div>
+
                     {% endif %}
                     <!-- end: Items -->
                 </div>
