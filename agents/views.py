@@ -66,27 +66,6 @@ def agent_verification_view(request):
 		return HttpResponseRedirect(reverse('agent_registration'))
 
 
-# def agent_completion_view(request):
-# 	if request.method == 'POST':
-# 		form = AgentInfoCompletionForm(request.POST)
-# 		agent_user = request.user
-# 		if form.is_valid():
-# 			agent_profile = form.save(commit=False)
-# 			agent_profile.agent = agent_user
-# 			agent_profile.save()
-# 			form.save()
-# 			agent_user.complete_info = 'ipr'
-# 			agent_user.save()
-# 			messages.success(request, "اطلاعات شما دریافت شد، نتیجه بررسی اطلاعات شما بزودی تعیین می‌شود.")
-# 			return HttpResponseRedirect(reverse('agent_profile_info_now'))
-# 	else:
-# 		form = AgentInfoCompletionForm()
-# 	context = {
-# 		'form': form,
-# 	}
-# 	return render(request, 'agents/agent_completion.html', context)
-
-
 def agent_profile_info_now(request):
 	context = {}
 	phone_number = request.session.get('user_phone_number')

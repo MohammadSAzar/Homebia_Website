@@ -62,40 +62,56 @@
                                     <ul class="nk-menu">
 
                                         <!-- Your information -->
-                                        <li class="nk-menu-item has-sub">
-                                            <a href="#" class="nk-menu-link nk-menu-toggle">
-                                                <span class="nk-menu-icon"><em class="icon ni ni-tile-thumb"></em></span>
-                                                <span class="nk-menu-text">{% trans 'Personal Information' %}</span>
-                                            </a>
-                                            <ul class="nk-menu-sub">
-                                                <li class="nk-menu-item">
-                                                    <a href="{% url 'profile_info_now' %}" class="nk-menu-link"><span class="nk-menu-text">{% trans 'See My Information' %}</span></a>
-                                                </li>
-                                                <li class="nk-menu-item">
-                                                    <a href="{% url 'profile_info_edit' %}" class="nk-menu-link"><span class="nk-menu-text">{% trans 'Change My Information' %}</span></a>
-                                                </li>
-                                            </ul>
-                                        </li>
+                                        {% if agent_user %}
+                                             <li class="nk-menu-item has-sub">
+                                                <a href="{% url 'agent_profile_info_now' %}" class="nk-menu-link">
+                                                    <span class="nk-menu-icon"><em class="icon ni ni-tile-thumb"></em></span>
+                                                    <span class="nk-menu-text">{% trans 'Personal Information' %}</span>
+                                                </a>
+                                            </li>
+                                        {% elif agent_user %}
+                                            <li class="nk-menu-item has-sub">
+                                                <a href="#" class="nk-menu-link nk-menu-toggle">
+                                                    <span class="nk-menu-icon"><em class="icon ni ni-tile-thumb"></em></span>
+                                                    <span class="nk-menu-text">{% trans 'Personal Information' %}</span>
+                                                </a>
+                                                <ul class="nk-menu-sub">
+                                                    <li class="nk-menu-item">
+                                                        <a href="{% url 'profile_info_now' %}" class="nk-menu-link"><span class="nk-menu-text">{% trans 'See My Information' %}</span></a>
+                                                    </li>
+                                                    <li class="nk-menu-item">
+                                                        <a href="{% url 'profile_info_edit' %}" class="nk-menu-link"><span class="nk-menu-text">{% trans 'Change My Information' %}</span></a>
+                                                    </li>
+                                                    <li class="nk-menu-item">
+                                                        <a href="{% url 'profile_info_auth' %}" class="nk-menu-link"><span class="nk-menu-text">{% trans 'Account Approval' %}</span></a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        {% endif %}
                                         <!-- end: Your information -->
 
                                         <!-- Your orders -->
-                                        <li class="nk-menu-item has-sub">
-                                            <a href="#" class="nk-menu-link nk-menu-toggle">
-                                                <span class="nk-menu-icon"><em class="icon ni ni-users"></em></span>
-                                                <span class="nk-menu-text">{% trans 'Activities History' %}</span>
-                                            </a>
-                                            <ul class="nk-menu-sub">
-                                                <li class="nk-menu-item">
-                                                    <a href="{% url 'profile_your_services' %}" class="nk-menu-link"><span class="nk-menu-text">{% trans 'My Services' %}</span></a>
-                                                </li>
-                                                <li class="nk-menu-item">
-                                                    <a href="{% url 'profile_your_trades' %}" class="nk-menu-link"><span class="nk-menu-text">{% trans 'My Trades' %}</span></a>
-                                                </li>
-                                                <li class="nk-menu-item">
-                                                    <a href="{% url 'profile_your_cases' %}" class="nk-menu-link"><span class="nk-menu-text">{% trans 'My Investments' %}</span></a>
-                                                </li>
-                                            </ul>
-                                        </li>
+                                        {% if agent_user %}
+
+                                        {% elif user %}
+                                            <li class="nk-menu-item has-sub">
+                                                <a href="#" class="nk-menu-link nk-menu-toggle">
+                                                    <span class="nk-menu-icon"><em class="icon ni ni-users"></em></span>
+                                                    <span class="nk-menu-text">{% trans 'Activities History' %}</span>
+                                                </a>
+                                                <ul class="nk-menu-sub">
+                                                    <li class="nk-menu-item">
+                                                        <a href="{% url 'profile_your_services' %}" class="nk-menu-link"><span class="nk-menu-text">{% trans 'My Services' %}</span></a>
+                                                    </li>
+                                                    <li class="nk-menu-item">
+                                                        <a href="{% url 'profile_your_trades' %}" class="nk-menu-link"><span class="nk-menu-text">{% trans 'My Trades' %}</span></a>
+                                                    </li>
+                                                    <li class="nk-menu-item">
+                                                        <a href="{% url 'profile_your_cases' %}" class="nk-menu-link"><span class="nk-menu-text">{% trans 'My Investments' %}</span></a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        {% endif %}
                                         <!-- end: Your information -->
                                     </ul>
                                     <!-- end:Sidebar >>> menu >>> items -->
@@ -188,7 +204,6 @@
 
                                         </li>
                                     </ul>
-                                    <!-- .nk-quick-nav -->
                                 </div>
 
                             </div>
