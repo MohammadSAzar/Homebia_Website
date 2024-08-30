@@ -118,6 +118,31 @@
                                 </form>
                                 <!-- end: Edit Form -->
 
+                                <!-- JS autoupdate -->
+                                <script>
+                                    $(document).ready(function() {
+                                        $('#district').hide();
+
+                                        $('#province').change(function() {
+                                            var provinceId = $(this).val();
+                                            $.ajax({
+                                                url: '/load_cities/',
+                                                data: {
+                                                    'province': provinceId
+                                                },
+                                                success: function(data) {
+                                                    $('#city').html('');
+                                                    $.each(data.cities, function(index, city) {
+                                                        $('#city').append(`<option value="${city[0]}">${city[1]}</option>`);
+                                                    });
+                                                    $('#city').trigger('change');
+                                                }
+                                            });
+                                        });
+                                    });
+                                </script>
+                                <!-- JS autoupdate -->
+
                             </div>
                         </div>
 
@@ -286,6 +311,31 @@
                                     </div>
                                 </form>
                                 <!-- end: Form -->
+
+                                <!-- JS autoupdate -->
+                                <script>
+                                    $(document).ready(function() {
+                                        $('#district').hide();
+
+                                        $('#province').change(function() {
+                                            var provinceId = $(this).val();
+                                            $.ajax({
+                                                url: '/load_cities/',
+                                                data: {
+                                                    'province': provinceId
+                                                },
+                                                success: function(data) {
+                                                    $('#city').html('');
+                                                    $.each(data.cities, function(index, city) {
+                                                        $('#city').append(`<option value="${city[0]}">${city[1]}</option>`);
+                                                    });
+                                                    $('#city').trigger('change');
+                                                }
+                                            });
+                                        });
+                                    });
+                                </script>
+                                <!-- JS autoupdate -->
 
                             </div>
                         </div>

@@ -2,14 +2,29 @@ from django.shortcuts import render
 from django.contrib.auth import login, authenticate
 from django.contrib import messages
 from django.urls import reverse
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, JsonResponse
 
-from .models import AgentCustomUserModel, AgentProfile
+from .models import AgentCustomUserModel, AgentProfile, Province, City
 from accounts.models import CustomUserModel
 from .forms import AgentRegistrationForm, AgentInfoCompletionForm, AgentInfoEditForm
 from .checkers import send_otp, get_random_otp, otp_time_checker
 
 
+# --------------------------------- Locations ---------------------------------
+def load_cities(request):
+    province_id = request.GET.get('province')
+    cities = City.objects.filter(province_id=province_id).order_by('name')
+    city_choices = [(city.id, city.name) for city in cities]
+    return JsonResponse({'cities': city_choices})
+
+
+def load_cities_list(request):
+    province_id = request.GET.get('province_id')
+    cities = City.objects.filter(province_id=province_id).values('id', 'name')
+    return JsonResponse({'cities': list(cities)})
+
+
+# --------------------------------- dashboard ---------------------------------
 def agent_registration_view(request):
 	form = AgentRegistrationForm
 	if request.method == 'POST':
