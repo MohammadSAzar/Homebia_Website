@@ -6,7 +6,7 @@ from django.http import HttpResponseRedirect
 
 from .models import AgentCustomUserModel, AgentProfile
 from accounts.models import CustomUserModel
-from .forms import AgentRegistrationForm, AgentInfoCompletionForm
+from .forms import AgentRegistrationForm, AgentInfoCompletionForm, AgentInfoEditForm
 from .checkers import send_otp, get_random_otp, otp_time_checker
 
 
@@ -76,19 +76,32 @@ def agent_profile_info_now(request):
 			print('ASS')
 
 			if request.method == 'POST':
-				form = AgentInfoCompletionForm(request.POST)
-				# agent_user = request.user
-				if form.is_valid():
-					agent_profile = form.save(commit=False)
-					agent_profile.agent = agent_user
-					agent_profile.save()
-					form.save()
-					agent_user.complete_info = 'ipr'
-					agent_user.save()
-					messages.success(request, "اطلاعات شما دریافت شد، نتیجه بررسی آن بزودی تعیین می‌شود.")
-					return HttpResponseRedirect(reverse('agent_profile_info_now'))
+				if agent_user.complete_info == 'dnt':
+					form = AgentInfoCompletionForm(request.POST)
+					if form.is_valid():
+						agent_profile = form.save(commit=False)
+						agent_profile.agent = agent_user
+						agent_profile.save()
+						form.save()
+						agent_user.complete_info = 'ipr'
+						agent_user.save()
+						messages.success(request, "اطلاعات شما دریافت شد، نتیجه بررسی آن بزودی تعیین می‌شود.")
+						return HttpResponseRedirect(reverse('agent_profile_info_now'))
+				else:
+					form = AgentInfoEditForm(request.POST)
+					agent_profile = AgentProfile.objects.get(agent=agent_user)
+					if form.is_valid():
+						form.save()
+						agent_profile.save()
+						agent_user.complete_info = 'ipr'
+						agent_user.save()
+						messages.success(request, "اطلاعات شما دریافت شد، نتیجه بررسی آن بزودی تعیین می‌شود.")
+						return HttpResponseRedirect(reverse('agent_profile_info_now'))
 			else:
-				form = AgentInfoCompletionForm()
+				if agent_user.complete_info == 'dnt':
+					form = AgentInfoCompletionForm()
+				else:
+					form = AgentInfoEditForm()
 			context['form'] = form
 
 		except AgentCustomUserModel.DoesNotExist:

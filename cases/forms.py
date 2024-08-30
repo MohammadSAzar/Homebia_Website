@@ -31,6 +31,7 @@ class CaseFilterForm(forms.Form):
 
         return cleaned_data
 
+
 class AddToCartForm(forms.Form):
     CHOICES = [(i, str(i)) for i in range(1, 100)]
     meter = forms.TypedChoiceField(choices=CHOICES, coerce=int)

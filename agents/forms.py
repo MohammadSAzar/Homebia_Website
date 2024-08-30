@@ -44,9 +44,9 @@ class AgentInfoCompletionForm(forms.ModelForm):
 		}
 
 
-# class AgentInfoEditForm(forms.ModelForm):
-# 	class Meta:
-# 		model = models.AgentProfile
-# 		fields = ['email', 'country', 'province', 'city', 'address', 'postal_code']
+class AgentInfoEditForm(forms.ModelForm):
+	class Meta:
+		model = models.AgentProfile
+		fields = ['email', 'fixed_phone_number', 'province', 'city', 'address', 'postal_code', 'bank_card', 'bank_sheba']
 
 
