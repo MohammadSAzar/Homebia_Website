@@ -53,7 +53,7 @@ def verification_view(request):
 		user = CustomUserModel.objects.get(phone_number=phone_number)
 		if request.method == 'POST':
 			if not otp_time_checker(user.phone_number) or user.otp_code != int(request.POST.get('otp')):
-				return HttpResponseRedirect(reverse('registration'))
+				return HttpResponseRedirect(reverse('verification'))
 			user.is_active = True
 			user.save()
 			login(request, user)

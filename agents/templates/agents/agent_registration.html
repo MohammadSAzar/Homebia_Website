@@ -38,6 +38,11 @@
 
                                     <!-- Phone -->
                                     <div class="col-span-2 md:col-span-1" style="margin-top: 5em; margin-bottom: 3em;">
+                                        {% if form.phone_number.errors %}
+                                            {% for error in form.phone_number.errors %}
+                                                <p style="font-weight: normal; color: red; margin-bottom: 1.7em;">{{ error }}</p>
+                                            {% endfor %}
+                                        {% endif %}
                                         <label style="margin-bottom: 1em;!important;" for="{{ form.phone_number.id_for_label }}" class="relative block rounded-lg border border-secondary-light shadow-base dark:border-primary-light/5 mb-12">
                                             <span style="font-size: large;" class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-primary-light px-2 py-0.5 text-sm text-quaternary-600 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-focus:top-0 peer-focus:text-sm dark:bg-secondary-dark dark:text-quaternary-300 mr-4">
                                                 {% trans 'Enter Your Phone Number: ' %}

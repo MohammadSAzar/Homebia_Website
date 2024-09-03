@@ -8,6 +8,17 @@
 
 {% block title %}{% trans 'Agent Dashboard' %}{% endblock %}
 
+{% block sidebar_content %}
+
+    <li class="nk-menu-item has-sub">
+        <a href="{% url 'agent_profile_info_now' %}" class="nk-menu-link">
+            <span class="nk-menu-icon"><em class="icon ni ni-tile-thumb"></em></span>
+            <span class="nk-menu-text">{% trans 'Personal Information' %}</span>
+        </a>
+    </li>
+
+{% endblock %}
+
 {% block content %}
 
     <div class="nk-block">
