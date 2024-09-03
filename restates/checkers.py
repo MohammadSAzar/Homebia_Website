@@ -11,9 +11,11 @@ def rent_file_deposit_price_checker(price):
     if min_deposit_price <= price <= max_deposit_price:
         return True
 
+
 def rent_file_rent_price_checker(price):
     if min_rent_price <= price <= max_rent_price:
         return True
+
 
 def file_price_checker(price):
     if min_file_price <= price <= max_file_price:
@@ -54,14 +56,11 @@ def national_code_checker(code):
                 control = number % 11
 
             if control == int(code[9]):
-                print('ass')
                 return True
             else:
-                print('pussy')
                 return False
 
     except ValueError:
-        print('cock')
         return False
 
 

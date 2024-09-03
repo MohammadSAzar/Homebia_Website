@@ -7,7 +7,7 @@ from django.http import HttpResponseRedirect, JsonResponse
 from .models import AgentCustomUserModel, AgentProfile, Province, City
 from accounts.models import CustomUserModel
 from .forms import AgentRegistrationForm, AgentInfoCompletionForm, AgentInfoEditForm
-from .checkers import send_otp, get_random_otp, otp_time_checker
+from accounts.checkers import send_otp, get_random_otp, otp_time_checker_agent
 
 
 # --------------------------------- Locations ---------------------------------
@@ -32,7 +32,7 @@ def agent_registration_view(request):
             if 'phone_number' in request.POST:
                 phone_number = request.POST.get('phone_number')
                 user = AgentCustomUserModel.objects.get(phone_number=phone_number)
-                if user.otp_code is not None and otp_time_checker(user.phone_number):
+                if user.otp_code is not None and otp_time_checker_agent(user.phone_number):
                     request.session['user_phone_number'] = user.phone_number
                     return HttpResponseRedirect(reverse('agent_verification'))
                 otp = get_random_otp()
@@ -63,7 +63,7 @@ def agent_verification_view(request):
         phone_number = request.session.get('user_phone_number')
         user = AgentCustomUserModel.objects.get(phone_number=phone_number)
         if request.method == 'POST':
-            if not otp_time_checker(user.phone_number) or user.otp_code != int(request.POST.get('otp')):
+            if not otp_time_checker_agent(user.phone_number) or user.otp_code != int(request.POST.get('otp')):
                 return HttpResponseRedirect(reverse('agent_verification'))
             user.is_active = True
             user.save()
@@ -84,7 +84,6 @@ def agent_profile_info_now(request):
         try:
             agent_user = AgentCustomUserModel.objects.get(phone_number=phone_number)
             context['agent_user'] = agent_user
-            print('ASS')
 
             if request.method == 'POST':
                 if agent_user.complete_info == 'dnt':
@@ -118,11 +117,9 @@ def agent_profile_info_now(request):
         except AgentCustomUserModel.DoesNotExist:
             user = CustomUserModel.objects.get(phone_number=phone_number)
             context['user'] = user
-            print('CUNT')
     else:
         user = request.user
         context['user'] = user
-        print('DICK')
     return render(request, 'agents/agent_profile_info_now.html', context)
 
 

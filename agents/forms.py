@@ -56,10 +56,47 @@ class AgentInfoCompletionForm(forms.ModelForm):
 			'address': forms.Textarea(attrs={'rows': 5, 'cols': 40}),
 		}
 
+	def __init__(self, *args, **kwargs):
+		super().__init__(*args, **kwargs)
+		for field in self.fields.values():
+			field.required = True
+
+	def clean(self):
+		cleaned_data = super().clean()
+		email = cleaned_data.get('email')
+		postal_code = cleaned_data.get('postal_code')
+		national_code = cleaned_data.get('national_code')
+
+		if email and not checkers.email_checker(email):
+			self.add_error('email', 'ایمیل وارد شده معتبر نیست.')
+		if postal_code and not checkers.postal_code_checker(postal_code):
+			self.add_error('postal_code', 'کد پستی وارد شده معتبر نیست.')
+		if national_code and not checkers.national_code_checker(national_code):
+			self.add_error('national_code', 'کد ملی وارد شده معتبر نیست.')
+
+		return cleaned_data
+
 
 class AgentInfoEditForm(forms.ModelForm):
 	class Meta:
 		model = models.AgentProfile
 		fields = ['email', 'fixed_phone_number', 'province', 'city', 'address', 'postal_code', 'bank_card', 'bank_sheba']
+
+	def __init__(self, *args, **kwargs):
+		super().__init__(*args, **kwargs)
+		for field in self.fields.values():
+			field.required = True
+
+	def clean(self):
+		cleaned_data = super().clean()
+		email = cleaned_data.get('email')
+		postal_code = cleaned_data.get('postal_code')
+
+		if email and not checkers.email_checker(email):
+			self.add_error('email', 'ایمیل وارد شده معتبر نیست.')
+		if postal_code and not checkers.postal_code_checker(postal_code):
+			self.add_error('postal_code', 'کد پستی وارد شده معتبر نیست.')
+
+		return cleaned_data
 
 
