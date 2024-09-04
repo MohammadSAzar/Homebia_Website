@@ -30,44 +30,56 @@
 
                 <!-- main session form  -->
                 <div class="col-span-12 md:col-span-12">
-                    <div class="rounded-lg bg-primary-light p-4 dark:bg-secondary-dark">
+                    <div class="rounded-lg bg-primary-light p-4 dark:bg-secondary-dark ">
 
                         <div class="col-span-5 md:col-span-3">
                             <div class="grid grid-cols-1 items-center gap-6 mt-2">
 
-                                <form method="post">
+                                <form method="post" novalidate>
                                     {% csrf_token %}
 
                                     <!-- Trade type -->
-                                    <div class="col-span-2 md:col-span-1" id="trade-type-group">
-                                        <label for="{{ form.trade_type.id_for_label }}" class="relative block rounded-lg border border-secondary-light shadow-base dark:border-primary-light/5 mb-12">
+                                    <div class="col-span-2 md:col-span-1 mb-12" id="trade-type-group">
+                                        <label for="{{ form.trade_type.id_for_label }}" class="relative block rounded-lg border border-secondary-light shadow-base dark:border-primary-light/5 mb-2">
                                             <span class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-primary-light px-2 py-0.5 text-sm text-quaternary-600 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-focus:top-0 peer-focus:text-sm dark:bg-secondary-dark dark:text-quaternary-300 mr-4">
                                                 {% trans 'Choose the trade type' %}
                                             </span>
                                             {% render_field form.trade_type type="text" id="trade_type" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" %}
                                         </label>
+                                        {% if form.trade_type.errors %}
+                                            {% for error in form.trade_type.errors %}
+                                                <p style="font-weight: normal; font-size: small; color: red;">{{ error }}</p>
+                                            {% endfor %}
+                                        {% endif %}
                                     </div>
 
                                     <!-- Ours -->
-                                    <div class="col-span-2 md:col-span-1 mt-2">
-                                        <label for="{{ form.ours.id_for_label }}" class="relative block rounded-lg border border-secondary-light shadow-base dark:border-primary-light/5 mb-12">
+                                    <div class="col-span-2 md:col-span-1 mt-2 mb-12">
+                                        <label for="{{ form.ours.id_for_label }}" class="relative block rounded-lg border border-secondary-light shadow-base dark:border-primary-light/5 mb-2">
                                             <span class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-primary-light px-2 py-0.5 text-sm text-quaternary-600 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-focus:top-0 peer-focus:text-sm dark:bg-secondary-dark dark:text-quaternary-300 mr-4">
                                               {% trans 'Is file trade ours?' %}
                                             </span>
                                             {% render_field form.ours type="text" id="ours" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" %}
                                         </label>
+                                        {% if form.ours.errors %}
+                                            {% for error in form.ours.errors %}
+                                                <p style="font-weight: normal; font-size: small; color: red;">{{ error }}</p>
+                                            {% endfor %}
+                                        {% endif %}
                                     </div>
 
                                     <!-- Sale file code -->
-                                    <div class="col-span-2 md:col-span-1 mt-2 mb-12" id="sale-code-group" style="display: none;">
+                                    <div class="col-span-2 md:col-span-1 mt-2 mb-12 " id="sale-code-group" style="display: none;">
                                         <label for="{{ form.sale_code.id_for_label }}" class="relative block rounded-lg border border-secondary-light shadow-base dark:border-primary-light/5 mb-2">
                                             <span class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-primary-light px-2 py-0.5 text-sm text-quaternary-600 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-focus:top-0 peer-focus:text-sm dark:bg-secondary-dark dark:text-quaternary-300 mr-4">
                                               {% trans 'Enter the sale file code:' %}
                                             </span>
-                                            {% render_field form.sale_code type="text" id="sale_code" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" %}
+                                            {% render_field form.sale_code type="number" id="sale_code" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" %}
                                         </label>
                                         {% if form.sale_code.errors %}
-                                            <span style="font-weight: normal; font-size: small; color: red;">{{ form.sale_code.errors }}</span>
+                                            {% for error in form.sale_code.errors %}
+                                                <p style="font-weight: normal; font-size: small; color: red;">{{ error }}</p>
+                                            {% endfor %}
                                         {% endif %}
                                     </div>
 
@@ -77,61 +89,88 @@
                                             <span class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-primary-light px-2 py-0.5 text-sm text-quaternary-600 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-focus:top-0 peer-focus:text-sm dark:bg-secondary-dark dark:text-quaternary-300 mr-4">
                                               {% trans 'Enter the rent file code:' %}
                                             </span>
-                                            {% render_field form.rent_code type="text" id="rent_code" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" %}
+                                            {% render_field form.rent_code type="number" id="rent_code" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" %}
                                         </label>
                                         {% if form.rent_code.errors %}
-                                            <span style="font-weight: normal; font-size: small; color: red;">{{ form.rent_code.errors }}</span>
+                                            {% for error in form.rent_code.errors %}
+                                                <p style="font-weight: normal; font-size: small; color: red;">{{ error }}</p>
+                                            {% endfor %}
                                         {% endif %}
                                     </div>
 
                                     <!-- City -->
-                                    <div class="col-span-2 md:col-span-1 mt-2">
-                                        <label for="{{ form.city.id_for_label }}" class="relative block rounded-lg border border-secondary-light shadow-base dark:border-primary-light/5 mb-12">
+                                    <div class="col-span-2 md:col-span-1 mt-2 mb-12">
+                                        <label for="{{ form.city.id_for_label }}" class="relative block rounded-lg border border-secondary-light shadow-base dark:border-primary-light/5 mb-2">
                                             <span class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-primary-light px-2 py-0.5 text-sm text-quaternary-600 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-focus:top-0 peer-focus:text-sm dark:bg-secondary-dark dark:text-quaternary-300 mr-4">
                                               {% trans 'Choose the city' %}
                                             </span>
                                             {% render_field form.city type="text" id="city" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" %}
                                         </label>
+                                        {% if form.city.errors %}
+                                            {% for error in form.city.errors %}
+                                                <p style="font-weight: normal; font-size: small; color: red;">{{ error }}</p>
+                                            {% endfor %}
+                                        {% endif %}
                                     </div>
 
                                     <!-- Location -->
-                                    <div class="col-span-2 md:col-span-1">
-                                        <label for="{{ form.location.id_for_label }}" class="relative block rounded-lg border border-secondary-light shadow-base dark:border-primary-light/5 mb-12">
+                                    <div class="col-span-2 md:col-span-1 mb-12">
+                                        <label for="{{ form.location.id_for_label }}" class="relative block rounded-lg border border-secondary-light shadow-base dark:border-primary-light/5 mb-2">
                                             <span class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-primary-light px-2 py-0.5 text-sm text-quaternary-600 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-focus:top-0 peer-focus:text-sm dark:bg-secondary-dark dark:text-quaternary-300 mr-4">
                                                 {% trans 'Where do you prefer for location?' %}
                                             </span>
                                             {% render_field form.location type="text" id="location" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" %}
                                         </label>
+                                        {% if form.location.errors %}
+                                            {% for error in form.location.errors %}
+                                                <p style="font-weight: normal; font-size: small; color: red;">{{ error }}</p>
+                                            {% endfor %}
+                                        {% endif %}
                                     </div>
 
                                     <!-- Date -->
-                                    <div class="col-span-2 md:col-span-1">
-                                        <label for="{{ form.date.id_for_label }}" class="relative block rounded-lg border border-secondary-light shadow-base dark:border-primary-light/5 mb-12">
+                                    <div class="col-span-2 md:col-span-1 mb-12">
+                                        <label for="{{ form.date.id_for_label }}" class="relative block rounded-lg border border-secondary-light shadow-base dark:border-primary-light/5 mb-2">
                                             <span class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-primary-light px-2 py-0.5 text-sm text-quaternary-600 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-focus:top-0 peer-focus:text-sm dark:bg-secondary-dark dark:text-quaternary-300 mr-4">
                                                 {% trans 'Choose the session date' %}
                                             </span>
                                             {% render_field form.date type="text" id="date" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" %}
                                         </label>
+                                        {% if form.date.errors %}
+                                            {% for error in form.date.errors %}
+                                                <p style="font-weight: normal; font-size: small; color: red;">{{ error }}</p>
+                                            {% endfor %}
+                                        {% endif %}
                                     </div>
 
                                     <!-- Time -->
-                                    <div class="col-span-2 md:col-span-1">
-                                        <label for="{{ form.time.id_for_label }}" class="relative block rounded-lg border border-secondary-light shadow-base dark:border-primary-light/5 mb-12">
+                                    <div class="col-span-2 md:col-span-1 mb-12">
+                                        <label for="{{ form.time.id_for_label }}" class="relative block rounded-lg border border-secondary-light shadow-base dark:border-primary-light/5 mb-2">
                                             <span class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-primary-light px-2 py-0.5 text-sm text-quaternary-600 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-focus:top-0 peer-focus:text-sm dark:bg-secondary-dark dark:text-quaternary-300 mr-4">
                                                 {% trans 'Choose the session time' %}
                                             </span>
                                             {% render_field form.time id="time" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" %}
                                         </label>
+                                        {% if form.time.errors %}
+                                            {% for error in form.time.errors %}
+                                                <p style="font-weight: normal; font-size: small; color: red;">{{ error }}</p>
+                                            {% endfor %}
+                                        {% endif %}
                                     </div>
 
                                     <!-- Name & Family -->
-                                    <div class="col-span-2 md:col-span-1">
-                                        <label for="{{ form.name_and_family.id_for_label }}" class="relative block rounded-lg border border-secondary-light shadow-base dark:border-primary-light/5 mb-12">
+                                    <div class="col-span-2 md:col-span-1 mb-12">
+                                        <label for="{{ form.name_and_family.id_for_label }}" class="relative block rounded-lg border border-secondary-light shadow-base dark:border-primary-light/5 mb-2">
                                             <span class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-primary-light px-2 py-0.5 text-sm text-quaternary-600 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-focus:top-0 peer-focus:text-sm dark:bg-secondary-dark dark:text-quaternary-300 mr-4">
                                                 {% trans 'Name & Family:' %}
                                             </span>
                                             {% render_field form.name_and_family type="text" id="name_and_family" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" %}
                                         </label>
+                                        {% if form.name_and_family.errors %}
+                                            {% for error in form.name_and_family.errors %}
+                                                <p style="font-weight: normal; font-size: small; color: red;">{{ error }}</p>
+                                            {% endfor %}
+                                        {% endif %}
                                     </div>
 
                                     <!-- Submit -->

@@ -30,6 +30,15 @@ rent_required_fields = ['province', 'city', 'price_deposit', 'price_rent', 'conv
                         'phone_number_for_contact', 'provider_national_code', 'owner_national_code', 'file_postal_code']
 
 
+trade_required_fields = ['trade_type', 'city', 'ours', 'location', 'date', 'time', 'name_and_family']
+
+
+sale_trade_required_fields = ['city', 'sale_code', 'location', 'date', 'time', 'name_and_family']
+
+
+rent_trade_required_fields = ['city', 'rent_code', 'location', 'date', 'time', 'name_and_family']
+
+
 class SaleFileCreateForm(forms.ModelForm):
     class Meta:
         model = SaleFile
@@ -222,6 +231,11 @@ class TradeSessionForm(forms.ModelForm):
         fields = ['trade_type', 'city', 'ours', 'sale_file', 'sale_code', 'rent_file', 'rent_code', 'location', 'date',
                   'time', 'name_and_family', 'phone_number']
 
+    def __init__(self, *args, **kwargs):
+        super(TradeSessionForm, self).__init__(*args, **kwargs)
+        for field in trade_required_fields:
+            self.fields[field].required = True
+
     def clean(self):
         cleaned_data = super().clean()
         sale_code = cleaned_data.get('sale_code')
@@ -243,10 +257,38 @@ class SaleTradeSessionForm(forms.ModelForm):
         model = models.TradeSession
         fields = ['city', 'sale_code', 'location', 'date', 'time', 'name_and_family', 'phone_number']
 
+    def __init__(self, *args, **kwargs):
+        super(SaleTradeSessionForm, self).__init__(*args, **kwargs)
+        for field in sale_trade_required_fields:
+            self.fields[field].required = True
+
+    def clean(self):
+        cleaned_data = super().clean()
+        sale_code = cleaned_data.get('sale_code')
+        sale_codes = SaleFile.objects.values_list('code', flat=True)
+
+        if sale_code and sale_code not in sale_codes:
+            self.add_error('sale_code', 'کد آگهی فروش وارد شده موجود نیست!')
+
+        return cleaned_data
+
 
 class RentTradeSessionForm(forms.ModelForm):
     class Meta:
         model = models.TradeSession
         fields = ['city', 'rent_code', 'location', 'date', 'time', 'name_and_family', 'phone_number']
+
+    def __init__(self, *args, **kwargs):
+        super(RentTradeSessionForm, self).__init__(*args, **kwargs)
+        for field in rent_trade_required_fields:
+            self.fields[field].required = True
+
+    def clean(self):
+        cleaned_data = super().clean()
+        rent_code = cleaned_data.get('rent_code')
+        rent_codes = RentFile.objects.values_list('code', flat=True)
+
+        if rent_code and rent_code not in rent_codes:
+            self.add_error('rent_code', 'کد آگهی فروش وارد شده موجود نیست!')
 
 
