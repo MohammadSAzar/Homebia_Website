@@ -31,7 +31,7 @@
                         <div class="col-span-5 md:col-span-3">
 
                             <!-- Create sale file -->
-                            <form method="post" enctype="multipart/form-data">
+                            <form method="post" enctype="multipart/form-data" novalidate>
                                 {% csrf_token %}
 
                                 <div class="col-span-6 rounded-lg bg-primary-light dark:bg-secondary-dark" style="margin: 5em 0 3em 0;">
@@ -52,7 +52,13 @@
                                             </span>
                                             {% render_field form.province type="text" id="province" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" %}
                                         </label>
-                                        <p style="font-weight: normal; font-size: small;">حتما قبل از موارد دیگر، ابتدا استان خود را انتخاب نمایید.</p>
+                                        {% if form.province.errors %}
+                                            {% for error in form.province.errors %}
+                                                <p style="font-weight: normal; font-size: small; color: red;">{{ error }}</p>
+                                            {% endfor %}
+                                        {% else %}
+                                            <p style="font-weight: normal; font-size: small;">حتما قبل از موارد دیگر، ابتدا استان خود را انتخاب نمایید.</p>
+                                        {% endif %}
                                     </div>
 
                                     <!-- City -->
@@ -63,7 +69,13 @@
                                             </span>
                                             {% render_field form.city type="text" id="city" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" %}
                                         </label>
-                                        <p style="font-weight: normal; font-size: small;">اطمینان کنید که شهر با استان انتخابی مطابقت داشته باشد.</p>
+                                        {% if form.city.errors %}
+                                            {% for error in form.city.errors %}
+                                                <p style="font-weight: normal; font-size: small; color: red;">{{ error }}</p>
+                                            {% endfor %}
+                                        {% else %}
+                                            <p style="font-weight: normal; font-size: small;">اطمینان کنید که شهر با استان انتخابی مطابقت داشته باشد.</p>
+                                        {% endif %}
                                     </div>
 
                                     <!-- District -->
@@ -86,7 +98,9 @@
                                             {% render_field form.price type="number" id="price" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" %}
                                         </label>
                                         {% if form.price.errors %}
-                                            <span style="font-weight: normal; font-size: small; color: red;">{{ form.price.errors }}</span>
+                                            {% for error in form.price.errors %}
+                                                <p style="font-weight: normal; font-size: small; color: red;">{{ error }}</p>
+                                            {% endfor %}
                                         {% else %}
                                             <p style="font-weight: normal; font-size: small;">قیمت را به صورت عددی و به تومان وارد نمایید.</p>
                                         {% endif %}
@@ -101,7 +115,9 @@
                                             {% render_field form.area type="number" id="area" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" %}
                                         </label>
                                         {% if form.area.errors %}
-                                            <span style="font-weight: normal; font-size: small; color: red;">{{ form.area.errors }}</span>
+                                            {% for error in form.area.errors %}
+                                                <p style="font-weight: normal; font-size: small; color: red;">{{ error }}</p>
+                                            {% endfor %}
                                         {% else %}
                                             <p style="font-weight: normal; font-size: small;">متراژ را به صورت عددی و به متر وارد نمایید.</p>
                                         {% endif %}
@@ -115,6 +131,11 @@
                                             </span>
                                             {% render_field form.room type="number" id="room" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" %}
                                         </label>
+                                        {% if form.room.errors %}
+                                            {% for error in form.room.errors %}
+                                                <p style="font-weight: normal; font-size: small; color: red;">{{ error }}</p>
+                                            {% endfor %}
+                                        {% endif %}
                                     </div>
 
                                     <!-- Age -->
@@ -125,6 +146,11 @@
                                             </span>
                                             {% render_field form.age type="number" id="year" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" %}
                                         </label>
+                                        {% if form.age.errors %}
+                                            {% for error in form.age.errors %}
+                                                <p style="font-weight: normal; font-size: small; color: red;">{{ error }}</p>
+                                            {% endfor %}
+                                        {% endif %}
                                     </div>
 
                                     <!-- Document -->
@@ -133,9 +159,15 @@
                                             <span style="font-size: large;" class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-primary-light px-2 py-0.5 text-sm text-quaternary-600 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-focus:top-0 peer-focus:text-sm dark:bg-secondary-dark dark:text-quaternary-300 mr-4">
                                                 {% trans 'Document Status: ' %}
                                             </span>
-                                            {% render_field form.document type="number" id="document" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" %}
+                                            {% render_field form.document type="text" id="document" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" %}
                                         </label>
-                                        <p style="font-weight: normal; font-size: small;">وضعیت سند آپارتمان خود را به درستی وارد نمایید.</p>
+                                        {% if form.document.errors %}
+                                            {% for error in form.document.errors %}
+                                                <p style="font-weight: normal; font-size: small; color: red;">{{ error }}</p>
+                                            {% endfor %}
+                                        {% else %}
+                                            <p style="font-weight: normal; font-size: small;">وضعیت سند آپارتمان خود را به درستی وارد نمایید.</p>
+                                        {% endif %}
                                     </div>
 
                                     <!-- Level -->
@@ -146,6 +178,11 @@
                                             </span>
                                             {% render_field form.level type="number" id="level" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" %}
                                         </label>
+                                        {% if form.level.errors %}
+                                            {% for error in form.level.errors %}
+                                                <p style="font-weight: normal; font-size: small; color: red;">{{ error }}</p>
+                                            {% endfor %}
+                                        {% endif %}
                                     </div>
 
                                     <!-- Parking -->
@@ -154,8 +191,13 @@
                                             <span style="font-size: large;" class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-primary-light px-2 py-0.5 text-sm text-quaternary-600 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-focus:top-0 peer-focus:text-sm dark:bg-secondary-dark dark:text-quaternary-300 mr-4">
                                                 {% trans 'Parking Status: ' %}
                                             </span>
-                                            {% render_field form.parking type="number" id="parking" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" %}
+                                            {% render_field form.parking type="text" id="parking" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" %}
                                         </label>
+                                        {% if form.parking.errors %}
+                                            {% for error in form.parking.errors %}
+                                                <p style="font-weight: normal; font-size: small; color: red;">{{ error }}</p>
+                                            {% endfor %}
+                                        {% endif %}
                                     </div>
 
                                     <!-- Elevator -->
@@ -164,8 +206,13 @@
                                             <span style="font-size: large;" class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-primary-light px-2 py-0.5 text-sm text-quaternary-600 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-focus:top-0 peer-focus:text-sm dark:bg-secondary-dark dark:text-quaternary-300 mr-4">
                                                 {% trans 'Elevator: ' %}
                                             </span>
-                                            {% render_field form.elevator type="number" id="elevator" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" %}
+                                            {% render_field form.elevator type="text" id="elevator" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" %}
                                         </label>
+                                        {% if form.elevator.errors %}
+                                            {% for error in form.elevator.errors %}
+                                                <p style="font-weight: normal; font-size: small; color: red;">{{ error }}</p>
+                                            {% endfor %}
+                                        {% endif %}
                                     </div>
 
                                     <!-- Warehouse -->
@@ -174,8 +221,13 @@
                                             <span style="font-size: large;" class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-primary-light px-2 py-0.5 text-sm text-quaternary-600 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-focus:top-0 peer-focus:text-sm dark:bg-secondary-dark dark:text-quaternary-300 mr-4">
                                                 {% trans 'Warehouse: ' %}
                                             </span>
-                                            {% render_field form.warehouse type="number" id="warehouse" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" %}
+                                            {% render_field form.warehouse type="text" id="warehouse" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" %}
                                         </label>
+                                        {% if form.warehouse.errors %}
+                                            {% for error in form.warehouse.errors %}
+                                                <p style="font-weight: normal; font-size: small; color: red;">{{ error }}</p>
+                                            {% endfor %}
+                                        {% endif %}
                                     </div>
 
                                     <!-- Title -->
@@ -186,7 +238,13 @@
                                             </span>
                                             {% render_field form.title type="text" id="title" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" %}
                                         </label>
-                                        <p style="font-weight: normal; font-size: small;">عنوانی مرتبط با آپارتمان خود وارد نمایید (این کار در سرچ فایل شما تاثیر زیادی دارد).</p>
+                                        {% if form.title.errors %}
+                                            {% for error in form.title.errors %}
+                                                <p style="font-weight: normal; font-size: small; color: red;">{{ error }}</p>
+                                            {% endfor %}
+                                        {% else %}
+                                            <p style="font-weight: normal; font-size: small;">عنوانی مرتبط با آپارتمان خود وارد نمایید (این کار در سرچ فایل شما تاثیر زیادی دارد).</p>
+                                        {% endif %}
                                     </div>
 
                                     <!-- Description -->
@@ -197,7 +255,13 @@
                                             </span>
                                             {% render_field form.description type="number" id="description" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" %}
                                         </label>
-                                        <p style="font-weight: normal; font-size: small;">توضیحات تکمیلی مرتبط با آپارتمان خود را وارد نمایید.</p>
+                                        {% if form.description.errors %}
+                                            {% for error in form.description.errors %}
+                                                <p style="font-weight: normal; font-size: small; color: red;">{{ error }}</p>
+                                            {% endfor %}
+                                        {% else %}
+                                            <p style="font-weight: normal; font-size: small;">توضیحات تکمیلی مرتبط با آپارتمان خود را وارد نمایید.</p>
+                                        {% endif %}
                                     </div>
                                 </div>
 
@@ -218,7 +282,13 @@
                                             </span>
                                             {% render_field form.cover type="file" id="cover" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" %}
                                         </label>
-                                        <p style="font-weight: normal; font-size: small;">حداقل یک عکس الزامی است.</p>
+                                        {% if form.cover.errors %}
+                                            {% for error in form.cover.errors %}
+                                                <p style="font-weight: normal; font-size: small; color: red;">{{ error }}</p>
+                                            {% endfor %}
+                                        {% else %}
+                                            <p style="font-weight: normal; font-size: small;">حداقل یک عکس الزامی است.</p>
+                                        {% endif %}
                                     </div>
 
                                     <!-- Cover2 -->
@@ -292,7 +362,7 @@
                                             <span style="font-size: large;" class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-primary-light px-2 py-0.5 text-sm text-quaternary-600 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-focus:top-0 peer-focus:text-sm dark:bg-secondary-dark dark:text-quaternary-300 mr-4">
                                                 {% trans 'Apartments per Level: ' %}
                                             </span>
-                                            {% render_field form.aparts_per_level type="text" id="aparts_per_level" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" %}
+                                            {% render_field form.aparts_per_level type="number" id="aparts_per_level" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" %}
                                         </label>
                                     </div>
 
@@ -385,7 +455,7 @@
                                   </ol>
                                 </div>
 
-                                <div class="grid grid-cols-2 items-center gap-6 mt-2">
+                                <div class="grid grid-cols-2 items-center gap-6 mt-2 ">
                                     <!-- Provider Name -->
                                     <div class="col-span-2 md:col-span-2" style="margin-top: 1em; margin-bottom: 1em;">
                                         <label style="margin-bottom: 1em;!important;" for="{{ form.provider_name.id_for_label }}" class="relative block rounded-lg border border-secondary-light shadow-base dark:border-primary-light/5 mb-12">
@@ -394,7 +464,13 @@
                                             </span>
                                             {% render_field form.provider_name type="text" id="provider_name" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" %}
                                         </label>
-                                        <p style="font-weight: normal; font-size: small;">این نام به عنوان ثبت‌کننده آگهی در سایت نمایش داده خواهد شد.</p>
+                                        {% if form.provider_name.errors %}
+                                            {% for error in form.provider_name.errors %}
+                                                <p style="font-weight: normal; font-size: small; color: red;">{{ error }}</p>
+                                            {% endfor %}
+                                        {% else %}
+                                            <p style="font-weight: normal; font-size: small;">این نام به عنوان ثبت‌کننده آگهی در سایت نمایش داده خواهد شد.</p>
+                                        {% endif %}
                                     </div>
 
                                     <!-- Provider Phone Number -->
@@ -406,7 +482,9 @@
                                             {% render_field form.phone_number_for_contact type="text" id="phone_number_for_contact" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" %}
                                         </label>
                                         {% if form.phone_number_for_contact.errors %}
-                                            <span style="font-weight: normal; font-size: small; color: red;">{{ form.phone_number_for_contact.errors }}</span>
+                                            {% for error in form.phone_number_for_contact.errors %}
+                                                <p style="font-weight: normal; font-size: small; color: red;">{{ error }}</p>
+                                            {% endfor %}
                                         {% else %}
                                             <p style="font-weight: normal; font-size: small;">برای تماس با شما جهت بازدید لازم است، لطفا شماره در دسترس وارد نمایید.</p>
                                         {% endif %}
@@ -421,7 +499,9 @@
                                             {% render_field form.provider_national_code type="text" id="provider_national_code" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" %}
                                         </label>
                                         {% if form.provider_national_code.errors %}
-                                            <span style="font-weight: normal; font-size: small; color: red;">{{ form.provider_national_code.errors }}</span>
+                                            {% for error in form.provider_national_code.errors %}
+                                                <p style="font-weight: normal; font-size: small; color: red;">{{ error }}</p>
+                                            {% endfor %}
                                         {% else %}
                                             <p style="font-weight: normal; font-size: small;">کد ملی شما تحت هیچ شرایطی در سایت نمایش داده نخواهد شد.</p>
                                         {% endif %}
@@ -436,7 +516,9 @@
                                             {% render_field form.owner_national_code type="text" id="owner_national_code" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" %}
                                         </label>
                                         {% if form.owner_national_code.errors %}
-                                            <span style="font-weight: normal; font-size: small; color: red;">{{ form.owner_national_code.errors }}</span>
+                                            {% for error in form.owner_national_code.errors %}
+                                                <p style="font-weight: normal; font-size: small; color: red;">{{ error }}</p>
+                                            {% endfor %}
                                         {% else %}
                                             <p style="font-weight: normal; font-size: small;">کد ملی مالک تحت هیچ شرایطی در سایت نمایش داده نخواهد شد.</p>
                                         {% endif %}
@@ -451,7 +533,9 @@
                                             {% render_field form.file_postal_code type="text" id="file_postal_code" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" %}
                                         </label>
                                         {% if form.file_postal_code.errors %}
-                                            <span style="font-weight: normal; font-size: small; color: red;">{{ form.file_postal_code.errors }}</span>
+                                            {% for error in form.file_postal_code.errors %}
+                                                <p style="font-weight: normal; font-size: small; color: red;">{{ error }}</p>
+                                            {% endfor %}
                                         {% else %}
                                             <p style="font-weight: normal; font-size: small;">کد پستی آپارتمان شما تحت هیچ شرایطی در سایت نمایش داده نخواهد شد.</p>
                                         {% endif %}
@@ -459,7 +543,7 @@
                                 </div>
 
                                 <!-- Submit -->
-                                <div class="col-span-2 flex justify-end" style="margin-top: 3em;">
+                                <div class="col-span-2 flex justify-end " style="margin-top: 3em;">
                                     <button style="padding: 1em 2.5em;!important; background-color: #00a65c;!important;" type="submit" class="btn-primary w-full px-4 py-2 md:w-auto">{% trans 'Submit Sale File' %}</button>
                                 </div>
                             </form>
