@@ -45,3 +45,5 @@ class OrderForm(forms.ModelForm):
         widgets = {
             'notes': forms.Textarea(attrs={'rows': 5, 'placeholder': 'توضیحات خود را وارد کنید...'}),
         }
+
+

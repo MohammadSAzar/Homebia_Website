@@ -33,7 +33,7 @@ statuses = [
     ('acc', _('Accepted')),
     ('can', _('Canceled')),
     ('pen', _('Pending')),
-    ('done', _('Done')),
+    ('dne', _('Done')),
 ]
 
 # prices
