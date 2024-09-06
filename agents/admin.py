@@ -1,8 +1,18 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 
-from .models import AgentCustomUserModel, AgentProfile, Province, City
+from .models import AgentCustomUserModel, AgentProfile, Province, City, Task
 from . import forms
+
+
+@admin.register(Province)
+class ProvinceAdmin(admin.ModelAdmin):
+    list_display = ('name',)
+
+
+@admin.register(City)
+class CityAdmin(admin.ModelAdmin):
+    list_display = ('name', 'province')
 
 
 @admin.register(AgentProfile)
@@ -48,12 +58,10 @@ class AgentCustomUserAdmin(BaseUserAdmin):
 admin.site.register(AgentCustomUserModel, AgentCustomUserAdmin)
 
 
-@admin.register(Province)
-class ProvinceAdmin(admin.ModelAdmin):
-    list_display = ('name',)
+@admin.register(Task)
+class TaskAdmin(admin.ModelAdmin):
+    model = Task
+    list_display = ('code', 'agent', 'task_counseling', 'task_session', 'task_visit', 'task_trade_session', 'is_requested',
+                    'is_paid', 'is_commissioned', 'datetime_created')
 
-
-@admin.register(City)
-class CityAdmin(admin.ModelAdmin):
-    list_display = ('name', 'province')
 

@@ -9,7 +9,7 @@ from django.utils import timezone
 from django.utils.translation import gettext as _
 
 from . import choices
-from services.models import next_seven_days_shamsi, statuses, times, session_price_value
+from services.models import next_seven_days_shamsi, statuses, agent_statuses, times, session_price_value
 
 
 # --------------------------------- Locations ---------------------------------
@@ -229,6 +229,7 @@ class TradeSession(models.Model):
     DATES = next_seven_days_shamsi
     TIMES = times
     STATUSES = statuses
+    AGENT_STATUSES = agent_statuses
     # Constants (here)
     CITIES = trade_cities
     LOCATIONS = locations
@@ -255,7 +256,8 @@ class TradeSession(models.Model):
     is_paid = models.CharField(max_length=200, choices=NOYES, default='no', verbose_name=_('Is payment done?'))
     # General
     trade_code = models.CharField(max_length=20, null=True, unique=True, blank=True)
-    status = models.CharField(max_length=30, choices=STATUSES, default='pen', verbose_name=_('Status'))
+    status = models.CharField(max_length=10, choices=STATUSES, default='pen', verbose_name=_('Status'))
+    agent_status = models.CharField(max_length=10, choices=AGENT_STATUSES, blank=True, null=True, default='wai', verbose_name=_('Agent Status'))
     datetime_created = models.DateTimeField(auto_now_add=True, verbose_name=_('Date and Time of Creation'))
 
     @property
@@ -293,8 +295,6 @@ class TradeSession(models.Model):
 
     def get_absolute_url(self):
         return reverse('trade_detail', args=[self.id])
-
-
 
 
 

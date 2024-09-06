@@ -28,13 +28,21 @@ times = [
     ('nt', _('Night')),
 ]
 
-# status modes
+# statuses
 statuses = [
     ('acc', _('Accepted')),
     ('can', _('Canceled')),
     ('pen', _('Pending')),
     ('dne', _('Done')),
 ]
+
+# agent statuses
+agent_statuses = [
+    ('ass', _('Assigned')),
+    ('wai', _('Waiting')),
+    ('rej', _('Rejected')),
+]
+
 
 # prices
 counseling_price_value = 500000
@@ -74,7 +82,7 @@ def next_seven_days_shamsi():
         ))
     return final_days
 
-# Counseling Model
+
 class Counseling(models.Model):
     # Constants
     COUNSELING_TYPES = [
@@ -86,13 +94,15 @@ class Counseling(models.Model):
     DATES = next_seven_days_shamsi
     TIMES = times
     STATUSES = statuses
+    AGENT_STATUSES = agent_statuses
     # Fields
     counseling_type = models.CharField(max_length=30, choices=COUNSELING_TYPES, verbose_name=_('Counseling Type'))
     date = models.CharField(max_length=200, choices=DATES, verbose_name=_('Date of Counseling'))
     time = models.CharField(max_length=200, choices=TIMES, verbose_name=_('Time of Counseling'))
     name_and_family = models.CharField(max_length=200, verbose_name=_('Name and Family'))
     phone_number = models.CharField(max_length=11, blank=True, null=True, verbose_name=_('Phone Number'))
-    status = models.CharField(max_length=30, choices=STATUSES, default='pen', verbose_name=_('Status'))
+    status = models.CharField(max_length=10, choices=STATUSES, default='pen', verbose_name=_('Status'))
+    agent_status = models.CharField(max_length=10, choices=AGENT_STATUSES, blank=True, null=True, default='wai', verbose_name=_('Agent Status'))
     datetime_created = models.DateTimeField(auto_now_add=True, verbose_name=_('Date and Time of Creation'))
 
     @property
@@ -123,7 +133,6 @@ class Counseling(models.Model):
         return reverse('counseling_detail', args=[self.id])
 
 
-# Session Model
 class Session(models.Model):
     # Constants
     CITIES = cities
@@ -131,6 +140,7 @@ class Session(models.Model):
     DATES = next_seven_days_shamsi
     TIMES = times
     STATUSES = statuses
+    AGENT_STATUSES = agent_statuses
     # Fields
     city = models.CharField(max_length=30, choices=CITIES, default=_('Tehran'), verbose_name=_('City'))
     customer_type = models.CharField(max_length=30, choices=CUSTOMER_TYPES, verbose_name=_('Customer Type'))
@@ -138,7 +148,8 @@ class Session(models.Model):
     time = models.CharField(max_length=200, choices=TIMES, verbose_name=_('Time of Session'))
     name_and_family = models.CharField(max_length=200, verbose_name=_('Name and Family'))
     phone_number = models.CharField(max_length=11, blank=True, null=True, verbose_name=_('Phone Number'))
-    status = models.CharField(max_length=30, choices=STATUSES, default='pen', verbose_name=_('Status'))
+    status = models.CharField(max_length=10, choices=STATUSES, default='pen', verbose_name=_('Status'))
+    agent_status = models.CharField(max_length=10, choices=AGENT_STATUSES, blank=True, null=True, default='wai', verbose_name=_('Agent Status'))
     datetime_created = models.DateTimeField(auto_now_add=True, verbose_name=_('Date and Time of Creation'))
 
     @property
@@ -169,20 +180,21 @@ class Session(models.Model):
         return reverse('session_detail', args=[self.id])
 
 
-# Visit Model
 class Visit(models.Model):
     # Constants
     CITIES = cities
     DATES = next_seven_days_shamsi
     TIMES = times
     STATUSES = statuses
+    AGENT_STATUSES = agent_statuses
     # Fields
     city = models.CharField(max_length=30, choices=CITIES, default=_('Tehran'), verbose_name=_('City'))
     date = models.CharField(max_length=200, choices=DATES, verbose_name=_('Date of Visit'))
     time = models.CharField(max_length=200, choices=TIMES, verbose_name=_('Time of Visit'))
     name_and_family = models.CharField(max_length=200, verbose_name=_('Name and Family'))
     phone_number = models.CharField(max_length=11, blank=True, null=True, verbose_name=_('Phone Number'))
-    status = models.CharField(max_length=30, choices=STATUSES, default='pen', verbose_name=_('Status'))
+    status = models.CharField(max_length=10, choices=STATUSES, default='pen', verbose_name=_('Status'))
+    agent_status = models.CharField(max_length=10, choices=AGENT_STATUSES, blank=True, null=True, default='wai', verbose_name=_('Agent Status'))
     datetime_created = models.DateTimeField(auto_now_add=True, verbose_name=_('Date and Time of Creation'))
 
     @property
