@@ -85,7 +85,6 @@ def next_seven_days_shamsi():
 
 class Counseling(models.Model):
     # Constants
-    CITIES = cities
     COUNSELING_TYPES = [
         ('ip', _('In Person')),
         ('op', _('On Phone')),
@@ -97,8 +96,7 @@ class Counseling(models.Model):
     STATUSES = statuses
     AGENT_STATUSES = agent_statuses
     # Fields
-    city = models.CharField(max_length=30, choices=CITIES, default=_('Tehran'), blank=True, null=True, verbose_name=_('City'))
-    district = models.CharField(max_length=30, default='', blank=True, null=True, verbose_name=_('District'))
+    city = models.CharField(max_length=30, default=_('Tehran'), blank=True, null=True, verbose_name=_('City'))
     counseling_type = models.CharField(max_length=30, default=_('oc'), choices=COUNSELING_TYPES, verbose_name=_('Counseling Type'))
     date = models.CharField(max_length=200, choices=DATES, verbose_name=_('Date of Counseling'))
     time = models.CharField(max_length=200, choices=TIMES, verbose_name=_('Time of Counseling'))
