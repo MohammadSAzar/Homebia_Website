@@ -5,28 +5,28 @@ from services.models import Counseling, Session, Visit
 from restates.models import TradeSession
 
 
-@receiver(post_save, sender=TradeSession)
-def create_task_for_trade_session(sender, instance, created, **kwargs):
-    if created:
-        Task.objects.create(task_trade_session=instance)
-
-
 @receiver(post_save, sender=Counseling)
-def create_task_for_counseling(sender, instance, created, **kwargs):
+def task_counseling_signal(sender, instance, created, **kwargs):
     if created:
-        Task.objects.create(task_counseling=instance)
+        Task.objects.create(task_counseling=instance, type='cns')
 
 
 @receiver(post_save, sender=Session)
-def create_task_for_session(sender, instance, created, **kwargs):
+def task_session_signal(sender, instance, created, **kwargs):
     if created:
-        Task.objects.create(task_session=instance)
+        Task.objects.create(task_session=instance, type='ses')
 
 
 @receiver(post_save, sender=Visit)
-def create_task_for_visit(sender, instance, created, **kwargs):
+def task_visit_signal(sender, instance, created, **kwargs):
     if created:
-        Task.objects.create(task_visit=instance)
+        Task.objects.create(task_visit=instance, type='vis')
+
+
+@receiver(post_save, sender=TradeSession)
+def task_trade_session_signal(sender, instance, created, **kwargs):
+    if created:
+        Task.objects.create(task_trade_session=instance, type='tds')
 
 
 

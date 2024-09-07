@@ -3,8 +3,10 @@ from django.contrib.auth import login, authenticate
 from django.contrib import messages
 from django.urls import reverse
 from django.http import HttpResponseRedirect, JsonResponse
+from django.views.generic import ListView, DetailView
 
-from .models import AgentCustomUserModel, AgentProfile, Province, City
+
+from .models import AgentCustomUserModel, AgentProfile, Task, Province, City
 from accounts.models import CustomUserModel
 from .forms import AgentRegistrationForm, AgentInfoCompletionForm, AgentInfoEditForm
 from accounts.checkers import send_otp, get_random_otp, otp_time_checker_agent
@@ -121,5 +123,30 @@ def agent_profile_info_now(request):
         user = request.user
         context['user'] = user
     return render(request, 'agents/agent_profile_info_now.html', context)
+
+
+# --------------------------------- tasks ---------------------------------
+class TaskListView(ListView):
+    model = Task
+    template_name = 'agents/task_list.html'
+    context_object_name = 'tasks'
+    paginate_by = 6
+    # queryset = Task.objects.select_related('task_counseling').select_related('task_session').select_related('task_visit').select_related('task_trade_session').all()
+    queryset = Task.objects.all()
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        phone_number = self.request.session.get('user_phone_number')
+        if phone_number:
+            try:
+                agent_user = AgentCustomUserModel.objects.get(phone_number=phone_number)
+                context['agent_user'] = agent_user
+            except AgentCustomUserModel.DoesNotExist:
+                user = CustomUserModel.objects.get(phone_number=phone_number)
+                context['user'] = user
+        else:
+            user = self.request.user
+            context['user'] = user
+        return context
 
 

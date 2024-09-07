@@ -5,9 +5,10 @@ from . import views
 urlpatterns = [
     path('load_cities/', views.load_cities, name='load_cities'),
     path('get-cities/', views.load_cities_list, name='load_cities_list'),
-    path('agent_registration/', views.agent_registration_view, name='agent_registration'),
-    path('agent_verification/', views.agent_verification_view, name='agent_verification'),
-    path('agent_profile/', views.agent_profile_info_now, name='agent_profile_info_now'),
+    path('registration/', views.agent_registration_view, name='agent_registration'),
+    path('verification/', views.agent_verification_view, name='agent_verification'),
+    path('profile/', views.agent_profile_info_now, name='agent_profile_info_now'),
+    path('task_list/', views.TaskListView.as_view(), name='task_list'),
     # path('info_auth/', views.profile_info_auth, name='profile_info_auth'),
     # path('info_edit/', views.profile_info_edit, name='profile_info_edit'),
     # path('your_services/', views.profile_your_services, name='profile_your_services'),

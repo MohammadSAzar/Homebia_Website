@@ -61,7 +61,7 @@ admin.site.register(AgentCustomUserModel, AgentCustomUserAdmin)
 @admin.register(Task)
 class TaskAdmin(admin.ModelAdmin):
     model = Task
-    list_display = ('code', 'agent', 'task_counseling', 'task_session', 'task_visit', 'task_trade_session', 'is_requested',
+    list_display = ('code', 'type', 'agent', 'task_counseling', 'task_session', 'task_visit', 'task_trade_session', 'is_requested',
                     'is_paid', 'is_commissioned', 'datetime_created')
 
 
