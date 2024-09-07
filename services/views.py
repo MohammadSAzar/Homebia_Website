@@ -16,7 +16,7 @@ def counseling_view(request):
 	if request.method == 'POST':
 		form = CounselingForm(request.POST)
 		if form.is_valid():
-			form.save()
+			form.save(commit=False)
 			context = {
 				'form': form,
 			}

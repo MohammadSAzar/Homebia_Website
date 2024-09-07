@@ -85,6 +85,7 @@ def next_seven_days_shamsi():
 
 class Counseling(models.Model):
     # Constants
+    CITIES = cities
     COUNSELING_TYPES = [
         ('ip', _('In Person')),
         ('op', _('On Phone')),
@@ -96,7 +97,9 @@ class Counseling(models.Model):
     STATUSES = statuses
     AGENT_STATUSES = agent_statuses
     # Fields
-    counseling_type = models.CharField(max_length=30, choices=COUNSELING_TYPES, verbose_name=_('Counseling Type'))
+    city = models.CharField(max_length=30, choices=CITIES, default=_('Tehran'), blank=True, null=True, verbose_name=_('City'))
+    district = models.CharField(max_length=30, default='', blank=True, null=True, verbose_name=_('District'))
+    counseling_type = models.CharField(max_length=30, default=_('oc'), choices=COUNSELING_TYPES, verbose_name=_('Counseling Type'))
     date = models.CharField(max_length=200, choices=DATES, verbose_name=_('Date of Counseling'))
     time = models.CharField(max_length=200, choices=TIMES, verbose_name=_('Time of Counseling'))
     name_and_family = models.CharField(max_length=200, verbose_name=_('Name and Family'))
@@ -143,6 +146,7 @@ class Session(models.Model):
     AGENT_STATUSES = agent_statuses
     # Fields
     city = models.CharField(max_length=30, choices=CITIES, default=_('Tehran'), verbose_name=_('City'))
+    district = models.CharField(max_length=30, default='', blank=True, null=True, verbose_name=_('District'))
     customer_type = models.CharField(max_length=30, choices=CUSTOMER_TYPES, verbose_name=_('Customer Type'))
     date = models.CharField(max_length=200, choices=DATES, verbose_name=_('Date of Session'))
     time = models.CharField(max_length=200, choices=TIMES, verbose_name=_('Time of Session'))
@@ -189,6 +193,7 @@ class Visit(models.Model):
     AGENT_STATUSES = agent_statuses
     # Fields
     city = models.CharField(max_length=30, choices=CITIES, default=_('Tehran'), verbose_name=_('City'))
+    district = models.CharField(max_length=30, default='', blank=True, null=True, verbose_name=_('District'))
     date = models.CharField(max_length=200, choices=DATES, verbose_name=_('Date of Visit'))
     time = models.CharField(max_length=200, choices=TIMES, verbose_name=_('Time of Visit'))
     name_and_family = models.CharField(max_length=200, verbose_name=_('Name and Family'))
