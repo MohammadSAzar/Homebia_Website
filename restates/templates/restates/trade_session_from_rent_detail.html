@@ -13,7 +13,7 @@
 
     <main class="flex-grow bg-secondary-light pb-14 pt-36 dark:bg-primary-dark xs:pt-36 " style="background-color: transparent">
         <div class="container pb-14">
-            <div class="grid grid-cols-12 gap-2 lg:gap-6">
+            <div class="grid grid-cols-12 gap-2 lg:gap-6 ">
 
                 <!-- top ribbon  -->
                 <div class="col-span-12 rounded-lg bg-primary-light dark:bg-secondary-dark">
@@ -72,7 +72,7 @@
                                     <div class="col-span-2 md:col-span-1 mb-12">
                                         <label for="{{ form.location.id_for_label }}" class="relative block rounded-lg border border-secondary-light shadow-base dark:border-primary-light/5 mb-2">
                                             <span class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-primary-light px-2 py-0.5 text-sm text-quaternary-600 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-focus:top-0 peer-focus:text-sm dark:bg-secondary-dark dark:text-quaternary-300 mr-4">
-                                                {% trans 'Where do you prefer for location?' %}
+                                                تمایل خود برای محل برگزاری نشست معاملاتی را انتخاب کنید (نشست به میزبانی هومبابا، فقط در تهران مقدور است)
                                             </span>
                                             {% render_field form.location type="text" id="location" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" %}
                                         </label>
@@ -80,6 +80,23 @@
                                             {% for error in form.location.errors %}
                                                 <p style="font-weight: normal; font-size: small; color: red;">{{ error }}</p>
                                             {% endfor %}
+                                        {% endif %}
+                                    </div>
+
+                                    <!-- District -->
+                                    <div class="col-span-2 md:col-span-1 mt-2 mb-12" id="district-container">
+                                        <label for="{{ form.district.id_for_label }}" class="relative block rounded-lg border border-secondary-light shadow-base dark:border-primary-light/5 mb-2">
+                                            <span class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-primary-light px-2 py-0.5 text-sm text-quaternary-600 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-focus:top-0 peer-focus:text-sm dark:bg-secondary-dark dark:text-quaternary-300 mr-4">
+                                              {% trans 'Choose the district' %}
+                                            </span>
+                                            {% render_field form.district type="text" id="district" class="peer w-full rounded-lg border-none bg-transparent px-4 py-3 text-quaternary-700 placeholder-transparent focus:outline-none focus:ring-0 dark:text-primary-light" %}
+                                        </label>
+                                        {% if form.district.errors %}
+                                            {% for error in form.district.errors %}
+                                                <p style="font-weight: normal; font-size: small; color: red;">{{ error }}</p>
+                                            {% endfor %}
+                                        {% else %}
+                                                <p style="font-weight: normal; font-size: small;">اگر قصد میزبانی نشست معاملاتی را دارید، لطفا محله حدودی آن را تعیین نمایید!</p>
                                         {% endif %}
                                     </div>
 
@@ -134,6 +151,48 @@
                                     </div>
 
                                 </form>
+
+                                <!-- JS location/district handler -->
+                                <script>
+                                    document.addEventListener('DOMContentLoaded', function() {
+                                        const citySelect = document.getElementById('city');
+                                        const locationSelect = document.getElementById('location');
+                                        const districtContainer = document.getElementById('district-container');
+
+                                        function handleCityOneLogic() {
+                                            if (locationSelect.value === 'yours') {
+                                                districtContainer.style.display = 'block';
+                                            } else {
+                                                districtContainer.style.display = 'none';
+                                            }
+                                            locationSelect.disabled = false;
+                                        }
+
+                                        function handleCityTwoLogic() {
+                                            locationSelect.value = 'yours';
+                                            {#locationSelect.setAttribute('readonly', 'readonly');#}
+                                            locationSelect.disabled = true;
+                                            districtContainer.style.display = 'none';
+                                        }
+
+                                        function toggleLogic() {
+                                            if (citySelect.value === 'thrn') {
+                                                handleCityOneLogic();
+                                            } else {
+                                                handleCityTwoLogic();
+                                            }
+                                        }
+
+                                        toggleLogic();
+
+                                        citySelect.addEventListener('change', toggleLogic);
+                                        locationSelect.addEventListener('change', function() {
+                                            if (citySelect.value === 'thrn') {
+                                                handleCityOneLogic();
+                                            }
+                                        });
+                                    });
+                                </script>
 
                             </div>
                         </div>

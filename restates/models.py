@@ -238,6 +238,7 @@ class TradeSession(models.Model):
     NOYES = noyes
     # Session
     city = models.CharField(max_length=30, choices=CITIES, default='thrn', verbose_name=_('City'))
+    district = models.CharField(max_length=30, default='', blank=True, null=True, verbose_name=_('District'))
     location = models.CharField(max_length=30, choices=LOCATIONS, verbose_name=_('Location'))
     date = models.CharField(max_length=200, choices=DATES, verbose_name=_('Date of Session'))
     time = models.CharField(max_length=200, choices=TIMES, verbose_name=_('Time of Session'))

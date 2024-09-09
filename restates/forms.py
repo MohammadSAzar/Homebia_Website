@@ -228,7 +228,7 @@ class RentFileFilterForm(forms.Form):
 class TradeSessionForm(forms.ModelForm):
     class Meta:
         model = models.TradeSession
-        fields = ['trade_type', 'city', 'ours', 'sale_file', 'sale_code', 'rent_file', 'rent_code', 'location', 'date',
+        fields = ['trade_type', 'city', 'district', 'ours', 'sale_file', 'sale_code', 'rent_file', 'rent_code', 'location', 'date',
                   'time', 'name_and_family', 'phone_number']
 
     def __init__(self, *args, **kwargs):
@@ -242,6 +242,8 @@ class TradeSessionForm(forms.ModelForm):
         rent_code = cleaned_data.get('rent_code')
         sale_codes = SaleFile.objects.values_list('code', flat=True)
         rent_codes = RentFile.objects.values_list('code', flat=True)
+        district = cleaned_data.get('district')
+        location = cleaned_data.get('location')
 
         if sale_code and sale_code not in sale_codes:
             self.add_error('sale_code', 'کد آگهی فروش وارد شده موجود نیست!')
@@ -249,13 +251,17 @@ class TradeSessionForm(forms.ModelForm):
         if rent_code and rent_code not in rent_codes:
             self.add_error('rent_code', 'کد آگهی اجاره وارد شده موجود نیست!')
 
+        if location == 'yours':
+            if not district:
+                self.add_error('district', 'اگر قصد میزبانی نشست معاملاتی را دارید، لطفا محله حدودی آن را تعیین نمایید!')
+
         return cleaned_data
 
 
 class SaleTradeSessionForm(forms.ModelForm):
     class Meta:
         model = models.TradeSession
-        fields = ['city', 'sale_code', 'location', 'date', 'time', 'name_and_family', 'phone_number']
+        fields = ['city', 'sale_code', 'location', 'district', 'date', 'time', 'name_and_family', 'phone_number']
 
     def __init__(self, *args, **kwargs):
         super(SaleTradeSessionForm, self).__init__(*args, **kwargs)
@@ -266,9 +272,15 @@ class SaleTradeSessionForm(forms.ModelForm):
         cleaned_data = super().clean()
         sale_code = cleaned_data.get('sale_code')
         sale_codes = SaleFile.objects.values_list('code', flat=True)
+        district = cleaned_data.get('district')
+        location = cleaned_data.get('location')
 
         if sale_code and sale_code not in sale_codes:
             self.add_error('sale_code', 'کد آگهی فروش وارد شده موجود نیست!')
+
+        if location == 'yours':
+            if not district:
+                self.add_error('district', 'اگر قصد میزبانی نشست معاملاتی را دارید، لطفا محله حدودی آن را تعیین نمایید!')
 
         return cleaned_data
 
@@ -276,7 +288,7 @@ class SaleTradeSessionForm(forms.ModelForm):
 class RentTradeSessionForm(forms.ModelForm):
     class Meta:
         model = models.TradeSession
-        fields = ['city', 'rent_code', 'location', 'date', 'time', 'name_and_family', 'phone_number']
+        fields = ['city', 'rent_code', 'location', 'district', 'date', 'time', 'name_and_family', 'phone_number']
 
     def __init__(self, *args, **kwargs):
         super(RentTradeSessionForm, self).__init__(*args, **kwargs)
@@ -287,8 +299,16 @@ class RentTradeSessionForm(forms.ModelForm):
         cleaned_data = super().clean()
         rent_code = cleaned_data.get('rent_code')
         rent_codes = RentFile.objects.values_list('code', flat=True)
+        district = cleaned_data.get('district')
+        location = cleaned_data.get('location')
 
         if rent_code and rent_code not in rent_codes:
             self.add_error('rent_code', 'کد آگهی فروش وارد شده موجود نیست!')
+
+        if location == 'yours':
+            if not district:
+                self.add_error('district', 'اگر قصد میزبانی نشست معاملاتی را دارید، لطفا محله حدودی آن را تعیین نمایید!')
+
+        return cleaned_data
 
 
