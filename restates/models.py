@@ -258,7 +258,7 @@ class TradeSession(models.Model):
     # General
     trade_code = models.CharField(max_length=20, null=True, unique=True, blank=True)
     status = models.CharField(max_length=10, choices=STATUSES, default='pen', verbose_name=_('Status'))
-    agent_status = models.CharField(max_length=10, choices=AGENT_STATUSES, blank=True, null=True, default='wai', verbose_name=_('Agent Status'))
+    agent_status = models.CharField(max_length=10, choices=AGENT_STATUSES, blank=True, null=True, default='fre', verbose_name=_('Agent Status'))
     datetime_created = models.DateTimeField(auto_now_add=True, verbose_name=_('Date and Time of Creation'))
 
     @property

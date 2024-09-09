@@ -49,8 +49,8 @@
 
                                             <!-- file information -->
                                             <div class="product-info">
-                                                <div class="product-category" style="margin-bottom: 1.5em;!important;">
 
+                                                <div class="product-category" style="margin-bottom: 1.5em;!important;">
                                                     <a href="{{ file.get_absolute_url }}"><h4 class="file-title">{{ file.title|linebreaksbr|farsi_number }}</h4></a>
                                                     <h5 style="color: black;!important;">کد آگهی: {{ file.code }}</h5>
                                                     {% if file.district is not None %}
@@ -74,6 +74,7 @@
                                                         <a href="{{ file.get_absolute_url }}" class="btn btn-outline btn-brw-2" data-animation="fadeInUp" data-duration=".3s" data-delay=".6s" style="line-height: 0.1em; font-weight: normal; float: left;">{% trans 'Read More' %}</a>
                                                     </div>
                                                 </div>
+
                                             </div>
                                             <!-- end: file information -->
                                         </div>

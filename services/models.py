@@ -39,8 +39,9 @@ statuses = [
 # agent statuses
 agent_statuses = [
     ('ass', _('Assigned')),
-    ('wai', _('Waiting')),
+    ('wai', _('Waited')),
     ('rej', _('Rejected')),
+    ('fre', _('Free')),
 ]
 
 
@@ -103,7 +104,7 @@ class Counseling(models.Model):
     name_and_family = models.CharField(max_length=200, verbose_name=_('Name and Family'))
     phone_number = models.CharField(max_length=11, blank=True, null=True, verbose_name=_('Phone Number'))
     status = models.CharField(max_length=10, choices=STATUSES, default='pen', verbose_name=_('Status'))
-    agent_status = models.CharField(max_length=10, choices=AGENT_STATUSES, blank=True, null=True, default='wai', verbose_name=_('Agent Status'))
+    agent_status = models.CharField(max_length=10, choices=AGENT_STATUSES, blank=True, null=True, default='fre', verbose_name=_('Agent Status'))
     datetime_created = models.DateTimeField(auto_now_add=True, verbose_name=_('Date and Time of Creation'))
 
     @property
@@ -151,7 +152,7 @@ class Session(models.Model):
     name_and_family = models.CharField(max_length=200, verbose_name=_('Name and Family'))
     phone_number = models.CharField(max_length=11, blank=True, null=True, verbose_name=_('Phone Number'))
     status = models.CharField(max_length=10, choices=STATUSES, default='pen', verbose_name=_('Status'))
-    agent_status = models.CharField(max_length=10, choices=AGENT_STATUSES, blank=True, null=True, default='wai', verbose_name=_('Agent Status'))
+    agent_status = models.CharField(max_length=10, choices=AGENT_STATUSES, blank=True, null=True, default='fre', verbose_name=_('Agent Status'))
     datetime_created = models.DateTimeField(auto_now_add=True, verbose_name=_('Date and Time of Creation'))
 
     @property
@@ -197,7 +198,7 @@ class Visit(models.Model):
     name_and_family = models.CharField(max_length=200, verbose_name=_('Name and Family'))
     phone_number = models.CharField(max_length=11, blank=True, null=True, verbose_name=_('Phone Number'))
     status = models.CharField(max_length=10, choices=STATUSES, default='pen', verbose_name=_('Status'))
-    agent_status = models.CharField(max_length=10, choices=AGENT_STATUSES, blank=True, null=True, default='wai', verbose_name=_('Agent Status'))
+    agent_status = models.CharField(max_length=10, choices=AGENT_STATUSES, blank=True, null=True, default='fre', verbose_name=_('Agent Status'))
     datetime_created = models.DateTimeField(auto_now_add=True, verbose_name=_('Date and Time of Creation'))
 
     @property

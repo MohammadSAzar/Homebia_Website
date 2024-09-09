@@ -32,7 +32,7 @@
     <!-- end: Blog category choices -->
 
     <!-- Blog main -->
-    <main class="main-content-wrapper">
+    <main class="main-content-wrapper ">
         <div class="inner-page-content ptb--80 ptb-md--60">
             <div class="container">
                 <div class="row">
@@ -44,12 +44,16 @@
                                 <div class="col-xl-4 col-lg-6 mb--50">
                                     <article class="blog format-standard" style="margin-bottom: 5em;">
                                         <div class="blog__inner">
+
                                             <div class="blog__media">
+
                                                 <figure class="image">
                                                     <img src="{{ blog.cover.url }}" alt="Blog Image" class="w-100">
                                                     <a href="{{ blog.get_absolute_url }}" class="item-overlay"></a>
                                                 </figure>
+
                                             </div>
+
                                             <div class="blog__info">
                                                 <h2 class="blog__title" style="font-weight: bold;"><a href="{{ blog.get_absolute_url }}">{{ blog.title|farsi_number }}</a></h2>
                                                 <div class="blog__meta">
@@ -60,6 +64,7 @@
                                                 </div>
                                                 <a href="{{ blog.get_absolute_url }}" class="btn btn-outline btn-brw-2" data-animation="fadeInUp" data-duration=".3s" data-delay=".6s" style="line-height: 0.6em; font-weight: normal; float: left">{% trans 'Read More' %}</a>
                                             </div>
+
                                         </div>
                                     </article>
                                 </div>

@@ -4274,10 +4274,10 @@ XX - Blog Pagination
     margin: 10px 0 30px 0;
     line-height: 30px;
     height: 4.5em; /* Set fixed height (2 lines of text) */
+    -webkit-line-clamp: 2; /* Limit to 2 lines */
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
-    -webkit-line-clamp: 2; /* Limit to 2 lines */
     -webkit-box-orient: vertical;
 }
 

@@ -130,7 +130,7 @@ class TaskListView(ListView):
     model = Task
     template_name = 'agents/task_list.html'
     context_object_name = 'tasks'
-    paginate_by = 6
+    paginate_by = 20
     # queryset = Task.objects.select_related('task_counseling').select_related('task_session').select_related('task_visit').select_related('task_trade_session').all()
     queryset = Task.objects.all()
 
@@ -148,5 +148,10 @@ class TaskListView(ListView):
             user = self.request.user
             context['user'] = user
         return context
+
+class TaskDetailView(DetailView):
+    model = Task
+    template_name = 'agents/task_detail.html'
+    context_object_name = 'task'
 
 

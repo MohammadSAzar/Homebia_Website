@@ -245,8 +245,11 @@
                                                 {% endif %}
 
                                                 <!-- Button -->
-                                                <div class="d-flex align-items-center" style="margin-top: 20px; float: left">
-                                                    <a href="{{ task.get_absolute_url }}" class="btn btn-primary" style="padding: 5px 45px; line-height: 2.5em;!important;"><span>{% trans 'More' %}</span></a>
+                                                <div class="d-flex align-items-center">
+                                                    <div class="avatar-group">
+{#                                                        <a href="{% url 'session' %}" class="btn btn-outline btn-brw-2" data-animation="fadeInUp" data-duration=".3s" data-delay=".6s" style="line-height: 0.8em; font-weight: normal;">{% trans 'More' %}</a>#}
+                                                        <a href="{{ task.get_absolute_url }}" class="btn btn-primary" data-animation="fadeInUp" data-duration=".3s" data-delay=".6s" style="line-height: 2.5em;!important;"><em class="icon ni ni-plus"></em><span>ثبت آگهی فروش</span></a>
+                                                    </div>
                                                 </div>
 
                                             </div>
