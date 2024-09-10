@@ -9,7 +9,7 @@ from django.utils import timezone
 from django.utils.translation import gettext as _
 
 from . import choices
-from services.models import next_seven_days_shamsi, statuses, agent_statuses, times, session_price_value
+from services.models import next_seven_days_shamsi, statuses, times, session_price_value
 
 
 # --------------------------------- Locations ---------------------------------
@@ -214,13 +214,13 @@ locations = [
     ('ours', _('Ours')),
     ('yours', _('Yours')),
 ]
-beings = [
-    ('is', _('Is')),
-    ('isnt', _('Is Not')),
-]
 noyes = [
     ('yes', _('Yes')),
     ('no', _('No')),
+]
+beings = [
+    ('is', _('Is')),
+    ('isnt', _('Is Not')),
 ]
 
 
@@ -229,7 +229,6 @@ class TradeSession(models.Model):
     DATES = next_seven_days_shamsi
     TIMES = times
     STATUSES = statuses
-    AGENT_STATUSES = agent_statuses
     # Constants (here)
     CITIES = trade_cities
     LOCATIONS = locations
@@ -258,7 +257,6 @@ class TradeSession(models.Model):
     # General
     trade_code = models.CharField(max_length=20, null=True, unique=True, blank=True)
     status = models.CharField(max_length=10, choices=STATUSES, default='pen', verbose_name=_('Status'))
-    agent_status = models.CharField(max_length=10, choices=AGENT_STATUSES, blank=True, null=True, default='fre', verbose_name=_('Agent Status'))
     datetime_created = models.DateTimeField(auto_now_add=True, verbose_name=_('Date and Time of Creation'))
 
     @property

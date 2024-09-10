@@ -100,3 +100,9 @@ class AgentInfoEditForm(forms.ModelForm):
 		return cleaned_data
 
 
+class AgentTaskApplyForm(forms.ModelForm):
+	class Meta:
+		model = models.Task
+		fields = []
+
+

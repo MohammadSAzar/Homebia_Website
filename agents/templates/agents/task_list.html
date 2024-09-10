@@ -3,6 +3,7 @@
 {% load static %}
 {% load i18n %}
 {% load jalali_tags %}
+{% load humanize %}
 {% load shamsi_date %}
 {% load number_converter %}
 {% load widget_tweaks %}
@@ -69,8 +70,8 @@
                                     <figure class="p-2 rounded-6 shadow-dark-80 bg-white mb-0 h-100 border border-gray-200">
                                         <figcaption class="text-center">
                                             <img src="/static/profile/agents/tasks/folder45.png" alt="Word">
-                                            <h6 class="font-weight-semibold open-sans-font mt-3" style="margin-bottom: 1.5em;">{% trans 'Counselings' %}</h6>
-                                            <span class="text-gray-600 fs-11 lh-base" style="color: grey;">ارائه مشاوره به مشتریان</span>
+                                            <h6 class="font-weight-semibold open-sans-font mt-3 text-center" style="margin-bottom: 1.5em;">{% trans 'Counselings' %}</h6>
+                                            <span class="text-gray-600 fs-11 lh-base" style="font-size: 0.9em">ارائه مشاوره به مشتریان</span>
                                         </figcaption>
                                     </figure>
                                 </div>
@@ -80,8 +81,8 @@
                                     <figure class="p-2 rounded-6 shadow-dark-80 bg-white mb-0 h-100 border border-gray-200">
                                         <figcaption class="text-center">
                                             <img src="/static/profile/agents/tasks/folder45.png" alt="Word">
-                                            <h6 class="font-weight-semibold open-sans-font mt-3" style="margin-bottom: 1.5em;">{% trans 'Sessions' %}</h6>
-                                            <span class="text-gray-600 fs-11 lh-base" style="color: grey;">همراهی مشتریان در نشست</span>
+                                            <h6 class="font-weight-semibold open-sans-font mt-3 text-center" style="margin-bottom: 1.5em;">{% trans 'Sessions' %}</h6>
+                                            <span class="text-gray-600 fs-11 lh-base" style="font-size: 0.9em">همراهی مشتریان در نشست</span>
                                         </figcaption>
                                     </figure>
                                 </div>
@@ -91,8 +92,8 @@
                                     <figure class="p-2 rounded-6 shadow-dark-80 bg-white mb-0 h-100 border border-gray-200">
                                         <figcaption class="text-center">
                                             <img src="/static/profile/agents/tasks/folder45.png" alt="Word">
-                                            <h6 class="font-weight-semibold open-sans-font mt-3" style="margin-bottom: 1.5em;">{% trans 'Visits' %}</h6>
-                                            <span class="text-gray-600 fs-11 lh-base" style="color: grey;">همراهی مشتریان در بازدید</span>
+                                            <h6 class="font-weight-semibold open-sans-font mt-3 text-center" style="margin-bottom: 1.5em;">{% trans 'Visits' %}</h6>
+                                            <span class="text-gray-600 fs-11 lh-base" style="font-size: 0.9em">همراهی مشتریان در بازدید</span>
                                         </figcaption>
                                     </figure>
                                 </div>
@@ -102,8 +103,8 @@
                                     <figure class="p-2 rounded-6 shadow-dark-80 bg-white mb-0 h-100 border border-gray-200">
                                         <figcaption class="text-center">
                                             <img src="/static/profile/agents/tasks/folder45.png" alt="Word">
-                                            <h6 class="font-weight-semibold open-sans-font mt-3" style="margin-bottom: 1.5em;">{% trans 'TradeSessions' %}</h6>
-                                            <span class="text-gray-600 fs-11 lh-base" style="color: grey;">کارشناس حین معامله</span>
+                                            <h6 class="font-weight-semibold open-sans-font mt-3 text-center" style="margin-bottom: 1.5em;">{% trans 'TradeSessions' %}</h6>
+                                            <span class="text-gray-600 fs-11 lh-base" style="font-size: 0.9em">کارشناس حین معامله</span>
                                         </figcaption>
                                     </figure>
                                 </div>
@@ -114,6 +115,7 @@
                                 {% for task in tasks %}
                                     <div class="col-12 col-xxl-6 mt-5 mb-4">
                                         <div class="card rounded-24 shadow-dark-80 border border-gray-50 py-3 px-2 p-md-4">
+
                                             <div class="p-2">
 
                                                 <!-- Datetime -->
@@ -125,124 +127,77 @@
                                                 <div style="height: 4.5em; -webkit-line-clamp: 2;">
                                                     <!-- Services title -->
                                                     {% if task.type == 'vis' %}
-                                                        <h6 style="line-height: 1.5em;!important;" class="font-weight-semibold title-box">
+                                                        <a href="{{ task.get_absolute_url }}"><h6 style="line-height: 1.5em;!important;" class="font-weight-semibold title-box">
                                                             {{ task.get_type_display }} {% trans 'in' %} {{ task.task_visit.get_city_display }} - {{ task.task_visit.district }} | {{ task.task_visit.get_date_display }} | {{ task.task_visit.get_time_display }}
-                                                        </h6>
+                                                        </h6></a>
                                                     {% elif task.type == 'ses' %}
-                                                        <h6 style="line-height: 1.5em;!important;" class="font-weight-semibold title-box">
+                                                        <a href="{{ task.get_absolute_url }}"><h6 style="line-height: 1.5em;!important;" class="font-weight-semibold title-box">
                                                             {{ task.get_type_display }} {% trans 'in' %} {{ task.task_session.get_city_display }} - {{ task.task_session.district }} | {{ task.task_session.get_date_display }} | {{ task.task_session.get_time_display }}
-                                                        </h6>
+                                                        </h6></a>
                                                     {% elif task.type == 'cns' %}
                                                         {% if task.task_counseling.counseling_type == 'ip' %}
-                                                            <h6 style="line-height: 1.5em;!important;" class="font-weight-semibold title-box">
+                                                            <a href="{{ task.get_absolute_url }}"><h6 style="line-height: 1.5em;!important;" class="font-weight-semibold title-box">
                                                                 {{ task.get_type_display }} {{ task.task_counseling.get_counseling_type_display }} {% trans 'in hombaba (tehran)' %} | {{ task.task_counseling.get_date_display }} | {{ task.task_counseling.get_time_display }}
-                                                            </h6>
+                                                            </h6></a>
                                                         {% else %}
-                                                            <h6 style="line-height: 1.5em;!important;" class="font-weight-semibold title-box">
+                                                            <a href="{{ task.get_absolute_url }}"><h6 style="line-height: 1.5em;!important;" class="font-weight-semibold title-box">
                                                                 {{ task.get_type_display }} {{ task.task_counseling.get_counseling_type_display }} | {{ task.task_counseling.get_date_display }} | {{ task.task_counseling.get_time_display }}
-                                                            </h6>
+                                                            </h6></a>
                                                         {% endif %}
                                                     <!-- trade session title -->
                                                     {% elif task.type == 'tds' %}
                                                         {% if task.task_trade_session.location == 'ours' %}
-                                                            <h6 style="line-height: 1.5em;!important;" class="font-weight-semibold title-box">
+                                                            <a href="{{ task.get_absolute_url }}"><h6 style="line-height: 1.5em;!important;" class="font-weight-semibold title-box">
                                                                 {{ task.get_type_display }} {% trans 'in hombaba (tehran)' %} | {{ task.task_trade_session.get_date_display }} | {{ task.task_trade_session.get_time_display }}
-                                                            </h6>
+                                                            </h6></a>
                                                         {% else %}
-                                                            <h6 style="line-height: 1.5em;!important;" class="font-weight-semibold title-box">
+                                                            <a href="{{ task.get_absolute_url }}"><h6 style="line-height: 1.5em;!important;" class="font-weight-semibold title-box">
                                                                 {{ task.get_type_display }} {% trans 'in' %} {{ task.task_trade_session.get_city_display }} - {{ task.task_trade_session.district }}  | {{ task.task_trade_session.get_date_display }} | {{ task.task_trade_session.get_time_display }}
-                                                            </h6>
+                                                            </h6></a>
                                                         {% endif %}
                                                     {% endif %}
                                                 </div>
 
-                                                <!-- Agent status >>> counseling -->
-                                                {% if task.type == 'cns' %}
-                                                    <div class="pt-4 pb-4">
-                                                        {% if task.task_counseling.agent_status == 'fre' %}
-                                                            <span class="small font-weight-semibold mb-2 d-block">{{ task.task_counseling.get_agent_status_display }} - گام 1 از 3</span>
-                                                            <div class="progress rounded-pill" style="height: 5px;width: 100%;">
-                                                                <div class="progress-bar bg-teal-500" role="progressbar" style="width: 33%; background-color: #00A65C;" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100"></div>
-                                                            </div>
-                                                        {% elif task.task_counseling.agent_status == 'wai' %}
-                                                            <span class="small font-weight-semibold mb-2 d-block">{{ task.task_counseling.get_agent_status_display }} - گام 2 از 3</span>
-                                                            <div class="progress rounded-pill" style="height: 5px;width: 100%;">
-                                                                <div class="progress-bar bg-teal-500" role="progressbar" style="width: 66%; background-color: #FFA726;" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
-                                                            </div>
-                                                        {% elif task.task_counseling.agent_status == 'ass' %}
-                                                            <span class="small font-weight-semibold mb-2 d-block">{{ task.task_counseling.get_agent_status_display }} - گام 3 از 3</span>
-                                                            <div class="progress rounded-pill" style="height: 5px;width: 100%;">
-                                                                <div class="progress-bar bg-teal-500" role="progressbar" style="width: 99%; background-color: #EF5350;" aria-valuenow="99" aria-valuemin="0" aria-valuemax="100"></div>
-                                                            </div>
-                                                        {% endif %}
-                                                    </div>
-                                                {% endif %}
+                                                <!-- Pricing -->
+                                                <div style="margin: 1.2em 0;">
+                                                    <!-- Counseling -->
+                                                    {% if task.type == 'cns' %}
+                                                        <h6 class="font-weight-semibold title-box">{% trans 'Total price: ' %}</h6>
+                                                        <p>{{ task.task_counseling.price|intcomma:False|farsi_number }} {% trans 'Tooman' %}</p>
+                                                    <!-- Counseling -->
+                                                    {% elif task.type == 'ses' %}
+                                                        <h6 class="font-weight-semibold title-box">{% trans 'Total price: ' %}</h6>
+                                                        <p>{{ task.task_session.price|intcomma:False|farsi_number }} {% trans 'Tooman' %}</p>
+                                                    <!-- Visit -->
+                                                    {% elif task.type == 'vis' %}
+                                                        <h6 class="font-weight-semibold title-box">{% trans 'Total price: ' %}</h6>
+                                                        <p>{{ task.task_visit.price|intcomma:False|farsi_number }} {% trans 'Tooman' %}</p>
+                                                    <!-- TS -->
+                                                    {% elif task.type == 'tds' %}
+                                                        <h6 class="font-weight-semibold title-box">{% trans 'Total price: ' %}</h6>
+                                                        <p>0/25 درصد مبلغ معامله</p>
+                                                    {% endif %}
+                                                </div>
 
-                                                <!-- Agent status >>> session -->
-                                                {% if task.type == 'ses' %}
-                                                    <div class="pt-4 pb-4">
-                                                        {% if task.task_session.agent_status == 'fre' %}
-                                                            <span class="small font-weight-semibold mb-2 d-block">{{ task.task_session.get_agent_status_display }} - گام 1 از 3</span>
-                                                            <div class="progress rounded-pill" style="height: 5px;width: 100%;">
-                                                                <div class="progress-bar bg-teal-500" role="progressbar" style="width: 33%; background-color: #00A65C;" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100"></div>
-                                                            </div>
-                                                        {% elif task.task_session.agent_status == 'wai' %}
-                                                            <span class="small font-weight-semibold mb-2 d-block">{{ task.task_session.get_agent_status_display }} - گام 2 از 3</span>
-                                                            <div class="progress rounded-pill" style="height: 5px;width: 100%;">
-                                                                <div class="progress-bar bg-teal-500" role="progressbar" style="width: 67%; background-color: #FFA726;" aria-valuenow="67" aria-valuemin="0" aria-valuemax="100"></div>
-                                                            </div>
-                                                        {% elif task.task_session.agent_status == 'ass' %}
-                                                            <span class="small font-weight-semibold mb-2 d-block">{{ task.task_session.get_agent_status_display }} - گام 3 از 3</span>
-                                                            <div class="progress rounded-pill" style="height: 5px;width: 100%;">
-                                                                <div class="progress-bar bg-teal-500" role="progressbar" style="width: 100%; background-color: #EF5350;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-                                                            </div>
-                                                        {% endif %}
-                                                    </div>
-                                                {% endif %}
-
-                                                <!-- Agent status >>> visit -->
-                                                {% if task.type == 'vis' %}
-                                                    <div class="pt-4 pb-4">
-                                                        {% if task.task_visit.agent_status == 'fre' %}
-                                                            <span class="small font-weight-semibold mb-2 d-block">{{ task.task_visit.get_agent_status_display }} - گام 1 از 3</span>
-                                                            <div class="progress rounded-pill" style="height: 5px;width: 100%;">
-                                                                <div class="progress-bar bg-teal-500" role="progressbar" style="width: 33%; background-color: #00A65C;" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100"></div>
-                                                            </div>
-                                                        {% elif task.task_visit.agent_status == 'wai' %}
-                                                            <span class="small font-weight-semibold mb-2 d-block">{{ task.task_visit.get_agent_status_display }} - گام 2 از 3</span>
-                                                            <div class="progress rounded-pill" style="height: 5px;width: 100%;">
-                                                                <div class="progress-bar bg-teal-500" role="progressbar" style="width: 67%; background-color: #FFA726;" aria-valuenow="67" aria-valuemin="0" aria-valuemax="100"></div>
-                                                            </div>
-                                                        {% elif task.task_visit.agent_status == 'ass' %}
-                                                            <span class="small font-weight-semibold mb-2 d-block">{{ task.task_visit.get_agent_status_display }} - گام 3 از 3</span>
-                                                            <div class="progress rounded-pill" style="height: 5px;width: 100%;">
-                                                                <div class="progress-bar bg-teal-500" role="progressbar" style="width: 100%; background-color: #EF5350;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-                                                            </div>
-                                                        {% endif %}
-                                                    </div>
-                                                {% endif %}
-
-                                                <!-- Agent status >>> trade_session -->
-                                                {% if task.type == 'tds' %}
-                                                    <div class="pt-4 pb-4">
-                                                        {% if task.task_trade_session.agent_status == 'fre' %}
-                                                            <span class="small font-weight-semibold mb-2 d-block">{{ task.task_trade_session.get_agent_status_display }} - گام 1 از 3</span>
-                                                            <div class="progress rounded-pill" style="height: 5px;width: 100%;">
-                                                                <div class="progress-bar bg-teal-500" role="progressbar" style="width: 33%; background-color: #00A65C;" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100"></div>
-                                                            </div>
-                                                        {% elif task.task_trade_session.agent_status == 'wai' %}
-                                                            <span class="small font-weight-semibold mb-2 d-block">{{ task.task_trade_session.get_agent_status_display }} - گام 2 از 3</span>
-                                                            <div class="progress rounded-pill" style="height: 5px;width: 100%;">
-                                                                <div class="progress-bar bg-teal-500" role="progressbar" style="width: 67%; background-color: #FFA726;" aria-valuenow="67" aria-valuemin="0" aria-valuemax="100"></div>
-                                                            </div>
-                                                        {% elif task.task_trade_session.agent_status == 'ass' %}
-                                                            <span class="small font-weight-semibold mb-2 d-block">{{ task.task_trade_session.get_agent_status_display }} - گام 3 از 3</span>
-                                                            <div class="progress rounded-pill" style="height: 5px;width: 100%;">
-                                                                <div class="progress-bar bg-teal-500" role="progressbar" style="width: 100%; background-color: #EF5350;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-                                                            </div>
-                                                        {% endif %}
-                                                    </div>
-                                                {% endif %}
+                                                <!-- Request status -->
+                                                <div class="pt-4 pb-4">
+                                                    {% if task.is_requested == 'fre' %}
+                                                        <span class="small font-weight-semibold mb-2 d-block">{{ task.get_is_requested_display }} - گام 1 از 3</span>
+                                                        <div class="progress rounded-pill" style="height: 5px;width: 100%;">
+                                                            <div class="progress-bar bg-teal-500" role="progressbar" style="width: 33%; background-color: #00A65C;" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100"></div>
+                                                        </div>
+                                                    {% elif task.is_requested == 'pen' %}
+                                                        <span class="small font-weight-semibold mb-2 d-block">{{ task.get_is_requested_display }} - گام 2 از 3</span>
+                                                        <div class="progress rounded-pill" style="height: 5px;width: 100%;">
+                                                            <div class="progress-bar bg-teal-500" role="progressbar" style="width: 66%; background-color: #FFA726;" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
+                                                        </div>
+                                                    {% elif task.is_requested == 'tkn' %}
+                                                        <span class="small font-weight-semibold mb-2 d-block">{{ task.get_is_requested_display }} - گام 3 از 3</span>
+                                                        <div class="progress rounded-pill" style="height: 5px;width: 100%;">
+                                                            <div class="progress-bar bg-teal-500" role="progressbar" style="width: 99%; background-color: #EF5350;" aria-valuenow="99" aria-valuemin="0" aria-valuemax="100"></div>
+                                                        </div>
+                                                    {% endif %}
+                                                </div>
 
                                                 <!-- Button -->
                                                 <div class="d-flex align-items-center" style="margin-top: 20px; float: left">
@@ -250,6 +205,7 @@
                                                 </div>
 
                                             </div>
+
                                         </div>
                                     </div>
                                 {% endfor %}

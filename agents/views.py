@@ -1,6 +1,6 @@
-from django.shortcuts import render
 from django.contrib.auth import login, authenticate
 from django.contrib import messages
+from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
 from django.http import HttpResponseRedirect, JsonResponse
 from django.views.generic import ListView, DetailView
@@ -8,7 +8,7 @@ from django.views.generic import ListView, DetailView
 
 from .models import AgentCustomUserModel, AgentProfile, Task, Province, City
 from accounts.models import CustomUserModel
-from .forms import AgentRegistrationForm, AgentInfoCompletionForm, AgentInfoEditForm
+from .forms import AgentRegistrationForm, AgentInfoCompletionForm, AgentInfoEditForm, AgentTaskApplyForm
 from accounts.checkers import send_otp, get_random_otp, otp_time_checker_agent
 
 
@@ -149,9 +149,50 @@ class TaskListView(ListView):
             context['user'] = user
         return context
 
+
 class TaskDetailView(DetailView):
     model = Task
     template_name = 'agents/task_detail.html'
     context_object_name = 'task'
+
+    # def post(self, request, *args, **kwargs):
+    #     task_code = self.request.GET.get('code', '')
+    #     task = get_object_or_404(Task, code=task_code)
+    #     task.agent = self.request.agent_user
+
+
+def task_detail(request, pk, unique_url_id):
+    context = {}
+    task = get_object_or_404(Task, unique_url_id=unique_url_id)
+    context['task'] = task
+    phone_number = request.user.phone_number
+    if phone_number:
+        try:
+            agent_user = AgentCustomUserModel.objects.get(phone_number=phone_number)
+            context['agent_user'] = agent_user
+            if request.method == 'POST':
+                form = AgentTaskApplyForm(request.POST)
+                if form.is_valid():
+                    task.agent = agent_user
+                    task.is_requested = 'pen'
+                    task.save()
+                    return redirect(reverse('task_list'))
+                else:
+                    print(form.errors)
+            else:
+                form = AgentTaskApplyForm()
+            context['form'] = form
+
+        except AgentCustomUserModel.DoesNotExist:
+            user = CustomUserModel.objects.get(phone_number=phone_number)
+            context['user'] = user
+    # else:
+    #     user = request.user
+    #     context['user'] = user
+
+    return render(request, 'agents/task_detail.html', context=context)
+
+
+
 
 

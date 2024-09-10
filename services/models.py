@@ -36,14 +36,6 @@ statuses = [
     ('dne', _('Done')),
 ]
 
-# agent statuses
-agent_statuses = [
-    ('ass', _('Assigned')),
-    ('wai', _('Waited')),
-    ('rej', _('Rejected')),
-    ('fre', _('Free')),
-]
-
 
 # prices
 counseling_price_value = 500000
@@ -95,7 +87,6 @@ class Counseling(models.Model):
     DATES = next_seven_days_shamsi
     TIMES = times
     STATUSES = statuses
-    AGENT_STATUSES = agent_statuses
     # Fields
     city = models.CharField(max_length=30, default=_('Tehran'), blank=True, null=True, verbose_name=_('City'))
     counseling_type = models.CharField(max_length=30, default=_('oc'), choices=COUNSELING_TYPES, verbose_name=_('Counseling Type'))
@@ -104,7 +95,6 @@ class Counseling(models.Model):
     name_and_family = models.CharField(max_length=200, verbose_name=_('Name and Family'))
     phone_number = models.CharField(max_length=11, blank=True, null=True, verbose_name=_('Phone Number'))
     status = models.CharField(max_length=10, choices=STATUSES, default='pen', verbose_name=_('Status'))
-    agent_status = models.CharField(max_length=10, choices=AGENT_STATUSES, blank=True, null=True, default='fre', verbose_name=_('Agent Status'))
     datetime_created = models.DateTimeField(auto_now_add=True, verbose_name=_('Date and Time of Creation'))
 
     @property
@@ -142,7 +132,6 @@ class Session(models.Model):
     DATES = next_seven_days_shamsi
     TIMES = times
     STATUSES = statuses
-    AGENT_STATUSES = agent_statuses
     # Fields
     city = models.CharField(max_length=30, choices=CITIES, default=_('Tehran'), verbose_name=_('City'))
     district = models.CharField(max_length=30, default='', blank=True, null=True, verbose_name=_('District'))
@@ -152,7 +141,6 @@ class Session(models.Model):
     name_and_family = models.CharField(max_length=200, verbose_name=_('Name and Family'))
     phone_number = models.CharField(max_length=11, blank=True, null=True, verbose_name=_('Phone Number'))
     status = models.CharField(max_length=10, choices=STATUSES, default='pen', verbose_name=_('Status'))
-    agent_status = models.CharField(max_length=10, choices=AGENT_STATUSES, blank=True, null=True, default='fre', verbose_name=_('Agent Status'))
     datetime_created = models.DateTimeField(auto_now_add=True, verbose_name=_('Date and Time of Creation'))
 
     @property
@@ -189,7 +177,6 @@ class Visit(models.Model):
     DATES = next_seven_days_shamsi
     TIMES = times
     STATUSES = statuses
-    AGENT_STATUSES = agent_statuses
     # Fields
     city = models.CharField(max_length=30, choices=CITIES, default=_('Tehran'), verbose_name=_('City'))
     district = models.CharField(max_length=30, default='', blank=True, null=True, verbose_name=_('District'))
@@ -198,7 +185,6 @@ class Visit(models.Model):
     name_and_family = models.CharField(max_length=200, verbose_name=_('Name and Family'))
     phone_number = models.CharField(max_length=11, blank=True, null=True, verbose_name=_('Phone Number'))
     status = models.CharField(max_length=10, choices=STATUSES, default='pen', verbose_name=_('Status'))
-    agent_status = models.CharField(max_length=10, choices=AGENT_STATUSES, blank=True, null=True, default='fre', verbose_name=_('Agent Status'))
     datetime_created = models.DateTimeField(auto_now_add=True, verbose_name=_('Date and Time of Creation'))
 
     @property

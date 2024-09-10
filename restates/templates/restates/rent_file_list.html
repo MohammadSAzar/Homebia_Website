@@ -26,60 +26,60 @@
                             {% for file in rent_files %}
                                 {% if file.status == 'acc' %}
                                     <div class="col-xl-4 col-sm-6 mb--80">
-                                    <div class="ft-product" style="border: #e8e8e8 solid 1px; padding: 8px; border-radius: 4px;">
-                                        <div class="product-inner">
+                                        <div class="ft-product" style="border: #e8e8e8 solid 1px; padding: 8px; border-radius: 4px;">
+                                            <div class="product-inner">
 
-                                            <!-- file cover -->
-                                            <div class="product-image">
-                                                <figure class="product-image--holder">
-                                                    <img src="{{ file.cover.url }}" alt="Product">
-                                                </figure>
-                                                <a href="{{ file.get_absolute_url }}" class="product-overlay"></a>
+                                                <!-- file cover -->
+                                                <div class="product-image">
+                                                    <figure class="product-image--holder">
+                                                        <img src="{{ file.cover.url }}" alt="Product">
+                                                    </figure>
+                                                    <a href="{{ file.get_absolute_url }}" class="product-overlay"></a>
 
-                                                <!-- actions on file -->
-{#                                                <div class="product-action">#}
-{#                                                    <a data-bs-toggle="modal" data-bs-target="#productModal" class="action-btn"><i class="la la-eye"></i></a>#}
-{#                                                    <a href="wishlist.html" class="action-btn"><i class="la la-heart-o"></i></a>#}
-{#                                                    <a href="wishlist.html" class="action-btn"><i class="la la-repeat"></i></a>#}
-{#                                                </div>#}
-                                                <!-- end: actions on file -->
+                                                    <!-- actions on file -->
+    {#                                                <div class="product-action">#}
+    {#                                                    <a data-bs-toggle="modal" data-bs-target="#productModal" class="action-btn"><i class="la la-eye"></i></a>#}
+    {#                                                    <a href="wishlist.html" class="action-btn"><i class="la la-heart-o"></i></a>#}
+    {#                                                    <a href="wishlist.html" class="action-btn"><i class="la la-repeat"></i></a>#}
+    {#                                                </div>#}
+                                                    <!-- end: actions on file -->
 
+                                                </div>
+                                                <!-- end: file cover -->
+
+                                                <!-- file information -->
+                                                <div class="product-info">
+
+                                                    <div class="product-category" style="margin-bottom: 1.5em;!important;">
+                                                        <a href="{{ file.get_absolute_url }}"><h4 class="file-title">{{ file.title|linebreaksbr|farsi_number }}</h4></a>
+                                                        <h5 style="color: black;!important;">کد آگهی: {{ file.code }}</h5>
+                                                        {% if file.district is not None %}
+                                                            <h5 style="color: black;!important;">{{ file.province }} - {{ file.city }} - {{ file.district }}</h5>
+                                                        {% else %}
+                                                            <h5 style="color: black;!important;">{{ file.province }} - {{ file.city }}</h5>
+                                                        {% endif %}
+                                                    </div>
+
+                                                    <div class="product-category" style="margin-bottom: 1.5em;!important;">
+                                                        <div class="product-price-wrapper">
+                                                            <span class="money" style="font-size: 0.85em; font-weight: normal;">ودیعه: {{ file.price_deposit|intcomma:False|farsi_number }} تومان</span>
+                                                        </div>
+                                                        <div class="product-price-wrapper">
+                                                            <span class="money" style="font-size: 0.85em; font-weight: normal;">اجاره ماهانه: {{ file.price_rent|intcomma:False|farsi_number }} تومان</span>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="product-info-bottom" style="justify-content: left;">
+                                                        <div class="product-price-wrapper">
+                                                            <a href="{{ file.get_absolute_url }}" class="btn btn-outline btn-brw-2" data-animation="fadeInUp" data-duration=".3s" data-delay=".6s" style="line-height: 0.1em; font-weight: normal; float: left;">{% trans 'Read More' %}</a>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                <!-- end: file information -->
                                             </div>
-                                            <!-- end: file cover -->
-
-                                            <!-- file information -->
-                                            <div class="product-info">
-
-                                                <div class="product-category" style="margin-bottom: 1.5em;!important;">
-                                                    <a href="{{ file.get_absolute_url }}"><h4 class="file-title">{{ file.title|linebreaksbr|farsi_number }}</h4></a>
-                                                    <h5 style="color: black;!important;">کد آگهی: {{ file.code }}</h5>
-                                                    {% if file.district is not None %}
-                                                        <h5 style="color: black;!important;">{{ file.province }} - {{ file.city }} - {{ file.district }}</h5>
-                                                    {% else %}
-                                                        <h5 style="color: black;!important;">{{ file.province }} - {{ file.city }}</h5>
-                                                    {% endif %}
-                                                </div>
-
-                                                <div class="product-category" style="margin-bottom: 1.5em;!important;">
-                                                    <div class="product-price-wrapper">
-                                                        <span class="money" style="font-size: 0.85em; font-weight: normal;">ودیعه: {{ file.price_deposit|intcomma:False|farsi_number }} تومان</span>
-                                                    </div>
-                                                    <div class="product-price-wrapper">
-                                                        <span class="money" style="font-size: 0.85em; font-weight: normal;">اجاره ماهانه: {{ file.price_rent|intcomma:False|farsi_number }} تومان</span>
-                                                    </div>
-                                                </div>
-
-                                                <div class="product-info-bottom" style="justify-content: left;">
-                                                    <div class="product-price-wrapper">
-                                                        <a href="{{ file.get_absolute_url }}" class="btn btn-outline btn-brw-2" data-animation="fadeInUp" data-duration=".3s" data-delay=".6s" style="line-height: 0.1em; font-weight: normal; float: left;">{% trans 'Read More' %}</a>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                            <!-- end: file information -->
                                         </div>
                                     </div>
-                                </div>
                                 {% endif %}
                             {% endfor %}
 

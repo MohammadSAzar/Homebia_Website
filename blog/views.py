@@ -73,6 +73,7 @@ def blog_category_homebia(request):
     }
     return render(request, 'blog/blog_category_homebia.html', context)
 
+
 def blog_category_news(request):
     blogs = Blog.objects.select_related('blog_category').filter(status='pub').filter(blog_category__title='اخبار')
     context = {
@@ -80,12 +81,14 @@ def blog_category_news(request):
     }
     return render(request, 'blog/blog_category_news.html', context)
 
+
 def blog_category_educational(request):
     blogs = Blog.objects.select_related('blog_category').filter(status='pub').filter(blog_category__title='آموزشی')
     context = {
         'blogs': blogs,
     }
     return render(request, 'blog/blog_category_educational.html', context)
+
 
 def blog_category_analytical(request):
     blogs = Blog.objects.select_related('blog_category').filter(status='pub').filter(blog_category__title='تحلیلی')
