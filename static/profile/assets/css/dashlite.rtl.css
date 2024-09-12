@@ -52624,5 +52624,35 @@ em.icon.ni.ni-comments {
 /* END: Modal styles >>> for message creation success */
 
 
+/* Pagination styles */
+.my-profile-pagination {
+  margin: 20px 0;!important;
+  text-align: center;!important;
+}
 
+.my-profile-pagination a,
+.my-profile-pagination span {
+  display: inline-block;!important;
+  padding: 8px 16px;!important;
+  margin: 0 4px;!important;
+  color: #333;!important;
+  border: 1px solid #ccc;!important;
+  border-radius: 4px;!important;
+  text-decoration: none;!important;
+}
+
+.my-profile-pagination a:hover {
+  background-color: #f0f0f0;!important;
+}
+
+.my-profile-pagination .my-profile-current {
+  background-color: #00a65c;!important;
+  color: #fff;!important;
+}
+
+.my-profile-pagination .my-profile-disabled {
+  color: #999;!important;
+  pointer-events: none;!important;
+  cursor: default;!important;
+}
 

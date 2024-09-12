@@ -256,7 +256,7 @@ class TradeSession(models.Model):
     is_paid = models.CharField(max_length=200, choices=NOYES, default='no', verbose_name=_('Is payment done?'))
     # General
     trade_code = models.CharField(max_length=20, null=True, unique=True, blank=True)
-    status = models.CharField(max_length=10, choices=STATUSES, default='pen', verbose_name=_('Status'))
+    status = models.CharField(max_length=10, choices=STATUSES, default='sub', verbose_name=_('Status'))
     datetime_created = models.DateTimeField(auto_now_add=True, verbose_name=_('Date and Time of Creation'))
 
     @property

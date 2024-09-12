@@ -30,9 +30,8 @@ times = [
 
 # statuses
 statuses = [
-    ('acc', _('Accepted')),
+    ('sub', _('Submitted')),
     ('can', _('Canceled')),
-    ('pen', _('Pending')),
     ('dne', _('Done')),
 ]
 
@@ -94,7 +93,7 @@ class Counseling(models.Model):
     time = models.CharField(max_length=200, choices=TIMES, verbose_name=_('Time of Counseling'))
     name_and_family = models.CharField(max_length=200, verbose_name=_('Name and Family'))
     phone_number = models.CharField(max_length=11, blank=True, null=True, verbose_name=_('Phone Number'))
-    status = models.CharField(max_length=10, choices=STATUSES, default='pen', verbose_name=_('Status'))
+    status = models.CharField(max_length=10, choices=STATUSES, default='sub', verbose_name=_('Status'))
     datetime_created = models.DateTimeField(auto_now_add=True, verbose_name=_('Date and Time of Creation'))
 
     @property
@@ -140,7 +139,7 @@ class Session(models.Model):
     time = models.CharField(max_length=200, choices=TIMES, verbose_name=_('Time of Session'))
     name_and_family = models.CharField(max_length=200, verbose_name=_('Name and Family'))
     phone_number = models.CharField(max_length=11, blank=True, null=True, verbose_name=_('Phone Number'))
-    status = models.CharField(max_length=10, choices=STATUSES, default='pen', verbose_name=_('Status'))
+    status = models.CharField(max_length=10, choices=STATUSES, default='sub', verbose_name=_('Status'))
     datetime_created = models.DateTimeField(auto_now_add=True, verbose_name=_('Date and Time of Creation'))
 
     @property
@@ -184,7 +183,7 @@ class Visit(models.Model):
     time = models.CharField(max_length=200, choices=TIMES, verbose_name=_('Time of Visit'))
     name_and_family = models.CharField(max_length=200, verbose_name=_('Name and Family'))
     phone_number = models.CharField(max_length=11, blank=True, null=True, verbose_name=_('Phone Number'))
-    status = models.CharField(max_length=10, choices=STATUSES, default='pen', verbose_name=_('Status'))
+    status = models.CharField(max_length=10, choices=STATUSES, default='sub', verbose_name=_('Status'))
     datetime_created = models.DateTimeField(auto_now_add=True, verbose_name=_('Date and Time of Creation'))
 
     @property

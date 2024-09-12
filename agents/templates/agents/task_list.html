@@ -50,7 +50,7 @@
                 <div class="card-inner card-inner-lg">
 
                     <!-- Title -->
-                    <div class="nk-block-head nk-block-head-lg ">
+                    <div class="nk-block-head nk-block-head-lg">
                         <div class="nk-block-between" style="justify-items: center; justify-content: center; text-align: center">
                             <div class="nk-block-head-content">
                                 <h4 class="nk-block-title">{% trans 'Tasks List' %}</h4>
@@ -118,9 +118,10 @@
 
                                             <div class="p-2">
 
-                                                <!-- Datetime -->
-                                                <div class="d-flex align-items-center mb-4">
+                                                <!-- Datetime & Code -->
+                                                <div class="align-items-center mb-4">
                                                     <span class="small text-muted font-weight-semibold">{{ task.datetime_created|shamsi_date }}</span>
+                                                    <span class="small text-muted font-weight-semibold" style="float: left;!important;">کد: {{ task.code }}</span>
                                                 </div>
 
                                                 <!-- Title -->
@@ -194,14 +195,24 @@
                                                     {% elif task.is_requested == 'tkn' %}
                                                         <span class="small font-weight-semibold mb-2 d-block">{{ task.get_is_requested_display }} - گام 3 از 3</span>
                                                         <div class="progress rounded-pill" style="height: 5px;width: 100%;">
-                                                            <div class="progress-bar bg-teal-500" role="progressbar" style="width: 99%; background-color: #EF5350;" aria-valuenow="99" aria-valuemin="0" aria-valuemax="100"></div>
+                                                            <div class="progress-bar bg-teal-500" role="progressbar" style="width: 99%; background-color: grey" aria-valuenow="99" aria-valuemin="0" aria-valuemax="100"></div>
                                                         </div>
                                                     {% endif %}
                                                 </div>
 
                                                 <!-- Button -->
                                                 <div class="d-flex align-items-center" style="margin-top: 20px; float: left">
-                                                    <a href="{{ task.get_absolute_url }}" class="btn btn-primary" style="padding: 5px 45px; line-height: 2.5em;!important;"><span>{% trans 'More' %}</span></a>
+                                                    {% if task.is_requested == 'tkn' %}
+                                                        <a href="{{ task.get_absolute_url }}" class="btn btn-primary" style="padding: 5px 45px; line-height: 2.5em;!important; background-color: grey; border:none;">
+                                                            <span>{% trans 'More' %}</span>
+                                                        </a>
+                                                    {% elif task.is_requested == 'pen' %}
+                                                        <a href="{{ task.get_absolute_url }}" class="btn btn-primary" style="padding: 5px 45px; line-height: 2.5em;!important; background-color: #FFA726; border:none;">
+                                                            <span>{% trans 'More' %}</span>
+                                                        </a>
+                                                    {% else %}
+                                                        <a href="{{ task.get_absolute_url }}" class="btn btn-primary" style="padding: 5px 45px; line-height: 2.5em;!important;"><span>{% trans 'More' %}</span></a>
+                                                    {% endif %}
                                                 </div>
 
                                             </div>
@@ -214,6 +225,48 @@
                         </div>
                     </div>
                     <!-- end: Items -->
+
+                    <!-- Pagination -->
+                    <div class="nk-block-head nk-block-head-lg">
+                        <div class="nk-block-between" style="justify-items: center; justify-content: center; text-align: center">
+                            <div class="nk-block-head-content">
+                                <div class="my-profile-pagination" style="margin-top: 1em;">
+                                    {% if page_obj.has_previous %}
+                                        <a href="{% url 'task_list' %}?page=1">&laquo; {% trans 'First' %}</a>
+                                    {% else %}
+                                        <span class="my-profile-disabled">&laquo; {% trans 'First' %}</span>
+                                    {% endif %}
+
+                                    {% if page_obj.has_previous %}
+                                        <a href="{% url 'task_list' %}?page={{ page_obj.previous_page_number }}">‹ {% trans 'Previous' %}</a>
+                                    {% else %}
+                                        <span class="my-profile-disabled">‹ {% trans 'Previous' %}</span>
+                                    {% endif %}
+
+                                    {% for num in page_obj.paginator.page_range %}
+                                        {% if num == page_obj.number %}
+                                            <span class="my-profile-current">{{ num }}</span>
+                                        {% else %}
+                                            <a href="{% url 'task_list' %}?page={{ num }}">{{ num }}</a>
+                                        {% endif %}
+                                    {% endfor %}
+
+                                    {% if page_obj.has_next %}
+                                        <a href="{% url 'task_list' %}?page={{ page_obj.next_page_number }}">{% trans 'Next' %} ›</a>
+                                    {% else %}
+                                        <span class="my-profile-disabled">{% trans 'Next' %} ›</span>
+                                    {% endif %}
+
+                                    {% if page_obj.has_next %}
+                                        <a href="{% url 'task_list' %}?page={{ page_obj.paginator.num_pages }}">{% trans 'Last Page' %} &raquo;</a>
+                                    {% else %}
+                                        <span class="my-profile-disabled">{% trans 'Last Page' %} &raquo;</span>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end: Pagination -->
 
                 </div>
             </div>

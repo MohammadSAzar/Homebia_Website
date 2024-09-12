@@ -1,5 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
+from django.utils.html import format_html
+from django.urls import reverse
 
 from .models import AgentCustomUserModel, AgentProfile, Province, City, Task
 from . import forms
@@ -61,7 +63,22 @@ admin.site.register(AgentCustomUserModel, AgentCustomUserAdmin)
 @admin.register(Task)
 class TaskAdmin(admin.ModelAdmin):
     model = Task
-    list_display = ('code', 'type', 'agent', 'task_counseling', 'task_session', 'task_visit', 'task_trade_session', 'is_requested',
-                    'is_paid', 'is_commissioned', 'datetime_created')
+    list_display = ('code', 'type', 'agent', 'service_link', 'task_counseling', 'task_session', 'task_visit', 'task_trade_session',
+                    'is_requested', 'is_paid', 'is_commissioned', 'datetime_created')
+
+    def service_link(self, obj):
+        if obj.type == 'cns':
+            url = reverse("admin:services_counseling_change", args=[obj.task_counseling.id])
+            return format_html('<a href="{}">counseling</a>', url)
+        if obj.type == 'ses':
+            url = reverse("admin:services_session_change", args=[obj.task_session.id])
+            return format_html('<a href="{}">session</a>', url)
+        if obj.type == 'vis':
+            url = reverse("admin:services_visit_change", args=[obj.task_visit.id])
+            return format_html('<a href="{}">visit</a>', url)
+        if obj.type == 'tds':
+            url = reverse("admin:restates_tradesession_change", args=[obj.task_trade_session.id])
+            return format_html('<a href="{}">trade session</a>', url)
+    service_link.short_description = 'service_link'
 
 

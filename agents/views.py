@@ -130,9 +130,8 @@ class TaskListView(ListView):
     model = Task
     template_name = 'agents/task_list.html'
     context_object_name = 'tasks'
-    paginate_by = 20
-    # queryset = Task.objects.select_related('task_counseling').select_related('task_session').select_related('task_visit').select_related('task_trade_session').all()
-    queryset = Task.objects.all()
+    paginate_by = 6
+    queryset = Task.objects.select_related('task_counseling').select_related('task_session').select_related('task_visit').select_related('task_trade_session').all()
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -150,17 +149,6 @@ class TaskListView(ListView):
         return context
 
 
-class TaskDetailView(DetailView):
-    model = Task
-    template_name = 'agents/task_detail.html'
-    context_object_name = 'task'
-
-    # def post(self, request, *args, **kwargs):
-    #     task_code = self.request.GET.get('code', '')
-    #     task = get_object_or_404(Task, code=task_code)
-    #     task.agent = self.request.agent_user
-
-
 def task_detail(request, pk, unique_url_id):
     context = {}
     task = get_object_or_404(Task, unique_url_id=unique_url_id)
@@ -176,6 +164,7 @@ def task_detail(request, pk, unique_url_id):
                     task.agent = agent_user
                     task.is_requested = 'pen'
                     task.save()
+                    messages.success(request, "درخواست شما برای قبول این فرصت مشاوره دریافت شد. منتظر تماس از سوی ما یا مشتری باشید.")
                     return redirect(reverse('task_list'))
                 else:
                     print(form.errors)
