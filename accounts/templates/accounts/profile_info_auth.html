@@ -9,7 +9,6 @@
 {% block title %}{% trans 'Authentication' %}{% endblock %}
 
 {% block sidebar_content %}
-
     <li class="nk-menu-item has-sub">
         <a href="#" class="nk-menu-link nk-menu-toggle">
             <span class="nk-menu-icon"><em class="icon ni ni-tile-thumb"></em></span>
@@ -45,18 +44,38 @@
             </li>
         </ul>
     </li>
+{% endblock %}
 
+{% block two_buttons %}
+    <div class="nk-content" style="padding: 0;!important;">
+        <div class="container-fluid">
+            <div class="nk-content-inner">
+                <div class="nk-content-body" style="padding-top: 0;!important; padding-bottom: 0;!important;">
+                    <div class="nk-block-head nk-block-head-sm" style="padding-top: 0;!important; padding-bottom: 0;!important;">
+                        <div class="nk-block-between">
+                            <div class="nk-block-head-content">
+                                <ul class="nk-block-tools g-3" style="margin-bottom: 2px;!important;">
+                                    <li class="nk-block-tools-opt">
+                                        <a href="{% url 'sale_file_create' %}" class="btn btn-primary" style="line-height: 2.5em;!important;"><em class="icon ni ni-plus"></em><span>ثبت آگهی فروش</span></a>
+                                    </li>
+                                    <li class="nk-block-tools-opt">
+                                        <a href="{% url 'rent_file_create' %}" class="btn btn-primary" style="line-height: 2.5em;!important;"><em class="icon ni ni-plus"></em><span>ثبت آگهی اجاره</span></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
 
 {% block content %}
-
     {% if user.is_verified == 'a' %}
-
         <h3 style="text-align: center; margin-top: 5em">حساب کاربری شما تایید شده است.</h3>
         <div style="margin-top: 3em; text-align: center;"><span style="text-align: center; margin-top: 3em">برای تغییر، روی گزینه "تغییر اطلاعات" در منو کناری کلیک نمایید.</span></div>
-
     {% elif user.is_verified == 'n' %}
-
         <div class="nk-block">
             <div class="card card-bordered">
                 <div class="card-aside-wrap">
@@ -223,13 +242,9 @@
                 </div>
             </div>
         </div>
-
     {% elif user.is_verified == 'i' %}
-
         <h3 style="text-align: center; margin-top: 5em">حساب کاربری شما در دست بررسی است.</h3>
         <div style="margin-top: 3em; text-align: center;"><span style="text-align: center; margin-top: 3em">نتیجه بررسی حساب کاربری شما، به زودی تعیین خواهد شد.</span></div>
-
     {% endif %}
-
 {% endblock %}
 

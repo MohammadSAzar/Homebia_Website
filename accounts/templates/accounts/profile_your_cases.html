@@ -11,7 +11,6 @@
 {% block title %}{% trans 'My Investments' %}{% endblock %}
 
 {% block sidebar_content %}
-
     <li class="nk-menu-item has-sub">
         <a href="#" class="nk-menu-link nk-menu-toggle">
             <span class="nk-menu-icon"><em class="icon ni ni-tile-thumb"></em></span>
@@ -47,11 +46,34 @@
             </li>
         </ul>
     </li>
+{% endblock %}
 
+{% block two_buttons %}
+    <div class="nk-content" style="padding: 0;!important;">
+        <div class="container-fluid">
+            <div class="nk-content-inner">
+                <div class="nk-content-body" style="padding-top: 0;!important; padding-bottom: 0;!important;">
+                    <div class="nk-block-head nk-block-head-sm" style="padding-top: 0;!important; padding-bottom: 0;!important;">
+                        <div class="nk-block-between">
+                            <div class="nk-block-head-content">
+                                <ul class="nk-block-tools g-3" style="margin-bottom: 2px;!important;">
+                                    <li class="nk-block-tools-opt">
+                                        <a href="{% url 'sale_file_create' %}" class="btn btn-primary" style="line-height: 2.5em;!important;"><em class="icon ni ni-plus"></em><span>ثبت آگهی فروش</span></a>
+                                    </li>
+                                    <li class="nk-block-tools-opt">
+                                        <a href="{% url 'rent_file_create' %}" class="btn btn-primary" style="line-height: 2.5em;!important;"><em class="icon ni ni-plus"></em><span>ثبت آگهی اجاره</span></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
 
 {% block content %}
-
     <div class="row">
         {% for case_order in case_orders %}
             <div class="col-12 col-xxl-6 mb-4">
@@ -140,6 +162,5 @@
             </div>
         {% endfor %}
     </div>
-
 {% endblock %}
 

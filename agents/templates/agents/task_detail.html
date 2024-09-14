@@ -45,7 +45,7 @@
 {% block content %}
 
     <div class="nk-block">
-        <div class="card card-bordered ">
+        <div class="card card-bordered">
             <div class="card-aside-wrap">
                 <div class="card-inner card-inner-lg">
 
@@ -152,21 +152,36 @@
                                             </div>
 
                                             <!-- Apply -->
-                                            <div class="d-flex align-items-center" style="margin-top: 20px; float: left">
-                                                {% if task.is_requested == 'tkn' %}
-                                                    <button class="btn btn-primary" style="padding: 5px 45px; line-height: 2.5em;!important; background-color: grey; border:none; cursor: not-allowed;">
-                                                        <span>{% trans 'Apply' %}</span>
-                                                    </button>
-                                                {% elif task.is_requested == 'pen' %}
-                                                    <button class="btn btn-primary" style="padding: 5px 45px; line-height: 2.5em;!important; background-color: #FFA726; border:none; cursor: not-allowed;">
-                                                        <span>{% trans 'Apply' %}</span>
-                                                    </button>
-                                                {% else %}
-                                                    <button id="applyButton" class="btn btn-primary" style="padding: 5px 45px; line-height: 2.5em;!important;">
-                                                        <span>{% trans 'Apply' %}</span>
-                                                    </button>
-                                                {% endif %}
-                                            </div>
+                                            {% if agent_user.complete_info == 'cmp' %}
+                                                <div class="d-flex align-items-center" style="margin-top: 20px; float: left">
+                                                    {% if task.is_requested == 'tkn' %}
+                                                        <button class="btn btn-primary" style="padding: 5px 45px; line-height: 2.5em;!important; background-color: grey; border:none; cursor: not-allowed;">
+                                                            <span>{% trans 'Apply' %} (فعلا غیر قعال)</span>
+                                                        </button>
+                                                    {% elif task.is_requested == 'pen' %}
+                                                        <button class="btn btn-primary" style="padding: 5px 45px; line-height: 2.5em;!important; background-color: #FFA726; border:none; cursor: not-allowed;">
+                                                            <span>{% trans 'Apply' %} (فعلا غیر قعال)</span>
+                                                        </button>
+                                                    {% else %}
+                                                        <button id="applyButton" class="btn btn-primary" style="padding: 5px 45px; line-height: 2.5em;!important;">
+                                                            <span>{% trans 'Apply' %}</span>
+                                                        </button>
+                                                    {% endif %}
+                                                </div>
+                                            {% elif agent_user.complete_info == 'ipr' %}
+                                                <div class="d-flex align-items-center" style="margin-top: 20px; float: left">
+                                                    <a class="btn btn-primary" style="padding: 5px 45px; line-height: 2.5em;!important; background-color: #FFA726; border:none; cursor: not-allowed;">
+                                                        <span>برای ثبت درخواست، منتظر تعیین وضعیت حساب کاربری خود باشید</span>
+                                                    </a>
+                                                </div>
+                                            {% elif agent_user.complete_info == 'dnt' %}
+                                                <div class="d-flex align-items-center" style="margin-top: 20px; float: left">
+                                                    <a href="{% url 'agent_profile_info_now' %}" class="btn btn-primary" style="padding: 5px 45px; line-height: 2.5em;!important; background-color: grey; border:none;">
+                                                        <span>برای ثبت درخواست، ابتدا اطلاعات حساب کاربری خود را تکمیل نمایید</span>
+                                                    </a>
+                                                </div>
+                                            {% endif %}
+
                                             <div class="d-flex align-items-center" style="margin-top: 20px; float: left;!important;">
                                                 <form method="post" novalidate>
                                                     {% csrf_token %}

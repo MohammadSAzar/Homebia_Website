@@ -32,7 +32,7 @@
 
     <body class="bg-gray-100 all-projects-template muze-rtl">
 
-        <div class="nk-app-root">
+        <div class="nk-app-root ">
             <div class="nk-main">
 
                 <!-- Sidebar -->
@@ -168,28 +168,9 @@
                         <div class="container-xl wide-lg">
 
                             <!-- File & Rent buttons -->
-                            <div class="nk-content" style="padding: 0;!important;">
-                                <div class="container-fluid">
-                                    <div class="nk-content-inner">
-                                        <div class="nk-content-body" style="padding-top: 0;!important; padding-bottom: 0;!important;">
-                                            <div class="nk-block-head nk-block-head-sm" style="padding-top: 0;!important; padding-bottom: 0;!important;">
-                                                <div class="nk-block-between">
-                                                    <div class="nk-block-head-content">
-                                                        <ul class="nk-block-tools g-3" style="margin-bottom: 2px;!important;">
-                                                            <li class="nk-block-tools-opt">
-                                                                <a href="{% url 'sale_file_create' %}" class="btn btn-primary" style="line-height: 2.5em;!important;"><em class="icon ni ni-plus"></em><span>ثبت آگهی فروش</span></a>
-                                                            </li>
-                                                            <li class="nk-block-tools-opt">
-                                                                <a href="{% url 'rent_file_create' %}" class="btn btn-primary" style="line-height: 2.5em;!important;"><em class="icon ni ni-plus"></em><span>ثبت آگهی اجاره</span></a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            {% block two_buttons %}
+
+                            {% endblock %}
                             <!-- end: File & Rent buttons -->
 
                             <!-- Main content -->
