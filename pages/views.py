@@ -1,28 +1,32 @@
 from django.shortcuts import render, redirect
+from django.db.models import Q
+from django.contrib.contenttypes.models import ContentType
 
 from blog.models import Blog
 from accounts.models import CustomUserModel
-from agents.models import AgentCustomUserModel
+from agents.models import AgentCustomUserModel, Task
 
 
 def home_view(request):
     context = {}
     blogs = Blog.objects.select_related('blog_category').filter(status='pub').order_by('-date_creation')[:6]
+    tasks = Task.objects.select_related('task_counseling').select_related('task_session').select_related('task_visit')\
+                .select_related('task_trade_session').filter(Q(is_requested='fre') | Q(is_requested='pen'))\
+                .order_by('-datetime_created')[:6]
     context['blogs'] = blogs
-    user_now = request.user
-    if isinstance(user_now, CustomUserModel):
-        context['user'] = user_now
-    else:
-        phone_number = request.session.get('user_phone_number')
-        if phone_number:
-            agent_user = AgentCustomUserModel.objects.get(phone_number=phone_number)
-            context['agent_user'] = agent_user
-        context['user'] = user_now
+    context['tasks'] = tasks
+    # user_now = request.user
+    # phone_number = request.session.get('user_phone_number')
+    #
+    # if isinstance(user_now, CustomUserModel):
+    #     context['user'] = user_now
+    # elif phone_number:
+    #     agent_user = AgentCustomUserModel.objects.get(phone_number=phone_number)
+    #     context['agent_user'] = agent_user
+    # else:
+    #     context['user'] = user_now
+
     return render(request, 'pages/home.html', context)
-
-
-def services_view(request):
-    return render(request, 'pages/services.html')
 
 
 def four_o_four_view(request):

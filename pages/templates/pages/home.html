@@ -3,6 +3,7 @@
 {% load static %}
 {% load i18n %}
 {% load jalali_tags %}
+{% load humanize %}
 {% load number_converter %}
 
 {% block title %}{% trans 'Homepage' %}{% endblock %}
@@ -150,6 +151,123 @@
         </section>
         <!-- end: Homebia services -->
 
+        <!-- Hombaba tasks -->
+        <section class="blog-area mb--70 mb-md--50">
+            <div class="container">
+
+                <!-- Title -->
+                <div class="row mb--20 mb-md--23">
+                    <div class="col-12 text-center">
+                        <h2 style="font-size: 30px; color: #003379">{% trans 'Latest Tasks on Hombaba' %}</h2>
+                    </div>
+                </div>
+
+                <!-- Tasks -->
+                <div class="pb-2 pb-xl-5 mb-2 mb-xl-5 pt-3">
+                     <div class="row">
+                         {% for task in tasks %}
+                              <div class="col-12 col-lg-4" style="margin-bottom: 10px;">
+                                  <div class="p-2 rounded-6 shadow-dark-80 bg-white mb-0 h-100 border border-gray-200">
+
+                                      <div class="mb-2 d-flex align-items-center">
+                                          <span class="badge badge-sm badge-soft-primary">19 فایل</span>
+                                      </div>
+
+                                      <div class="text-center">
+                                          <div class="circle circle-xl mx-auto">
+                                              <!-- Title -->
+                                              <div style="height: 4.5em; -webkit-line-clamp: 2;">
+                                                  <!-- Services title -->
+                                                  {% if task.type == 'vis' %}
+                                                      <a href="{{ task.get_absolute_url }}"><h3 style="line-height: 1.5em;!important;" class="font-weight-semibold title-box">
+                                                          {{ task.get_type_display }} {% trans 'in' %} {{ task.task_visit.get_city_display }} - {{ task.task_visit.district }} | {{ task.task_visit.get_date_display }} | {{ task.task_visit.get_time_display }}
+                                                      </h3></a>
+                                                  {% elif task.type == 'ses' %}
+                                                      <a href="{{ task.get_absolute_url }}"><h3 style="line-height: 1.5em;!important;" class="font-weight-semibold title-box">
+                                                          {{ task.get_type_display }} {% trans 'in' %} {{ task.task_session.get_city_display }} - {{ task.task_session.district }} | {{ task.task_session.get_date_display }} | {{ task.task_session.get_time_display }}
+                                                      </h3></a>
+                                                  {% elif task.type == 'cns' %}
+                                                      {% if task.task_counseling.counseling_type == 'ip' %}
+                                                          <a href="{{ task.get_absolute_url }}"><h3 style="line-height: 1.5em;!important;" class="font-weight-semibold title-box">
+                                                              {{ task.get_type_display }} {{ task.task_counseling.get_counseling_type_display }} {% trans 'in hombaba (tehran)' %} | {{ task.task_counseling.get_date_display }} | {{ task.task_counseling.get_time_display }}
+                                                          </h3></a>
+                                                      {% else %}
+                                                          <a href="{{ task.get_absolute_url }}"><h3 style="line-height: 1.5em;!important;" class="font-weight-semibold title-box">
+                                                              {{ task.get_type_display }} {{ task.task_counseling.get_counseling_type_display }} | {{ task.task_counseling.get_date_display }} | {{ task.task_counseling.get_time_display }}
+                                                          </h3></a>
+                                                      {% endif %}
+                                                      <!-- trade session title -->
+                                                  {% elif task.type == 'tds' %}
+                                                      {% if task.task_trade_session.location == 'ours' %}
+                                                          <a href="{{ task.get_absolute_url }}"><h3 style="line-height: 1.5em;!important;" class="font-weight-semibold title-box">
+                                                              {{ task.get_type_display }} {% trans 'in hombaba (tehran)' %} | {{ task.task_trade_session.get_date_display }} | {{ task.task_trade_session.get_time_display }}
+                                                          </h3></a>
+                                                      {% else %}
+                                                          <a href="{{ task.get_absolute_url }}"><h3 style="line-height: 1.5em;!important;" class="font-weight-semibold title-box">
+                                                              {{ task.get_type_display }} {% trans 'in' %} {{ task.task_trade_session.get_city_display }} - {{ task.task_trade_session.district }}  | {{ task.task_trade_session.get_date_display }} | {{ task.task_trade_session.get_time_display }}
+                                                          </h3></a>
+                                                      {% endif %}
+                                                  {% endif %}
+                                              </div>
+
+                                              <!-- Pricing -->
+                                              <div style="margin: 1.2em 0;">
+                                                  <!-- Counseling -->
+                                                  {% if task.type == 'cns' %}
+                                                      <p class="font-weight-semibold title-box">{% trans 'Total price: ' %}</p>
+                                                      <h3 style="color: #00a65c;">{{ task.task_counseling.price|intcomma:False|farsi_number }} {% trans 'Tooman' %}</h3>
+                                                  <!-- Counseling -->
+                                                  {% elif task.type == 'ses' %}
+                                                      <p class="font-weight-semibold title-box">{% trans 'Total price: ' %}</p>
+                                                      <h3 style="color: #00a65c;">{{ task.task_session.price|intcomma:False|farsi_number }} {% trans 'Tooman' %}</h3>
+                                                  <!-- Visit -->
+                                                  {% elif task.type == 'vis' %}
+                                                      <p class="font-weight-semibold title-box">{% trans 'Total price: ' %}</p>
+                                                      <h3 style="color: #00a65c;">{{ task.task_visit.price|intcomma:False|farsi_number }} {% trans 'Tooman' %}</h3>
+                                                  <!-- TS -->
+                                                  {% elif task.type == 'tds' %}
+                                                      <p class="font-weight-semibold title-box">{% trans 'Total price: ' %}</p>
+                                                      <h3 style="color: #00a65c;">0/25 درصد مبلغ معامله</h3>
+                                                  {% endif %}
+                                              </div>
+
+                                              <!-- Request status -->
+                                              <div class="pt-4 pb-4" style="margin-bottom: 15px;">
+                                                  {% if task.is_requested == 'fre' %}
+                                                      <span class="small font-weight-semibold mb-2 d-block">{{ task.get_is_requested_display }}</span>
+                                                      <div class="progress rounded-pill" style="height: 5px;width: 100%;">
+                                                          <div class="progress-bar bg-teal-500" role="progressbar" style="width: 33%; background-color: #00A65C;" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100"></div>
+                                                      </div>
+                                                  {% elif task.is_requested == 'pen' %}
+                                                      <span class="small font-weight-semibold mb-2 d-block">{{ task.get_is_requested_display }}</span>
+                                                      <div class="progress rounded-pill" style="height: 5px;width: 100%;">
+                                                          <div class="progress-bar bg-teal-500" role="progressbar" style="width: 66%; background-color: #FFA726;" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
+                                                      </div>
+                                                  {% elif task.is_requested == 'tkn' %}
+                                                      <span class="small font-weight-semibold mb-2 d-block">{{ task.get_is_requested_display }}</span>
+                                                      <div class="progress rounded-pill" style="height: 5px;width: 100%;">
+                                                            <div class="progress-bar bg-teal-500" role="progressbar" style="width: 99%; background-color: grey" aria-valuenow="99" aria-valuemin="0" aria-valuemax="100"></div>
+                                                      </div>
+                                                  {% endif %}
+                                              </div>
+
+                                          </div>
+                                      </div>
+                                  </div>
+                          </div>
+                         {% endfor %}
+                     </div>
+
+                    <div class="text-center" style="margin-top: 20px;">
+                        <a href="{% url 'task_list' %}" class="btn btn-primary" style="padding: 5px 45px; line-height: 2.5em;!important; border: #00A65C solid 1px;">برای مشاهده تمام فرصت‌های کاری، کلیک نمایید</a>
+                    </div>
+                </div>
+                <!-- end: Hombaba tasks -->
+
+            </div>
+        </section>
+        <!-- end: Tasks -->
+
         <!-- Homebia blogs -->
         <section class="blog-area mb--70 mb-md--50">
             <div class="container">
@@ -194,914 +312,6 @@
             </div>
         </section>
         <!-- end: Homebia blogs -->
-
-
-
-        <!-- Top Sale Area -->
-        <section class="top-sale-area mb--75 mb-md--55">
-            <div class="container">
-                <!-- Title -->
-                <div class="row mb--35 mb-md--23">
-                    <div class="col-12 text-center">
-                        <h2 style="">خدمات هومبیا</h2>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-12">
-                        <div class="element-carousel"
-                             data-slick-options='{
-                                "spaceBetween": 30,
-                                "slidesToShow": 3
-                            }'
-                             data-slick-responsive='[
-                                {"breakpoint": 768, "settings": {"slidesToShow": 2}},
-                                {"breakpoint": 480, "settings": {"slidesToShow": 1}}
-                            ]'>
-
-                            <div class="item">
-                                <div class="ft-product">
-                                    <div class="product-inner">
-                                        <div class="product-image">
-                                            <figure class="product-image--holder">
-                                                <img src="files/img/products/prod-01.jpg" alt="Product">
-                                            </figure>
-                                            <a href="product-details.html" class="product-overlay"></a>
-                                            <div class="product-action">
-                                                <a data-bs-toggle="modal" data-bs-target="#productModal" class="action-btn">
-                                                    <i class="la la-eye"></i>
-                                                </a>
-                                                <a href="wishlist.html" class="action-btn">
-                                                    <i class="la la-heart-o"></i>
-                                                </a>
-                                                <a href="wishlist.html" class="action-btn">
-                                                    <i class="la la-repeat"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="product-info plr--20">
-                                            <h3 class="product-title"><a href="product-details.html">صندلی نقطه ای طلایی.</a></h3>
-                                            <div class="product-info-bottom">
-                                                <div class="product-price-wrapper">
-                                                    <span class="money">150 تومان</span>
-                                                </div>
-                                                <a href="cart.html" class="add-to-cart">
-                                                    <i class="la la-plus"></i>
-                                                    <span>افزودن به سبد خرید</span>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="ft-product">
-                                    <div class="product-inner">
-                                        <div class="product-image">
-                                            <figure class="product-image--holder">
-                                                <img src="files/img/products/prod-02.jpg" alt="Product">
-                                            </figure>
-                                            <a href="product-details.html" class="product-overlay"></a>
-                                            <div class="product-action">
-                                                <a data-bs-toggle="modal" data-bs-target="#productModal" class="action-btn">
-                                                    <i class="la la-eye"></i>
-                                                </a>
-                                                <a href="wishlist.html" class="action-btn">
-                                                    <i class="la la-heart-o"></i>
-                                                </a>
-                                                <a href="wishlist.html" class="action-btn">
-                                                    <i class="la la-repeat"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="product-info plr--20">
-                                            <h3 class="product-title"><a href="product-details.html">صندلی نقطه ای طلایی.</a></h3>
-                                            <div class="product-info-bottom">
-                                                <div class="product-price-wrapper">
-                                                    <span class="money">150 تومان</span>
-                                                </div>
-                                                <a href="cart.html" class="add-to-cart">
-                                                    <i class="la la-plus"></i>
-                                                    <span>افزودن به سبد خرید</span>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="ft-product">
-                                    <div class="product-inner">
-                                        <div class="product-image">
-                                            <figure class="product-image--holder">
-                                                <img src="files/img/products/prod-03.jpg" alt="Product">
-                                            </figure>
-                                            <a href="product-details.html" class="product-overlay"></a>
-                                            <div class="product-action">
-                                                <a data-bs-toggle="modal" data-bs-target="#productModal" class="action-btn">
-                                                    <i class="la la-eye"></i>
-                                                </a>
-                                                <a href="wishlist.html" class="action-btn">
-                                                    <i class="la la-heart-o"></i>
-                                                </a>
-                                                <a href="wishlist.html" class="action-btn">
-                                                    <i class="la la-repeat"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="product-info plr--20">
-                                            <h3 class="product-title"><a href="product-details.html">صندلی نقطه ای طلایی.</a></h3>
-                                            <div class="product-info-bottom">
-                                                <div class="product-price-wrapper">
-                                                    <span class="money">150 تومان</span>
-                                                </div>
-                                                <a href="cart.html" class="add-to-cart">
-                                                    <i class="la la-plus"></i>
-                                                    <span>افزودن به سبد خرید</span>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- Top Sale Area End -->
-
-        <!-- Feature Product Area Start -->
-        <section class="feature-product-area  mb--75 mb-md--55">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="feature-product bg-color" data-bg-color="#d7fbf9">
-                            <div class="feature-product__inner bg-color" data-bg-color="#e9fefd">
-                                <div class="feature-product__info">
-                                    <p class="hastag"># سبک جدید</p>
-                                    <h2 class="feature-product__title"><a href="product-details.html">نرم لوکس</a></h2>
-                                    <a href="shop.html" class="feature-product__btn">هم اکنون خریداری کنید</a>
-                                </div>
-                                <figure class="feature-product__image mb-sm--30">
-                                    <a href="product-details.html">
-                                        <img src="files/img/products/feature-product-01.png" alt="Feature Product">
-                                    </a>
-                                </figure>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- Feature Product Area End -->
-
-        <!-- Product Tab Area Start -->
-        <section class="product-tab-area mb--30 mb-md--10">
-            <div class="container">
-                <div class="row mb--28 mb-md--18 mb-sm--33">
-                    <div class="col-md-3 text-md-start text-center">
-                        <h2>همه محصولات</h2>
-                    </div>
-                    <div class="col-md-9">
-                        <div class="tab-style-1">
-                            <div class="nav nav-tabs justify-content-md-end justify-content-center" id="product-tab" role="tablist">
-                                <button type="button" class="nav-item nav-link active" id="new-all-tab" data-bs-toggle="tab" data-bs-target="#new-all" role="tab" aria-controls="new-all" aria-selected="true">
-                                    <span class="nav-text">همه</span>
-                                </button>
-                                <button type="button" class="nav-item nav-link" id="new-wooden-tab" data-bs-toggle="tab" data-bs-target="#new-wooden" role="tab" aria-controls="new-wooden" aria-selected="false">
-                                    <span class="nav-text">چوبی</span>
-                                </button>
-                                <button type="button" class="nav-item nav-link" id="new-furnished-tab" data-bs-toggle="tab" data-bs-target="#new-furnished" role="tab" aria-controls="new-furnished" aria-selected="false">
-                                    <span class="nav-text">مبله شده</span>
-                                </button>
-                                <button type="button" class="nav-item nav-link" id="new-table-tab" data-bs-toggle="tab" data-bs-target="#new-table" role="tab" aria-controls="new-table" aria-selected="false">
-                                    <span class="nav-text">جدول</span>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-12">
-                        <div class="tab-content" id="product-tab-content">
-                            <div class="tab-pane fade show active" id="new-all" role="tabpanel" aria-labelledby="new-all-tab">
-                                <div class="row">
-                                    <div class="col-lg-3 col-sm-6 mb--45">
-                                        <div class="ft-product HTfadeInUp">
-                                            <div class="product-inner">
-                                                <div class="product-image">
-                                                    <figure class="product-image--holder">
-                                                        <img src="files/img/products/prod-04-270x300.jpg" alt="Product">
-                                                    </figure>
-                                                    <a href="product-details.html" class="product-overlay"></a>
-                                                    <div class="product-action">
-                                                        <a data-bs-toggle="modal" data-bs-target="#productModal" class="action-btn">
-                                                            <i class="la la-eye"></i>
-                                                        </a>
-                                                        <a href="wishlist.html" class="action-btn">
-                                                            <i class="la la-heart-o"></i>
-                                                        </a>
-                                                        <a href="wishlist.html" class="action-btn">
-                                                            <i class="la la-repeat"></i>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                                <div class="product-info">
-                                                    <div class="product-category">
-                                                        <a href="product-details.html">صندلی</a>
-                                                    </div>
-                                                    <h3 class="product-title"><a href="product-details.html">صندلی نقطه ای طلایی.</a></h3>
-                                                    <div class="product-info-bottom">
-                                                        <div class="product-price-wrapper">
-                                                            <span class="money">150 تومان</span>
-                                                        </div>
-                                                        <a href="cart.html" class="add-to-cart pr--15">
-                                                            <i class="la la-plus"></i>
-                                                            <span>افزودن به سبد خرید</span>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3 col-sm-6 mb--45">
-                                        <div class="ft-product HTfadeInUp">
-                                            <div class="product-inner">
-                                                <div class="product-image">
-                                                    <figure class="product-image--holder">
-                                                        <img src="files/img/products/prod-05-270x300.jpg" alt="Product">
-                                                    </figure>
-                                                    <a href="product-details.html" class="product-overlay"></a>
-                                                    <div class="product-action">
-                                                        <a data-bs-toggle="modal" data-bs-target="#productModal" class="action-btn">
-                                                            <i class="la la-eye"></i>
-                                                        </a>
-                                                        <a href="wishlist.html" class="action-btn">
-                                                            <i class="la la-heart-o"></i>
-                                                        </a>
-                                                        <a href="wishlist.html" class="action-btn">
-                                                            <i class="la la-repeat"></i>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                                <div class="product-info">
-                                                    <div class="product-category">
-                                                        <a href="product-details.html">صندلی</a>
-                                                    </div>
-                                                    <h3 class="product-title"><a href="product-details.html">صندلی نقطه ای طلایی.</a></h3>
-                                                    <div class="product-info-bottom">
-                                                        <div class="product-price-wrapper">
-                                                                <span class="new-price">
-                                                                    <span class="money">150 تومان</span>
-                                                                </span>
-                                                            <span class="old-price">
-                                                                    <span class="money">200 تومان</span>
-                                                                </span>
-                                                        </div>
-                                                        <a href="cart.html" class="add-to-cart pr--15">
-                                                            <i class="la la-plus"></i>
-                                                            <span>افزودن به سبد خرید</span>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3 col-sm-6 mb--45">
-                                        <div class="ft-product HTfadeInUp">
-                                            <div class="product-inner">
-                                                <div class="product-image">
-                                                    <figure class="product-image--holder">
-                                                        <img src="files/img/products/prod-06-270x300.jpg" alt="Product">
-                                                    </figure>
-                                                    <a href="product-details.html" class="product-overlay"></a>
-                                                    <div class="product-action">
-                                                        <a data-bs-toggle="modal" data-bs-target="#productModal" class="action-btn">
-                                                            <i class="la la-eye"></i>
-                                                        </a>
-                                                        <a href="wishlist.html" class="action-btn">
-                                                            <i class="la la-heart-o"></i>
-                                                        </a>
-                                                        <a href="wishlist.html" class="action-btn">
-                                                            <i class="la la-repeat"></i>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                                <div class="product-info">
-                                                    <div class="product-category">
-                                                        <a href="product-details.html">صندلی</a>
-                                                    </div>
-                                                    <h3 class="product-title"><a href="product-details.html">صندلی نقطه ای طلایی.</a></h3>
-                                                    <div class="product-info-bottom">
-                                                        <div class="product-price-wrapper">
-                                                            <span class="money">150 تومان</span>
-                                                        </div>
-                                                        <a href="cart.html" class="add-to-cart pr--15">
-                                                            <i class="la la-plus"></i>
-                                                            <span>افزودن به سبد خرید</span>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3 col-sm-6 mb--45">
-                                        <div class="ft-product HTfadeInUp">
-                                            <div class="product-inner">
-                                                <div class="product-image">
-                                                    <figure class="product-image--holder">
-                                                        <img src="files/img/products/prod-09-270x300.jpg" alt="Product">
-                                                    </figure>
-                                                    <a href="product-details.html" class="product-overlay"></a>
-                                                    <div class="product-action">
-                                                        <a data-bs-toggle="modal" data-bs-target="#productModal" class="action-btn">
-                                                            <i class="la la-eye"></i>
-                                                        </a>
-                                                        <a href="wishlist.html" class="action-btn">
-                                                            <i class="la la-heart-o"></i>
-                                                        </a>
-                                                        <a href="wishlist.html" class="action-btn">
-                                                            <i class="la la-repeat"></i>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                                <div class="product-info">
-                                                    <div class="product-category">
-                                                        <a href="product-details.html">صندلی</a>
-                                                    </div>
-                                                    <h3 class="product-title"><a href="product-details.html">صندلی نقطه ای طلایی.</a></h3>
-                                                    <div class="product-info-bottom">
-                                                        <div class="product-price-wrapper">
-                                                            <span class="money">150 تومان</span>
-                                                        </div>
-                                                        <a href="cart.html" class="add-to-cart pr--15">
-                                                            <i class="la la-plus"></i>
-                                                            <span>افزودن به سبد خرید</span>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="tab-pane fade" id="new-wooden" role="tabpanel" aria-labelledby="new-wooden-tab">
-                                <div class="row">
-                                    <div class="col-lg-3 col-sm-6 mb--45">
-                                        <div class="ft-product HTfadeInUp">
-                                            <div class="product-inner">
-                                                <div class="product-image">
-                                                    <figure class="product-image--holder">
-                                                        <img src="files/img/products/prod-05-270x300.jpg" alt="Product">
-                                                    </figure>
-                                                    <a href="product-details.html" class="product-overlay"></a>
-                                                    <div class="product-action">
-                                                        <a data-bs-toggle="modal" data-bs-target="#productModal" class="action-btn">
-                                                            <i class="la la-eye"></i>
-                                                        </a>
-                                                        <a href="wishlist.html" class="action-btn">
-                                                            <i class="la la-heart-o"></i>
-                                                        </a>
-                                                        <a href="wishlist.html" class="action-btn">
-                                                            <i class="la la-repeat"></i>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                                <div class="product-info">
-                                                    <div class="product-category">
-                                                        <a href="product-details.html">صندلی</a>
-                                                    </div>
-                                                    <h3 class="product-title"><a href="product-details.html">صندلی نقطه ای طلایی.</a></h3>
-                                                    <div class="product-info-bottom">
-                                                        <div class="product-price-wrapper">
-                                                            <span class="money">150 تومان</span>
-                                                        </div>
-                                                        <a href="cart.html" class="add-to-cart pr--15">
-                                                            <i class="la la-plus"></i>
-                                                            <span>افزودن به سبد خرید</span>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3 col-sm-6 mb--45">
-                                        <div class="ft-product HTfadeInUp">
-                                            <div class="product-inner">
-                                                <div class="product-image">
-                                                    <figure class="product-image--holder">
-                                                        <img src="files/img/products/prod-01-270x300.jpg" alt="Product">
-                                                    </figure>
-                                                    <a href="product-details.html" class="product-overlay"></a>
-                                                    <div class="product-action">
-                                                        <a data-bs-toggle="modal" data-bs-target="#productModal" class="action-btn">
-                                                            <i class="la la-eye"></i>
-                                                        </a>
-                                                        <a href="wishlist.html" class="action-btn">
-                                                            <i class="la la-heart-o"></i>
-                                                        </a>
-                                                        <a href="wishlist.html" class="action-btn">
-                                                            <i class="la la-repeat"></i>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                                <div class="product-info">
-                                                    <div class="product-category">
-                                                        <a href="product-details.html">صندلی</a>
-                                                    </div>
-                                                    <h3 class="product-title"><a href="product-details.html">صندلی نقطه ای طلایی.</a></h3>
-                                                    <div class="product-info-bottom">
-                                                        <div class="product-price-wrapper">
-                                                            <span class="money">150 تومان</span>
-                                                        </div>
-                                                        <a href="cart.html" class="add-to-cart pr--15">
-                                                            <i class="la la-plus"></i>
-                                                            <span>افزودن به سبد خرید</span>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3 col-sm-6 mb--45">
-                                        <div class="ft-product HTfadeInUp">
-                                            <div class="product-inner">
-                                                <div class="product-image">
-                                                    <figure class="product-image--holder">
-                                                        <img src="files/img/products/prod-04-270x300.jpg" alt="Product">
-                                                    </figure>
-                                                    <a href="product-details.html" class="product-overlay"></a>
-                                                    <div class="product-action">
-                                                        <a data-bs-toggle="modal" data-bs-target="#productModal" class="action-btn">
-                                                            <i class="la la-eye"></i>
-                                                        </a>
-                                                        <a href="wishlist.html" class="action-btn">
-                                                            <i class="la la-heart-o"></i>
-                                                        </a>
-                                                        <a href="wishlist.html" class="action-btn">
-                                                            <i class="la la-repeat"></i>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                                <div class="product-info">
-                                                    <div class="product-category">
-                                                        <a href="product-details.html">صندلی</a>
-                                                    </div>
-                                                    <h3 class="product-title"><a href="product-details.html">صندلی نقطه ای طلایی.</a></h3>
-                                                    <div class="product-info-bottom">
-                                                        <div class="product-price-wrapper">
-                                                            <span class="money">150 تومان</span>
-                                                        </div>
-                                                        <a href="cart.html" class="add-to-cart pr--15">
-                                                            <i class="la la-plus"></i>
-                                                            <span>افزودن به سبد خرید</span>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3 col-sm-6 mb--45">
-                                        <div class="ft-product HTfadeInUp">
-                                            <div class="product-inner">
-                                                <div class="product-image">
-                                                    <figure class="product-image--holder">
-                                                        <img src="files/img/products/prod-06-270x300.jpg" alt="Product">
-                                                    </figure>
-                                                    <a href="product-details.html" class="product-overlay"></a>
-                                                    <div class="product-action">
-                                                        <a data-bs-toggle="modal" data-bs-target="#productModal" class="action-btn">
-                                                            <i class="la la-eye"></i>
-                                                        </a>
-                                                        <a href="wishlist.html" class="action-btn">
-                                                            <i class="la la-heart-o"></i>
-                                                        </a>
-                                                        <a href="wishlist.html" class="action-btn">
-                                                            <i class="la la-repeat"></i>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                                <div class="product-info">
-                                                    <div class="product-category">
-                                                        <a href="product-details.html">صندلی</a>
-                                                    </div>
-                                                    <h3 class="product-title"><a href="product-details.html">صندلی نقطه ای طلایی.</a></h3>
-                                                    <div class="product-info-bottom">
-                                                        <div class="product-price-wrapper">
-                                                            <span class="money">150 تومان</span>
-                                                        </div>
-                                                        <a href="cart.html" class="add-to-cart pr--15">
-                                                            <i class="la la-plus"></i>
-                                                            <span>افزودن به سبد خرید</span>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="tab-pane fade" id="new-furnished" role="tabpanel" aria-labelledby="new-furnished-tab">
-                                <div class="row">
-                                    <div class="col-lg-3 col-sm-6 mb--45">
-                                        <div class="ft-product HTfadeInUp">
-                                            <div class="product-inner">
-                                                <div class="product-image">
-                                                    <figure class="product-image--holder">
-                                                        <img src="files/img/products/prod-02-270x300.jpg" alt="Product">
-                                                    </figure>
-                                                    <a href="product-details.html" class="product-overlay"></a>
-                                                    <div class="product-action">
-                                                        <a data-bs-toggle="modal" data-bs-target="#productModal" class="action-btn">
-                                                            <i class="la la-eye"></i>
-                                                        </a>
-                                                        <a href="wishlist.html" class="action-btn">
-                                                            <i class="la la-heart-o"></i>
-                                                        </a>
-                                                        <a href="wishlist.html" class="action-btn">
-                                                            <i class="la la-repeat"></i>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                                <div class="product-info">
-                                                    <div class="product-category">
-                                                        <a href="product-details.html">صندلی</a>
-                                                    </div>
-                                                    <h3 class="product-title"><a href="product-details.html">صندلی نقطه ای طلایی.</a></h3>
-                                                    <div class="product-info-bottom">
-                                                        <div class="product-price-wrapper">
-                                                            <span class="money">150 تومان</span>
-                                                        </div>
-                                                        <a href="cart.html" class="add-to-cart pr--15">
-                                                            <i class="la la-plus"></i>
-                                                            <span>افزودن به سبد خرید</span>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3 col-sm-6 mb--45">
-                                        <div class="ft-product HTfadeInUp">
-                                            <div class="product-inner">
-                                                <div class="product-image">
-                                                    <figure class="product-image--holder">
-                                                        <img src="files/img/products/prod-01-270x300.jpg" alt="Product">
-                                                    </figure>
-                                                    <a href="product-details.html" class="product-overlay"></a>
-                                                    <div class="product-action">
-                                                        <a data-bs-toggle="modal" data-bs-target="#productModal" class="action-btn">
-                                                            <i class="la la-eye"></i>
-                                                        </a>
-                                                        <a href="wishlist.html" class="action-btn">
-                                                            <i class="la la-heart-o"></i>
-                                                        </a>
-                                                        <a href="wishlist.html" class="action-btn">
-                                                            <i class="la la-repeat"></i>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                                <div class="product-info">
-                                                    <div class="product-category">
-                                                        <a href="product-details.html">صندلی</a>
-                                                    </div>
-                                                    <h3 class="product-title"><a href="product-details.html">صندلی نقطه ای طلایی.</a></h3>
-                                                    <div class="product-info-bottom">
-                                                        <div class="product-price-wrapper">
-                                                            <span class="money">150 تومان</span>
-                                                        </div>
-                                                        <a href="cart.html" class="add-to-cart pr--15">
-                                                            <i class="la la-plus"></i>
-                                                            <span>افزودن به سبد خرید</span>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3 col-sm-6 mb--45">
-                                        <div class="ft-product HTfadeInUp">
-                                            <div class="product-inner">
-                                                <div class="product-image">
-                                                    <figure class="product-image--holder">
-                                                        <img src="files/img/products/prod-05-270x300.jpg" alt="Product">
-                                                    </figure>
-                                                    <a href="product-details.html" class="product-overlay"></a>
-                                                    <div class="product-action">
-                                                        <a data-bs-toggle="modal" data-bs-target="#productModal" class="action-btn">
-                                                            <i class="la la-eye"></i>
-                                                        </a>
-                                                        <a href="wishlist.html" class="action-btn">
-                                                            <i class="la la-heart-o"></i>
-                                                        </a>
-                                                        <a href="wishlist.html" class="action-btn">
-                                                            <i class="la la-repeat"></i>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                                <div class="product-info">
-                                                    <div class="product-category">
-                                                        <a href="product-details.html">صندلی</a>
-                                                    </div>
-                                                    <h3 class="product-title"><a href="product-details.html">صندلی نقطه ای طلایی.</a></h3>
-                                                    <div class="product-info-bottom">
-                                                        <div class="product-price-wrapper">
-                                                            <span class="money">150 تومان</span>
-                                                        </div>
-                                                        <a href="cart.html" class="add-to-cart pr--15">
-                                                            <i class="la la-plus"></i>
-                                                            <span>افزودن به سبد خرید</span>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3 col-sm-6 mb--45">
-                                        <div class="ft-product HTfadeInUp">
-                                            <div class="product-inner">
-                                                <div class="product-image">
-                                                    <figure class="product-image--holder">
-                                                        <img src="files/img/products/prod-03-270x300.jpg" alt="Product">
-                                                    </figure>
-                                                    <a href="product-details.html" class="product-overlay"></a>
-                                                    <div class="product-action">
-                                                        <a data-bs-toggle="modal" data-bs-target="#productModal" class="action-btn">
-                                                            <i class="la la-eye"></i>
-                                                        </a>
-                                                        <a href="wishlist.html" class="action-btn">
-                                                            <i class="la la-heart-o"></i>
-                                                        </a>
-                                                        <a href="wishlist.html" class="action-btn">
-                                                            <i class="la la-repeat"></i>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                                <div class="product-info">
-                                                    <div class="product-category">
-                                                        <a href="product-details.html">صندلی</a>
-                                                    </div>
-                                                    <h3 class="product-title"><a href="product-details.html">صندلی نقطه ای طلایی.</a></h3>
-                                                    <div class="product-info-bottom">
-                                                        <div class="product-price-wrapper">
-                                                            <span class="money">150 تومان</span>
-                                                        </div>
-                                                        <a href="cart.html" class="add-to-cart pr--15">
-                                                            <i class="la la-plus"></i>
-                                                            <span>افزودن به سبد خرید</span>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="tab-pane fade" id="new-table" role="tabpanel" aria-labelledby="new-table-tab">
-                                <div class="row">
-                                    <div class="col-lg-3 col-sm-6 mb--45">
-                                        <div class="ft-product HTfadeInUp">
-                                            <div class="product-inner">
-                                                <div class="product-image">
-                                                    <figure class="product-image--holder">
-                                                        <img src="files/img/products/prod-03-270x300.jpg" alt="Product">
-                                                    </figure>
-                                                    <a href="product-details.html" class="product-overlay"></a>
-                                                    <div class="product-action">
-                                                        <a data-bs-toggle="modal" data-bs-target="#productModal" class="action-btn">
-                                                            <i class="la la-eye"></i>
-                                                        </a>
-                                                        <a href="wishlist.html" class="action-btn">
-                                                            <i class="la la-heart-o"></i>
-                                                        </a>
-                                                        <a href="wishlist.html" class="action-btn">
-                                                            <i class="la la-repeat"></i>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                                <div class="product-info">
-                                                    <div class="product-category">
-                                                        <a href="product-details.html">صندلی</a>
-                                                    </div>
-                                                    <h3 class="product-title"><a href="product-details.html">صندلی نقطه ای طلایی.</a></h3>
-                                                    <div class="product-info-bottom">
-                                                        <div class="product-price-wrapper">
-                                                            <span class="money">150 تومان</span>
-                                                        </div>
-                                                        <a href="cart.html" class="add-to-cart pr--15">
-                                                            <i class="la la-plus"></i>
-                                                            <span>افزودن به سبد خرید</span>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3 col-sm-6 mb--45">
-                                        <div class="ft-product HTfadeInUp">
-                                            <div class="product-inner">
-                                                <div class="product-image">
-                                                    <figure class="product-image--holder">
-                                                        <img src="files/img/products/prod-10-270x300.png" alt="Product">
-                                                    </figure>
-                                                    <a href="product-details.html" class="product-overlay"></a>
-                                                    <div class="product-action">
-                                                        <a data-bs-toggle="modal" data-bs-target="#productModal" class="action-btn">
-                                                            <i class="la la-eye"></i>
-                                                        </a>
-                                                        <a href="wishlist.html" class="action-btn">
-                                                            <i class="la la-heart-o"></i>
-                                                        </a>
-                                                        <a href="wishlist.html" class="action-btn">
-                                                            <i class="la la-repeat"></i>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                                <div class="product-info">
-                                                    <div class="product-category">
-                                                        <a href="product-details.html">صندلی</a>
-                                                    </div>
-                                                    <h3 class="product-title"><a href="product-details.html">صندلی نقطه ای طلایی.</a></h3>
-                                                    <div class="product-info-bottom">
-                                                        <div class="product-price-wrapper">
-                                                            <span class="money">150 تومان</span>
-                                                        </div>
-                                                        <a href="cart.html" class="add-to-cart pr--15">
-                                                            <i class="la la-plus"></i>
-                                                            <span>افزودن به سبد خرید</span>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3 col-sm-6 mb--45">
-                                        <div class="ft-product HTfadeInUp">
-                                            <div class="product-inner">
-                                                <div class="product-image">
-                                                    <figure class="product-image--holder">
-                                                        <img src="files/img/products/prod-04-270x300.jpg" alt="Product">
-                                                    </figure>
-                                                    <a href="product-details.html" class="product-overlay"></a>
-                                                    <div class="product-action">
-                                                        <a data-bs-toggle="modal" data-bs-target="#productModal" class="action-btn">
-                                                            <i class="la la-eye"></i>
-                                                        </a>
-                                                        <a href="wishlist.html" class="action-btn">
-                                                            <i class="la la-heart-o"></i>
-                                                        </a>
-                                                        <a href="wishlist.html" class="action-btn">
-                                                            <i class="la la-repeat"></i>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                                <div class="product-info">
-                                                    <div class="product-category">
-                                                        <a href="product-details.html">صندلی</a>
-                                                    </div>
-                                                    <h3 class="product-title"><a href="product-details.html">صندلی نقطه ای طلایی.</a></h3>
-                                                    <div class="product-info-bottom">
-                                                        <div class="product-price-wrapper">
-                                                            <span class="money">150 تومان</span>
-                                                        </div>
-                                                        <a href="cart.html" class="add-to-cart pr--15">
-                                                            <i class="la la-plus"></i>
-                                                            <span>افزودن به سبد خرید</span>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3 col-sm-6 mb--45">
-                                        <div class="ft-product HTfadeInUp">
-                                            <div class="product-inner">
-                                                <div class="product-image">
-                                                    <figure class="product-image--holder">
-                                                        <img src="files/img/products/prod-03-270x300.jpg" alt="Product">
-                                                    </figure>
-                                                    <a href="product-details.html" class="product-overlay"></a>
-                                                    <div class="product-action">
-                                                        <a data-bs-toggle="modal" data-bs-target="#productModal" class="action-btn">
-                                                            <i class="la la-eye"></i>
-                                                        </a>
-                                                        <a href="wishlist.html" class="action-btn">
-                                                            <i class="la la-heart-o"></i>
-                                                        </a>
-                                                        <a href="wishlist.html" class="action-btn">
-                                                            <i class="la la-repeat"></i>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                                <div class="product-info">
-                                                    <div class="product-category">
-                                                        <a href="product-details.html">صندلی</a>
-                                                    </div>
-                                                    <h3 class="product-title"><a href="product-details.html">صندلی نقطه ای طلایی.</a></h3>
-                                                    <div class="product-info-bottom">
-                                                        <div class="product-price-wrapper">
-                                                            <span class="money">150 تومان</span>
-                                                        </div>
-                                                        <a href="cart.html" class="add-to-cart pr--15">
-                                                            <i class="la la-plus"></i>
-                                                            <span>افزودن به سبد خرید</span>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- Product Tab Area End -->
-
-        <!-- Brand Logo Area Start -->
-        <div class="brand-logo-area mb--80 mb-md--60">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-xl-12">
-                        <div class="brand-log-wrapper bg-color ptb--75" data-bg-color="#e9fefd">
-                            <div class="element-carousel"
-                                 data-slick-options='{
-                                    "slidesToShow": 5,
-                                    "autoplay": true
-                                }'
-                                 data-slick-responsive='[
-                                    {"breakpoint": 1200, "settings": {"slidesToShow": 4}},
-                                    {"breakpoint": 992, "settings": {"slidesToShow": 3}},
-                                    {"breakpoint": 768, "settings": {"slidesToShow": 2}},
-                                    {"breakpoint": 480, "settings": {"slidesToShow": 1}}
-                                ]'>
-                                <div class="item">
-                                    <figure>
-                                        <img src="files/img/brand/brand-01.png" alt="Brand" class="mx-auto">
-                                    </figure>
-                                </div>
-                                <div class="item">
-                                    <figure>
-                                        <img src="files/img/brand/brand-02.png" alt="Brand" class="mx-auto">
-                                    </figure>
-                                </div>
-                                <div class="item">
-                                    <figure>
-                                        <img src="files/img/brand/brand-03.png" alt="Brand" class="mx-auto">
-                                    </figure>
-                                </div>
-                                <div class="item">
-                                    <figure>
-                                        <img src="files/img/brand/brand-04.png" alt="Brand" class="mx-auto">
-                                    </figure>
-                                </div>
-                                <div class="item">
-                                    <figure>
-                                        <img src="files/img/brand/brand-05.png" alt="Brand" class="mx-auto">
-                                    </figure>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Brand Logo Area End -->
-
-        <!-- Best Sale Product Area Start -->
-        <section class="best-sale-product-area mb--75 mb-md--55">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="best-sale-product bg-color" data-bg-color="#f7f8f9">
-                            <div class="best-sale-product__inner bg-color" data-bg-color="#ffffff">
-                                <figure class="best-sale-product__img">
-                                    <a href="product-details.html">
-                                        <img src="files/img/products/best-product-01.png" alt="Best Sale Product">
-                                    </a>
-                                </figure>
-                                <div class="best-sale-product__info">
-                                    <h2 class="best-sale-product__heading">
-                                        <span class="best-sale-product__heading--main">بهتریـن فروش</span>
-                                        <span class="best-sale-product__heading--sub">بهتریـن کـد تخفیف </span>
-                                    </h2>
-                                    <p class="best-sale-product__desc">این یک واقعیت ثابت شده است که خواننده با محتوای خواندنی حواسش پرت می شود</p>
-                                    <a href="shop.html" class="btn btn-outline btn-size-md btn-color-primary btn-shape-round btn-hover-2">اکنون خرید کنید</a>
-                                </div>
-                            </div>
-                            <figure class="best-sale-product__top-image">
-                                <img src="files/img/others/1.png" alt="bg image">
-                            </figure>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- Best Sale Product Area End -->
-
 
 {% endblock %}
 

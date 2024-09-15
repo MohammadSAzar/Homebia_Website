@@ -83,7 +83,8 @@ def agent_verification_view(request):
 def agent_profile_info_now(request):
     context = {}
     tasks = Task.objects.select_related('task_counseling').select_related('task_session').select_related('task_visit')\
-                .select_related('task_trade_session').filter(Q(is_requested='fre') | Q(is_requested='pen')).order_by('-datetime_created')[:6]
+                .select_related('task_trade_session').filter(Q(is_requested='fre') | Q(is_requested='pen'))\
+                .order_by('-datetime_created')[:6]
     context['tasks'] = tasks
 
     phone_number = request.session.get('user_phone_number')

@@ -6,7 +6,6 @@
 {% load user_filters %}
 
 
-
 <!doctype html>
 <html class="no-js" lang="zxx">
 
@@ -126,15 +125,9 @@
                                                 </li>
 
                                                 <li class="mainmenu__item menu-item-has-children">
-                                                    {% if agent_user.is_authenticated %}
-                                                        <a href="{% url 'agent_profile_info_now' %}" class="mainmenu__link">
-                                                            <span class="mm-text" style="font-weight: bold;">{% trans 'Agent Dashboard' %}</span>
-                                                        </a>
-                                                    {% else %}
-                                                        <a href="{% url 'agent_registration' %}" class="mainmenu__link">
-                                                            <span class="mm-text" style="font-weight: bold;">{% trans 'Agent Login / Signup' %}</span>
-                                                        </a>
-                                                    {% endif %}
+                                                    <a href="{% url 'home' %}" class="mainmenu__link">
+                                                        <span class="mm-text" style="font-weight: bold;">فعالیت به عنوان مشاور</span>
+                                                    </a>
                                                 </li>
 
                                             </ul>
@@ -239,6 +232,7 @@
 
         </main>
         <!-- end: Main content -->
+
 
         <!-- Footer -->
         <footer class="footer bg-color" data-bg-color="#f4f8fa">
@@ -451,7 +445,7 @@
                         </li>
 
                         <li class="menu-item-has-children active">
-                            <a href="{% url 'agent_submission' %}" style="color: #00A65C">{% trans 'Agent Submission' %}</a>
+                            <a href="{% url 'agent_submission' %}" style="color: #00A65C">فعالیت به عنوان مشاور</a>
                         </li>
 
                     </ul>

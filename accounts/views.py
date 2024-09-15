@@ -27,6 +27,7 @@ def registration_view(request):
 				otp = get_random_otp()
 				send_otp(phone_number, otp)
 				user.otp_code = otp
+				print('DDDDDDDDDDDDDD')
 				user.save()
 				request.session['user_phone_number'] = user.phone_number
 				return HttpResponseRedirect(reverse('verification'))
@@ -38,6 +39,7 @@ def registration_view(request):
 				send_otp(phone_number, otp)
 				user.otp_code = otp
 				user.is_active = False
+				print('ZZZZZZZZZZZZZ')
 				user.save()
 				request.session['user_phone_number'] = user.phone_number
 				return HttpResponseRedirect(reverse('verification'))
