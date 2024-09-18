@@ -112,18 +112,18 @@ class AgentRequestForm(forms.ModelForm):
 		for field in self.fields.values():
 			field.required = True
 
-	# def clean(self):
-	# 	cleaned_data = super().clean()
-	# 	experience = cleaned_data.get('experience')
-	# 	postal_code = cleaned_data.get('postal_code')
-	# 	national_code = cleaned_data.get('national_code')
-	#
-	# 	if not experience:
-	# 		self.add_error('experience', 'تعیین این فیلد الزامی است')
-	# 	if not postal_code:
-	# 		self.add_error('postal_code', 'کد پستی وارد شده معتبر نیست.')
-	# 	if not national_code:
-	# 		self.add_error('national_code', 'کد ملی وارد شده معتبر نیست.')
+	def clean(self):
+		cleaned_data = super().clean()
+		experience = cleaned_data.get('experience')
+		introduction_way = cleaned_data.get('introduction_way')
+		course_tendency = cleaned_data.get('course_tendency')
 
-		# return cleaned_data
+		if not experience:
+			self.add_error('experience', 'تعیین این فیلد الزامی است')
+		if not introduction_way:
+			self.add_error('introduction_way', 'تعیین این فیلد الزامی است')
+		if not course_tendency:
+			self.add_error('course_tendency', 'تعیین این فیلد الزامی است')
+
+		return cleaned_data
 

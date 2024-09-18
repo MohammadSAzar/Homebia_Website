@@ -29,7 +29,6 @@ def registration_view(request):
                 otp = get_random_otp()
                 send_otp(phone_number, otp)
                 user.otp_code = otp
-                print('DDDDDDDDDDDDDD')
                 user.save()
                 request.session['user_phone_number'] = user.phone_number
                 return HttpResponseRedirect(reverse('verification'))
@@ -41,7 +40,6 @@ def registration_view(request):
                 send_otp(phone_number, otp)
                 user.otp_code = otp
                 user.is_active = False
-                print('ZZZZZZZZZZZZZ')
                 user.save()
                 request.session['user_phone_number'] = user.phone_number
                 return HttpResponseRedirect(reverse('verification'))
@@ -85,7 +83,7 @@ def profile_info_now_view(request):
 
 def profile_info_auth_view(request):
     if request.method == 'POST':
-        form = AuthenticationForm(request.POST)
+        form = AuthenticationForm(request.POST, request.FILES)
         user = request.user
         if form.is_valid():
             profile = form.save(commit=False)
@@ -177,40 +175,42 @@ class AgentTaskListView(ListView):
         return context
 
 
-def agent_task_detail_view(request, pk, unique_url_id):
-    context = {}
-    task = get_object_or_404(Task, unique_url_id=unique_url_id)
-    context['task'] = task
-
-    phone_number = request.session.get('user_phone_number')
-    if phone_number:
-        user = CustomUserModel.objects.get(phone_number=phone_number)
-        context['user'] = user
-        if request.method == 'POST':
-            form = TaskApplyForm(request.POST)
-            if form.is_valid():
-                task.agent = user
-                task.is_requested = 'pen'
-                task.save()
-                messages.success(request, "درخواست شما برای قبول این فرصت مشاوره دریافت شد. منتظر تماس از سوی ما یا مشتری باشید.")
-                return redirect(reverse('task_list'))
-            else:
-                print(form.errors)
-        else:
-            form = TaskApplyForm()
-        context['form'] = form
-
-    return render(request, 'accounts/agent_task_detail.html', context=context)
+# def agent_task_detail_view(request, pk, unique_url_id):
+#     context = {}
+#     task = get_object_or_404(Task, unique_url_id=unique_url_id)
+#     context['task'] = task
+#
+#     phone_number = request.session.get('user_phone_number')
+#     if phone_number:
+#         user = CustomUserModel.objects.get(phone_number=phone_number)
+#         context['user'] = user
+#         if request.method == 'POST':
+#             form = TaskApplyForm(request.POST)
+#             if form.is_valid():
+#                 task.agent = user
+#                 task.is_requested = 'pen'
+#                 task.save()
+#                 messages.success(request, "درخواست شما برای قبول این فرصت مشاوره دریافت شد. منتظر تماس از سوی ما یا مشتری باشید.")
+#                 return redirect(reverse('task_list'))
+#             else:
+#                 print(form.errors)
+#         else:
+#             form = TaskApplyForm()
+#         context['form'] = form
+#
+#     return render(request, 'accounts/agent_task_detail.html', context=context)
 
 
 def agent_request_view(request):
     if request.method == 'POST':
         form = AgentRequestForm(request.POST)
         user = request.user
+        profile = Profile.objects.get(user=user)
         if form.is_valid():
-            profile = form.save(commit=False)
+            profile.experience = form.cleaned_data['experience']
+            profile.introduction_way = form.cleaned_data['introduction_way']
+            profile.course_tendency = form.cleaned_data['course_tendency']
             profile.save()
-            form.save()
             user.is_agent = 'wt'
             user.save()
             messages.success(request, "اطلاعات شما دریافت شد، نتیجه درخواست همکاری شما بزودی تعیین می‌شود.")
