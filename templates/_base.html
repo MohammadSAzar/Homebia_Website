@@ -3,7 +3,6 @@
 {% load jalali_tags %}
 {% load number_converter %}
 {% load widget_tweaks %}
-{% load user_filters %}
 
 
 <!doctype html>
@@ -11,7 +10,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta http-equiv="x-ua-compatible " content="ie=edge">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -71,7 +70,6 @@
                                                 <li class="mainmenu__item menu-item-has-children" style="padding-left: 40px;">
                                                     <a href="#" class="mainmenu__link"><span class="mm-text" style=" color: #00A65C; font-weight: bold;">{% trans 'Services' %}</span></a>
                                                     <ul class="sub-menu">
-                                                        <li class="menu-item-has-children" style="margin-bottom: 1em;"><a href="{% url 'task_list' %}"><span class="mm-text" style="font-weight: bold;">{% trans 'Tasks' %}</span></a></li>
                                                         <li class="menu-item-has-children" style="margin-bottom: 1em;"><a href="{% url 'counseling' %}"><span class="mm-text" style="font-weight: bold;">{% trans 'Counseling' %}</span></a></li>
                                                         <li class="menu-item-has-children" style="margin-bottom: 1em;"><a href="{% url 'session' %}"><span class="mm-text" style="font-weight: bold;">{% trans 'Participation in Session' %}</span></a></li>
                                                         <li class="menu-item-has-children" style="margin-bottom: 1em;"><a href="{% url 'visit' %}"><span class="mm-text" style="font-weight: bold;">{% trans 'Participation in Visit' %}</span></a></li>
@@ -125,8 +123,8 @@
                                                 </li>
 
                                                 <li class="mainmenu__item menu-item-has-children">
-                                                    <a href="{% url 'home' %}" class="mainmenu__link">
-                                                        <span class="mm-text" style="font-weight: bold;">فعالیت به عنوان مشاور</span>
+                                                    <a href="http://127.0.0.1:8000/admin/" class="mainmenu__link">
+                                                        <span class="mm-text" style="font-weight: bold;">پنل ادمین</span>
                                                     </a>
                                                 </li>
 
@@ -445,7 +443,7 @@
                         </li>
 
                         <li class="menu-item-has-children active">
-                            <a href="{% url 'agent_submission' %}" style="color: #00A65C">فعالیت به عنوان مشاور</a>
+                            <a href="127.0.0.1:8000/admin/" style="color: #00A65C">پنل ادمین</a>
                         </li>
 
                     </ul>

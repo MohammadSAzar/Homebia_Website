@@ -1,10 +1,9 @@
 from django.shortcuts import render, redirect
 from django.db.models import Q
-from django.contrib.contenttypes.models import ContentType
 
 from blog.models import Blog
 from accounts.models import CustomUserModel
-from agents.models import AgentCustomUserModel, Task
+from accounts.models import Task
 
 
 def home_view(request):
@@ -15,16 +14,11 @@ def home_view(request):
                 .order_by('-datetime_created')[:6]
     context['blogs'] = blogs
     context['tasks'] = tasks
-    # user_now = request.user
-    # phone_number = request.session.get('user_phone_number')
-    #
-    # if isinstance(user_now, CustomUserModel):
-    #     context['user'] = user_now
-    # elif phone_number:
-    #     agent_user = AgentCustomUserModel.objects.get(phone_number=phone_number)
-    #     context['agent_user'] = agent_user
-    # else:
-    #     context['user'] = user_now
+    user_now = request.user
+    if isinstance(user_now, CustomUserModel):
+        context['user'] = user_now
+    else:
+        context['user'] = user_now
 
     return render(request, 'pages/home.html', context)
 

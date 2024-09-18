@@ -49,8 +49,8 @@ class RegistrationForm(forms.ModelForm):
 class AuthenticationForm(forms.ModelForm):
 	class Meta:
 		model = models.Profile
-		fields = ['user', 'f_name', 'l_name', 'sex', 'national_code', 'email', 'country', 'province', 'city', 'address',
-				  'postal_code', 'national_card', 'auth_picture']
+		fields = ['f_name', 'l_name', 'sex', 'national_code', 'email', 'province', 'city', 'address',
+				  'postal_code', 'national_card', 'auth_picture', 'bank_card', 'bank_sheba']
 		widgets = {
 			'address': forms.Textarea(attrs={'rows': 5, 'cols': 40}),
 		}
@@ -79,7 +79,7 @@ class AuthenticationForm(forms.ModelForm):
 class InfoEditForm(forms.ModelForm):
 	class Meta:
 		model = models.Profile
-		fields = ['email', 'country', 'province', 'city', 'address', 'postal_code']
+		fields = ['email', 'province', 'city', 'address', 'postal_code']
 
 	def __init__(self, *args, **kwargs):
 		super().__init__(*args, **kwargs)
@@ -101,4 +101,29 @@ class InfoEditForm(forms.ModelForm):
 
 		return cleaned_data
 
+
+class AgentRequestForm(forms.ModelForm):
+	class Meta:
+		model = models.Profile
+		fields = ['experience', 'introduction_way', 'course_tendency']
+
+	def __init__(self, *args, **kwargs):
+		super().__init__(*args, **kwargs)
+		for field in self.fields.values():
+			field.required = True
+
+	# def clean(self):
+	# 	cleaned_data = super().clean()
+	# 	experience = cleaned_data.get('experience')
+	# 	postal_code = cleaned_data.get('postal_code')
+	# 	national_code = cleaned_data.get('national_code')
+	#
+	# 	if not experience:
+	# 		self.add_error('experience', 'تعیین این فیلد الزامی است')
+	# 	if not postal_code:
+	# 		self.add_error('postal_code', 'کد پستی وارد شده معتبر نیست.')
+	# 	if not national_code:
+	# 		self.add_error('national_code', 'کد ملی وارد شده معتبر نیست.')
+
+		# return cleaned_data
 

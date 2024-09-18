@@ -10,43 +10,6 @@
 
 {% block title %}{% trans 'My Investments' %}{% endblock %}
 
-{% block sidebar_content %}
-    <li class="nk-menu-item has-sub">
-        <a href="#" class="nk-menu-link nk-menu-toggle">
-            <span class="nk-menu-icon"><em class="icon ni ni-tile-thumb"></em></span>
-            <span class="nk-menu-text">{% trans 'Personal Information' %}</span>
-        </a>
-        <ul class="nk-menu-sub">
-            <li class="nk-menu-item">
-                <a href="{% url 'profile_info_now' %}" class="nk-menu-link"><span class="nk-menu-text">{% trans 'See My Information' %}</span></a>
-            </li>
-            <li class="nk-menu-item">
-                <a href="{% url 'profile_info_edit' %}" class="nk-menu-link"><span class="nk-menu-text">{% trans 'Change My Information' %}</span></a>
-            </li>
-            <li class="nk-menu-item">
-                <a href="{% url 'profile_info_auth' %}" class="nk-menu-link"><span class="nk-menu-text">{% trans 'Account Approval' %}</span></a>
-            </li>
-        </ul>
-    </li>
-
-    <li class="nk-menu-item has-sub">
-        <a href="#" class="nk-menu-link nk-menu-toggle">
-            <span class="nk-menu-icon"><em class="icon ni ni-users"></em></span>
-            <span class="nk-menu-text">{% trans 'Activities History' %}</span>
-        </a>
-        <ul class="nk-menu-sub">
-            <li class="nk-menu-item">
-                <a href="{% url 'profile_your_services' %}" class="nk-menu-link"><span class="nk-menu-text">{% trans 'My Services' %}</span></a>
-            </li>
-            <li class="nk-menu-item">
-                <a href="{% url 'profile_your_trades' %}" class="nk-menu-link"><span class="nk-menu-text">{% trans 'My Trades' %}</span></a>
-            </li>
-            <li class="nk-menu-item">
-                <a href="{% url 'profile_your_cases' %}" class="nk-menu-link"><span class="nk-menu-text">{% trans 'My Investments' %}</span></a>
-            </li>
-        </ul>
-    </li>
-{% endblock %}
 
 {% block two_buttons %}
     <div class="nk-content" style="padding: 0;!important;">
@@ -81,81 +44,82 @@
 
                     <div class="card-body px-0 pb-0">
 
-                      <!-- Case code -->
-                      <div class="d-flex align-items-center border-bottom border-gray-200 pb-3 px-3 px-md-4">
-                          <span style="font-weight: bold;" class="ps-ms-2 font-weight-semibold text-gray-700 fs-16">{% trans 'Case Code: ' %}{{ case_order.code }}</span>
-                      </div>
+                        <!-- Case code -->
+                        <div class="d-flex align-items-center border-bottom border-gray-200 pb-3 px-3 px-md-4">
+                            <span style="font-weight: bold;" class="ps-ms-2 font-weight-semibold text-gray-700 fs-16">{% trans 'Case Code: ' %}{{ case_order.code }}</span>
+                        </div>
 
-                      <!-- Case data -->
-                      <div class="list-group ">
+                        <!-- Case data -->
+                        <div class="list-group">
 
-                        <!-- Case -->
-                        <div class="px-3 px-md-4 py-3 border-bottom border-gray-200">
-                          <div class="row px-md-2">
-                            <div class="col">
-                              <span class="ps-ms-2 font-weight-semibold text-gray-700 fs-16">{% trans 'Case Title: ' %}</span>
-                            </div>
-                            <div class="col-auto">
-                                {% for item in case_order.item.all %}
-                                    <div style="text-align: left;!important;">
-                                        <a href="{{ item.case.get_absolute_url }}" class="text-gray-700 fs-16" style="color: #00a65c; font-weight: bold; font-size: 0.9em;!important;">{{ item.case.title }}</a>
+                            <!-- Case -->
+                            <div class="px-3 px-md-4 py-3 border-bottom border-gray-200">
+                                <div class="row px-md-2">
+                                    <div class="col">
+                                        <span class="ps-ms-2 font-weight-semibold text-gray-700 fs-16">{% trans 'Case Title: ' %}</span>
                                     </div>
-                                {% endfor %}
+                                    <div class="col-auto">
+                                        {% for item in case_order.item.all %}
+                                            <div style="text-align: left;!important;">
+                                                <a href="{{ item.case.get_absolute_url }}" class="text-gray-700 fs-16" style="color: #00a65c; font-weight: bold; font-size: 0.9em;!important;">{{ item.case.title }}</a>
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                              </div>
                             </div>
-                          </div>
-                        </div>
 
-                        <!-- Meter -->
-                        <div class="px-3 px-md-4 py-3 border-bottom border-gray-200">
-                          <div class="row px-md-2">
-                            <div class="col">
-                              <span class="ps-ms-2 font-weight-semibold text-gray-700 fs-16">{% trans 'Meter: ' %}</span>
+                            <!-- Meter -->
+                            <div class="px-3 px-md-4 py-3 border-bottom border-gray-200">
+                                <div class="row px-md-2">
+                                    <div class="col">
+                                        <span class="ps-ms-2 font-weight-semibold text-gray-700 fs-16">{% trans 'Meter: ' %}</span>
+                                    </div>
+                                    <div class="col-auto">
+                                        {% for item in case_order.item.all %}
+                                            <div style="text-align: left;!important;"><span class="text-gray-700 fs-16" style="font-size: 0.9em;!important;">{{ item.meter }} {% trans 'Metr' %}</span></div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col-auto">
-                                {% for item in case_order.item.all %}
-                                    <div style="text-align: left;!important;"><span class="text-gray-700 fs-16" style="font-size: 0.9em;!important;">{{ item.meter }} {% trans 'Metr' %}</span></div>
-                                {% endfor %}
-                            </div>
-                          </div>
-                        </div>
 
-                        <!-- Price -->
-                        <div class="px-3 px-md-4 py-3 border-bottom border-gray-200">
-                          <div class="row px-md-2">
-                            <div class="col">
-                              <span class="ps-ms-2 font-weight-semibold text-gray-700 fs-16">{% trans 'Total Price: ' %}</span>
+                            <!-- Price -->
+                            <div class="px-3 px-md-4 py-3 border-bottom border-gray-200">
+                                <div class="row px-md-2">
+                                    <div class="col">
+                                        <span class="ps-ms-2 font-weight-semibold text-gray-700 fs-16">{% trans 'Total Price: ' %}</span>
+                                    </div>
+                                    <div class="col-auto">
+                                        <span class="text-gray-700 fs-16">{{ case_order.get_total_price|intcomma:False|farsi_number }} {% trans 'Tooman' %}</span>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col-auto">
-                              <span class="text-gray-700 fs-16">{{ case_order.get_total_price|intcomma:False|farsi_number }} {% trans 'Tooman' %}</span>
-                            </div>
-                          </div>
-                        </div>
 
-                        <!-- Datetime -->
-                        <div class="px-3 px-md-4 py-3 border-bottom border-gray-200">
-                          <div class="row px-md-2">
-                            <div class="col">
-                              <span class="ps-ms-2 font-weight-semibold text-gray-700 fs-16">{% trans 'Datetime: ' %}</span>
+                            <!-- Datetime -->
+                            <div class="px-3 px-md-4 py-3 border-bottom border-gray-200">
+                                <div class="row px-md-2">
+                                    <div class="col">
+                                        <span class="ps-ms-2 font-weight-semibold text-gray-700 fs-16">{% trans 'Datetime: ' %}</span>
+                                    </div>
+                                    <div class="col-auto">
+                                        <span class="text-gray-700 fs-16">{{ case_order.datetime_created|shamsi_date }}</span>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col-auto">
-                              <span class="text-gray-700 fs-16">{{ case_order.datetime_created|shamsi_date }}</span>
-                            </div>
-                          </div>
-                        </div>
 
-                        <!-- Status -->
-                        <div class="px-3 px-md-4 py-3 border-bottom border-gray-200">
-                          <div class="row px-md-2">
-                            <div class="col">
-                              <span class="ps-ms-2 font-weight-semibold text-gray-700 fs-16">{% trans 'Status: ' %}</span>
+                            <!-- Status -->
+                            <div class="px-3 px-md-4 py-3 border-bottom border-gray-200">
+                                <div class="row px-md-2">
+                                    <div class="col">
+                                        <span class="ps-ms-2 font-weight-semibold text-gray-700 fs-16">{% trans 'Status: ' %}</span>
+                                    </div>
+                                    <div class="col-auto">
+                                        <span class="text-gray-700 fs-16">{{ case_order.get_status_display }}</span>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col-auto">
-                              <span class="text-gray-700 fs-16">{{ case_order.get_status_display }}</span>
-                            </div>
-                          </div>
-                        </div>
 
-                      </div>
+                        </div>
+                    
                     </div>
 
                 </div>

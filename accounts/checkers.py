@@ -7,7 +7,6 @@ import re
 
 from config.settings import kavenegar_API
 from .models import CustomUserModel
-from agents.models import AgentCustomUserModel
 
 
 def send_otp(phone_number, otp):
@@ -38,20 +37,6 @@ def get_random_otp():
 def otp_time_checker(phone_number):
     try:
         user = CustomUserModel.objects.get(phone_number=phone_number)
-        now_time = datetime.datetime.now()
-        otp_time = user.otp_code_datetime_created
-        diff_time = now_time - otp_time
-        print('DIFF TIME: ', diff_time)
-        if diff_time.seconds > 30:  # better: 120
-            return False
-        return True
-    except CustomUserModel.DoesNotExist:
-        return False
-
-
-def otp_time_checker_agent(phone_number):
-    try:
-        user = AgentCustomUserModel.objects.get(phone_number=phone_number)
         now_time = datetime.datetime.now()
         otp_time = user.otp_code_datetime_created
         diff_time = now_time - otp_time

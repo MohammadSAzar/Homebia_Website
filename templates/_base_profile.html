@@ -32,7 +32,7 @@
 
     <body class="bg-gray-100 all-projects-template muze-rtl">
 
-        <div class="nk-app-root ">
+        <div class="nk-app-root">
             <div class="nk-main">
 
                 <!-- Sidebar -->
@@ -60,10 +60,62 @@
 
                                     <!-- Sidebar >>> menu >>> items -->
                                     <ul class="nk-menu">
+                                        <!-- Info -->
+                                        <li class="nk-menu-item has-sub">
+                                            <a href="#" class="nk-menu-link nk-menu-toggle">
+                                                <span class="nk-menu-icon"><em class="icon ni ni-tile-thumb"></em></span>
+                                                <span class="nk-menu-text">{% trans 'Personal Information' %}</span>
+                                            </a>
+                                            <ul class="nk-menu-sub">
+                                                <li class="nk-menu-item">
+                                                    <a href="{% url 'profile_info_now' %}" class="nk-menu-link"><span class="nk-menu-text">{% trans 'See My Information' %}</span></a>
+                                                </li>
+                                                <li class="nk-menu-item">
+                                                    <a href="{% url 'profile_info_edit' %}" class="nk-menu-link"><span class="nk-menu-text">{% trans 'Change My Information' %}</span></a>
+                                                </li>
+                                                <li class="nk-menu-item">
+                                                    <a href="{% url 'profile_info_auth' %}" class="nk-menu-link"><span class="nk-menu-text">{% trans 'Account Approval' %}</span></a>
+                                                </li>
+                                            </ul>
+                                        </li>
 
-                                        {% block sidebar_content %}
+                                        <!-- User -->
+                                        <li class="nk-menu-item has-sub">
+                                            <a href="#" class="nk-menu-link nk-menu-toggle">
+                                                <span class="nk-menu-icon"><em class="icon ni ni-users"></em></span>
+                                                <span class="nk-menu-text">{% trans 'Activities History' %}</span>
+                                            </a>
+                                            <ul class="nk-menu-sub">
+                                                <li class="nk-menu-item">
+                                                    <a href="{% url 'profile_your_services' %}" class="nk-menu-link"><span class="nk-menu-text">{% trans 'My Services' %}</span></a>
+                                                </li>
+                                                <li class="nk-menu-item">
+                                                    <a href="{% url 'profile_your_trades' %}" class="nk-menu-link"><span class="nk-menu-text">{% trans 'My Trades' %}</span></a>
+                                                </li>
+                                                <li class="nk-menu-item">
+                                                    <a href="{% url 'profile_your_cases' %}" class="nk-menu-link"><span class="nk-menu-text">{% trans 'My Investments' %}</span></a>
+                                                </li>
+                                            </ul>
+                                        </li>
 
-                                        {% endblock %}
+                                        <!-- Agent -->
+                                        <li class="nk-menu-item has-sub">
+                                            <a href="#" class="nk-menu-link nk-menu-toggle">
+                                                <span class="nk-menu-icon"><em class="icon ni ni-users"></em></span>
+                                                <span class="nk-menu-text">{% trans 'Hombaba Partner Agent' %}</span>
+                                            </a>
+                                            <ul class="nk-menu-sub">
+                                                <li class="nk-menu-item">
+                                                    <a href="{% url 'agent_request' %}" class="nk-menu-link"><span class="nk-menu-text">{% trans 'Submit Request' %}</span></a>
+                                                </li>
+                                                <li class="nk-menu-item">
+                                                    <a href="{% url 'agent_task_list' %}" class="nk-menu-link"><span class="nk-menu-text">{% trans 'Tasks List' %}</span></a>
+                                                </li>
+                                                <li class="nk-menu-item">
+                                                    <a href="{% url 'agent_activities' %}" class="nk-menu-link"><span class="nk-menu-text">{% trans 'Activities' %}</span></a>
+                                                </li>
+                                            </ul>
+                                        </li>
 
                                     </ul>
                                     <!-- end:Sidebar >>> menu >>> items -->
@@ -88,7 +140,6 @@
                             <button class="modal-my-button">بستن پیام و ادامه سفر در هومبیا</button>
                         </div>
                     </div>
-                    <!-- end: File create message -->
 
                     <script>
                         $(document).ready(function() {
@@ -129,15 +180,9 @@
 
                                             <!-- Name -->
                                             <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown">
-                                                {% if agent_user %}
-                                                    <div class="user-toggle">
-                                                        <div class="user-name dropdown-indicator" style="font-size: 1.6em; padding-top: 0.5em;">{{ agent_user }}</div>
-                                                    </div>
-                                                {% else %}
-                                                    <div class="user-toggle">
-                                                        <div class="user-name dropdown-indicator" style="font-size: 1.6em; padding-top: 0.5em;">{{ user }}</div>
-                                                    </div>
-                                                {% endif %}
+                                                <div class="user-toggle">
+                                                    <div class="user-name dropdown-indicator" style="font-size: 1.6em; padding-top: 0.5em;">{{ user }}</div>
+                                                </div>
                                             </a>
 
                                             <!-- Exit -->

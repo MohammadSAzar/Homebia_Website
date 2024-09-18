@@ -34,7 +34,6 @@ INSTALLED_APPS = [
     'widget_tweaks',
 
     'accounts',
-    'agents',
     'blog',
     'cases',
     'restates',
@@ -145,7 +144,6 @@ AUTH_USER_MODEL = 'accounts.CustomUserModel'
 kavenegar_API = '316E436C6F70332B576442427A55583163332F3335302B7749366C444D486E6C482B6156624A315A62356F3D'
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
-    'agents.backends.AgentCustomAuthBackend',
     'accounts.backends.CustomAuthBackend',
 ]
 

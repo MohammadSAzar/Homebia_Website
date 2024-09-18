@@ -3,7 +3,7 @@ from django.utils.html import format_html
 from django.urls import reverse
 
 from .models import Province, City, District, SaleFile, RentFile, TradeSession
-from agents.models import Task
+from accounts.models import Task
 
 
 @admin.register(SaleFile)
