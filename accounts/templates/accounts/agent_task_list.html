@@ -10,42 +10,11 @@
 
 {% block title %}{% trans 'Tasks List' %}{% endblock %}
 
-{% block sidebar_content %}
-
-    <li class="nk-menu-item has-sub">
-        <a href="{% url 'agent_profile_info_now' %}" class="nk-menu-link">
-            <span class="nk-menu-icon"><em class="icon ni ni-tile-thumb"></em></span>
-            <span class="nk-menu-text">{% trans 'Personal Information' %}</span>
-        </a>
-    </li>
-
-    <li class="nk-menu-item has-sub">
-        <a href="#" class="nk-menu-link nk-menu-toggle">
-            <span class="nk-menu-icon"><em class="icon ni ni-users"></em></span>
-            <span class="nk-menu-text">{% trans 'Tasks List' %}</span>
-        </a>
-        <ul class="nk-menu-sub">
-            <li class="nk-menu-item">
-                <a href="{% url 'task_list' %}" class="nk-menu-link"><span class="nk-menu-text">{% trans 'All Tasks' %}</span></a>
-            </li>
-            <li class="nk-menu-item">
-                <a href="{% url 'task_list' %}" class="nk-menu-link"><span class="nk-menu-text">{% trans 'All Tasks' %}</span></a>
-            </li>
-            <li class="nk-menu-item">
-                <a href="{% url 'task_list' %}" class="nk-menu-link"><span class="nk-menu-text">{% trans 'All Tasks' %}</span></a>
-            </li>
-            <li class="nk-menu-item">
-                <a href="{% url 'task_list' %}" class="nk-menu-link"><span class="nk-menu-text">{% trans 'All Tasks' %}</span></a>
-            </li>
-        </ul>
-    </li>
-
-{% endblock %}
 
 {% block content %}
 
     <div class="nk-block">
-        <div class="card card-bordered ">
+        <div class="card card-bordered">
             <div class="card-aside-wrap">
                 <div class="card-inner card-inner-lg">
 
@@ -232,13 +201,13 @@
                             <div class="nk-block-head-content">
                                 <div class="my-profile-pagination" style="margin-top: 1em;">
                                     {% if page_obj.has_previous %}
-                                        <a href="{% url 'task_list' %}?page=1">&laquo; {% trans 'First' %}</a>
+                                        <a href="{% url 'agent_task_list' %}?page=1">&laquo; {% trans 'First' %}</a>
                                     {% else %}
                                         <span class="my-profile-disabled">&laquo; {% trans 'First' %}</span>
                                     {% endif %}
 
                                     {% if page_obj.has_previous %}
-                                        <a href="{% url 'task_list' %}?page={{ page_obj.previous_page_number }}">‹ {% trans 'Previous' %}</a>
+                                        <a href="{% url 'agent_task_list' %}?page={{ page_obj.previous_page_number }}">‹ {% trans 'Previous' %}</a>
                                     {% else %}
                                         <span class="my-profile-disabled">‹ {% trans 'Previous' %}</span>
                                     {% endif %}
@@ -247,18 +216,18 @@
                                         {% if num == page_obj.number %}
                                             <span class="my-profile-current">{{ num }}</span>
                                         {% else %}
-                                            <a href="{% url 'task_list' %}?page={{ num }}">{{ num }}</a>
+                                            <a href="{% url 'agent_task_list' %}?page={{ num }}">{{ num }}</a>
                                         {% endif %}
                                     {% endfor %}
 
                                     {% if page_obj.has_next %}
-                                        <a href="{% url 'task_list' %}?page={{ page_obj.next_page_number }}">{% trans 'Next' %} ›</a>
+                                        <a href="{% url 'agent_task_list' %}?page={{ page_obj.next_page_number }}">{% trans 'Next' %} ›</a>
                                     {% else %}
                                         <span class="my-profile-disabled">{% trans 'Next' %} ›</span>
                                     {% endif %}
 
                                     {% if page_obj.has_next %}
-                                        <a href="{% url 'task_list' %}?page={{ page_obj.paginator.num_pages }}">{% trans 'Last Page' %} &raquo;</a>
+                                        <a href="{% url 'agent_task_list' %}?page={{ page_obj.paginator.num_pages }}">{% trans 'Last Page' %} &raquo;</a>
                                     {% else %}
                                         <span class="my-profile-disabled">{% trans 'Last Page' %} &raquo;</span>
                                     {% endif %}

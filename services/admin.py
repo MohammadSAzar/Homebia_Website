@@ -21,7 +21,7 @@ class CounselingAdmin(admin.ModelAdmin):
     def task_link(self, obj):
         task = Task.objects.filter(task_counseling=obj).first()
         if task:
-            url = reverse("admin:agents_task_change", args=[task.id])
+            url = reverse("admin:accounts_task_change", args=[task.id])
             return format_html('<a href="{}">View Task</a>', url)
     task_link.short_description = 'task_link'
 
@@ -41,7 +41,7 @@ class SessionAdmin(admin.ModelAdmin):
     def task_link(self, obj):
         task = Task.objects.filter(task_session=obj).first()
         if task:
-            url = reverse("admin:agents_task_change", args=[task.id])
+            url = reverse("admin:accounts_task_change", args=[task.id])
             return format_html('<a href="{}">View Task</a>', url)
     task_link.short_description = 'task_link'
 
@@ -61,7 +61,7 @@ class VisitAdmin(admin.ModelAdmin):
     def task_link(self, obj):
         task = Task.objects.filter(task_visit=obj).first()
         if task:
-            url = reverse("admin:agents_task_change", args=[task.id])
+            url = reverse("admin:accounts_task_change", args=[task.id])
             return format_html('<a href="{}">View Task</a>', url)
     task_link.short_description = 'task_link'
 

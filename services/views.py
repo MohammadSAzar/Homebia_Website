@@ -16,10 +16,7 @@ def counseling_view(request):
 	if request.method == 'POST':
 		form = CounselingForm(request.POST)
 		if form.is_valid():
-			form.save(commit=False)
-			context = {
-				'form': form,
-			}
+			form.save()
 			return HttpResponseRedirect(reverse('counseling_registration'))
 	else:
 		form = CounselingForm()
@@ -95,9 +92,6 @@ def session_view(request):
 		form = SessionForm(request.POST)
 		if form.is_valid():
 			form.save()
-			context = {
-				'form': form,
-			}
 			return HttpResponseRedirect(reverse('session_registration'))
 	else:
 		form = SessionForm()
@@ -173,9 +167,6 @@ def visit_view(request):
 		form = VisitForm(request.POST)
 		if form.is_valid():
 			form.save()
-			context = {
-				'form': form,
-			}
 			return HttpResponseRedirect(reverse('visit_registration'))
 	else:
 		form = VisitForm()

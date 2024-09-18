@@ -8,7 +8,7 @@ from django.views.generic import ListView
 
 
 from .models import CustomUserModel, Profile, Task
-from .forms import RegistrationForm, AuthenticationForm, InfoEditForm, AgentRequestForm
+from .forms import RegistrationForm, AuthenticationForm, InfoEditForm, AgentRequestForm, TaskApplyForm
 from .checkers import send_otp, get_random_otp, otp_time_checker
 
 from services.models import Counseling, Session, Visit
@@ -175,30 +175,25 @@ class AgentTaskListView(ListView):
         return context
 
 
-# def agent_task_detail_view(request, pk, unique_url_id):
-#     context = {}
-#     task = get_object_or_404(Task, unique_url_id=unique_url_id)
-#     context['task'] = task
-#
-#     phone_number = request.session.get('user_phone_number')
-#     if phone_number:
-#         user = CustomUserModel.objects.get(phone_number=phone_number)
-#         context['user'] = user
-#         if request.method == 'POST':
-#             form = TaskApplyForm(request.POST)
-#             if form.is_valid():
-#                 task.agent = user
-#                 task.is_requested = 'pen'
-#                 task.save()
-#                 messages.success(request, "درخواست شما برای قبول این فرصت مشاوره دریافت شد. منتظر تماس از سوی ما یا مشتری باشید.")
-#                 return redirect(reverse('task_list'))
-#             else:
-#                 print(form.errors)
-#         else:
-#             form = TaskApplyForm()
-#         context['form'] = form
-#
-#     return render(request, 'accounts/agent_task_detail.html', context=context)
+def agent_task_detail_view(request, pk, unique_url_id):
+    context = {}
+    task = get_object_or_404(Task, unique_url_id=unique_url_id)
+    context['task'] = task
+    user = request.user
+    context['user'] = user
+    if request.method == 'POST':
+        form = TaskApplyForm(request.POST)
+        if form.is_valid():
+            task.agent = user
+            task.is_requested = 'pen'
+            task.save()
+            messages.success(request, "درخواست شما برای قبول این فرصت مشاوره دریافت شد. منتظر تماس از سوی ما یا مشتری باشید.")
+            return redirect(reverse('agent_task_list'))
+    else:
+        form = TaskApplyForm()
+    context['form'] = form
+
+    return render(request, 'accounts/agent_task_detail.html', context=context)
 
 
 def agent_request_view(request):

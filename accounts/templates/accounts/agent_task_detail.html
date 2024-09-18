@@ -10,37 +10,6 @@
 
 {% block title %}{% trans 'Tasks Detail' %} - {{ task.code }}{% endblock %}
 
-{% block sidebar_content %}
-
-    <li class="nk-menu-item has-sub">
-        <a href="{% url 'agent_profile_info_now' %}" class="nk-menu-link">
-            <span class="nk-menu-icon"><em class="icon ni ni-tile-thumb"></em></span>
-            <span class="nk-menu-text">{% trans 'Personal Information' %}</span>
-        </a>
-    </li>
-
-    <li class="nk-menu-item has-sub">
-        <a href="#" class="nk-menu-link nk-menu-toggle">
-            <span class="nk-menu-icon"><em class="icon ni ni-users"></em></span>
-            <span class="nk-menu-text">{% trans 'Tasks List' %}</span>
-        </a>
-        <ul class="nk-menu-sub">
-            <li class="nk-menu-item">
-                <a href="{% url 'task_list' %}" class="nk-menu-link"><span class="nk-menu-text">{% trans 'All Tasks' %}</span></a>
-            </li>
-            <li class="nk-menu-item">
-                <a href="{% url 'task_list' %}" class="nk-menu-link"><span class="nk-menu-text">{% trans 'All Tasks' %}</span></a>
-            </li>
-            <li class="nk-menu-item">
-                <a href="{% url 'task_list' %}" class="nk-menu-link"><span class="nk-menu-text">{% trans 'All Tasks' %}</span></a>
-            </li>
-            <li class="nk-menu-item">
-                <a href="{% url 'task_list' %}" class="nk-menu-link"><span class="nk-menu-text">{% trans 'All Tasks' %}</span></a>
-            </li>
-        </ul>
-    </li>
-
-{% endblock %}
 
 {% block content %}
 
@@ -152,7 +121,7 @@
                                             </div>
 
                                             <!-- Apply -->
-                                            {% if agent_user.complete_info == 'cmp' %}
+                                            {% if user.is_agent == 'is' %}
                                                 <div class="d-flex align-items-center" style="margin-top: 20px; float: left">
                                                     {% if task.is_requested == 'tkn' %}
                                                         <button class="btn btn-primary" style="padding: 5px 45px; line-height: 2.5em;!important; background-color: grey; border:none; cursor: not-allowed;">
@@ -168,13 +137,13 @@
                                                         </button>
                                                     {% endif %}
                                                 </div>
-                                            {% elif agent_user.complete_info == 'ipr' %}
+                                            {% elif user.is_agent == 'wt' %}
                                                 <div class="d-flex align-items-center" style="margin-top: 20px; float: left">
                                                     <a class="btn btn-primary" style="padding: 5px 45px; line-height: 2.5em;!important; background-color: #FFA726; border:none; cursor: not-allowed;">
                                                         <span>برای ثبت درخواست، منتظر تعیین وضعیت حساب کاربری خود باشید</span>
                                                     </a>
                                                 </div>
-                                            {% elif agent_user.complete_info == 'dnt' %}
+                                            {% elif user.is_agent == 'nt' %}
                                                 <div class="d-flex align-items-center" style="margin-top: 20px; float: left">
                                                     <a href="{% url 'agent_profile_info_now' %}" class="btn btn-primary" style="padding: 5px 45px; line-height: 2.5em;!important; background-color: grey; border:none;">
                                                         <span>برای ثبت درخواست، ابتدا اطلاعات حساب کاربری خود را تکمیل نمایید</span>

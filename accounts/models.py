@@ -159,7 +159,7 @@ class Task(models.Model):
         ordering = ('-datetime_created',)
 
     def get_absolute_url(self):
-        return reverse('task_detail', args=[self.pk, self.unique_url_id])
+        return reverse('agent_task_detail', args=[self.pk, self.unique_url_id])
 
 
 

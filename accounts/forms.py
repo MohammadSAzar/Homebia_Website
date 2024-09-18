@@ -127,3 +127,9 @@ class AgentRequestForm(forms.ModelForm):
 
 		return cleaned_data
 
+
+class TaskApplyForm(forms.ModelForm):
+	class Meta:
+		model = models.Task
+		fields = []
+

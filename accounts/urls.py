@@ -14,6 +14,6 @@ urlpatterns = [
     path('agent_request/', views.agent_request_view, name='agent_request'),
     path('agent_activities/', views.agent_activities_view, name='agent_activities'),
     path('agent_task_list/', views.AgentTaskListView.as_view(), name='agent_task_list'),
-    # re_path(r'task_detail/(?P<pk>[-\w]+)/(?P<unique_url_id>[-\w]+)/', views.agent_task_detail_view, name='task_detail'),
+    re_path(r'task_detail/(?P<pk>[-\w]+)/(?P<unique_url_id>[-\w]+)/', views.agent_task_detail_view, name='agent_task_detail'),
 ]
 

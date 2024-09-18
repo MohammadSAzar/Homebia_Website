@@ -1,6 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
-from .models import CustomUserModel, Profile
+
+from .models import CustomUserModel, Profile, Task, Province, City
 from .forms import AdminPanelUserCreateForm, AdminPanelUserChangeForm
 
 
@@ -45,4 +46,20 @@ class CustomUserAdmin(BaseUserAdmin):
 admin.site.register(CustomUserModel, CustomUserAdmin)
 
 
+@admin.register(Task)
+class TaskAdmin(admin.ModelAdmin):
+    model = Task
+    list_display = ('type', 'code', 'agent', 'task_counseling', 'task_session', 'task_visit', 'task_trade_session',
+                    'is_requested', 'is_paid', 'is_commissioned', 'datetime_created')
+    ordering = ('-datetime_created',)
+
+
+@admin.register(Province)
+class ProvinceAdmin(admin.ModelAdmin):
+    list_display = ('name',)
+
+
+@admin.register(City)
+class CityAdmin(admin.ModelAdmin):
+    list_display = ('name', 'province')
 
