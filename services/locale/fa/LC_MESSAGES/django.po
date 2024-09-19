@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-27 16:19+0330\n"
+"POT-Creation-Date: 2024-09-19 17:38+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-#: .\models.py:13 .\models.py:135 .\models.py:180
+
+#: .\models.py:13 .\models.py:90 .\models.py:135 .\models.py:180
 msgid "Tehran"
 msgstr "تهران"
 
@@ -50,18 +51,14 @@ msgid "Night"
 msgstr "شب"
 
 #: .\models.py:33
-msgid "Accepted"
-msgstr "تایید شده"
+msgid "Submitted"
+msgstr "ثبت شده"
 
 #: .\models.py:34
 msgid "Canceled"
 msgstr "رد شده"
 
 #: .\models.py:35
-msgid "Pending"
-msgstr "در حال بررسی"
-
-#: .\models.py:36
 msgid "Done"
 msgstr "اتمام یافته"
 
@@ -77,57 +74,110 @@ msgstr "تلفنی"
 msgid "On Chat"
 msgstr "چتی"
 
-#: .\models.py:90
-msgid "Counseling Type"
-msgstr "نوع مشاوره"
-
-#: .\models.py:91
-msgid "Date of Counseling"
-msgstr "تاریخ مشاوره"
-
-#: .\models.py:92
-msgid "Time of Counseling"
-msgstr "زمان مشاوره"
-
-#: .\models.py:93 .\models.py:139 .\models.py:183
-msgid "Name and Family"
-msgstr "نام و نام خانوادگی"
-
-#: .\models.py:94 .\models.py:140 .\models.py:184
-msgid "Phone Number"
-msgstr "شماره تلفن همراه"
-
-#: .\models.py:95 .\models.py:141 .\models.py:185
-msgid "Status"
-msgstr "وضعیت درخواست"
-
-#: .\models.py:96 .\models.py:142 .\models.py:186
-msgid "Date and Time of Creation"
-msgstr "زمان ایجاد"
-
-#: .\models.py:135 .\models.py:180
+#: .\models.py:90 .\models.py:135 .\models.py:180
 msgid "City"
 msgstr "شهر"
 
-#: .\models.py:136
+
+#: .\models.py:91
+msgid "Counseling Type"
+msgstr "نوع مشاوره"
+
+#: .\models.py:92
+msgid "Date of Counseling"
+msgstr "تاریخ مشاوره"
+
+#: .\models.py:93
+msgid "Time of Counseling"
+msgstr "زمان مشاوره"
+
+#: .\models.py:94 .\models.py:140 .\models.py:184
+msgid "Name and Family"
+msgstr "نام و نام خانوادگی"
+
+#: .\models.py:95 .\models.py:141 .\models.py:185
+msgid "Phone Number"
+msgstr "شماره تلفن همراه"
+
+#: .\models.py:96 .\models.py:142 .\models.py:186
+msgid "Status"
+msgstr "وضعیت درخواست"
+
+#: .\models.py:97 .\models.py:143 .\models.py:187
+msgid "Date and Time of Creation"
+msgstr "زمان ایجاد"
+
+#: .\models.py:136 .\models.py:181
+msgid "District"
+msgstr "محله"
+
+#: .\models.py:137
 msgid "Customer Type"
 msgstr "نوع مشتری"
 
-#: .\models.py:137
+#: .\models.py:138
 msgid "Date of Session"
 msgstr "تاریخ نشست"
 
-#: .\models.py:138
+#: .\models.py:139
 msgid "Time of Session"
 msgstr "زمان نشست"
 
-#: .\models.py:181
+#: .\models.py:182
 msgid "Date of Visit"
 msgstr "تاریخ بازدید"
 
-#: .\models.py:182
+#: .\models.py:183
 msgid "Time of Visit"
 msgstr "زمان بازدید"
+
+#: .\templates\services\agent_submission.html:10
+#: .\templates\services\session.html:10
+msgid "Session"
+msgstr "نشست"
+
+#: .\templates\services\agent_submission.html:22
+#: .\templates\services\session.html:22
+#: .\templates\services\session_detail.html:23
+msgid "Submit a session request"
+msgstr "ثبت درخواست حضور در نشست"
+
+#: .\templates\services\agent_submission.html:25
+#: .\templates\services\session.html:25
+#: .\templates\services\session_detail.html:26
+msgid "Detail of session request"
+msgstr "جزئیات درخواست حضور در نشست"
+
+#: .\templates\services\agent_submission.html:44
+msgid "Choose the city"
+msgstr "انتخاب شهر"
+
+#: .\templates\services\agent_submission.html:54
+#: .\templates\services\session.html:74
+msgid "Choose the user type"
+msgstr "انتخاب نوع مشتری"
+
+#: .\templates\services\agent_submission.html:64
+#: .\templates\services\session.html:89
+msgid "Choose the session date"
+msgstr "انتخاب تاریخ نشست"
+
+#: .\templates\services\agent_submission.html:74
+#: .\templates\services\counseling.html:89
+#: .\templates\services\session.html:104
+msgid "Choose the counseling time"
+msgstr "انتخاب زمان مشاوره"
+
+#: .\templates\services\agent_submission.html:84
+#: .\templates\services\counseling.html:104
+#: .\templates\services\session.html:119 .\templates\services\visit.html:104
+msgid "First and last name"
+msgstr "نام و نام خانوادگی"
+
+#: .\templates\services\agent_submission.html:92
+#: .\templates\services\session.html:132
+msgid "Submit the session request"
+msgstr "ثبت درخواست نشست"
 
 #: .\templates\services\counseling.html:10
 msgid "Counseling"
@@ -147,20 +197,15 @@ msgstr "جزئیات درخواست مشاوره"
 msgid "Choose the counseling type"
 msgstr "انتخاب نوع مشاوره"
 
-#: .\templates\services\counseling.html:54
+#: .\templates\services\counseling.html:59
+msgid "Only in Teharn, at Hombaba place:"
+msgstr "به میزبانی هومبابا (فقط در تهران)"
+
+#: .\templates\services\counseling.html:74
 msgid "Choose the counseling date"
 msgstr "انتخاب تاریخ مشاوره"
 
-#: .\templates\services\counseling.html:64 .\templates\services\session.html:74
-msgid "Choose the counseling time"
-msgstr "انتخاب زمان مشاوره"
-
-#: .\templates\services\counseling.html:74 .\templates\services\session.html:84
-#: .\templates\services\visit.html:74
-msgid "First and last name"
-msgstr "نام و نام خانوادگی"
-
-#: .\templates\services\counseling.html:82
+#: .\templates\services\counseling.html:117
 msgid "Submit the counseling request"
 msgstr "ثبت درخواست مشاوره"
 
@@ -303,35 +348,13 @@ msgstr "کد را دریافت نکردید؟"
 msgid "Register in Homebia"
 msgstr "ورود به هومبیا"
 
-#: .\templates\services\session.html:10
-msgid "Session"
-msgstr "نشست"
+#: .\templates\services\session.html:44
+msgid "Choose the session city"
+msgstr "انتخاب شهر برگزاری نشست"
 
-#: .\templates\services\session.html:22
-#: .\templates\services\session_detail.html:23
-msgid "Submit a session request"
-msgstr "ثبت درخواست حضور در نشست"
-
-#: .\templates\services\session.html:25
-#: .\templates\services\session_detail.html:26
-msgid "Detail of session request"
-msgstr "جزئیات درخواست حضور در نشست"
-
-#: .\templates\services\session.html:44 .\templates\services\visit.html:44
-msgid "Choose the city"
-msgstr "انتخاب شهر"
-
-#: .\templates\services\session.html:54
-msgid "Choose the user type"
-msgstr "انتخاب نوع مشتری"
-
-#: .\templates\services\session.html:64
-msgid "Choose the session date"
-msgstr "انتخاب تاریخ نشست"
-
-#: .\templates\services\session.html:92
-msgid "Submit the session request"
-msgstr "ثبت درخواست نشست"
+#: .\templates\services\session.html:59 .\templates\services\visit.html:59
+msgid "Choose the district"
+msgstr "انتخاب محله"
 
 #: .\templates\services\session_detail.html:11
 msgid "Session detail"
@@ -363,15 +386,19 @@ msgstr "ثبت درخواست بازدید"
 msgid "Detail of visit request"
 msgstr "جزئیات درخواست حضور در بازدید"
 
-#: .\templates\services\visit.html:54
+#: .\templates\services\visit.html:44
+msgid "Choose the visit city"
+msgstr "انتخاب شهر"
+
+#: .\templates\services\visit.html:74
 msgid "Choose the visit date"
 msgstr "انتخاب تاریخ بازدید"
 
-#: .\templates\services\visit.html:64
+#: .\templates\services\visit.html:89
 msgid "Choose the visit time"
 msgstr "انتخاب زمان بازدید"
 
-#: .\templates\services\visit.html:82
+#: .\templates\services\visit.html:117
 msgid "Submit the visit request"
 msgstr "ثبت درخواست بازدید"
 

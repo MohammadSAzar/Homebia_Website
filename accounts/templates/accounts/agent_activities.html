@@ -6,172 +6,165 @@
 {% load number_converter %}
 {% load widget_tweaks %}
 
-{% block title %}{% trans 'My Trades' %}{% endblock %}
+{% block title %}{% trans 'My Services' %}{% endblock %}
 
 
-{% block two_buttons %}
-    <div class="nk-content " style="padding: 0;!important;">
-        <div class="container-fluid">
-            <div class="nk-content-inner">
-                <div class="nk-content-body" style="padding-top: 0;!important; padding-bottom: 0;!important;">
-                    <div class="nk-block-head nk-block-head-sm" style="padding-top: 0;!important; padding-bottom: 0;!important;">
-                        <div class="nk-block-between">
-                            <div class="nk-block-head-content">
-                                <ul class="nk-block-tools g-3" style="margin-bottom: 2px;!important;">
-                                    <li class="nk-block-tools-opt">
-                                        <a href="{% url 'sale_file_create' %}" class="btn btn-primary" style="line-height: 2.5em;!important;"><em class="icon ni ni-plus"></em><span>ثبت آگهی فروش</span></a>
-                                    </li>
-                                    <li class="nk-block-tools-opt">
-                                        <a href="{% url 'rent_file_create' %}" class="btn btn-primary" style="line-height: 2.5em;!important;"><em class="icon ni ni-plus"></em><span>ثبت آگهی اجاره</span></a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
+{% block content %}
+    <div class="container-fluid px-0">
+        <div class="row">
+            <div class="col-12 mb-4 ">
+                <div class="card rounded-12 shadow-dark-80">
+
+                    <!-- Title -->
+                    <div class="d-flex align-items-center px-3 px-md-4 py-3">
+                        <h5 class="card-header-title mb-0 ps-md-2 font-weight-semibold">{% trans 'Counselings' %}</h5>
                     </div>
+
+                    <!-- Main >>> counselings -->
+                    <div class="table-responsive mb-0">
+                        <table class="table card-table table-nowrap overflow-hidden">
+
+                            <thead>
+                                <tr>
+                                    <th style="text-align: center; width: 10%">{% trans 'Code' %}</th>
+                                    <th style="text-align: center; width: 18%">{% trans 'Date' %}</th>
+                                    <th style="text-align: center; width: 18%">{% trans 'Status' %}</th>
+                                    <th style="text-align: center; width: 18%">{% trans 'Request?' %}</th>
+                                    <th style="text-align: center; width: 18%">{% trans 'Payment?' %}</th>
+                                    <th style="text-align: center; width: 18%">{% trans 'Commission?' %}</th>
+                                </tr>
+                            </thead>
+
+                            <tbody class="list">
+                                {% for task in counseling_tasks %}
+                                    <tr>
+                                        <td style="text-align: center; width: 10%">{{ task.code }}</td>
+                                        <td style="font-size: 0.9em; text-align: center; width: 18%">{{ task.task_counseling.get_date_display }}</td>
+                                        <td style="font-size: 0.9em; text-align: center; width: 18%">{{ task.task_counseling.get_status_display }}</td>
+                                        <td style="font-size: 0.9em; text-align: center; width: 18%">{{ task.get_is_requested_display }}</td>
+                                        <td style="font-size: 0.9em; text-align: center; width: 18%">{{ task.get_is_paid_display }}</td>
+                                        <td style="font-size: 0.9em; text-align: center; width: 18%">{{ task.get_is_commissioned_display }}</td>
+                                    </tr>
+                                {% endfor %}
+
+                            </tbody>
+                      </table>
+                    </div>
+
+                    <!--------------------------------------------------------------------------------------------->
+                    <!-- Title -->
+                    <div class="d-flex align-items-center px-3 px-md-4 py-3" style="margin-top: 60px;!important;">
+                        <h5 class="card-header-title mb-0 ps-md-2 font-weight-semibold">{% trans 'Sessions' %}</h5>
+                    </div>
+
+                    <!-- Main >>> sessions -->
+                    <div class="table-responsive mb-0">
+                        <table class="table card-table table-nowrap overflow-hidden">
+
+                            <thead>
+                                <tr>
+                                    <th style="text-align: center; width: 10%">{% trans 'Code' %}</th>
+                                    <th style="text-align: center; width: 18%">{% trans 'Date' %}</th>
+                                    <th style="text-align: center; width: 18%">{% trans 'Status' %}</th>
+                                    <th style="text-align: center; width: 18%">{% trans 'Request?' %}</th>
+                                    <th style="text-align: center; width: 18%">{% trans 'Payment?' %}</th>
+                                    <th style="text-align: center; width: 18%">{% trans 'Commission?' %}</th>
+                                </tr>
+                            </thead>
+
+                            <tbody class="list">
+                                {% for task in session_tasks %}
+                                    <tr>
+                                        <td style="text-align: center; width: 10%">{{ task.code }}</td>
+                                        <td style="font-size: 0.9em; text-align: center; width: 18%">{{ task.task_session.get_date_display }}</td>
+                                        <td style="font-size: 0.9em; text-align: center; width: 18%">{{ task.task_session.get_status_display }}</td>
+                                        <td style="font-size: 0.9em; text-align: center; width: 18%">{{ task.get_is_requested_display }}</td>
+                                        <td style="font-size: 0.9em; text-align: center; width: 18%">{{ task.get_is_paid_display }}</td>
+                                        <td style="font-size: 0.9em; text-align: center; width: 18%">{{ task.get_is_commissioned_display }}</td>
+                                    </tr>
+                                {% endfor %}
+
+                            </tbody>
+                      </table>
+                    </div>
+
+                    <!--------------------------------------------------------------------------------------------->
+                    <!-- Title -->
+                    <div class="d-flex align-items-center px-3 px-md-4 py-3" style="margin-top: 60px;!important;">
+                        <h5 class="card-header-title mb-0 ps-md-2 font-weight-semibold">{% trans 'Visits' %}</h5>
+                    </div>
+
+                    <!-- Main >>> visits -->
+                    <div class="table-responsive mb-0">
+                        <table class="table card-table table-nowrap overflow-hidden">
+
+                            <thead>
+                                <tr>
+                                    <th style="text-align: center; width: 10%">{% trans 'Code' %}</th>
+                                    <th style="text-align: center; width: 18%">{% trans 'Date' %}</th>
+                                    <th style="text-align: center; width: 18%">{% trans 'Status' %}</th>
+                                    <th style="text-align: center; width: 18%">{% trans 'Request?' %}</th>
+                                    <th style="text-align: center; width: 18%">{% trans 'Payment?' %}</th>
+                                    <th style="text-align: center; width: 18%">{% trans 'Commission?' %}</th>
+                                </tr>
+                            </thead>
+
+                            <tbody class="list">
+                                {% for task in visit_tasks %}
+                                    <tr>
+                                        <td style="text-align: center; width: 10%">{{ task.code }}</td>
+                                        <td style="font-size: 0.9em; text-align: center; width: 18%">{{ task.task_visit.get_date_display }}</td>
+                                        <td style="font-size: 0.9em; text-align: center; width: 18%">{{ task.task_visit.get_status_display }}</td>
+                                        <td style="font-size: 0.9em; text-align: center; width: 18%">{{ task.get_is_requested_display }}</td>
+                                        <td style="font-size: 0.9em; text-align: center; width: 18%">{{ task.get_is_paid_display }}</td>
+                                        <td style="font-size: 0.9em; text-align: center; width: 18%">{{ task.get_is_commissioned_display }}</td>
+                                    </tr>
+                                {% endfor %}
+
+                            </tbody>
+                      </table>
+                    </div>
+
+                    <!--------------------------------------------------------------------------------------------->
+                    <!-- Title -->
+                    <div class="d-flex align-items-center px-3 px-md-4 py-3" style="margin-top: 60px;!important;">
+                        <h5 class="card-header-title mb-0 ps-md-2 font-weight-semibold">{% trans 'Trade Sessions' %}</h5>
+                    </div>
+
+                    <!-- Main >>> trade session -->
+                    <div class="table-responsive mb-0">
+                        <table class="table card-table table-nowrap overflow-hidden">
+
+                            <thead>
+                                <tr>
+                                    <th style="text-align: center; width: 10%">{% trans 'Code' %}</th>
+                                    <th style="text-align: center; width: 18%">{% trans 'Date' %}</th>
+                                    <th style="text-align: center; width: 18%">{% trans 'Status' %}</th>
+                                    <th style="text-align: center; width: 18%">{% trans 'Request?' %}</th>
+                                    <th style="text-align: center; width: 18%">{% trans 'Payment?' %}</th>
+                                    <th style="text-align: center; width: 18%">{% trans 'Commission?' %}</th>
+                                </tr>
+                            </thead>
+
+                            <tbody class="list">
+                                {% for task in trade_session_tasks %}
+                                    <tr>
+                                        <td style="text-align: center; width: 10%">{{ task.code }}</td>
+                                        <td style="font-size: 0.9em; text-align: center; width: 18%">{{ task.task_trade_session.get_date_display }}</td>
+                                        <td style="font-size: 0.9em; text-align: center; width: 18%">{{ task.task_trade_session.get_status_display }}</td>
+                                        <td style="font-size: 0.9em; text-align: center; width: 18%">{{ task.get_is_requested_display }}</td>
+                                        <td style="font-size: 0.9em; text-align: center; width: 18%">{{ task.get_is_paid_display }}</td>
+                                        <td style="font-size: 0.9em; text-align: center; width: 18%">{{ task.get_is_commissioned_display }}</td>
+                                    </tr>
+                                {% endfor %}
+
+                            </tbody>
+                      </table>
+                    </div>
+
                 </div>
             </div>
         </div>
-    </div>
-{% endblock %}
-
-{% block content %}
-    <div class="row">
-        {% for trade in trades %}
-            <div class="col-12 col-xxl-6 mb-4">
-                <div class="card rounded-12 shadow-dark-80 ">
-
-                    <div class="card-body px-0 pb-0">
-
-                        <!-- Trade code -->
-                        <div class="d-flex align-items-center border-bottom border-gray-200 pb-3 px-3 px-md-4">
-                            <span style="font-weight: bold;" class="ps-ms-2 font-weight-semibold text-gray-700 fs-16">{% trans 'Trade Code: ' %}{{ trade.trade_code }}</span>
-                        </div>
-
-                        <!-- Trade data -->
-                        <div class="list-group">
-
-                            <!-- Type -->
-                            <div class="px-3 px-md-4 py-3 border-bottom border-gray-200">
-                                <div class="row px-md-2">
-                                    <div class="col">
-                                        <span class="ps-ms-2 font-weight-semibold text-gray-700 fs-16">{% trans 'Trade Type: ' %}</span>
-                                    </div>
-                                    <div class="col-auto">
-                                        <span class="text-gray-700 fs-16">{{ trade.get_trade_type_display }}</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Date -->
-                            <div class="px-3 px-md-4 py-3 border-bottom border-gray-200">
-                                <div class="row px-md-2">
-                                    <div class="col">
-                                        <span class="ps-ms-2 font-weight-semibold text-gray-700 fs-16">{% trans 'Date: ' %}</span>
-                                    </div>
-                                    <div class="col-auto">
-                                        <span class="text-gray-700 fs-16">{{ trade.get_date_display }}</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- City -->
-                            <div class="px-3 px-md-4 py-3 border-bottom border-gray-200">
-                                <div class="row px-md-2">
-                                    <div class="col">
-                                        <span class="ps-ms-2 font-weight-semibold text-gray-700 fs-16">{% trans 'City: ' %}</span>
-                                    </div>
-                                    <div class="col-auto">
-                                        <span class="text-gray-700 fs-16">{{ trade.get_city_display }}</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Name -->
-                            <div class="px-3 px-md-4 py-3 border-bottom border-gray-200">
-                                <div class="row px-md-2">
-                                    <div class="col">
-                                        <span class="ps-ms-2 font-weight-semibold text-gray-700 fs-16">{% trans 'Name: ' %}</span>
-                                    </div>
-                                    <div class="col-auto">
-                                        <span class="text-gray-700 fs-16">{{ trade.name_and_family }}</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Hombaba code -->
-                            <div class="px-3 px-md-4 py-3 border-bottom border-gray-200">
-                                <div class="row px-md-2">
-                                    <div class="col">
-                                        <span class="ps-ms-2 font-weight-semibold text-gray-700 fs-16">{% trans 'File Code: ' %}</span>
-                                    </div>
-                                    <div class="col-auto">
-                                        {% if trade.ours == 'is' %}
-                                            {% if trade.trade_type == 'sale' %}
-                                                <a href="{{ trade.sale_file.get_absolute_url }}" style="color: #00a65c" class="text-gray-700 fs-16">{{ trade.sale_code }}</a>
-                                            {% else %}
-                                                <a href="{{ trade.rent_file.get_absolute_url }}" style="color: #00a65c" class="text-gray-700 fs-16">{{ trade.rent_code }}</a>
-                                            {% endif %}
-                                        {% else %}
-                                            <p class="text-gray-700 fs-16">از فایل‌های اختصاصی هومبابا نیست</p>
-                                        {% endif %}
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Followed -->
-                            <div class="px-3 px-md-4 py-3 border-bottom border-gray-200">
-                                <div class="row px-md-2">
-                                    <div class="col">
-                                        <span class="ps-ms-2 font-weight-semibold text-gray-700 fs-16">{% trans 'Is Followed?' %}</span>
-                                    </div>
-                                    <div class="col-auto">
-                                        <span class="text-gray-700 fs-16">{{ trade.get_is_followed_display }}</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Success -->
-                            <div class="px-3 px-md-4 py-3 border-bottom border-gray-200">
-                                <div class="row px-md-2">
-                                    <div class="col">
-                                        <span class="ps-ms-2 font-weight-semibold text-gray-700 fs-16">{% trans 'Is Success?' %}</span>
-                                    </div>
-                                    <div class="col-auto">
-                                        <span class="text-gray-700 fs-16">{{ trade.get_is_success_display }}</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Paid -->
-                            <div class="px-3 px-md-4 py-3 border-bottom border-gray-200">
-                                <div class="row px-md-2">
-                                    <div class="col">
-                                        <span class="ps-ms-2 font-weight-semibold text-gray-700 fs-16">{% trans 'Is Paid?' %}</span>
-                                    </div>
-                                    <div class="col-auto">
-                                        <span class="text-gray-700 fs-16">{{ trade.get_is_paid_display }}</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Status -->
-                            <div class="px-3 px-md-4 py-3 border-bottom border-gray-200">
-                                <div class="row px-md-2">
-                                    <div class="col">
-                                        <span class="ps-ms-2 font-weight-semibold text-gray-700 fs-16">{% trans 'Status: ' %}</span>
-                                    </div>
-                                    <div class="col-auto">
-                                        <span class="text-gray-700 fs-16">{{ trade.get_status_display }}</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-
-                </div>
-            </div>
-        {% endfor %}
     </div>
 {% endblock %}
 

@@ -10,7 +10,7 @@
 
 
 {% block two_buttons %}
-    <div class="nk-content " style="padding: 0;!important;">
+    <div class="nk-content" style="padding: 0;!important;">
         <div class="container-fluid">
             <div class="nk-content-inner">
                 <div class="nk-content-body" style="padding-top: 0;!important; padding-bottom: 0;!important;">
@@ -46,7 +46,7 @@
                             <div class="nk-block-between">
                                 <div class="nk-block-head-content">
                                     <h4 class="nk-block-title">{% trans 'Personal Information Edit' %}</h4>
-                                    <div class="nk-block-des">
+                                    <div class="nk-block-des" style="margin-top: 0.8em;">
                                         <p>با توجه به تایید شدن حساب کاربری، امکان تغییر اطلاعات هویتی وجود ندارد.</p>
                                     </div>
                                 </div>
@@ -59,7 +59,7 @@
                             {% csrf_token %}
                             <div class="row">
                                 <!-- Province -->
-                                <div class="col-sm-4 mb-md-4 pb-3">
+                                <div class="col-sm-6 mb-md-4 pb-3">
                                     <label for="{{ form.province.id_for_label }}" class="form-label form-label-lg">{% trans 'Province' %}</label>
                                     {% render_field form.province type="text" id="province" class="form-control form-control-xl" %}
                                     {% if form.province.errors %}
@@ -70,7 +70,7 @@
                                 </div>
 
                                 <!-- City -->
-                                <div class="col-sm-4 mb-md-4 pb-3">
+                                <div class="col-sm-6 mb-md-4 pb-3">
                                     <label for="{{ form.city.id_for_label }}" class="form-label form-label-lg">{% trans 'City' %}</label>
                                     {% render_field form.city type="text" id="city" class="form-control form-control-xl" %}
                                     {% if form.city.errors %}

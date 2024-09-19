@@ -1,9 +1,8 @@
-from django.shortcuts import render
 from django.contrib.auth import login
 from django.contrib import messages
 from django.urls import reverse
-from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponseRedirect
+from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import ListView
 
 
@@ -175,6 +174,82 @@ class AgentTaskListView(ListView):
         return context
 
 
+class AgentTaskCounselingListView(ListView):
+    model = Task
+    template_name = 'accounts/agent_task_counseling_list.html'
+    context_object_name = 'tasks'
+    paginate_by = 6
+    queryset = Task.objects.select_related('task_counseling').filter(type='cns').all()
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        phone_number = self.request.session.get('user_phone_number')
+        if phone_number:
+            user = CustomUserModel.objects.get(phone_number=phone_number)
+            context['user'] = user
+        else:
+            user = self.request.user
+            context['user'] = user
+        return context
+
+
+class AgentTaskSessionListView(ListView):
+    model = Task
+    template_name = 'accounts/agent_task_session_list.html'
+    context_object_name = 'tasks'
+    paginate_by = 6
+    queryset = Task.objects.select_related('task_session').filter(type='ses').all()
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        phone_number = self.request.session.get('user_phone_number')
+        if phone_number:
+            user = CustomUserModel.objects.get(phone_number=phone_number)
+            context['user'] = user
+        else:
+            user = self.request.user
+            context['user'] = user
+        return context
+
+
+class AgentTaskVisitListView(ListView):
+    model = Task
+    template_name = 'accounts/agent_task_visit_list.html'
+    context_object_name = 'tasks'
+    paginate_by = 6
+    queryset = Task.objects.select_related('task_visit').filter(type='vis').all()
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        phone_number = self.request.session.get('user_phone_number')
+        if phone_number:
+            user = CustomUserModel.objects.get(phone_number=phone_number)
+            context['user'] = user
+        else:
+            user = self.request.user
+            context['user'] = user
+        return context
+
+
+class AgentTaskTradeSessionListView(ListView):
+    model = Task
+    template_name = 'accounts/agent_task_trade_session_list.html'
+    context_object_name = 'tasks'
+    paginate_by = 6
+    queryset = Task.objects.select_related('task_trade_session').filter(type='tds').all()
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        phone_number = self.request.session.get('user_phone_number')
+        if phone_number:
+            user = CustomUserModel.objects.get(phone_number=phone_number)
+            context['user'] = user
+        else:
+            user = self.request.user
+            context['user'] = user
+        return context
+
+
 def agent_task_detail_view(request, pk, unique_url_id):
     context = {}
     task = get_object_or_404(Task, unique_url_id=unique_url_id)
@@ -219,4 +294,18 @@ def agent_request_view(request):
 
 
 def agent_activities_view(request):
-    return render(request, 'accounts/agent_activities.html')
+    agent = request.user
+    counseling_tasks = Task.objects.filter(agent=agent, task_counseling__isnull=False).all()
+    session_tasks = Task.objects.filter(agent=agent, task_session__isnull=False).all()
+    visit_tasks = Task.objects.filter(agent=agent, task_visit__isnull=False).all()
+    trade_session_tasks = Task.objects.filter(agent=agent, task_trade_session__isnull=False).all()
+    context = {
+        'counseling_tasks': counseling_tasks,
+        'session_tasks': session_tasks,
+        'visit_tasks': visit_tasks,
+        'trade_session_tasks': trade_session_tasks,
+    }
+
+    return render(request, 'accounts/agent_activities.html', context=context)
+
+

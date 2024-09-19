@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-17 18:02+0330\n"
+"POT-Creation-Date: 2024-09-19 14:55+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,115 +18,592 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: .\models.py:11
+#: .\models.py:33
 msgid "Authenticated"
 msgstr "تایید شده"
 
-#: .\models.py:12
+#: .\models.py:34
 msgid "Not Authenticated"
 msgstr "تایید نشده"
 
-#: .\models.py:13 .\templates\accounts\profile_info_now.html:98
+#: .\models.py:35 .\models.py:45 .\templates\accounts\profile_info_now.html:145
 msgid "In Progress"
 msgstr "در حال بررسی"
 
-#: .\models.py:19
+#: .\models.py:38
+msgid "Is"
+msgstr ""
+
+#: .\models.py:39
+msgid "Waiting"
+msgstr ""
+
+#: .\models.py:40
+msgid "Isn't"
+msgstr "نیست"
+
+#: .\models.py:43
+#, fuzzy
+#| msgid "Not Completed"
+msgid "Completed"
+msgstr "تکمیل نشده"
+
+#: .\models.py:44
+msgid "Not Completed"
+msgstr "تکمیل نشده"
+
+#: .\models.py:51
 msgid "Authentication Status"
 msgstr "وضعیت احراز هویت"
 
-#: .\models.py:29
+#: .\models.py:52
+msgid "Is Agent?"
+msgstr "کاربر مشاور؟"
+
+#: .\models.py:53
+msgid "Complete Information"
+msgstr "تکمیل اطلاعات"
+
+#: .\models.py:64
 msgid "Male"
 msgstr "آقا"
 
-#: .\models.py:30
+#: .\models.py:65
 msgid "Female"
 msgstr "خانم"
 
-#: .\models.py:32 .\templates\accounts\profile_info_auth.html:38
+#: .\models.py:68
+msgid "Instagram"
+msgstr "اینستاگرام"
+
+#: .\models.py:69
+msgid "Course Videos"
+msgstr "ویدئوهای آموزشی"
+
+#: .\models.py:70
+msgid "Advertisements"
+msgstr "تبلیغات"
+
+#: .\models.py:71
+msgid "Website and Google"
+msgstr "گوگل و وبسایت"
+
+#: .\models.py:72
+msgid "Friends"
+msgstr "دوستان"
+
+#: .\models.py:73
+msgid "Others"
+msgstr "سایر"
+
+#: .\models.py:76
+msgid "No Experience"
+msgstr "تجربه ندارم"
+
+#: .\models.py:77
+msgid "1 year"
+msgstr "1 سال"
+
+#: .\models.py:78
+msgid "2 years"
+msgstr "2 سال"
+
+#: .\models.py:79
+msgid "3 years"
+msgstr "3 سال"
+
+#: .\models.py:80 .\models.py:81
+msgid "4 years"
+msgstr "4 سال"
+
+#: .\models.py:82
+msgid "5-10 years"
+msgstr "5 تا 10 سال"
+
+#: .\models.py:83
+msgid "More than 10 years"
+msgstr "بیش از 10 سال"
+
+#: .\models.py:86
+msgid "Have"
+msgstr "دارم"
+
+#: .\models.py:87
+msgid "Have not"
+msgstr "ندارم"
+
+#: .\models.py:88
+msgid "Have seen"
+msgstr "دوره را دیده‌ام"
+
+#: .\models.py:91 .\templates\accounts\profile_info_auth.html:60
 msgid "First Name"
 msgstr "نام"
 
-#: .\models.py:33 .\templates\accounts\profile_info_auth.html:44
+#: .\models.py:92 .\templates\accounts\profile_info_auth.html:71
 msgid "Last Name"
 msgstr "نام خانوادگی"
 
-#: .\models.py:34 .\templates\accounts\profile_info_auth.html:50
+#: .\models.py:93 .\templates\accounts\profile_info_auth.html:82
 msgid "Sex"
 msgstr "جنسیت"
 
-#: .\models.py:35 .\templates\accounts\profile_info_auth.html:56
+#: .\models.py:94 .\templates\accounts\profile_info_auth.html:93
 msgid "National Code"
 msgstr "کد ملی"
 
-#: .\models.py:36 .\templates\accounts\profile_info_auth.html:86
-#: .\templates\accounts\profile_info_edit.html:63
+#: .\models.py:95 .\templates\accounts\profile_info_auth.html:137
+#: .\templates\accounts\profile_info_edit.html:96
 msgid "Email"
 msgstr "ایمیل"
 
-#: .\models.py:37
+#: .\models.py:96
 msgid "National Card Image"
 msgstr "تصویر کارت ملی"
 
-#: .\models.py:38
-msgid "Bank Card Image"
-msgstr "تصویر کارت بانکی"
-
-#: .\models.py:39
+#: .\models.py:97
 msgid "Authentication Image"
 msgstr "تصویر احراز هویت"
 
-#: .\models.py:40 .\templates\accounts\profile_info_auth.html:62
-#: .\templates\accounts\profile_info_edit.html:39
-msgid "Country"
-msgstr "کشور"
+#: .\models.py:98
+msgid "Bank Card Image"
+msgstr "تصویر کارت بانکی"
 
-#: .\models.py:41 .\templates\accounts\profile_info_auth.html:68
-#: .\templates\accounts\profile_info_edit.html:45
+#: .\models.py:99 .\templates\accounts\profile_info_auth.html:181
+msgid "Bank Sheba"
+msgstr "شماره شبا"
+
+#: .\models.py:100 .\templates\accounts\profile_info_auth.html:104
+#: .\templates\accounts\profile_info_edit.html:63
 msgid "Province"
 msgstr "استان"
 
-#: .\models.py:42 .\templates\accounts\profile_info_auth.html:74
-#: .\templates\accounts\profile_info_edit.html:51
-#: .\templates\accounts\profile_your_services.html:113
+#: .\models.py:101 .\templates\accounts\profile_info_auth.html:115
+#: .\templates\accounts\profile_info_edit.html:74
+#: .\templates\accounts\profile_your_services.html:138
 msgid "City"
 msgstr "شهر"
 
-#: .\models.py:43 .\templates\accounts\profile_info_auth.html:80
-#: .\templates\accounts\profile_info_edit.html:57
+#: .\models.py:102 .\templates\accounts\profile_info_auth.html:126
+#: .\templates\accounts\profile_info_edit.html:85
 msgid "Postal Code"
 msgstr "کد پستی"
 
-#: .\models.py:44 .\templates\accounts\profile_info_auth.html:104
-#: .\templates\accounts\profile_info_edit.html:69
+#: .\models.py:103 .\templates\accounts\profile_info_auth.html:192
+#: .\templates\accounts\profile_info_edit.html:107
 msgid "Address"
 msgstr "نشانی"
+
+#: .\models.py:104
+msgid "Introduction Way"
+msgstr "روش آشنایی با ما"
+
+#: .\models.py:105
+msgid "Experience"
+msgstr "سابقه مشاوره املاک"
+
+#: .\models.py:106
+msgid "Course Tendency"
+msgstr "تمایل به حضور در دوره آموزشی"
+
+#: .\models.py:121
+msgid "Counseling"
+msgstr "مشاوره"
+
+#: .\models.py:122
+msgid "Session"
+msgstr "نشست"
+
+#: .\models.py:123
+msgid "Visit"
+msgstr "بازدید"
+
+#: .\models.py:124
+msgid "Trade Session"
+msgstr "نشست معاملاتی"
+
+#: .\models.py:127
+msgid "Yes"
+msgstr "بله"
+
+#: .\models.py:128
+msgid "No"
+msgstr "خیر"
+
+#: .\models.py:131
+msgid "Taken"
+msgstr "مشاوره قطعی تعیین شده است"
+
+#: .\models.py:132
+msgid "Free"
+msgstr "هنوز مشاوری تعیین نشده است"
+
+#: .\models.py:133
+msgid "Pending"
+msgstr "مشاوری درخواست داده، اما هنوز قطعی نیست"
+
+#: .\models.py:140
+msgid "Payment Status"
+msgstr "وضعیت پرداخت هزینه"
+
+#: .\models.py:141
+msgid "Commission Status"
+msgstr "وضعیت پرداخت کمیسیون"
+
+#: .\models.py:142
+msgid "Request Status"
+msgstr "وضعیت تعیین مشاور"
+
+#: .\models.py:145
+msgid "Task Type"
+msgstr "نوع فرصت کاری"
+
+#: .\models.py:146
+msgid "Date and Time of Creation"
+msgstr "تاریخ و زمان ایجاد"
+
+#: .\templates\accounts\agent_activities.html:9
+#: .\templates\accounts\profile_your_trades.html:9
+msgid "My Trades"
+msgstr "معاملات من"
+
+#: .\templates\accounts\agent_activities.html:47
+#: .\templates\accounts\profile_your_trades.html:47
+msgid "Trade Code: "
+msgstr "کد معامله: "
+
+#: .\templates\accounts\agent_activities.html:57
+#: .\templates\accounts\profile_your_trades.html:57
+msgid "Trade Type: "
+msgstr "نوع معامله: "
+
+#: .\templates\accounts\agent_activities.html:69
+#: .\templates\accounts\profile_your_trades.html:69
+msgid "Date: "
+msgstr "تاریخ: "
+
+#: .\templates\accounts\agent_activities.html:81
+#: .\templates\accounts\profile_your_trades.html:81
+msgid "City: "
+msgstr "شهر: "
+
+#: .\templates\accounts\agent_activities.html:93
+#: .\templates\accounts\profile_your_trades.html:93
+msgid "Name: "
+msgstr "نام: "
+
+#: .\templates\accounts\agent_activities.html:105
+#: .\templates\accounts\profile_your_trades.html:105
+msgid "File Code: "
+msgstr "کد فایل: "
+
+#: .\templates\accounts\agent_activities.html:125
+#: .\templates\accounts\profile_your_trades.html:125
+msgid "Is Followed?"
+msgstr "آیا معامله نیاز به پیگیری دارد؟"
+
+#: .\templates\accounts\agent_activities.html:137
+#: .\templates\accounts\profile_your_trades.html:137
+msgid "Is Success?"
+msgstr "آیا معامله موفقیت‌آمیز بود؟"
+
+#: .\templates\accounts\agent_activities.html:149
+#: .\templates\accounts\profile_your_trades.html:149
+msgid "Is Paid?"
+msgstr "آیا پرداخت کمیسیون انجام شده است؟"
+
+#: .\templates\accounts\agent_activities.html:161
+#: .\templates\accounts\profile_your_cases.html:113
+#: .\templates\accounts\profile_your_trades.html:161
+msgid "Status: "
+msgstr "وضعیت: "
+
+#: .\templates\accounts\agent_request.html:9
+msgid "Agent Request"
+msgstr "درخواست همکاری"
+
+#: .\templates\accounts\agent_request.html:23
+msgid "Hombaba Partner Agent"
+msgstr "مشاور همکار هومبابا"
+
+#: .\templates\accounts\agent_request.html:48
+msgid "What is your agent experience?"
+msgstr "چقدر تجربه کار مشاوره املاک دارید؟"
+
+#: .\templates\accounts\agent_request.html:59
+msgid "What is your introduction way?"
+msgstr "چگونه با هومبابا آشنا شده‌اید؟"
+
+#: .\templates\accounts\agent_request.html:70
+msgid "Do you want our course?"
+msgstr "تمایل به شرکت در دوره آموزشی رایگان دارید؟"
+
+#: .\templates\accounts\agent_request.html:81
+#: .\templates\accounts\profile_info_auth.html:204
+#: .\templates\accounts\profile_info_edit.html:119
+msgid "Submit"
+msgstr "ارسال"
+
+#: .\templates\accounts\agent_request.html:109
+#: .\templates\accounts\profile_info_now.html:126
+msgid "Verify Account"
+msgstr "تایید حساب کاربری"
+
+#: .\templates\accounts\agent_request.html:132
+#: .\templates\accounts\agent_task_counseling_list.html:25
+#: .\templates\accounts\agent_task_list.html:11
+#: .\templates\accounts\agent_task_list.html:25
+#: .\templates\accounts\agent_task_session_list.html:25
+#: .\templates\accounts\agent_task_trade_session_list.html:25
+#: .\templates\accounts\agent_task_visit_list.html:25
+msgid "Tasks List"
+msgstr "لیست فرصت‌های کاری"
+
+#: .\templates\accounts\agent_task_counseling_list.html:11
+msgid "Tasks List - Counseling"
+msgstr "فرصت‌های کاری - مشاوره"
+
+#: .\templates\accounts\agent_task_counseling_list.html:43
+#: .\templates\accounts\agent_task_list.html:43
+#: .\templates\accounts\agent_task_session_list.html:43
+#: .\templates\accounts\agent_task_trade_session_list.html:43
+#: .\templates\accounts\agent_task_visit_list.html:43
+#: .\templates\accounts\profile_your_services.html:47
+msgid "Counselings"
+msgstr "مشاوره‌ها"
+
+#: .\templates\accounts\agent_task_counseling_list.html:56
+#: .\templates\accounts\agent_task_list.html:56
+#: .\templates\accounts\agent_task_session_list.html:56
+#: .\templates\accounts\agent_task_trade_session_list.html:56
+#: .\templates\accounts\agent_task_visit_list.html:56
+#: .\templates\accounts\profile_your_services.html:86
+msgid "Sessions"
+msgstr "نشست‌ها"
+
+#: .\templates\accounts\agent_task_counseling_list.html:69
+#: .\templates\accounts\agent_task_list.html:69
+#: .\templates\accounts\agent_task_session_list.html:69
+#: .\templates\accounts\agent_task_trade_session_list.html:69
+#: .\templates\accounts\agent_task_visit_list.html:69
+#: .\templates\accounts\profile_your_services.html:125
+msgid "Visits"
+msgstr "بازدیدها"
+
+#: .\templates\accounts\agent_task_counseling_list.html:82
+#: .\templates\accounts\agent_task_list.html:82
+#: .\templates\accounts\agent_task_session_list.html:82
+#: .\templates\accounts\agent_task_trade_session_list.html:82
+#: .\templates\accounts\agent_task_visit_list.html:82
+msgid "TradeSessions"
+msgstr "نشست‌های کاری"
+
+#: .\templates\accounts\agent_task_counseling_list.html:109
+#: .\templates\accounts\agent_task_counseling_list.html:113
+#: .\templates\accounts\agent_task_counseling_list.html:133
+#: .\templates\accounts\agent_task_detail.html:42
+#: .\templates\accounts\agent_task_detail.html:46
+#: .\templates\accounts\agent_task_detail.html:66
+#: .\templates\accounts\agent_task_list.html:109
+#: .\templates\accounts\agent_task_list.html:113
+#: .\templates\accounts\agent_task_list.html:133
+#: .\templates\accounts\agent_task_session_list.html:109
+#: .\templates\accounts\agent_task_session_list.html:113
+#: .\templates\accounts\agent_task_session_list.html:133
+#: .\templates\accounts\agent_task_trade_session_list.html:109
+#: .\templates\accounts\agent_task_trade_session_list.html:113
+#: .\templates\accounts\agent_task_trade_session_list.html:133
+#: .\templates\accounts\agent_task_visit_list.html:109
+#: .\templates\accounts\agent_task_visit_list.html:113
+#: .\templates\accounts\agent_task_visit_list.html:133
+msgid "in"
+msgstr "در"
+
+#: .\templates\accounts\agent_task_counseling_list.html:118
+#: .\templates\accounts\agent_task_counseling_list.html:129
+#: .\templates\accounts\agent_task_detail.html:51
+#: .\templates\accounts\agent_task_detail.html:62
+#: .\templates\accounts\agent_task_list.html:118
+#: .\templates\accounts\agent_task_list.html:129
+#: .\templates\accounts\agent_task_session_list.html:118
+#: .\templates\accounts\agent_task_session_list.html:129
+#: .\templates\accounts\agent_task_trade_session_list.html:118
+#: .\templates\accounts\agent_task_trade_session_list.html:129
+#: .\templates\accounts\agent_task_visit_list.html:118
+#: .\templates\accounts\agent_task_visit_list.html:129
+msgid "in hombaba (tehran)"
+msgstr "به میزبانی هومبابا (فقط تهران)"
+
+#: .\templates\accounts\agent_task_counseling_list.html:143
+#: .\templates\accounts\agent_task_counseling_list.html:147
+#: .\templates\accounts\agent_task_counseling_list.html:151
+#: .\templates\accounts\agent_task_counseling_list.html:155
+#: .\templates\accounts\agent_task_detail.html:76
+#: .\templates\accounts\agent_task_detail.html:80
+#: .\templates\accounts\agent_task_detail.html:84
+#: .\templates\accounts\agent_task_detail.html:88
+#: .\templates\accounts\agent_task_list.html:143
+#: .\templates\accounts\agent_task_list.html:147
+#: .\templates\accounts\agent_task_list.html:151
+#: .\templates\accounts\agent_task_list.html:155
+#: .\templates\accounts\agent_task_session_list.html:143
+#: .\templates\accounts\agent_task_session_list.html:147
+#: .\templates\accounts\agent_task_session_list.html:151
+#: .\templates\accounts\agent_task_session_list.html:155
+#: .\templates\accounts\agent_task_trade_session_list.html:143
+#: .\templates\accounts\agent_task_trade_session_list.html:147
+#: .\templates\accounts\agent_task_trade_session_list.html:151
+#: .\templates\accounts\agent_task_trade_session_list.html:155
+#: .\templates\accounts\agent_task_visit_list.html:143
+#: .\templates\accounts\agent_task_visit_list.html:147
+#: .\templates\accounts\agent_task_visit_list.html:151
+#: .\templates\accounts\agent_task_visit_list.html:155
+msgid "Total price: "
+msgstr "هزینه کل: "
+
+#: .\templates\accounts\agent_task_counseling_list.html:144
+#: .\templates\accounts\agent_task_counseling_list.html:148
+#: .\templates\accounts\agent_task_counseling_list.html:152
+#: .\templates\accounts\agent_task_detail.html:77
+#: .\templates\accounts\agent_task_detail.html:81
+#: .\templates\accounts\agent_task_detail.html:85
+#: .\templates\accounts\agent_task_list.html:144
+#: .\templates\accounts\agent_task_list.html:148
+#: .\templates\accounts\agent_task_list.html:152
+#: .\templates\accounts\agent_task_session_list.html:144
+#: .\templates\accounts\agent_task_session_list.html:148
+#: .\templates\accounts\agent_task_session_list.html:152
+#: .\templates\accounts\agent_task_trade_session_list.html:144
+#: .\templates\accounts\agent_task_trade_session_list.html:148
+#: .\templates\accounts\agent_task_trade_session_list.html:152
+#: .\templates\accounts\agent_task_visit_list.html:144
+#: .\templates\accounts\agent_task_visit_list.html:148
+#: .\templates\accounts\agent_task_visit_list.html:152
+#: .\templates\accounts\profile_your_cases.html:92
+msgid "Tooman"
+msgstr "تومان"
+
+#: .\templates\accounts\agent_task_counseling_list.html:184
+#: .\templates\accounts\agent_task_counseling_list.html:188
+#: .\templates\accounts\agent_task_counseling_list.html:191
+#: .\templates\accounts\agent_task_list.html:184
+#: .\templates\accounts\agent_task_list.html:188
+#: .\templates\accounts\agent_task_list.html:191
+#: .\templates\accounts\agent_task_session_list.html:184
+#: .\templates\accounts\agent_task_session_list.html:188
+#: .\templates\accounts\agent_task_session_list.html:191
+#: .\templates\accounts\agent_task_trade_session_list.html:184
+#: .\templates\accounts\agent_task_trade_session_list.html:188
+#: .\templates\accounts\agent_task_trade_session_list.html:191
+#: .\templates\accounts\agent_task_visit_list.html:184
+#: .\templates\accounts\agent_task_visit_list.html:188
+#: .\templates\accounts\agent_task_visit_list.html:191
+msgid "More"
+msgstr "مشاهده بیشتر"
+
+#: .\templates\accounts\agent_task_counseling_list.html:212
+#: .\templates\accounts\agent_task_counseling_list.html:214
+#: .\templates\accounts\agent_task_list.html:212
+#: .\templates\accounts\agent_task_list.html:214
+#: .\templates\accounts\agent_task_session_list.html:212
+#: .\templates\accounts\agent_task_session_list.html:214
+#: .\templates\accounts\agent_task_trade_session_list.html:212
+#: .\templates\accounts\agent_task_trade_session_list.html:214
+#: .\templates\accounts\agent_task_visit_list.html:212
+#: .\templates\accounts\agent_task_visit_list.html:214
+msgid "First"
+msgstr "ابتدا"
+
+#: .\templates\accounts\agent_task_counseling_list.html:218
+#: .\templates\accounts\agent_task_counseling_list.html:220
+#: .\templates\accounts\agent_task_list.html:218
+#: .\templates\accounts\agent_task_list.html:220
+#: .\templates\accounts\agent_task_session_list.html:218
+#: .\templates\accounts\agent_task_session_list.html:220
+#: .\templates\accounts\agent_task_trade_session_list.html:218
+#: .\templates\accounts\agent_task_trade_session_list.html:220
+#: .\templates\accounts\agent_task_visit_list.html:218
+#: .\templates\accounts\agent_task_visit_list.html:220
+msgid "Previous"
+msgstr "قبلی"
+
+#: .\templates\accounts\agent_task_counseling_list.html:232
+#: .\templates\accounts\agent_task_counseling_list.html:234
+#: .\templates\accounts\agent_task_list.html:232
+#: .\templates\accounts\agent_task_list.html:234
+#: .\templates\accounts\agent_task_session_list.html:232
+#: .\templates\accounts\agent_task_session_list.html:234
+#: .\templates\accounts\agent_task_trade_session_list.html:232
+#: .\templates\accounts\agent_task_trade_session_list.html:234
+#: .\templates\accounts\agent_task_visit_list.html:232
+#: .\templates\accounts\agent_task_visit_list.html:234
+msgid "Next"
+msgstr "بعدی"
+
+#: .\templates\accounts\agent_task_counseling_list.html:238
+#: .\templates\accounts\agent_task_counseling_list.html:240
+#: .\templates\accounts\agent_task_list.html:238
+#: .\templates\accounts\agent_task_list.html:240
+#: .\templates\accounts\agent_task_session_list.html:238
+#: .\templates\accounts\agent_task_session_list.html:240
+#: .\templates\accounts\agent_task_trade_session_list.html:238
+#: .\templates\accounts\agent_task_trade_session_list.html:240
+#: .\templates\accounts\agent_task_visit_list.html:238
+#: .\templates\accounts\agent_task_visit_list.html:240
+msgid "Last Page"
+msgstr "انتها"
+
+#: .\templates\accounts\agent_task_detail.html:11
+msgid "Tasks Detail"
+msgstr "جزئیات فرصت کاری"
+
+#: .\templates\accounts\agent_task_detail.html:95
+msgid "Hombaba Commission: "
+msgstr "کمیسیون دریافتی هومبابا: "
+
+#: .\templates\accounts\agent_task_detail.html:128
+#: .\templates\accounts\agent_task_detail.html:132
+#: .\templates\accounts\agent_task_detail.html:136
+msgid "Apply"
+msgstr "ثبت درخواست"
+
+#: .\templates\accounts\agent_task_detail.html:158
+msgid "If you are sure, click!"
+msgstr "اگر مطمئن هستید، کلیک نمایید!"
+
+#: .\templates\accounts\agent_task_session_list.html:11
+msgid "Tasks List - Session"
+msgstr "فرصت‌های کاری - نشست"
+
+#: .\templates\accounts\agent_task_trade_session_list.html:11
+msgid "Tasks List - Trade Session"
+msgstr "فرصت‌های کاری - نشست معاملاتی"
+
+#: .\templates\accounts\agent_task_visit_list.html:11
+msgid "Tasks List - Visit"
+msgstr "فرصت‌های کاری - بازدید"
 
 #: .\templates\accounts\profile_info_auth.html:9
 msgid "Authentication"
 msgstr "احراز هویت"
 
-#: .\templates\accounts\profile_info_auth.html:28
-msgid "Authentication Form"
-msgstr "فرم احراز هویت"
-
-#: .\templates\accounts\profile_info_auth.html:92
+#: .\templates\accounts\profile_info_auth.html:148
 msgid "National Card"
 msgstr "تصویر کارت ملی"
 
-#: .\templates\accounts\profile_info_auth.html:98
+#: .\templates\accounts\profile_info_auth.html:159
 msgid "Authentication Picture"
 msgstr "تصویر احراز هویت"
 
-#: .\templates\accounts\profile_info_auth.html:111
-#: .\templates\accounts\profile_info_edit.html:76
-msgid "Submit"
-msgstr "ارسال"
+#: .\templates\accounts\profile_info_auth.html:170
+msgid "Bank Card"
+msgstr "تصویر کارت بانکی"
 
 #: .\templates\accounts\profile_info_edit.html:9
 msgid "Profile Update"
 msgstr "بروزرسانی حساب کاربری"
 
-#: .\templates\accounts\profile_info_edit.html:24
+#: .\templates\accounts\profile_info_edit.html:48
 msgid "Personal Information Edit"
 msgstr "اصلاح اطلاعات شخصی"
 
@@ -134,159 +611,101 @@ msgstr "اصلاح اطلاعات شخصی"
 msgid "User Dashboard"
 msgstr "حساب کاربری"
 
-#: .\templates\accounts\profile_info_now.html:22
+#: .\templates\accounts\profile_info_now.html:47
 msgid "Personal Information"
 msgstr "اطلاعات شخصی"
 
-#: .\templates\accounts\profile_info_now.html:41
-#: .\templates\accounts\profile_info_now.html:65
-#: .\templates\accounts\profile_info_now.html:90
+#: .\templates\accounts\profile_info_now.html:66
+#: .\templates\accounts\profile_info_now.html:113
+#: .\templates\accounts\profile_info_now.html:137
 msgid "Phone Number"
 msgstr "شماره همراه"
 
-#: .\templates\accounts\profile_info_now.html:48
-#: .\templates\accounts\profile_info_now.html:72
-#: .\templates\accounts\profile_info_now.html:97
+#: .\templates\accounts\profile_info_now.html:73
+#: .\templates\accounts\profile_info_now.html:120
+#: .\templates\accounts\profile_info_now.html:144
 msgid "Account Status"
 msgstr "وضعیت حساب کاربری"
 
-#: .\templates\accounts\profile_info_now.html:49
+#: .\templates\accounts\profile_info_now.html:74
 msgid "Verified"
 msgstr "تایید شده"
 
-#: .\templates\accounts\profile_info_now.html:54
+#: .\templates\accounts\profile_info_now.html:81
+#: .\templates\accounts\profile_info_now.html:88
+#: .\templates\accounts\profile_info_now.html:95
+msgid "Is you agent?"
+msgstr "کاربر مشاور؟"
+
+#: .\templates\accounts\profile_info_now.html:102
 msgid "Information Update"
 msgstr "بروزرسانی اطلاعات شخصی"
 
-#: .\templates\accounts\profile_info_now.html:73
-msgid "Not Completed"
-msgstr "تکمیل نشده"
-
-#: .\templates\accounts\profile_info_now.html:78
-msgid "Complete The Information"
-msgstr "تکمیل اطلاعات"
+#: .\templates\accounts\profile_info_now.html:121
+#| msgid "Verified"
+msgid "Not Verified"
+msgstr "تایید نشده"
 
 #: .\templates\accounts\profile_your_cases.html:11
 msgid "My Investments"
 msgstr "سرمایه‌گذاری‌های من"
 
-#: .\templates\accounts\profile_your_cases.html:24
+#: .\templates\accounts\profile_your_cases.html:49
 msgid "Case Code: "
 msgstr "کد پروژه: "
 
-#: .\templates\accounts\profile_your_cases.html:34
+#: .\templates\accounts\profile_your_cases.html:59
 msgid "Case Title: "
 msgstr "عنوان پروژه: "
 
-#: .\templates\accounts\profile_your_cases.html:50
+#: .\templates\accounts\profile_your_cases.html:75
 msgid "Meter: "
 msgstr "متراژ: "
 
-#: .\templates\accounts\profile_your_cases.html:54
+#: .\templates\accounts\profile_your_cases.html:79
 msgid "Metr"
 msgstr "متر"
 
-#: .\templates\accounts\profile_your_cases.html:64
+#: .\templates\accounts\profile_your_cases.html:89
 msgid "Total Price: "
 msgstr "قیمت کل (بدون مالیات): "
 
-#: .\templates\accounts\profile_your_cases.html:67
-msgid "Tooman"
-msgstr "تومان"
-
-#: .\templates\accounts\profile_your_cases.html:76
+#: .\templates\accounts\profile_your_cases.html:101
 msgid "Datetime: "
 msgstr "تاریخ و زمان سرمایه‌گذاری: "
-
-#: .\templates\accounts\profile_your_cases.html:88
-#: .\templates\accounts\profile_your_trades.html:135
-msgid "Status: "
-msgstr "وضعیت: "
 
 #: .\templates\accounts\profile_your_services.html:9
 msgid "My Services"
 msgstr "خدمات دریافتی من"
 
-#: .\templates\accounts\profile_your_services.html:22
-msgid "Counselings"
-msgstr "مشاوره‌ها"
-
-#: .\templates\accounts\profile_your_services.html:32
-#: .\templates\accounts\profile_your_services.html:71
-#: .\templates\accounts\profile_your_services.html:110
+#: .\templates\accounts\profile_your_services.html:57
+#: .\templates\accounts\profile_your_services.html:96
+#: .\templates\accounts\profile_your_services.html:135
 msgid "Row"
 msgstr "ردیف"
 
-#: .\templates\accounts\profile_your_services.html:33
-#: .\templates\accounts\profile_your_services.html:72
-#: .\templates\accounts\profile_your_services.html:111
+#: .\templates\accounts\profile_your_services.html:58
+#: .\templates\accounts\profile_your_services.html:97
+#: .\templates\accounts\profile_your_services.html:136
 msgid "Date"
 msgstr "تاریخ"
 
-#: .\templates\accounts\profile_your_services.html:34
-#: .\templates\accounts\profile_your_services.html:73
-#: .\templates\accounts\profile_your_services.html:112
+#: .\templates\accounts\profile_your_services.html:59
+#: .\templates\accounts\profile_your_services.html:98
+#: .\templates\accounts\profile_your_services.html:137
 msgid "Name"
 msgstr "نام"
 
-#: .\templates\accounts\profile_your_services.html:35
-#: .\templates\accounts\profile_your_services.html:74
+#: .\templates\accounts\profile_your_services.html:60
+#: .\templates\accounts\profile_your_services.html:99
 msgid "Type"
 msgstr "نوع"
 
-#: .\templates\accounts\profile_your_services.html:36
-#: .\templates\accounts\profile_your_services.html:75
-#: .\templates\accounts\profile_your_services.html:114
+#: .\templates\accounts\profile_your_services.html:61
+#: .\templates\accounts\profile_your_services.html:100
+#: .\templates\accounts\profile_your_services.html:139
 msgid "Status"
 msgstr "وضعیت"
-
-#: .\templates\accounts\profile_your_services.html:61
-msgid "Sessions"
-msgstr "نشست‌ها"
-
-#: .\templates\accounts\profile_your_services.html:100
-msgid "Visits"
-msgstr "بازدیدها"
-
-#: .\templates\accounts\profile_your_trades.html:9
-msgid "My Trades"
-msgstr "معاملات من"
-
-#: .\templates\accounts\profile_your_trades.html:22
-msgid "Trade Code: "
-msgstr "کد معامله: "
-
-#: .\templates\accounts\profile_your_trades.html:32
-msgid "Trade Type: "
-msgstr "نوع معامله: "
-
-#: .\templates\accounts\profile_your_trades.html:44
-msgid "Date: "
-msgstr "تاریخ: "
-
-#: .\templates\accounts\profile_your_trades.html:56
-msgid "City: "
-msgstr "شهر: "
-
-#: .\templates\accounts\profile_your_trades.html:68
-msgid "Name: "
-msgstr "نام: "
-
-#: .\templates\accounts\profile_your_trades.html:81
-msgid "File Code: "
-msgstr "کد فایل: "
-
-#: .\templates\accounts\profile_your_trades.html:99
-msgid "Is Followed?"
-msgstr "آیا معامله نیاز به پیگیری دارد؟"
-
-#: .\templates\accounts\profile_your_trades.html:111
-msgid "Is Success?"
-msgstr "آیا معامله موفقیت‌آمیز بود؟"
-
-#: .\templates\accounts\profile_your_trades.html:123
-msgid "Is Paid?"
-msgstr "آیا پرداخت کمیسیون انجام شده است؟"
 
 #: .\templates\accounts\registration.html:10
 msgid "Website Login/Signup"
@@ -296,11 +715,11 @@ msgstr "ورود به سایت"
 msgid "Phone Number Registration"
 msgstr "ورود به سایت با شماره تلفن همراه"
 
-#: .\templates\accounts\registration.html:42
+#: .\templates\accounts\registration.html:47
 msgid "Enter Your Phone Number: "
 msgstr "شماره تلفن همراه خود را وارد کنید: "
 
-#: .\templates\accounts\registration.html:51
+#: .\templates\accounts\registration.html:56
 msgid "Get Approval Code"
 msgstr "دریافت کد تایید"
 
@@ -320,10 +739,8 @@ msgstr "شماره تلفن همراه شما: "
 msgid "Enter The Sent Approval Code"
 msgstr "کد پیامک شده را وارد نمایید: "
 
-#: .\templates\accounts\verification.html:54
-msgid "Did not get the code?"
-msgstr "کد را دریافت نکردید؟"
-
-#: .\templates\accounts\verification.html:59
+#: .\templates\accounts\verification.html:60
 msgid "Register in Homebia"
 msgstr "ورود به هومبیا"
+
+

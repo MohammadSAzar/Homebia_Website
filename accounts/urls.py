@@ -14,6 +14,10 @@ urlpatterns = [
     path('agent_request/', views.agent_request_view, name='agent_request'),
     path('agent_activities/', views.agent_activities_view, name='agent_activities'),
     path('agent_task_list/', views.AgentTaskListView.as_view(), name='agent_task_list'),
+    path('agent_task_list/counseling/', views.AgentTaskCounselingListView.as_view(), name='agent_task_list_counseling'),
+    path('agent_task_list/session/', views.AgentTaskSessionListView.as_view(), name='agent_task_list_session'),
+    path('agent_task_list/visit/', views.AgentTaskVisitListView.as_view(), name='agent_task_list_visit'),
+    path('agent_task_list/trade_session/', views.AgentTaskTradeSessionListView.as_view(), name='agent_task_list_trade_session'),
     re_path(r'task_detail/(?P<pk>[-\w]+)/(?P<unique_url_id>[-\w]+)/', views.agent_task_detail_view, name='agent_task_detail'),
 ]
 
