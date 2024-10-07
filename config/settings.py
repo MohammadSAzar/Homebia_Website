@@ -146,6 +146,7 @@ AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
     'accounts.backends.CustomAuthBackend',
 ]
+LOGOUT_REDIRECT_URL = 'home'
 
 
 # Static & Media

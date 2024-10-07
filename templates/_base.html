@@ -56,7 +56,7 @@
                                     <div class="header__main" style="margin-right: 0.5em; margin-left: 20px;!important;">
                                         <div class="logo">
                                             <a href="{% url 'home' %}" class="logo--normal">
-                                                <img src="{% static 'main/img/logos/ho-logo-1.png' %}" alt="Logo">
+                                                <img src="{% static 'main/img/logos/ho-logo-0.png' %}" style="width: 100px; height: 154px;" alt="Logo">
                                             </a>
                                         </div>
                                     </div>
@@ -102,7 +102,7 @@
                                                 <li class="mainmenu__item menu-item-has-children">
                                                     <a href="#" class="mainmenu__link"><span class="mm-text" style="font-weight: bold;">{% trans 'Links' %}</span></a>
                                                     <ul class="sub-menu">
-                                                        <li class="menu-item-has-children" style="margin-bottom: 1em;"><a href="{% url 'blog_list' %}"><span class="mm-text" style="font-weight: bold;">{% trans 'Homebia Blog' %}</span></a></li>
+                                                        <li class="menu-item-has-children" style="margin-bottom: 1em;"><a href="{% url 'blog_list' %}"><span class="mm-text" style="font-weight: bold;">{% trans 'Hombaba Blog' %}</span></a></li>
                                                         <li class="menu-item-has-children" style="margin-bottom: 1em;"><a href="{% url 'contact' %}"><span class="mm-text" style="font-weight: bold;">{% trans 'Contact Us' %}</span></a></li>
                                                         <li class="menu-item-has-children" style="margin-bottom: 1em;"><a href="{% url 'about' %}"><span class="mm-text" style="font-weight: bold;">{% trans 'About Us' %}</span></a></li>
                                                         <li class="menu-item-has-children" style="margin-bottom: 1em;"><a href="{% url 'rules' %}"><span class="mm-text" style="font-weight: bold;">{% trans 'Rules' %}</span></a></li>
@@ -222,7 +222,7 @@
 
 
         <!-- Main content -->
-        <main class="main-content-wrapper ">
+        <main class="main-content-wrapper">
 
             {% block content %}
 
@@ -245,9 +245,9 @@
                             <div class="footer-widget">
                                 <div class="textwidget">
                                     <figure class="footer-logo mb--30">
-                                        <img src="{% static 'main/img/logos/ho-logo-2.png' %}" alt="Logo">
+                                        <img src="{% static 'main/img/logos/ho-logo-0.png' %}" style="width: 70px; height: 108px;" alt="Logo">
                                     </figure>
-                                    <p style="text-align: justify; color: black; margin-left: 2em;">جنگل آشفته نیاز به نگهبان دارد. هومبیا نگهبانی است که در جنگل آشفته بازار املاک در کنار شما و مشغول حفاظت خواهد بود.</p>
+                                    <p style="text-align: justify; color: black; margin-left: 2em;">جنگل آشفته نیاز به نگهبان دارد. هومبابا نگهبانی است که در جنگل آشفته بازار املاک در کنار شما و مشغول حفاظت خواهد بود.</p>
                                 </div>
                             </div>
                         </div>
@@ -255,12 +255,12 @@
                         <!-- Links1 -->
                         <div class="col-lg-2 col-sm-3 offset-lg-1 offset-sm-2 mb-md--45 offse ">
                             <div class="footer-widget">
-                                <h3 class="widget-title mb--35 mb-sm--20" style="font-size: 1.1em;">{% trans 'Homebia' %}</h3>
+                                <h3 class="widget-title mb--35 mb-sm--20" style="font-size: 1.1em;">{% trans 'Hombaba' %}</h3>
                                 <div class="footer-widget">
                                     <ul class="footer-menu">
                                         <li><a href="{% url 'contact' %}" style="font-size: 0.9em;">{% trans 'Contact Us' %}</a></li>
                                         <li><a href="{% url 'about' %}" style="font-size: 0.9em;">{% trans 'About Us' %}</a></li>
-                                        <li><a href="{% url 'blog_list' %}" style="font-size: 0.9em;">{% trans 'Homebia Blog' %}</a></li>
+                                        <li><a href="{% url 'blog_list' %}" style="font-size: 0.9em;">{% trans 'Hombaba Blog' %}</a></li>
                                         <li><a href="{% url 'rules' %}" style="font-size: 0.9em;">{% trans 'Rules' %}</a></li>
                                         <li><a href="{% url 'faq' %}" style="font-size: 0.9em;">{% trans 'FAQ' %}</a></li>
                                     </ul>
@@ -288,7 +288,7 @@
                         <!-- Links3 -->
                         <div class="col-lg-2 col-md-3 col-sm-4">
                             <div class="footer-widget">
-                                <h3 class="widget-title mb--35 mb-sm--20" style="font-size: 1.1em;">{% trans 'Homebia Socials' %}</h3>
+                                <h3 class="widget-title mb--35 mb-sm--20" style="font-size: 1.1em;">{% trans 'Hombaba Socials' %}</h3>
                                 <div class="footer-widget">
                                     <ul class="footer-menu">
                                         <li><a href="{% url 'home' %}" style="font-size: 0.9em;">{% trans 'Instagram' %}</a></li>
@@ -332,7 +332,7 @@
                 <div class="container-fluid">
                     <div class="row border-top ptb--20">
                         <div class="col-12 text-center">
-                            <p class="copyright-text">تمامی حقوق متعلق به هومبیا است - طراحی شده توسط هومساز</p>
+                            <p class="copyright-text">تمامی حقوق متعلق به هومبابا است - طراحی شده توسط هومساز</p>
                         </div>
                     </div>
                 </div>
@@ -416,7 +416,7 @@
                             <ul class="sub-menu">
                                 <li class="menu-item-has-children">
                                     <a href="{% url 'blog_list' %}">
-                                        <span class="mm-text">{% trans 'Homebia Blog' %}</span>
+                                        <span class="mm-text">{% trans 'Hombaba Blog' %}</span>
                                     </a>
                                 </li>
                                 <li class="menu-item-has-children">

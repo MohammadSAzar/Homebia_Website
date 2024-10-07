@@ -16,7 +16,7 @@
     <div class="nk-block">
         <div class="card card-bordered">
             <div class="card-aside-wrap">
-                <div class="card-inner card-inner-lg">
+                <div class="card-inner card-inner-lg ">
 
                     <!-- Items -->
                     <div class="nk-block">
@@ -151,6 +151,7 @@
                                                 </div>
                                             {% endif %}
 
+                                            <!-- Form -->
                                             <div class="d-flex align-items-center" style="margin-top: 20px; float: left;!important;">
                                                 <form method="post" novalidate>
                                                     {% csrf_token %}
@@ -158,6 +159,7 @@
                                                     <button id="applyForm" type="submit" class="btn btn-primary" style="padding: 5px 45px; display: none; line-height: 2.5em;!important;"><span>{% trans 'If you are sure, click!' %}</span></button>
                                                 </form>
                                             </div>
+
                                             <script>
                                                 document.getElementById('applyButton').addEventListener('click', function() {
                                                     var applyButton = document.getElementById('applyButton');
