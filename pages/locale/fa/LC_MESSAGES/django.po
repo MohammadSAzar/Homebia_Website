@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-20 19:15+0330\n"
+"POT-Creation-Date: 2024-10-08 14:44+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -34,29 +34,52 @@ msgstr "تماس با ما"
 msgid "FAQ"
 msgstr "سوالات متداول"
 
-#: .\templates\pages\home.html:8
+#: .\templates\pages\home.html:9
 msgid "Homepage"
 msgstr "خانه"
 
-#: .\templates\pages\home.html:43
+#: .\templates\pages\home.html:46
 msgid "Counseling"
 msgstr "مشاوره"
 
-#: .\templates\pages\home.html:44
+#: .\templates\pages\home.html:47
 msgid "Session"
 msgstr "نشست"
 
-#: .\templates\pages\home.html:45
+#: .\templates\pages\home.html:48
 msgid "Visit"
 msgstr "بازدید"
 
-#: .\templates\pages\home.html:67
-msgid "Homebia Services"
-msgstr "خدمات هومبیا"
+#: .\templates\pages\home.html:70
+msgid "Hombaba Services"
+msgstr "خدمات هومبابا"
 
-#: .\templates\pages\home.html:156
-msgid "Latest Articles on Homebia Blog"
-msgstr "آخرین مقالات در بلاگ هومبیا"
+#: .\templates\pages\home.html:161
+msgid "Latest Tasks on Hombaba"
+msgstr "آخرین مقالات در بلاگ هومبابا"
+
+#: .\templates\pages\home.html:183 .\templates\pages\home.html:187
+#: .\templates\pages\home.html:207
+msgid "in"
+msgstr "در"
+
+#: .\templates\pages\home.html:192 .\templates\pages\home.html:203
+msgid "in hombaba (tehran)"
+msgstr "به میزبانی هومبابا (فقط تهران)"
+
+#: .\templates\pages\home.html:217 .\templates\pages\home.html:221
+#: .\templates\pages\home.html:225 .\templates\pages\home.html:229
+msgid "Total price: "
+msgstr "هزینه کل: "
+
+#: .\templates\pages\home.html:218 .\templates\pages\home.html:222
+#: .\templates\pages\home.html:226
+msgid "Tooman"
+msgstr "تومان"
+
+#: .\templates\pages\home.html:276
+msgid "Latest Articles on Hombaba Blog"
+msgstr "آخرین مقالات در بلاگ هومبابا"
 
 #: .\templates\pages\rules.html:8
 msgid "Rules"

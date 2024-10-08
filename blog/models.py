@@ -53,6 +53,7 @@ comment_statuses = [
     ('wit', _('Waiting')),
 ]
 
+
 class Comment(models.Model):
     COMMENT_STATUSES = comment_statuses
     name = models.CharField(max_length=40, verbose_name=_('Comment Name'))

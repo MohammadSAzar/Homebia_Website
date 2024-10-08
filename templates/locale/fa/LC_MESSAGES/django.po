@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-19 16:38+0330\n"
+"POT-Creation-Date: 2024-10-08 14:50+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -71,8 +71,8 @@ msgid "Links"
 msgstr "لینک‌های مهم"
 
 #: .\_base.html:105 .\_base.html:263 .\_base.html:419
-msgid "Homebia Blog"
-msgstr "بلاگ هومبیا"
+msgid "Hombaba Blog"
+msgstr "بلاگ هومبابا"
 
 #: .\_base.html:106 .\_base.html:261 .\_base.html:423
 msgid "Contact Us"
@@ -107,15 +107,15 @@ msgid "ثبت آگهی اجاره"
 msgstr "ثبت آگهی اجاره"
 
 #: .\_base.html:258
-msgid "Homebia"
-msgstr "هومبیا"
+msgid "Hombaba"
+msgstr "هومبابا"
 
 #: .\_base.html:274
 msgid "Products"
 msgstr "محصولات"
 
 #: .\_base.html:291
-msgid "Homebia Socials"
+msgid "Hombaba Socials"
 msgstr "شبکه‌های اجتماعی"
 
 #: .\_base.html:294
@@ -201,5 +201,4 @@ msgstr "سوابق فعالیت‌های شما"
 #: .\_base_profile.html:195
 msgid "Exit"
 msgstr "خروج از حساب کاربری"
-
 

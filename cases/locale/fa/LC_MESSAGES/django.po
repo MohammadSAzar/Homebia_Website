@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-17 18:22+0330\n"
+"POT-Creation-Date: 2024-10-08 14:42+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
 #: .\forms.py:10
 msgid "Has"
 msgstr "دارد"
@@ -219,11 +220,11 @@ msgstr "رفتن به صفحه پرداخت"
 msgid "Empty Cart"
 msgstr "سبد خرید خالی"
 
-#: .\templates\cases\cart_empty.html:22
+#: .\templates\cases\cart_empty.html:23
 msgid "Your Cart is empty, if you want to see our cases, click on below button"
 msgstr "سبد خرید شما خالی است، برای مشاهده فرصت‌های سرمایه‌گذاری کلیک کنید"
 
-#: .\templates\cases\cart_empty.html:23
+#: .\templates\cases\cart_empty.html:24
 msgid "See Cases"
 msgstr "مشاهده فرصت‌های سرمایه‌گذاری"
 
@@ -259,7 +260,7 @@ msgstr "تاریخ اتمام پروژه:"
 msgid "Project Status:"
 msgstr "وضعیت پروژه:"
 
-#: .\templates\cases\case_detail.html:318
+#: .\templates\cases\case_detail.html:317
 msgid "Case Description"
 msgstr "توضیحات پروژه"
 
@@ -318,4 +319,5 @@ msgstr "سود تضمینی: "
 #: .\templates\cases\case_list.html:197
 msgid "Do Filter"
 msgstr "اعمال فیلتر"
+
 

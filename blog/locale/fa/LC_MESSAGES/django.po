@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-22 18:58+0330\n"
+"POT-Creation-Date: 2024-10-08 14:39+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -51,18 +51,34 @@ msgid "Blog status"
 msgstr "وضعیت بلاگ"
 
 #: .\models.py:51
+msgid "Accepted"
+msgstr "تایید شده"
+
+#: .\models.py:52
+msgid "Rejected"
+msgstr "رد شده"
+
+#: .\models.py:53
+msgid "Waiting"
+msgstr "در انتظار"
+
+#: .\models.py:58
 msgid "Comment Name"
 msgstr "نام"
 
-#: .\models.py:53
+#: .\models.py:60
 msgid "Comment Text"
 msgstr "متن پیام"
 
-#: .\models.py:64
+#: .\models.py:61 .\models.py:78
+msgid "Status"
+msgstr "وضعیت"
+
+#: .\models.py:73
 msgid "Reply Name"
 msgstr "نام"
 
-#: .\models.py:68
+#: .\models.py:77
 msgid "Reply Text"
 msgstr "متن پیام"
 
@@ -72,23 +88,23 @@ msgstr "مقالات تحلیلی"
 
 #: .\templates\blog\blog_category_analytical.html:20
 #: .\templates\blog\blog_category_educational.html:20
-#: .\templates\blog\blog_category_homebia.html:20
+#: .\templates\blog\blog_category_hombaba.html:20
 #: .\templates\blog\blog_category_news.html:20
 #: .\templates\blog\blog_list.html:20
-msgid "Homebia Blog: Real Estate Magazine"
-msgstr "بلاگ هومبیا، مجله جامع مسکن"
+msgid "Hombaba Blog: Real Estate Magazine"
+msgstr "بلاگ هومبابا، مجله جامع مسکن"
 
 #: .\templates\blog\blog_category_analytical.html:22
 #: .\templates\blog\blog_category_educational.html:22
-#: .\templates\blog\blog_category_homebia.html:22
+#: .\templates\blog\blog_category_hombaba.html:22
 #: .\templates\blog\blog_category_news.html:22
 #: .\templates\blog\blog_list.html:22
-msgid "Homebia Blogs"
-msgstr "هومبیا"
+msgid "Hombaba Blogs"
+msgstr "مقالات هومبابا"
 
 #: .\templates\blog\blog_category_analytical.html:23
 #: .\templates\blog\blog_category_educational.html:23
-#: .\templates\blog\blog_category_homebia.html:23
+#: .\templates\blog\blog_category_hombaba.html:23
 #: .\templates\blog\blog_category_news.html:23
 #: .\templates\blog\blog_list.html:23
 msgid "News Blogs"
@@ -96,7 +112,7 @@ msgstr "خبری"
 
 #: .\templates\blog\blog_category_analytical.html:24
 #: .\templates\blog\blog_category_educational.html:24
-#: .\templates\blog\blog_category_homebia.html:24
+#: .\templates\blog\blog_category_hombaba.html:24
 #: .\templates\blog\blog_category_news.html:24
 #: .\templates\blog\blog_list.html:24
 msgid "Analytical Blogs"
@@ -104,7 +120,7 @@ msgstr "تحلیلی"
 
 #: .\templates\blog\blog_category_analytical.html:25
 #: .\templates\blog\blog_category_educational.html:25
-#: .\templates\blog\blog_category_homebia.html:25
+#: .\templates\blog\blog_category_hombaba.html:25
 #: .\templates\blog\blog_category_news.html:25
 #: .\templates\blog\blog_list.html:25
 msgid "Educational Blogs"
@@ -112,7 +128,7 @@ msgstr "آموزشی"
 
 #: .\templates\blog\blog_category_analytical.html:26
 #: .\templates\blog\blog_category_educational.html:26
-#: .\templates\blog\blog_category_homebia.html:26
+#: .\templates\blog\blog_category_hombaba.html:26
 #: .\templates\blog\blog_category_news.html:26
 #: .\templates\blog\blog_list.html:26
 msgid "All Blogs"
@@ -120,25 +136,25 @@ msgstr "همه"
 
 #: .\templates\blog\blog_category_analytical.html:56
 #: .\templates\blog\blog_category_educational.html:56
-#: .\templates\blog\blog_category_homebia.html:56
+#: .\templates\blog\blog_category_hombaba.html:56
 #: .\templates\blog\blog_category_news.html:56
-#: .\templates\blog\blog_detail.html:79 .\templates\blog\blog_list.html:56
+#: .\templates\blog\blog_detail.html:97 .\templates\blog\blog_list.html:60
 msgid "Publication Date"
 msgstr "تاریخ انتشار"
 
 #: .\templates\blog\blog_category_analytical.html:59
 #: .\templates\blog\blog_category_educational.html:59
-#: .\templates\blog\blog_category_homebia.html:59
+#: .\templates\blog\blog_category_hombaba.html:59
 #: .\templates\blog\blog_category_news.html:59
-#: .\templates\blog\blog_detail.html:80 .\templates\blog\blog_list.html:59
+#: .\templates\blog\blog_detail.html:98 .\templates\blog\blog_list.html:63
 msgid "Category"
 msgstr "دسته‌بندی"
 
 #: .\templates\blog\blog_category_analytical.html:61
 #: .\templates\blog\blog_category_educational.html:61
-#: .\templates\blog\blog_category_homebia.html:61
+#: .\templates\blog\blog_category_hombaba.html:61
 #: .\templates\blog\blog_category_news.html:61
-#: .\templates\blog\blog_list.html:61
+#: .\templates\blog\blog_list.html:65
 msgid "Read More"
 msgstr "بیشتر"
 
@@ -146,11 +162,11 @@ msgstr "بیشتر"
 #: .\templates\blog\blog_category_analytical.html:76
 #: .\templates\blog\blog_category_educational.html:74
 #: .\templates\blog\blog_category_educational.html:76
-#: .\templates\blog\blog_category_homebia.html:74
-#: .\templates\blog\blog_category_homebia.html:76
+#: .\templates\blog\blog_category_hombaba.html:74
+#: .\templates\blog\blog_category_hombaba.html:76
 #: .\templates\blog\blog_category_news.html:74
 #: .\templates\blog\blog_category_news.html:76
-#: .\templates\blog\blog_list.html:74 .\templates\blog\blog_list.html:76
+#: .\templates\blog\blog_list.html:79 .\templates\blog\blog_list.html:81
 msgid "First"
 msgstr "ابتدا"
 
@@ -158,11 +174,11 @@ msgstr "ابتدا"
 #: .\templates\blog\blog_category_analytical.html:82
 #: .\templates\blog\blog_category_educational.html:80
 #: .\templates\blog\blog_category_educational.html:82
-#: .\templates\blog\blog_category_homebia.html:80
-#: .\templates\blog\blog_category_homebia.html:82
+#: .\templates\blog\blog_category_hombaba.html:80
+#: .\templates\blog\blog_category_hombaba.html:82
 #: .\templates\blog\blog_category_news.html:80
 #: .\templates\blog\blog_category_news.html:82
-#: .\templates\blog\blog_list.html:80 .\templates\blog\blog_list.html:82
+#: .\templates\blog\blog_list.html:85 .\templates\blog\blog_list.html:87
 msgid "Previous"
 msgstr "قبل"
 
@@ -170,11 +186,11 @@ msgstr "قبل"
 #: .\templates\blog\blog_category_analytical.html:96
 #: .\templates\blog\blog_category_educational.html:94
 #: .\templates\blog\blog_category_educational.html:96
-#: .\templates\blog\blog_category_homebia.html:94
-#: .\templates\blog\blog_category_homebia.html:96
+#: .\templates\blog\blog_category_hombaba.html:94
+#: .\templates\blog\blog_category_hombaba.html:96
 #: .\templates\blog\blog_category_news.html:94
 #: .\templates\blog\blog_category_news.html:96
-#: .\templates\blog\blog_list.html:94 .\templates\blog\blog_list.html:96
+#: .\templates\blog\blog_list.html:99 .\templates\blog\blog_list.html:101
 msgid "Next"
 msgstr "بعد"
 
@@ -182,11 +198,11 @@ msgstr "بعد"
 #: .\templates\blog\blog_category_analytical.html:102
 #: .\templates\blog\blog_category_educational.html:100
 #: .\templates\blog\blog_category_educational.html:102
-#: .\templates\blog\blog_category_homebia.html:100
-#: .\templates\blog\blog_category_homebia.html:102
+#: .\templates\blog\blog_category_hombaba.html:100
+#: .\templates\blog\blog_category_hombaba.html:102
 #: .\templates\blog\blog_category_news.html:100
 #: .\templates\blog\blog_category_news.html:102
-#: .\templates\blog\blog_list.html:100 .\templates\blog\blog_list.html:102
+#: .\templates\blog\blog_list.html:105 .\templates\blog\blog_list.html:107
 msgid "Last Page"
 msgstr "انتها"
 
@@ -194,7 +210,7 @@ msgstr "انتها"
 msgid "Blog Educational"
 msgstr "مقالات آموزشی"
 
-#: .\templates\blog\blog_category_homebia.html:11
+#: .\templates\blog\blog_category_hombaba.html:11
 msgid "Blog Homebia"
 msgstr "مقالات هومبیا"
 
@@ -202,45 +218,48 @@ msgstr "مقالات هومبیا"
 msgid "Blog News"
 msgstr "مقالات خبری"
 
-#: .\templates\blog\blog_detail.html:28
+#: .\templates\blog\blog_detail.html:46
 msgid "Categories"
 msgstr "دسته‌بندی مطالب"
 
-#: .\templates\blog\blog_detail.html:30
+#: .\templates\blog\blog_detail.html:48
 msgid "All Categories Blogs"
 msgstr "همه مقالات بلاگ"
 
-#: .\templates\blog\blog_detail.html:31
+#: .\templates\blog\blog_detail.html:49
 msgid "Educational Blog Articles"
 msgstr "مقالات آموزشی"
 
-#: .\templates\blog\blog_detail.html:32
+#: .\templates\blog\blog_detail.html:50
 msgid "Analytical Blog Articles"
 msgstr "مقالات تحلیلی"
 
-#: .\templates\blog\blog_detail.html:33
+#: .\templates\blog\blog_detail.html:51
 msgid "News Blog Articles"
 msgstr "مقالات خبری"
 
-#: .\templates\blog\blog_detail.html:34
-msgid "Homebia Blog Articles"
-msgstr "از هومبیا چه خبر؟"
+#: .\templates\blog\blog_detail.html:52
+msgid "Hombaba Blog Articles"
+msgstr "از هومبابا چه خبر؟"
 
-#: .\templates\blog\blog_detail.html:45
+#: .\templates\blog\blog_detail.html:63
 msgid "Latest Articles"
 msgstr "جدیدترین مقالات"
 
-#: .\templates\blog\blog_detail.html:148 .\templates\blog\blog_detail.html:202
-#: .\templates\blog\blog_detail.html:256 .\templates\blog\blog_detail.html:310
-#: .\templates\blog\blog_detail.html:364 .\templates\blog\blog_detail.html:418
-#: .\templates\blog\blog_detail.html:500
+#: .\templates\blog\blog_detail.html:167 .\templates\blog\blog_detail.html:221
+#: .\templates\blog\blog_detail.html:275 .\templates\blog\blog_detail.html:329
+#: .\templates\blog\blog_detail.html:383 .\templates\blog\blog_detail.html:437
+#: .\templates\blog\blog_detail.html:519
 msgid "Submit Comment"
 msgstr "ثبت نظر"
 
-#: .\templates\blog\blog_detail.html:474
+#: .\templates\blog\blog_detail.html:493
 msgid "Write a Comment"
 msgstr "یک نظر بنویسید"
 
 #: .\templates\blog\blog_list.html:11
 msgid "Blog"
 msgstr "بلاگ"
+
+
+

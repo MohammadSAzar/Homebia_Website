@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-19 14:55+0330\n"
+"POT-Creation-Date: 2024-10-08 14:32+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -32,25 +32,23 @@ msgstr "در حال بررسی"
 
 #: .\models.py:38
 msgid "Is"
-msgstr ""
+msgstr "هست"
 
 #: .\models.py:39
 msgid "Waiting"
-msgstr ""
+msgstr "در حال بررسی"
 
 #: .\models.py:40
 msgid "Isn't"
 msgstr "نیست"
 
 #: .\models.py:43
-#, fuzzy
-#| msgid "Not Completed"
 msgid "Completed"
-msgstr "تکمیل نشده"
+msgstr "تکمیل‌شده"
 
 #: .\models.py:44
 msgid "Not Completed"
-msgstr "تکمیل نشده"
+msgstr "تکمیل‌نشده"
 
 #: .\models.py:51
 msgid "Authentication Status"
@@ -263,60 +261,91 @@ msgid "Date and Time of Creation"
 msgstr "تاریخ و زمان ایجاد"
 
 #: .\templates\accounts\agent_activities.html:9
-#: .\templates\accounts\profile_your_trades.html:9
-msgid "My Trades"
-msgstr "معاملات من"
+#: .\templates\accounts\profile_your_services.html:9
+msgid "My Services"
+msgstr "خدمات دریافتی من"
 
-#: .\templates\accounts\agent_activities.html:47
-#: .\templates\accounts\profile_your_trades.html:47
-msgid "Trade Code: "
-msgstr "کد معامله: "
+#: .\templates\accounts\agent_activities.html:20
+#: .\templates\accounts\agent_task_counseling_list.html:43
+#: .\templates\accounts\agent_task_list.html:43
+#: .\templates\accounts\agent_task_session_list.html:43
+#: .\templates\accounts\agent_task_trade_session_list.html:43
+#: .\templates\accounts\agent_task_visit_list.html:43
+#: .\templates\accounts\profile_your_services.html:47
+msgid "Counselings"
+msgstr "مشاوره‌ها"
+
+#: .\templates\accounts\agent_activities.html:29
+#: .\templates\accounts\agent_activities.html:66
+#: .\templates\accounts\agent_activities.html:103
+#: .\templates\accounts\agent_activities.html:140
+msgid "Code"
+msgstr "کد"
+
+#: .\templates\accounts\agent_activities.html:30
+#: .\templates\accounts\agent_activities.html:67
+#: .\templates\accounts\agent_activities.html:104
+#: .\templates\accounts\agent_activities.html:141
+#: .\templates\accounts\profile_your_services.html:58
+#: .\templates\accounts\profile_your_services.html:97
+#: .\templates\accounts\profile_your_services.html:136
+msgid "Date"
+msgstr "تاریخ"
+
+#: .\templates\accounts\agent_activities.html:31
+#: .\templates\accounts\agent_activities.html:68
+#: .\templates\accounts\agent_activities.html:105
+#: .\templates\accounts\agent_activities.html:142
+#: .\templates\accounts\profile_your_services.html:61
+#: .\templates\accounts\profile_your_services.html:100
+#: .\templates\accounts\profile_your_services.html:139
+msgid "Status"
+msgstr "وضعیت"
+
+#: .\templates\accounts\agent_activities.html:32
+#: .\templates\accounts\agent_activities.html:69
+#: .\templates\accounts\agent_activities.html:106
+#: .\templates\accounts\agent_activities.html:143
+msgid "Request?"
+msgstr "وضعیت درخواست همکاری"
+
+#: .\templates\accounts\agent_activities.html:33
+#: .\templates\accounts\agent_activities.html:70
+#: .\templates\accounts\agent_activities.html:107
+#: .\templates\accounts\agent_activities.html:144
+msgid "Payment?"
+msgstr "وضعیت پرداخت هزینه"
+
+#: .\templates\accounts\agent_activities.html:34
+#: .\templates\accounts\agent_activities.html:71
+#: .\templates\accounts\agent_activities.html:108
+#: .\templates\accounts\agent_activities.html:145
+msgid "Commission?"
+msgstr "وضعیت پرداخت کمیسیون"
 
 #: .\templates\accounts\agent_activities.html:57
-#: .\templates\accounts\profile_your_trades.html:57
-msgid "Trade Type: "
-msgstr "نوع معامله: "
+#: .\templates\accounts\agent_task_counseling_list.html:56
+#: .\templates\accounts\agent_task_list.html:56
+#: .\templates\accounts\agent_task_session_list.html:56
+#: .\templates\accounts\agent_task_trade_session_list.html:56
+#: .\templates\accounts\agent_task_visit_list.html:56
+#: .\templates\accounts\profile_your_services.html:86
+msgid "Sessions"
+msgstr "نشست‌ها"
 
-#: .\templates\accounts\agent_activities.html:69
-#: .\templates\accounts\profile_your_trades.html:69
-msgid "Date: "
-msgstr "تاریخ: "
+#: .\templates\accounts\agent_activities.html:94
+#: .\templates\accounts\agent_task_counseling_list.html:69
+#: .\templates\accounts\agent_task_list.html:69
+#: .\templates\accounts\agent_task_session_list.html:69
+#: .\templates\accounts\agent_task_trade_session_list.html:69
+#: .\templates\accounts\agent_task_visit_list.html:69
+#: .\templates\accounts\profile_your_services.html:125
+msgid "Visits"
+msgstr "بازدیدها"
 
-#: .\templates\accounts\agent_activities.html:81
-#: .\templates\accounts\profile_your_trades.html:81
-msgid "City: "
-msgstr "شهر: "
-
-#: .\templates\accounts\agent_activities.html:93
-#: .\templates\accounts\profile_your_trades.html:93
-msgid "Name: "
-msgstr "نام: "
-
-#: .\templates\accounts\agent_activities.html:105
-#: .\templates\accounts\profile_your_trades.html:105
-msgid "File Code: "
-msgstr "کد فایل: "
-
-#: .\templates\accounts\agent_activities.html:125
-#: .\templates\accounts\profile_your_trades.html:125
-msgid "Is Followed?"
-msgstr "آیا معامله نیاز به پیگیری دارد؟"
-
-#: .\templates\accounts\agent_activities.html:137
-#: .\templates\accounts\profile_your_trades.html:137
-msgid "Is Success?"
-msgstr "آیا معامله موفقیت‌آمیز بود؟"
-
-#: .\templates\accounts\agent_activities.html:149
-#: .\templates\accounts\profile_your_trades.html:149
-msgid "Is Paid?"
-msgstr "آیا پرداخت کمیسیون انجام شده است؟"
-
-#: .\templates\accounts\agent_activities.html:161
-#: .\templates\accounts\profile_your_cases.html:113
-#: .\templates\accounts\profile_your_trades.html:161
-msgid "Status: "
-msgstr "وضعیت: "
+#: .\templates\accounts\agent_activities.html:131
+msgid "Trade Sessions"
+msgstr "نشست‌های معاملاتی"
 
 #: .\templates\accounts\agent_request.html:9
 msgid "Agent Request"
@@ -326,30 +355,30 @@ msgstr "درخواست همکاری"
 msgid "Hombaba Partner Agent"
 msgstr "مشاور همکار هومبابا"
 
-#: .\templates\accounts\agent_request.html:48
+#: .\templates\accounts\agent_request.html:49
 msgid "What is your agent experience?"
 msgstr "چقدر تجربه کار مشاوره املاک دارید؟"
 
-#: .\templates\accounts\agent_request.html:59
+#: .\templates\accounts\agent_request.html:60
 msgid "What is your introduction way?"
 msgstr "چگونه با هومبابا آشنا شده‌اید؟"
 
-#: .\templates\accounts\agent_request.html:70
+#: .\templates\accounts\agent_request.html:71
 msgid "Do you want our course?"
 msgstr "تمایل به شرکت در دوره آموزشی رایگان دارید؟"
 
-#: .\templates\accounts\agent_request.html:81
+#: .\templates\accounts\agent_request.html:82
 #: .\templates\accounts\profile_info_auth.html:204
 #: .\templates\accounts\profile_info_edit.html:119
 msgid "Submit"
 msgstr "ارسال"
 
-#: .\templates\accounts\agent_request.html:109
+#: .\templates\accounts\agent_request.html:111
 #: .\templates\accounts\profile_info_now.html:126
 msgid "Verify Account"
 msgstr "تایید حساب کاربری"
 
-#: .\templates\accounts\agent_request.html:132
+#: .\templates\accounts\agent_request.html:134
 #: .\templates\accounts\agent_task_counseling_list.html:25
 #: .\templates\accounts\agent_task_list.html:11
 #: .\templates\accounts\agent_task_list.html:25
@@ -363,40 +392,13 @@ msgstr "لیست فرصت‌های کاری"
 msgid "Tasks List - Counseling"
 msgstr "فرصت‌های کاری - مشاوره"
 
-#: .\templates\accounts\agent_task_counseling_list.html:43
-#: .\templates\accounts\agent_task_list.html:43
-#: .\templates\accounts\agent_task_session_list.html:43
-#: .\templates\accounts\agent_task_trade_session_list.html:43
-#: .\templates\accounts\agent_task_visit_list.html:43
-#: .\templates\accounts\profile_your_services.html:47
-msgid "Counselings"
-msgstr "مشاوره‌ها"
-
-#: .\templates\accounts\agent_task_counseling_list.html:56
-#: .\templates\accounts\agent_task_list.html:56
-#: .\templates\accounts\agent_task_session_list.html:56
-#: .\templates\accounts\agent_task_trade_session_list.html:56
-#: .\templates\accounts\agent_task_visit_list.html:56
-#: .\templates\accounts\profile_your_services.html:86
-msgid "Sessions"
-msgstr "نشست‌ها"
-
-#: .\templates\accounts\agent_task_counseling_list.html:69
-#: .\templates\accounts\agent_task_list.html:69
-#: .\templates\accounts\agent_task_session_list.html:69
-#: .\templates\accounts\agent_task_trade_session_list.html:69
-#: .\templates\accounts\agent_task_visit_list.html:69
-#: .\templates\accounts\profile_your_services.html:125
-msgid "Visits"
-msgstr "بازدیدها"
-
 #: .\templates\accounts\agent_task_counseling_list.html:82
 #: .\templates\accounts\agent_task_list.html:82
 #: .\templates\accounts\agent_task_session_list.html:82
 #: .\templates\accounts\agent_task_trade_session_list.html:82
 #: .\templates\accounts\agent_task_visit_list.html:82
 msgid "TradeSessions"
-msgstr "نشست‌های کاری"
+msgstr "نشست‌های معاملاتی"
 
 #: .\templates\accounts\agent_task_counseling_list.html:109
 #: .\templates\accounts\agent_task_counseling_list.html:113
@@ -567,7 +569,7 @@ msgstr "کمیسیون دریافتی هومبابا: "
 msgid "Apply"
 msgstr "ثبت درخواست"
 
-#: .\templates\accounts\agent_task_detail.html:158
+#: .\templates\accounts\agent_task_detail.html:159
 msgid "If you are sure, click!"
 msgstr "اگر مطمئن هستید، کلیک نمایید!"
 
@@ -642,7 +644,6 @@ msgid "Information Update"
 msgstr "بروزرسانی اطلاعات شخصی"
 
 #: .\templates\accounts\profile_info_now.html:121
-#| msgid "Verified"
 msgid "Not Verified"
 msgstr "تایید نشده"
 
@@ -674,21 +675,16 @@ msgstr "قیمت کل (بدون مالیات): "
 msgid "Datetime: "
 msgstr "تاریخ و زمان سرمایه‌گذاری: "
 
-#: .\templates\accounts\profile_your_services.html:9
-msgid "My Services"
-msgstr "خدمات دریافتی من"
+#: .\templates\accounts\profile_your_cases.html:113
+#: .\templates\accounts\profile_your_trades.html:161
+msgid "Status: "
+msgstr "وضعیت: "
 
 #: .\templates\accounts\profile_your_services.html:57
 #: .\templates\accounts\profile_your_services.html:96
 #: .\templates\accounts\profile_your_services.html:135
 msgid "Row"
 msgstr "ردیف"
-
-#: .\templates\accounts\profile_your_services.html:58
-#: .\templates\accounts\profile_your_services.html:97
-#: .\templates\accounts\profile_your_services.html:136
-msgid "Date"
-msgstr "تاریخ"
 
 #: .\templates\accounts\profile_your_services.html:59
 #: .\templates\accounts\profile_your_services.html:98
@@ -701,11 +697,45 @@ msgstr "نام"
 msgid "Type"
 msgstr "نوع"
 
-#: .\templates\accounts\profile_your_services.html:61
-#: .\templates\accounts\profile_your_services.html:100
-#: .\templates\accounts\profile_your_services.html:139
-msgid "Status"
-msgstr "وضعیت"
+#: .\templates\accounts\profile_your_trades.html:9
+msgid "My Trades"
+msgstr "معاملات من"
+
+#: .\templates\accounts\profile_your_trades.html:47
+msgid "Trade Code: "
+msgstr "کد معامله: "
+
+#: .\templates\accounts\profile_your_trades.html:57
+msgid "Trade Type: "
+msgstr "نوع معامله: "
+
+#: .\templates\accounts\profile_your_trades.html:69
+msgid "Date: "
+msgstr "تاریخ: "
+
+#: .\templates\accounts\profile_your_trades.html:81
+msgid "City: "
+msgstr "شهر: "
+
+#: .\templates\accounts\profile_your_trades.html:93
+msgid "Name: "
+msgstr "نام: "
+
+#: .\templates\accounts\profile_your_trades.html:105
+msgid "File Code: "
+msgstr "کد فایل: "
+
+#: .\templates\accounts\profile_your_trades.html:125
+msgid "Is Followed?"
+msgstr "آیا معامله نیاز به پیگیری دارد؟"
+
+#: .\templates\accounts\profile_your_trades.html:137
+msgid "Is Success?"
+msgstr "آیا معامله موفقیت‌آمیز بود؟"
+
+#: .\templates\accounts\profile_your_trades.html:149
+msgid "Is Paid?"
+msgstr "آیا پرداخت کمیسیون انجام شده است؟"
 
 #: .\templates\accounts\registration.html:10
 msgid "Website Login/Signup"
@@ -740,7 +770,5 @@ msgid "Enter The Sent Approval Code"
 msgstr "کد پیامک شده را وارد نمایید: "
 
 #: .\templates\accounts\verification.html:60
-msgid "Register in Homebia"
-msgstr "ورود به هومبیا"
-
-
+msgid "Register in Hombaba"
+msgstr "ورود به هومبابا"

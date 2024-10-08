@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-19 17:38+0330\n"
+"POT-Creation-Date: 2024-10-08 14:49+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -77,7 +77,6 @@ msgstr "چتی"
 #: .\models.py:90 .\models.py:135 .\models.py:180
 msgid "City"
 msgstr "شهر"
-
 
 #: .\models.py:91
 msgid "Counseling Type"
@@ -345,8 +344,8 @@ msgstr "کد را دریافت نکردید؟"
 #: .\templates\services\counseling_verification.html:59
 #: .\templates\services\session_verification.html:59
 #: .\templates\services\visit_verification.html:59
-msgid "Register in Homebia"
-msgstr "ورود به هومبیا"
+msgid "Register in Hombaba"
+msgstr "ورود به هومبابا"
 
 #: .\templates\services\session.html:44
 msgid "Choose the session city"
