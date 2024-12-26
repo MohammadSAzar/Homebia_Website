@@ -14,12 +14,6 @@ def home_view(request):
                 .order_by('-datetime_created')[:6]
     context['blogs'] = blogs
     context['tasks'] = tasks
-    user_now = request.user
-    if isinstance(user_now, CustomUserModel):
-        context['user'] = user_now
-    else:
-        context['user'] = user_now
-
     return render(request, 'pages/home.html', context)
 
 
